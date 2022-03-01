@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20140403180324)
 class CreateSpotlightMainNavigations < ActiveRecord::Migration[4.2]
   def change

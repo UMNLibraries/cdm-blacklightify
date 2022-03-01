@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20140128155152)
 class CreateRoles < ActiveRecord::Migration[4.2]
   def change
@@ -7,6 +9,6 @@ class CreateRoles < ActiveRecord::Migration[4.2]
       t.string :role
     end
 
-    add_index :spotlight_roles, [:exhibit_id, :user_id], unique: true
+    add_index :spotlight_roles, %i[exhibit_id user_id], unique: true
   end
 end

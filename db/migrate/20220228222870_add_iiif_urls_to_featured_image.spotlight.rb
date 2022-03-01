@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20160714144125)
 class AddIiifUrlsToFeaturedImage < ActiveRecord::Migration[4.2]
   def change

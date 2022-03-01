@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20140130155151)
 class CreateSpotlightSearches < ActiveRecord::Migration[4.2]
   def change
@@ -16,6 +18,6 @@ class CreateSpotlightSearches < ActiveRecord::Migration[4.2]
     end
 
     add_index :spotlight_searches, :exhibit_id
-    add_index :spotlight_searches, [:slug,:scope], unique: true
+    add_index :spotlight_searches, %i[slug scope], unique: true
   end
 end

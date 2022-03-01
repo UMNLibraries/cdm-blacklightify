@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20171005231502)
 # This migration comes from acts_as_taggable_on_engine (originally 6)
 if ActiveRecord.gem_version >= Gem::Version.new('5.0')
@@ -13,12 +15,10 @@ AddMissingIndexesOnTaggings.class_eval do
     add_index :taggings, :tagger_id unless index_exists? :taggings, :tagger_id
     add_index :taggings, :context unless index_exists? :taggings, :context
 
-    unless index_exists? :taggings, [:tagger_id, :tagger_type]
-      add_index :taggings, [:tagger_id, :tagger_type]
-    end
+    add_index :taggings, %i[tagger_id tagger_type] unless index_exists? :taggings, %i[tagger_id tagger_type]
 
-    unless index_exists? :taggings, [:taggable_id, :taggable_type, :tagger_id, :context], name: 'taggings_idy'
-      add_index :taggings, [:taggable_id, :taggable_type, :tagger_id, :context], name: 'taggings_idy'
+    unless index_exists? :taggings, %i[taggable_id taggable_type tagger_id context], name: 'taggings_idy'
+      add_index :taggings, %i[taggable_id taggable_type tagger_id context], name: 'taggings_idy'
     end
   end
 end

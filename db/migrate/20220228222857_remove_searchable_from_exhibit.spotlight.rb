@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20151016092343)
 class RemoveSearchableFromExhibit < ActiveRecord::Migration[4.2]
   def up

@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+
+# SolrDocument
 class SolrDocument
   include Blacklight::Solr::Document
   include Blacklight::Gallery::OpenseadragonSolrDocument
@@ -6,7 +8,6 @@ class SolrDocument
   include Spotlight::SolrDocument
 
   include Spotlight::SolrDocument::AtomicUpdates
-
 
   # self.unique_key = 'id'
 

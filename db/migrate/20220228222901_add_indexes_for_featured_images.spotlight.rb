@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20210506070809)
 class AddIndexesForFeaturedImages < ActiveRecord::Migration[5.2]
   def change

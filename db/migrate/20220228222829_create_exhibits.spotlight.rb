@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20140128155151)
 class CreateExhibits < ActiveRecord::Migration[4.2]
   def change

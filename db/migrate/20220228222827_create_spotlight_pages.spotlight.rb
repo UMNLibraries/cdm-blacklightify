@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20131119213142)
 class CreateSpotlightPages < ActiveRecord::Migration[4.2]
   def change
@@ -19,6 +21,6 @@ class CreateSpotlightPages < ActiveRecord::Migration[4.2]
     end
     add_index :spotlight_pages, :exhibit_id
     add_index :spotlight_pages, :parent_page_id
-    add_index :spotlight_pages, [:slug,:scope], unique: true
+    add_index :spotlight_pages, %i[slug scope], unique: true
   end
 end

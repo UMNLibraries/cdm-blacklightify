@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20160805143841)
 class AddUploadIdToResources < ActiveRecord::Migration[4.2]
   def change

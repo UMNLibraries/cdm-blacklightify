@@ -27,4 +27,4 @@ Blacklightify a CONTENTdm collection
 
 `bundle exec rails server`
 
-Go to http://localhost:3000 in your browser.
+Go to [http://localhost:3000](http://localhost:3000) in your browser.

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20170105222939)
 class CreateSpotlightReindexingLogEntries < ActiveRecord::Migration[4.2]
   def change

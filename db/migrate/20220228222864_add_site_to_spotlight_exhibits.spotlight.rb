@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20151211131415)
 class AddSiteToSpotlightExhibits < ActiveRecord::Migration[4.2]
   def up

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20170821165811)
 class ChangeIndexStatusToLongblob < ActiveRecord::Migration[5.0]
   def change

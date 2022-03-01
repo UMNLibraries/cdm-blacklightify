@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20150304071512)
 class AddSpotlightFeaturedImages < ActiveRecord::Migration[4.2]
   def change

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20140130215634)
 class CreateSpotlightBlacklightConfigurations < ActiveRecord::Migration[4.2]
   def change

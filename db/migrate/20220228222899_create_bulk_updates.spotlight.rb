@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20210305171150)
 class CreateBulkUpdates < ActiveRecord::Migration[5.2]
   def change

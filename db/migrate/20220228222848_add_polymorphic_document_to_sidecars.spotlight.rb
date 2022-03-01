@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20150217111511)
 class AddPolymorphicDocumentToSidecars < ActiveRecord::Migration[4.2]
   def change
@@ -22,6 +24,6 @@ class AddPolymorphicDocumentToSidecars < ActiveRecord::Migration[4.2]
 
     remove_column :spotlight_solr_document_sidecars, :solr_document_id
 
-    add_index :bookmarks, [:document_type, :document_id]
+    add_index :bookmarks, %i[document_type document_id]
   end
 end

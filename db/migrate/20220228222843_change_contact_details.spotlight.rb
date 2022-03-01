@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20141118233735)
 class ChangeContactDetails < ActiveRecord::Migration[4.2]
   def up
@@ -18,8 +20,9 @@ class ChangeContactDetails < ActiveRecord::Migration[4.2]
       remove_column :spotlight_contacts, col, :string if Spotlight::Contact.column_names.include? col
     end
   end
+
   def down
-    attributes.each do |attribute|
+    attributes.each do |_attribute|
       add_column :spotlight_contacts, col, :string
     end
 
@@ -34,8 +37,10 @@ class ChangeContactDetails < ActiveRecord::Migration[4.2]
 
     remove_column :spotlight_contacts, :contact_info, :text
   end
+
   private
+
   def attributes
-    [:email, :title, :location, :telephone]
+    %i[email title location telephone]
   end
 end

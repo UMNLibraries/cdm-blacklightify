@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20150306202300)
 class AddDisplayToSpotlightMainNavigations < ActiveRecord::Migration[4.2]
   def up
@@ -6,6 +8,7 @@ class AddDisplayToSpotlightMainNavigations < ActiveRecord::Migration[4.2]
     Spotlight::MainNavigation.reset_column_information
     Spotlight::MainNavigation.update_all display: true
   end
+
   def down
     remove_column :spotlight_main_navigations, :display
   end

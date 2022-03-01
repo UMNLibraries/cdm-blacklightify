@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20141117111311)
 class CreateLocks < ActiveRecord::Migration[4.2]
   def change
@@ -7,6 +9,6 @@ class CreateLocks < ActiveRecord::Migration[4.2]
       t.timestamps
     end
 
-    add_index :spotlight_locks, [:on_id, :on_type], unique: true
+    add_index :spotlight_locks, %i[on_id on_type], unique: true
   end
 end

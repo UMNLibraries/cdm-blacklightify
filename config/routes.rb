@@ -1,11 +1,12 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   mount Blacklight::Oembed::Engine, at: 'oembed'
   mount Riiif::Engine => '/images', as: 'riiif'
   root to: 'spotlight/exhibits#index'
   mount Spotlight::Engine, at: 'spotlight'
   mount Blacklight::Engine => '/'
-#  root to: "catalog#index" # replaced by spotlight root path
+  #  root to: "catalog#index" # replaced by spotlight root path
   concern :searchable, Blacklight::Routes::Searchable.new
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do

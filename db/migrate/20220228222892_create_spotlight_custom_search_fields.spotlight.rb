@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from spotlight (originally 20190910200927)
 class CreateSpotlightCustomSearchFields < ActiveRecord::Migration[5.1]
   def change
