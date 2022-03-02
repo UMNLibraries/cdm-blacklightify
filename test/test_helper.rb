@@ -6,7 +6,7 @@ SimpleCov.start do
   add_filter '/bin/'
   add_filter '/db/'
   add_filter '/test/' # for minitest
-  minimum_coverage 100
+  # minimum_coverage 100
 end
 
 ENV['RAILS_ENV'] ||= 'test'
