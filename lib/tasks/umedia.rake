@@ -5,6 +5,9 @@ Bundler::Audit::Task.new
 
 task default: 'bundle:audit'
 
+require 'rubocop/rake_task'
+RuboCop::RakeTask.new(:rubocop)
+
 desc 'Run test suite'
 task ci: :environment do
   success = true
