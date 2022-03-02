@@ -3,7 +3,10 @@
 Rails.application.routes.draw do
   mount Blacklight::Oembed::Engine, at: 'oembed'
   mount Riiif::Engine => '/images', as: 'riiif'
-  root to: 'spotlight/exhibits#index'
+
+  # root to: 'spotlight/exhibits#index'
+  root to: "catalog#index" # replaced by spotlight root path
+
   mount Spotlight::Engine, at: 'spotlight'
   mount Blacklight::Engine => '/'
   #  root to: "catalog#index" # replaced by spotlight root path

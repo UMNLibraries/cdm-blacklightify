@@ -81,3 +81,5 @@ gem 'uglifier', '>= 1.3.0'
 gem 'rubocop', '~> 1.25', require: false
 gem 'rubocop-minitest', require: false
 gem 'rubocop-rails', require: false
+gem 'simplecov', require: false, group: :test
+gem 'bundler-audit'
