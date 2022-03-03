@@ -6,10 +6,17 @@ SimpleCov.start do
   add_filter '/bin/'
   add_filter '/db/'
   add_filter '/test/' # for minitest
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Channels', 'app/channels'
+  add_group 'Models', 'app/models'
+  add_group 'Mailers', 'app/mailers'
+  add_group 'Helpers', 'app/helpers'
+  add_group 'Jobs', %w[app/jobs app/workers]
+  add_group 'Libraries', 'lib/'
+  track_files '{app,lib}/**/*.rb'
   # minimum_coverage 100
 end
 
-ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 
