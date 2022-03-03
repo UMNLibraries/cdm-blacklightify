@@ -23,3 +23,6 @@ Layout/LineLength:
   - 'config/initializers/devise.rb'
   - 'config/initializers/spotlight_initializer.rb'
   - 'test/**/*'
+
+Minitest/MultipleAssertions:
+  Max: 20
