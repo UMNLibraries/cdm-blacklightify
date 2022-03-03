@@ -24,5 +24,9 @@ Layout/LineLength:
   - 'config/initializers/spotlight_initializer.rb'
   - 'test/**/*'
 
+Metrics/BlockLength:
+  Exclude:
+  - 'lib/tasks/umedia.rake'
+
 Minitest/MultipleAssertions:
   Max: 20

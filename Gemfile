@@ -86,3 +86,11 @@ group :test do
   gem 'simplecov', require: false
   gem 'webdrivers'
 end
+
+# ContentDM Harvesting/Indexing
+gem 'config'
+gem 'contentdm_api', github: 'ewlarson/contentdm_api', branch: 'feature/http-latest'
+gem 'cdmdexer', github: 'ewlarson/cdmdexer', branch: 'feature/umedia-blacklight'
+gem 'foreman', '~> 0.80'
+gem 'sidekiq', '~> 6.0'
+gem 'dotenv-rails'
