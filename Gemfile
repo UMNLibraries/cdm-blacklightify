@@ -46,14 +46,6 @@ group :development do
   gem 'spring'
 end
 
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
-end
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'blacklight', ' ~> 7.0'
 gem 'blacklight-spotlight', github: 'projectblacklight/spotlight'
@@ -78,8 +70,19 @@ gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'uglifier', '>= 1.3.0'
 
 # Test suite
-gem 'rubocop', '~> 1.25', require: false
-gem 'rubocop-minitest', require: false
-gem 'rubocop-rails', require: false
-gem 'simplecov', require: false, group: :test
-gem 'bundler-audit'
+group :test do
+  gem 'bundler-audit'
+  gem 'capybara'
+  gem 'capybara-screenshot'
+  gem 'm', '~> 1.5.0'
+  gem 'minitest'
+  gem 'minitest-ci', '~> 3.4.0'
+  gem 'minitest-reporters'
+  gem 'rubocop', '~> 1.25', require: false
+  gem 'rubocop-minitest', require: false
+  gem 'rubocop-rails', require: false
+  gem 'selenium-webdriver'
+  gem 'shoulda-context'
+  gem 'simplecov', require: false
+  gem 'webdrivers'
+end
