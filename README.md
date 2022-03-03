@@ -19,11 +19,15 @@ Blacklightify a CONTENTdm collection
 
 `bundle install`
 
-3. Start Solr server
+3. Prepare development database
 
-`bundle solr_wrapper`
+`bundle exec rails db:migrate
 
-4. Start Rails server
+4. Start Solr server
+
+`bundle exec solr_wrapper`
+
+5. Start Rails server
 
 `bundle exec rails server`
 
