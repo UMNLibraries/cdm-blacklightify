@@ -7,6 +7,7 @@
   <uniqueKey>id</uniqueKey>
 
   <fields>
+    <!-- Spotlight -->
     <field name="id" type="string" stored="true" indexed="true" multiValued="false" required="true"/>
     <field name="format" type="string" stored="true" indexed="true" multiValued="true" />
     <field name="_version_" type="long"     indexed="true"  stored="true"/>
@@ -14,6 +15,91 @@
 
     <field name="lat" type="tdouble" stored="true" indexed="true" multiValued="false"/>
     <field name="lng" type="tdouble" stored="true" indexed="true" multiValued="false"/>
+
+    <!-- UMedia Schema -->
+    <!-- Original schema converted to dynamic fields -->
+    <!--
+      * ORIGINAL_FIELD_NAME            => DYNAMIC_FIELD_NAME
+      * collection_item_count          => collection_item_count_is
+      * collection_thumbnails          => collection_thumbnails_tes
+      * is_super_collection            => is_super_collection_bsi
+      * object                         => object_ssi
+      * setspec                        => setspec_ssi
+      * collection_name                => collection_name_tesi
+      * collection_description         => collection_description_tesi
+      * collection_recency_sort        => collection_recency_sort_isi
+      * super_collection_names         => super_collection_names_tesim
+      * super_collection_set_specs     => super_collection_set_specs_ssim
+      * super_collection_descriptions  => super_collection_descriptions_tesim
+      * title                          => title_tesiv
+      * title_sort                     => title_sort_ssortsi
+      * title_alternative              => title_alternative_tesi
+      * title_search                   => title_search_te_ascii
+      * description                    => description_tesi
+      * date_created                   => date_created_te_split
+      * date_created_sort              => date_created_sort_ssortsi
+      * date_added                     => date_added_dr
+      * date_modified                  => date_modified_dr
+      * date_added_sort                => date_added_sort_dttsi
+      * historical_era                 => historical_era_ssim
+      * creator                        => creator_tesimv
+      * creator_sort                   => creator_sort_ssortsi
+      * contributor                    => contributor_tesim
+      * publisher                      => publisher_tesi
+      * caption                        => caption_tesi
+      * notes                          => notes_tesi
+      * types                          => types_ssim
+      * format                         => format_ssim
+      * format_name                    => format_name_ssimv
+      * dimensions                     => dimensions_ssi
+      * subject                        => subject_tesimv
+      * subject_fast                   => subject_fast_tesimv
+      * language                       => language_ssim
+      * city                           => city_tesim
+      * state                          => state_tesim
+      * country                        => country_tesim
+      * region                         => region_tesim
+      * continent                      => continent_tesim
+      * geonames                       => geonames_ssim
+      * projection                     => projection_ssi
+      * scale                          => scale_ssi
+      * coordinates                    => coordinates_ssim
+      * parent_collection              => parent_collection_tesi
+      * parent_collection_name         => parent_collection_name_ssi
+      * contributing_organization      => contributing_organization_tesi
+      * contributing_organization_name => contributing_organization_name_tesi
+      * contact_information            => contact_information_tesi
+      * fiscal_sponsor                 => fiscal_sponsor_tesi
+      * local_identifier               => local_identifier_te_split
+      * barcode                        => barcode_ssi
+      * system_identifier              => system_identifier_te_split
+      * dls_identifier                 => dls_identifier_te_split
+      * persistent_url                 => persistent_url_ssi
+      * local_rights                   => local_rights_tesi
+      * standardized_rights            => standardized_rights_tesi
+      * rights_statement_uri           => rights_statement_uri_ssi
+      * expected_public_domain_year    => expected_public_domain_year_ssi
+      * additional_rights_information  => additional_rights_information_tesi
+      * transcription                  => transcription_tesi
+      * translation                    => translation_tesi
+      * kaltura_audio                  => kaltura_audio_ssi
+      * kaltura_audio_playlist         => kaltura_audio_playlist_ssi
+      * kaltura_video                  => kaltura_video_ssi
+      * kaltura_video_playlist         => kaltura_video_playlist_ssi
+      * kaltura_combo_playlist         => kaltura_combo_playlist_ssi
+      * compound_objects               => compound_objects_tesi
+      * record_type                    => record_type_ssi
+      * page_count                     => page_count_isi
+      * parent_id                      => parent_id_ssi
+      * child_index                    => child_index_isi
+      * document_type                  => document_type_ssi
+      * first_viewer_type              => first_viewer_type_ssi
+      * viewer_type                    => viewer_type_ssi
+      * attachment                     => attachment_ss
+      * attachment_format              => attachment_format_ss
+      * featured_collection_order      => featured_collection_order_is
+    -->
+
     <!-- NOTE:  not all possible Solr field types are represented in the dynamic fields -->
 
     <!-- text (_t...) -->
@@ -48,6 +134,12 @@
     <dynamicField name="*_tesiv" type="text_en" stored="true" indexed="true" multiValued="false" termVectors="true" termPositions="true" termOffsets="true"/>
     <dynamicField name="*_tesimv" type="text_en" stored="true" indexed="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
 
+    <dynamicField name="*_te_split" type="text_en_splitting_tight" stored="true" indexed="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
+
+    <dynamicField name="*_te_ascii" type="text_en_ascii" stored="true" indexed="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
+
+    <dynamicField name="*_unstem_search" type="textNoStem" indexed="true" stored="false" multiValued="true" />
+
     <!-- string (_s...) -->
 
     <dynamicField name="*_si" type="string" stored="false" indexed="true" multiValued="false"/>
@@ -57,12 +149,14 @@
     <dynamicField name="*_ssm" type="string" stored="true" indexed="false" multiValued="true"/>
     <dynamicField name="*_ssi" type="string" stored="true" indexed="true" multiValued="false"/>
     <dynamicField name="*_ssim" type="string" stored="true" indexed="true" multiValued="true"/>
+    <dynamicField name="*_ssimv" type="string" stored="true" indexed="true" multiValued="true" termVectors="true"/>
 
     <dynamicField name="*_ssort" type="alphaSort" stored="false" indexed="true" multiValued="false"/>
+    <dynamicField name="*_ssortsi" type="alphaSort" stored="true" indexed="true" multiValued="false"/>
 
 
     <!-- integer (_i...) -->
-
+    <dynamicField name="*_i" type="pint" indexed="true" stored="true"/>
     <dynamicField name="*_ii" type="int" stored="false" indexed="true" multiValued="false"/>
     <dynamicField name="*_iim" type="int" stored="false" indexed="true" multiValued="true"/>
 
@@ -92,6 +186,7 @@
     <dynamicField name="*_dtsm" type="date" stored="true" indexed="false" multiValued="true"/>
     <dynamicField name="*_dtsi" type="date" stored="true" indexed="true" multiValued="false"/>
     <dynamicField name="*_dtsim" type="date" stored="true" indexed="true" multiValued="true"/>
+    <dynamicField name="*_dr" type="dateRange"/>
 
     <!-- DatePointField (_dtt...) (for faster range queries) -->
 
@@ -231,6 +326,7 @@
     <fieldType name="rand" class="solr.RandomSortField" omitNorms="true"/>
 
     <!-- Default numeric field types.  -->
+    <fieldType name="pint" class="solr.IntPointField" docValues="true"/>
     <fieldType name="int" class="solr.IntPointField" docValues="true"/>
     <fieldType name="float" class="solr.FloatPointField" docValues="true"/>
     <fieldType name="long" class="solr.LongPointField" docValues="true"/>
@@ -249,6 +345,9 @@
     <!-- A PointField based date field for faster date range queries and date faceting. -->
     <fieldType name="tdate" class="solr.DatePointField" docValues="true"/>
 
+    <!-- Via GEOMG/Geoportal -->
+    <!-- A DateRange based date field for truly faster date range queries. -->
+    <fieldType name="dateRange" class="solr.DateRangeField"/>
 
     <!-- This point type indexes the coordinates as separate fields (subFields)
       If subFieldType is defined, it references a type, and a dynamic field
@@ -362,6 +461,83 @@
           <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
        </analyzer>
     </fieldType>
+
+    <fieldType name="text_en_splitting_tight" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
+      <analyzer type="index">
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="false"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt"/>
+        <filter class="solr.WordDelimiterGraphFilterFactory" generateWordParts="0" generateNumberParts="0" catenateWords="1" catenateNumbers="1" catenateAll="0"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+        <filter class="solr.EnglishMinimalStemFilterFactory"/>
+        <!-- this filter can remove any duplicate tokens that appear at the same position - sometimes
+               possible with WordDelimiterGraphFilter in conjuncton with stemming. -->
+        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+        <filter class="solr.FlattenGraphFilterFactory" />
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="false"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt"/>
+        <filter class="solr.WordDelimiterGraphFilterFactory" generateWordParts="0" generateNumberParts="0" catenateWords="1" catenateNumbers="1" catenateAll="0"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+        <filter class="solr.EnglishMinimalStemFilterFactory"/>
+        <!-- this filter can remove any duplicate tokens that appear at the same position - sometimes
+               possible with WordDelimiterGraphFilter in conjuncton with stemming. -->
+        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_en_ascii" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-FoldToASCII.txt"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory" preserveOriginal="false" />
+        <!-- in this example, we will only use synonyms at query time
+          <filter class="solr.SynonymGraphFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
+          <filter class="solr.FlattenGraphFilterFactory"/>
+          -->
+        <!-- Case insensitive stop word removal.
+          -->
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt" />
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.EnglishPossessiveFilterFactory"/>
+        <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+        <!-- Optionally you may want to use this less aggressive stemmer instead of PorterStemFilterFactory:
+          <filter class="solr.EnglishMinimalStemFilterFactory"/>
+  	      -->
+        <filter class="solr.PorterStemFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-FoldToASCII.txt"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory" preserveOriginal="false" />
+        <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt" />
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.EnglishPossessiveFilterFactory"/>
+        <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+        <!-- Optionally you may want to use this less aggressive stemmer instead of PorterStemFilterFactory:
+          <filter class="solr.EnglishMinimalStemFilterFactory"/>
+  	      -->
+        <filter class="solr.PorterStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- Analyzed Text, no Stemming or Synonyms -->
+    <fieldtype name="textNoStem" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
+      <analyzer>
+        <tokenizer class="solr.WhitespaceTokenizerFactory" />
+        <filter class="solr.ICUFoldingFilterFactory"/>  <!-- NFKC, case folding, diacritics removed -->
+        <filter class="solr.WordDelimiterFilterFactory"
+          splitOnCaseChange="1" generateWordParts="1" catenateWords="1"
+          splitOnNumerics="0" generateNumberParts="1" catenateNumbers="1"
+          catenateAll="0" preserveOriginal="0" stemEnglishPossessive="0" />
+        <filter class="solr.RemoveDuplicatesTokenFilterFactory" />
+      </analyzer>
+    </fieldtype>
 
     <!-- queries for paths match documents at that path, or in descendent paths -->
     <fieldType name="descendent_path" class="solr.TextField">
