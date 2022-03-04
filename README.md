@@ -8,50 +8,80 @@ Blacklightify a CONTENTdm collection
 3. Java Runtime Environment (JRE) version 1.8  *for Solr*
 4. ImageMagick (http://www.imagemagick.org/script/index.php) due to [carrierwave](https://github.com/carrierwaveuploader/carrierwave#adding-versions)
 5. Redis for sidekiq
+6. Git-flow branching workflow tools ([Installation docs](https://github.com/nvie/gitflow/wiki/FAQ))
 
 ### Installation
 
 1. Clone the repository
 
-`git clone git@github.com:UMNLibraries/cdm-blacklightify.git cdm-blacklightify`
-`cd cdm-blacklightify`
+```shell
+$ git clone git@github.com:UMNLibraries/cdm-blacklightify.git cdm-blacklightify
+$ cd cdm-blacklightify
+```
 
-2. bundle dependencies
+2. Setup git-flow
+```shell
+$ git flow init
+```
 
-`bundle install`
+Choose branches (accept defaults):
+- Release branch: `main`
+- Next release development branch: `develop`
+- Feature branch prefix: `feature/`
+- Hotfix prefix: `hotfix/`
+- Release prefix: `release/`
+- Support prefix: `support/`
+- Version tag prefix: (leave blank)
 
-3. Configure DotEnv files
+3. bundle dependencies
 
-`cp .env.example .env`
+```shell
+$ bundle install
+```
+
+4. Configure DotEnv files
+
+```shell
+$ cp .env.example .env
+```
 
 Fill in missing env var values (@TODO: share via LastPass?)
 
-4. Prepare development database
+5. Prepare development database
 
-`bundle exec rails db:migrate
+```shell
+$ bundle exec rails db:migrate
+```
 
-5. Start Solr server
+6. Start Solr server
 
-`bundle exec solr_wrapper --config .solr_wrapper.yml`
+```shell
+$ bundle exec solr_wrapper --config .solr_wrapper.yml
+```
 
-6. Start Rails server
+7. Start Rails server
 
-`bundle exec rails server`
+```shell
+$ bundle exec rails server
+```
 
 Go to [http://localhost:3000](http://localhost:3000) in your browser.
 
 #### Harvest Documents
 
-7. Start Sidekiq
+8. Start Sidekiq
 
-`bundle exec foreman start`
+```shell
+$ bundle exec foreman start
+```
 
-8. Run Harvest rake task
-
-`bundle exec rake umedia:index:harvest`
-
-8. (Optional) Commit to Solr
+9. Run Harvest rake task
+```shell
+$ bundle exec rake umedia:index:harvest
+```
+10. (Optional) Commit to Solr
 
 As your harvest is running, you can occasionally sent a `commit` to Solr to see what documents you have harvested.
-
-`bundle exec rake umedia:index:commit `
+```shell
+$ bundle exec rake umedia:index:commit
+```
