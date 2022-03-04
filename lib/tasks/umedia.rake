@@ -57,7 +57,7 @@ namespace :umedia do
 
       sleep(10)
 
-      snapshots = Dir.glob(Rails.root.join('tmp/blacklight-core/server/solr/blacklight-core/data/snapshot.*').to_s)
+      snapshots = Dir.glob(Rails.root.join('tmp/solr/server/solr/blacklight-core/data/snapshot.*').to_s)
 
       FileUtils.cp_r(snapshots, Rails.root.join('solr/snapshots').to_s)
     end
@@ -69,7 +69,7 @@ namespace :umedia do
 
       snapshot = Dir.glob(Rails.root.join('solr/snapshots/snapshot.*').to_s).last
 
-      FileUtils.cp_r(snapshot, Rails.root.join('tmp/blacklight-core/server/solr/blacklight-core/data').to_s)
+      FileUtils.cp_r(snapshot, Rails.root.join('tmp/solr/server/solr/blacklight-core/data').to_s)
 
       res = Faraday.get "#{solr}/#{replication}"
       puts res.body
