@@ -1,0 +1,32 @@
+require:
+  - rubocop-rails
+  - rubocop-minitest
+
+# inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 3.0
+  DisplayCopNames: true
+  NewCops: enable
+  Exclude:
+  - '.internal_test_app/**/*'
+  - 'bin/**/*'
+  - 'db/**/*'
+  - 'Gemfile'
+  - 'tmp/**/*'
+  - 'vendor/**/*'
+  - 'Rakefile'
+
+Layout/LineLength:
+  Max: 120
+  Exclude:
+  - 'config/initializers/devise.rb'
+  - 'config/initializers/spotlight_initializer.rb'
+  - 'test/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+  - 'lib/tasks/umedia.rake'
+
+Minitest/MultipleAssertions:
+  Max: 20

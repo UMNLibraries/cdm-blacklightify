@@ -65,3 +65,10 @@ yarn-debug.log*
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+
+# Ignore test reports
+/test/reports/*
+
+# Ignore solr snapshots
+/solr/snapshots/*
+!/solr/snapshots/.keep
