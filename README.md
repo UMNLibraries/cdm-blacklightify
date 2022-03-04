@@ -32,7 +32,7 @@ Fill in missing env var values (@TODO: share via LastPass?)
 
 5. Start Solr server
 
-`bundle exec solr_wrapper`
+`bundle exec solr_wrapper --config .solr_wrapper.yml`
 
 6. Start Rails server
 
