@@ -6,6 +6,6 @@ collection:
   dir: solr/conf/
   name: blacklight-core
   persist: true
-solr_options:
+env:
   # Only allow Jetty to use the local adapter
-  addlopts: "-Djetty.host=127.0.0.1 -Dlog4j2.formatMsgNoLookups=True"
+  SOLR_OPTS: "-Djetty.host=127.0.0.1 -Dlog4j2.formatMsgNoLookups=True"
