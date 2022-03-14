@@ -36,6 +36,40 @@ class CatalogController < ApplicationController
 
     # enable facets:
     # https://github.com/projectblacklight/spotlight/issues/1812#issuecomment-327345318
+
+  # FACETS
+    # Special Projects / super_collection_name_ss
+
+    # Contributing Organization / contributing_organization_name_s
+    config.add_facet_field 'contributing_organization_ssi', :label => 'Contributing Organization', :limit => 8, collapse: false
+
+    # Collection / collection_name_s
+    config.add_facet_field 'collection_name_ssi', :label => 'Collection', :limit => 8, collapse: false
+
+    # Type / types
+    config.add_facet_field 'type_ssi', :label => 'Type', :limit => 8, collapse: false
+
+    # Format / format_name
+    config.add_facet_field 'format_name_ssimv', :label => 'Format', :limit => 8, collapse: false
+
+    # Created / date_created_ss
+    config.add_facet_field 'date_created_sort_ssortsi', :label => 'Created', :limit => 8, collapse: false
+
+    # Subject / subject_ss
+    config.add_facet_field 'subject_ssim', :label => 'Subject', :limit => 8, collapse: false
+
+    # Creator / creator_ss
+    config.add_facet_field 'creator_ssim', :label => 'Creator', :limit => 8, collapse: false
+
+    # Publisher / publisher_s
+    config.add_facet_field 'publisher_ssi', :label => 'Publisher', :limit => 8, collapse: false
+
+    # Contributor / contributor_ss
+    config.add_facet_field 'contributor_ssim', :label => 'Contributor', :limit => 8, collapse: false
+
+    # Language / language
+    config.add_facet_field 'language_ssi', :label => 'Language', :limit => 8, collapse: false
+
     config.add_facet_fields_to_solr_request!
 
     # Set which views by default only have the title displayed, e.g.,
