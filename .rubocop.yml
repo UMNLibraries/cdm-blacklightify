@@ -10,6 +10,7 @@ AllCops:
   NewCops: enable
   Exclude:
   - '.internal_test_app/**/*'
+  - 'app/controllers/concerns/spotlight/controller.rb'
   - 'bin/**/*'
   - 'db/**/*'
   - 'Gemfile'
@@ -26,7 +27,9 @@ Layout/LineLength:
 
 Metrics/BlockLength:
   Exclude:
+  - 'app/controllers/catalog_controller.rb'
   - 'lib/tasks/umedia.rake'
+
 
 Minitest/MultipleAssertions:
   Max: 20
