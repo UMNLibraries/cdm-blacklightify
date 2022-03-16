@@ -1,0 +1,27 @@
+<%- if File.exists? "#{Rails.root}/public/sitemap.xml.gz" -%>
+Sitemap: <%= "#{root_url}sitemap.xml.gz" %>
+<%- end -%>
+
+<%- if Socket.gethostname =~ /(dev|qat|stage)/ -%>
+User-agent: *
+Disallow: /
+<%- else -%>
+
+User-agent: *
+Disallow: /?q=
+Disallow: /?f
+Disallow: /?_
+Disallow: /catalog?f
+Disallow: /catalog?_
+Disallow: /catalog.html?f
+Disallow: /catalog.html?_
+Disallow: /catalog.atom
+Disallow: /catalog.rss
+
+User-agent: AhrefsBot
+Disallow: /
+User-agent: SemrushBot
+Disallow: /
+User-agent: PetalBot
+Disallow: /
+<%- end -%>
