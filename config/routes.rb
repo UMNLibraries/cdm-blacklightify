@@ -29,5 +29,7 @@ Rails.application.routes.draw do
       delete 'clear'
     end
   end
+
+  get 'robots.:format' => 'robots#robots'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
