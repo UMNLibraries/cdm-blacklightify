@@ -39,6 +39,9 @@ class CatalogController < ApplicationController
     config.add_sort_field 'creator_sort_ssortsi desc', :label => 'Creator (Z-A)'
 
     # FACETS
+    ## config.add_facet_field 'super_collection_name_ss', label: 'Special Projects',
+    ##                        limit: 4, collapse: true
+
     # Contributing Organization / contributing_organization_ssi
     config.add_facet_field 'contributing_organization_ssi', label: 'Contributing Organization',
                            limit: 4, collapse: true
