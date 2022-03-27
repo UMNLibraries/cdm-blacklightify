@@ -25,6 +25,23 @@ jobs:
     strategy:
       matrix:
         ruby: ['3.0']
+
+    # Service containers to run with `runner-job`
+    services:
+      # Label used to access the service container
+      redis:
+        # Docker Hub image
+        image: redis
+        # Set health checks to wait until redis has started
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps port 6379 on service container to the host
+          - 6379:6379
+
     steps:
     - uses: actions/checkout@v2
 
@@ -58,8 +75,8 @@ jobs:
       env:
         RAILS_ENV: test
       run: |
-        bundle exec rails db:schema:load
-        bin/rails db:migrate RAILS_ENV=test
+        bin/rails db:schema:load
+        bin/rails db:migrate
 
     - name: Run tests
       run: bundle exec rake ci
