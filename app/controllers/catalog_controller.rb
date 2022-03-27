@@ -8,6 +8,7 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     config.show.oembed_field = :oembed_url_ssm
     config.show.partials.insert(1, :oembed)
+    config.raw_endpoint.enabled = true
 
     config.view.gallery.document_component = Blacklight::Gallery::DocumentComponent
     # config.view.gallery.classes = 'row-cols-2 row-cols-md-3'
@@ -31,20 +32,21 @@ class CatalogController < ApplicationController
     config.add_search_field 'all_fields', label: I18n.t('spotlight.search.fields.search.all_fields')
 
     config.add_sort_field 'relevance', sort: 'score desc', label: I18n.t('spotlight.search.fields.sort.relevance')
-    config.add_sort_field "date_created_sort_ssortsi desc, title_sort_ssortsi asc", :label => 'Year (Newest first)'
-    config.add_sort_field "date_created_sort_ssortsi asc, title_sort_ssortsi asc", :label => 'Year (Oldest first)'
-    config.add_sort_field 'title_sort_ssortsi asc', :label => 'Title (A-Z)'
-    config.add_sort_field 'title_sort_ssortsi desc', :label => 'Title (Z-A)'
-    config.add_sort_field 'creator_sort_ssortsi asc', :label => 'Creator (A-Z)'
-    config.add_sort_field 'creator_sort_ssortsi desc', :label => 'Creator (Z-A)'
+    config.add_sort_field 'date_created_sort_ssortsi desc, title_sort_ssortsi asc', label: 'Year (Newest first)'
+    config.add_sort_field 'date_created_sort_ssortsi asc, title_sort_ssortsi asc', label: 'Year (Oldest first)'
+    config.add_sort_field 'title_sort_ssortsi asc', label: 'Title (A-Z)'
+    config.add_sort_field 'title_sort_ssortsi desc', label: 'Title (Z-A)'
+    config.add_sort_field 'creator_sort_ssortsi asc', label: 'Creator (A-Z)'
+    config.add_sort_field 'creator_sort_ssortsi desc', label: 'Creator (Z-A)'
 
     # FACETS
+    # @TODO - Special Projects
     ## config.add_facet_field 'super_collection_name_ss', label: 'Special Projects',
     ##                        limit: 4, collapse: true
 
     # Contributing Organization / contributing_organization_ssi
     config.add_facet_field 'contributing_organization_ssi', label: 'Contributing Organization',
-                           limit: 4, collapse: true
+                                                            limit: 4, collapse: true
 
     # Collection / collection_name_ssi
     config.add_facet_field 'collection_name_ssi', label: 'Collection', limit: 4, collapse: true
@@ -73,31 +75,32 @@ class CatalogController < ApplicationController
     # Language / language_ssi
     config.add_facet_field 'language_ssi', label: 'Language', limit: 4, collapse: true
 
-    #SEARCH RESULTS FIELDS
+    # SEARCH RESULTS FIELDS
     # Description
-    config.add_index_field 'description_ts', :label => 'Description'
+    config.add_index_field 'description_ts', label: 'Description'
     # Creator
-    config.add_index_field 'creator_ssim', :label => 'Creator'
+    config.add_index_field 'creator_ssim', label: 'Creator'
 
     # Created
-    config.add_index_field 'date_created_sort_ssortsi', :label => 'Created'
+    config.add_index_field 'date_created_sort_ssortsi', label: 'Created'
 
     # Contributed By
-    config.add_index_field 'contributor_ssim', :label => 'Contributed By'
+    config.add_index_field 'contributor_ssim', label: 'Contributed By'
 
     # Last Updated
-    config.add_index_field 'dmmodified_ssi', :label => 'Last Updated'
+    config.add_index_field 'dmmodified_ssi', label: 'Last Updated'
 
     # Thumbnails
     config.index.thumbnail_field = :object_ssi
 
-    #ITEM VIEW FIELDS
+    # ITEM VIEW FIELDS
     # Title
     config.add_show_field 'title_ssi', label: 'Title', itemprop: 'title'
     # Description
     config.add_show_field 'description_ts', label: 'Description', itemprop: 'description'
     # Date Created
-    config.add_show_field 'date_created_sort_ssortsi', label: 'Date Created', itemprop: 'date_created', link_to_facet: true
+    config.add_show_field 'date_created_sort_ssortsi', label: 'Date Created', itemprop: 'date_created',
+                                                       link_to_facet: true
     # Creator
     config.add_show_field 'creator_ssim', label: 'Creator', itemprop: 'creator', link_to_facet: true
 
@@ -119,9 +122,11 @@ class CatalogController < ApplicationController
 
     ## Collection Information
     # Parent Collection
-    config.add_show_field 'collection_name_ssi', label: 'Parent Collection', itemprop: 'parent_collection_name', link_to_facet: true
+    config.add_show_field 'collection_name_ssi', label: 'Parent Collection', itemprop: 'parent_collection_name',
+                                                 link_to_facet: true
     # Contributing Organization
-    config.add_show_field 'contributing_organization_ssi', label: 'Contributing Organization', itemprop: 'contributing_organization', link_to_facet: true
+    config.add_show_field 'contributing_organization_ssi', label: 'Contributing Organization',
+                                                           itemprop: 'contributing_organization', link_to_facet: true
     # Contact Information
     config.add_show_field 'contact_information_ssi', label: 'Contact Information', itemprop: 'contact_information'
     # Fiscal Sponsor
@@ -136,7 +141,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'local_rights_tesi', label: 'Copyright Statement', itemprop: 'copyright'
 
     # View Helpers
-  # config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
+    # config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
     config.add_results_collection_tool(:sort_widget)
     config.add_results_collection_tool(:per_page_widget)
     config.add_results_collection_tool(:view_type_group)

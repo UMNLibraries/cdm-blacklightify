@@ -5,4 +5,9 @@ class CatalogControllerTest < ActionDispatch::IntegrationTest
     get root_url
     assert_response :success
   end
+
+  test 'should get catalog#show/raw' do
+    get '/catalog/p16022coll282:4660/raw'
+    assert_response :success
+  end
 end

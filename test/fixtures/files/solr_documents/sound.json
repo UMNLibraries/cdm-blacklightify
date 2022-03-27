@@ -1,0 +1,133 @@
+{
+  "id": "p16022coll171:7",
+  "object_ssi": "https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/p16022coll171/id/7",
+  "setspec_ssi": "p16022coll171",
+  "collection_name_ssi": "ul_uar - University of Minnesota Archives Audio Collection",
+  "collection_name_tesi": "ul_uar - University of Minnesota Archives Audio Collection",
+  "collection_description_tesi": "Historical audio recordings held by the University of Minnesota Archives.",
+  "super_collection_names_tesim": [
+    "Minnesota's Radio History"
+  ],
+  "super_collection_set_specs_ssim": [
+    "p16022coll434"
+  ],
+  "super_collection_descriptions_tesim": [
+    "This project makes available audio recordings of radio programs produced by the oldest operating radio station in Minnesota, KUOM."
+  ],
+  "title_tesi": "The University of Minnesota's Constitutional Independence, Budget, and Educational Opportunities with speaker C. Peter MacGrath",
+  "title_ssi": "The University of Minnesota's Constitutional Independence, Budget, and Educational Opportunities with speaker C. Peter MacGrath",
+  "title_sort_ssortsi": "The University of Minnesota's Constitutional Independence, Budget, and Educational Opportunities with speaker C. Peter MacGrath",
+  "title_search_te_ascii": [
+    "The University of Minnesota's Constitutional Independence, Budget, and Educational Opportunities with speaker C. Peter MacGrath"
+  ],
+  "contributor_tesim": [
+    "Naftalin, Arthur; Magrath, C. Peter; Marlow, Andrew (Producer); Mickler (Engineer)"
+  ],
+  "contributor_ssim": [
+    "Naftalin, Arthur",
+    " Magrath, C. Peter",
+    " Marlow, Andrew (Producer)",
+    " Mickler (Engineer)"
+  ],
+  "creator_tesimv": [
+    "University of Minnesota. University Media Resources"
+  ],
+  "creator_ssim": [
+    "University of Minnesota. University Media Resources"
+  ],
+  "creator_sort_ssortsi": "universityofminnesotauniversitymediaresources",
+  "description_tesi": "Minnesota Issues was a half-hour weekly television program produced by University Media Resources of the University of Minnesota that was broadcast on public television channel KTCA, St. Paul. The program was produced and hosted by former Minneapolis mayor and University public affairs professor Arthur Naftalin from 1976 to 1988.",
+  "description_ts": "Minnesota Issues was a half-hour weekly television program produced by University Media Resources of the University of Minnesota that was broadcast on public television channel KTCA, St. Paul. The program was produced and hosted by former Minneapolis mayor and University public affairs professor Arthur Naftalin from 1976 to 1988.",
+  "date_created_te_split": [
+    "1977-12-16"
+  ],
+  "date_created_sort_ssortsi": "1977",
+  "date_added_dr": "2017-11-28T00:00:00Z",
+  "date_modified_dr": "2018-11-26T00:00:00Z",
+  "date_added_sort_dttsi": "2017-11-28T00:00:00Z",
+  "dimensions_ssi": "0:29:15",
+  "type_ssi": "Sound",
+  "type_tesi": "Sound",
+  "subject_ssim": [
+    "Minnesota Issues",
+    "Broadcast"
+  ],
+  "subject_tesimv": [
+    "Minnesota Issues",
+    "Broadcast"
+  ],
+  "language_ssim": [
+    "English"
+  ],
+  "city_tesim": [
+    "St. Paul",
+    "Minneapolis"
+  ],
+  "state_tesim": [
+    "Minnesota"
+  ],
+  "country_tesim": [
+    "United States"
+  ],
+  "continent_tesim": [
+    "North America"
+  ],
+  "parent_collection_tesi": "University of Minnesota Radio and Television Broadcasting records (ua 01039); http://archives.lib.umn.edu/repositories/14/resources/5852",
+  "parent_collection_name_ssi": "University of Minnesota Radio and Television Broadcasting records (ua 01039)",
+  "keyword_tesi": "Broadcast; Minnesota Issues",
+  "keyword_ssim": [
+    "Broadcast",
+    "Minnesota Issues"
+  ],
+  "city_ssim": [
+    "St. Paul",
+    "Minneapolis"
+  ],
+  "state_ssi": "Minnesota",
+  "country_ssi": "United States",
+  "language_ssi": "English",
+  "contributing_organization_tesi": "University of Minnesota Libraries, University Archives.",
+  "contributing_organization_name_tesi": "University of Minnesota Libraries, University Archives.",
+  "contact_information_tesi": "University of Minnesota Libraries, University Archives. 218 Elmer L. Andersen Library, 222 - 21st Avenue South, Minneapolis, MN 55455; https://www.lib.umn.edu/uarchives",
+  "fiscal_sponsor_tesi": "This project has been financed in part with funds provided by the State of Minnesota from the Arts and Cultural Heritage Fund through the Minnesota Historical Society.",
+  "local_identifier_te_split": [
+    "722-011"
+  ],
+  "dls_identifier_te_split": [
+    "uarc1125_tray113_722-011"
+  ],
+  "persistent_url_ssi": "http://purl.umn.edu/251423",
+  "local_rights_tesi": "Use of this item may be governed by US and international copyright laws. You may be able to use this item, but copyright and other considerations may apply. For possible additional information or guidance on your use, please contact the contributing organization.",
+  "contributing_organization_ssi": "University of Minnesota Libraries, University Archives.",
+  "contact_information_ssi": "University of Minnesota Libraries, University Archives. 218 Elmer L. Andersen Library, 222 - 21st Avenue South, Minneapolis, MN 55455; https://www.lib.umn.edu/uarchives",
+  "local_identifier_ssi": "722-011",
+  "fiscal_sponsor_ssi": "This project has been financed in part with funds provided by the State of Minnesota from the Arts and Cultural Heritage Fund through the Minnesota Historical Society.",
+  "types_ssim": [
+    "Sound"
+  ],
+  "format_ssim": [
+    "Radio programs | http://vocab.getty.edu/aat/300387763"
+  ],
+  "format_name_ssimv": [
+    "Radio programs"
+  ],
+  "date_ssi": "1977-12-16",
+  "format_tesi": "Radio programs | http://vocab.getty.edu/aat/300387763",
+  "find_ssi": "19.url",
+  "dmcreated_ssi": "2017-11-28",
+  "dmmodified_ssi": "2018-11-26",
+  "restriction_code_ssi": "1",
+  "cdmfilesize_ssi": "34",
+  "cdmfilesizeformatted_ssi": "0.00 MB",
+  "cdmprintpdf_is": 0,
+  "cdmhasocr_is": 0,
+  "cdmisnewspaper_is": 0,
+  "record_type_ssi": "primary",
+  "page_count_isi": 0,
+  "kaltura_audio_ssi": "0_f3dlm3pg",
+  "document_type_ssi": "item",
+  "first_viewer_type_ssi": "kaltura_audio",
+  "viewer_type_ssi": "kaltura_audio",
+  "attachment_ss": "19.url",
+  "featured_collection_order_is": 999
+}

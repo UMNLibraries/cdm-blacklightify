@@ -1,0 +1,100 @@
+{
+  "id": "p16022coll282:4660",
+  "object_ssi": "https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/p16022coll282/id/4660",
+  "setspec_ssi": "p16022coll282",
+  "collection_name_ssi": "ul_wan - Medical Receipt Books",
+  "collection_name_tesi": "ul_wan - Medical Receipt Books",
+  "collection_description_tesi": "A growing collection of domestic receipt books dating from the 17th through the 19th century. Often written by the mother of the house, they were used to care for family and sometimes livestock. Some of the receipts are written by physicians for the pharmacist to fill, but most consist of components that were readily available in local fields or the apothecary’s shop.",
+  "title_tesi": "Physical receipts",
+  "title_ssi": "Physical receipts",
+  "title_sort_ssortsi": "Physical receipts",
+  "title_search_te_ascii": [
+    "Physical receipts"
+  ],
+  "creator_tesimv": [
+    "Dixon, Elizabeth"
+  ],
+  "creator_ssim": [
+    "Dixon, Elizabeth"
+  ],
+  "creator_sort_ssortsi": "dixonelizabeth",
+  "description_tesi": "Calligraphic medicinal manuscript with 161 recipes of which 151 are in a single calligraphic hand and eight are in another; two recipes are tipped in. Handwritten. Includes index.",
+  "description_ts": "Calligraphic medicinal manuscript with 161 recipes of which 151 are in a single calligraphic hand and eight are in another; two recipes are tipped in. Handwritten. Includes index.",
+  "date_created_te_split": [
+    "1772"
+  ],
+  "date_created_sort_ssortsi": "1772",
+  "date_added_dr": "2020-06-29T00:00:00Z",
+  "date_modified_dr": "2020-06-29T00:00:00Z",
+  "date_added_sort_dttsi": "2020-06-29T00:00:00Z",
+  "dimensions_ssi": "156 pages, 22 unnumbered pages , 25 cm",
+  "type_ssi": "Text",
+  "type_tesi": "Text",
+  "subject_ssim": [
+    "Medicine Formulae, Receipts, Prescriptions",
+    "Medicine, Popular",
+    "Formularies",
+    "Medicine Popular Works"
+  ],
+  "subject_tesimv": [
+    "Medicine Formulae, Receipts, Prescriptions",
+    "Medicine, Popular",
+    "Formularies",
+    "Medicine Popular Works"
+  ],
+  "language_ssim": [
+    "English"
+  ],
+  "keyword_tesi": "Formularies; Medicine Popular Works; Medicine, Popular; Medicine Formulae, Receipts, Prescriptions",
+  "keyword_ssim": [
+    "Formularies",
+    "Medicine Popular Works",
+    "Medicine, Popular",
+    "Medicine Formulae, Receipts, Prescriptions"
+  ],
+  "language_ssi": "English",
+  "contributing_organization_tesi": "University of Minnesota Libraries, Wangensteen Historical Library of Biology and Medicine.",
+  "contributing_organization_name_tesi": "University of Minnesota Libraries, Wangensteen Historical Library of Biology and Medicine.",
+  "contact_information_tesi": "University of Minnesota Libraries, Wangensteen Historical Library of Biology and Medicine. Diehl Hall, 505 Essex Street SE, Minneapolis, MN 55455 ; https://hsl.lib.umn.edu/wangensteen",
+  "local_identifier_te_split": [
+    "WZ260 D621p 1772"
+  ],
+  "barcode_ssi": "UMN_BARCODE:31951D026929970",
+  "system_identifier_te_split": [
+    "UMN_ALMA:9952394810001701"
+  ],
+  "dls_identifier_te_split": [
+    "31951D026929970"
+  ],
+  "local_rights_tesi": "Use of this item may be governed by US and international copyright laws. You may be able to use this item, but copyright and other considerations may apply. For possible additional information or guidance on your use, please contact the contributing organization.",
+  "contributing_organization_ssi": "University of Minnesota Libraries, Wangensteen Historical Library of Biology and Medicine.",
+  "contact_information_ssi": "University of Minnesota Libraries, Wangensteen Historical Library of Biology and Medicine. Diehl Hall, 505 Essex Street SE, Minneapolis, MN 55455 ; https://hsl.lib.umn.edu/wangensteen",
+  "local_identifier_ssi": "WZ260 D621p 1772",
+  "types_ssim": [
+    "Text"
+  ],
+  "format_ssim": [
+    "Cookbooks | http://vocab.getty.edu/aat/300026109"
+  ],
+  "format_name_ssimv": [
+    "Cookbooks"
+  ],
+  "date_ssi": "1772",
+  "format_tesi": "Cookbooks | http://vocab.getty.edu/aat/300026109",
+  "find_ssi": "4661.cpd",
+  "dmcreated_ssi": "2020-06-29",
+  "dmmodified_ssi": "2020-06-29",
+  "restriction_code_ssi": "1",
+  "cdmfilesize_ssi": "22911",
+  "cdmfilesizeformatted_ssi": "0.02 MB",
+  "cdmprintpdf_is": 1,
+  "cdmhasocr_is": 0,
+  "cdmisnewspaper_is": 0,
+  "record_type_ssi": "primary",
+  "page_count_isi": 188,
+  "document_type_ssi": "item",
+  "first_viewer_type_ssi": "image",
+  "viewer_type_ssi": "COMPOUND_PARENT_NO_VIEWER",
+  "attachment_ss": "4661.cpd",
+  "featured_collection_order_is": 999
+}

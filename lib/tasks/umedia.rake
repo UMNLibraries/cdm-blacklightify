@@ -11,6 +11,7 @@ RuboCop::RakeTask.new(:rubocop)
 desc 'Run test suite'
 task ci: :environment do
   success = true
+  system('bundle exec rake umedia:index:seed') || success = false
   system('RAILS_ENV=test bundle exec rails test:system test') || success = false
   system('bundle exec rake bundle:audit') || success = false
   exit!(1) unless success
@@ -18,6 +19,13 @@ end
 
 namespace :umedia do
   namespace :index do
+    desc 'Put all sample data into solr'
+    task seed: :environment do
+      docs = Dir['test/fixtures/files/solr_documents/*.json'].map { |f| JSON.parse File.read(f) }.flatten
+      Blacklight.default_index.connection.add docs
+      Blacklight.default_index.connection.commit
+    end
+
     desc 'Harvest'
     task harvest: :environment do
       # mpls          => MDL collection
