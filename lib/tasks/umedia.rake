@@ -83,15 +83,15 @@ namespace :umedia do
       puts res.body
     end
 
-    desc "Start solr server for testing."
-    task :test do
+    desc 'Start solr server for testing.'
+    task test: :environment do
       if Rails.env.test?
         shared_solr_opts = { managed: true, verbose: true, persist: false, download_dir: 'tmp' }
         shared_solr_opts[:version] = ENV['SOLR_VERSION'] if ENV['SOLR_VERSION']
 
         SolrWrapper.wrap(shared_solr_opts.merge(port: 8983, instance_dir: 'tmp/blacklight-core')) do |solr|
-          solr.with_collection(name: "blacklight-core", dir: Rails.root.join("solr", "conf").to_s) do
-            puts "Solr running at http://localhost:8983/solr/#/blacklight-core/, ^C to exit"
+          solr.with_collection(name: 'blacklight-core', dir: Rails.root.join('solr/conf').to_s) do
+            puts 'Solr running at http://localhost:8983/solr/#/blacklight-core/, ^C to exit'
             begin
               Rake::Task['umedia:index:seed'].invoke
               sleep
