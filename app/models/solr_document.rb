@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-
-# SolrDocument
 class SolrDocument
   include Blacklight::Solr::Document
   include Blacklight::Gallery::OpenseadragonSolrDocument
@@ -8,6 +6,7 @@ class SolrDocument
   include Spotlight::SolrDocument
 
   include Spotlight::SolrDocument::AtomicUpdates
+
 
   # self.unique_key = 'id'
 
@@ -23,4 +22,20 @@ class SolrDocument
   # and Blacklight::Document::SemanticFields#to_semantic_values
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
+
+  def more_like_this
+    mlt_response = Blacklight.default_index.connection.get 'mlt', params: {
+      q: "id:#{RSolr.solr_escape(self.id)}",
+      rows: 5
+    }
+
+    mlt_response['response']['docs'].map do |doc|
+      SolrDocument.new(doc)
+    end
+  end
+
+  def cdm_thumbnail
+    collection, id = self.id.split(':')
+    "https://cdm16022.contentdm.oclc.org/digital/api/singleitem/collection/#{collection}/id/#{id}/thumbnail"
+  end
 end

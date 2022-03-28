@@ -192,4 +192,21 @@
   </requestDispatcher>
 
   <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
+
+   <requestHandler name="/mlt" class="solr.MoreLikeThisHandler">
+     <lst name="defaults">
+        <str name="qf">
+           title_tesi
+           subject_tesimv
+           subject_fast_tesimv
+           creator_tesimv
+           format_name_ssimv
+        </str>
+        <!--The fields to use for similarity-->
+       <str name="mlt.fl">title_tesi,subject_tesimv,subject_fast_tesimv,creator_tesimv</str>
+       <int name="mlt.mintf">1</int>
+       <int name="mlt.mindf">1</int>
+     </lst>
+   </requestHandler>
+   
 </config>

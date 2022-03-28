@@ -1,0 +1,3 @@
+<!-- _show_sidebar.html.erb -->
+<%= render 'show_tools' %>
+<%= render(Umedia::Document::MoreLikeThisComponent.new(document: document)) %>
