@@ -1,0 +1,107 @@
+{
+  "id": "p16022coll208:200",
+  "object_ssi": "https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/p16022coll208/id/200",
+  "setspec_ssi": "p16022coll208",
+  "collection_name_ssi": "ul_mss - World War Poster Collection",
+  "collection_name_tesi": "ul_mss - World War Poster Collection",
+  "collection_description_tesi": "Posters are from World Wars I and II and the German election of 1932. War posters are from U.S., Britain, Canada, France, Germany, Italy, Latin America, and Scandinavia. Subjects include recruiting, war bond sales, food conservation, civil defense and many other topics. Includes war posters from the collections of the Hennepin County Library. [Finding Aid available at: http://archives.lib.umn.edu/repositories/16/resources/2506]",
+  "title_tesi": "For service : 500 hours ... : in civilian defense",
+  "title_ssi": "For service : 500 hours ... : in civilian defense",
+  "title_sort_ssortsi": "For service : 500 hours ... : in civilian defense",
+  "title_search_te_ascii": [
+    "For service : 500 hours ... : in civilian defense"
+  ],
+  "contributor_tesim": [
+    "United States. Office of Civilian Defense"
+  ],
+  "contributor_ssim": [
+    "United States. Office of Civilian Defense"
+  ],
+  "description_tesi": "White text on black, civil defense badges with number of hours listed beneath each",
+  "description_ts": "White text on black, civil defense badges with number of hours listed beneath each",
+  "date_created_te_split": [
+    "1943"
+  ],
+  "date_created_sort_ssortsi": "1943",
+  "date_added_dr": "2017-12-18T00:00:00Z",
+  "date_modified_dr": "2019-11-14T00:00:00Z",
+  "date_added_sort_dttsi": "2017-12-18T00:00:00Z",
+  "historical_era_ssim": [
+    "World War, 1939-1945"
+  ],
+  "dimensions_ssi": "56 x 36 centimeters",
+  "type_ssi": "Still Image",
+  "type_tesi": "Still Image",
+  "subject_ssim": [
+    "World War, 1939 1945. United States. Posters",
+    "Recruiting and Enlistment",
+    "Civil Defense",
+    "Civil Defense"
+  ],
+  "subject_tesimv": [
+    "World War, 1939 1945. United States. Posters",
+    "Recruiting and Enlistment",
+    "Civil Defense",
+    "Civil Defense"
+  ],
+  "language_ssim": [
+    "English"
+  ],
+  "country_tesim": [
+    "United States"
+  ],
+  "continent_tesim": [
+    "North America"
+  ],
+  "parent_collection_tesi": "World War Poster collection (Mss036); http://archives.lib.umn.edu/repositories/16/resources/2506",
+  "parent_collection_name_ssi": "World War Poster collection (Mss036)",
+  "keyword_tesi": "Civil Defense; Recruiting and Enlistment; World War, 1939 1945. United States. Posters",
+  "keyword_ssim": [
+    "Civil Defense",
+    "Recruiting and Enlistment",
+    "World War, 1939 1945. United States. Posters"
+  ],
+  "country_ssi": "United States",
+  "language_ssi": "English",
+  "contributing_organization_tesi": "University of Minnesota Libraries, Upper Midwest Literary Archives.",
+  "contributing_organization_name_tesi": "University of Minnesota Libraries, Upper Midwest Literary Archives.",
+  "contact_information_tesi": "University of Minnesota Libraries, Upper Midwest Literary Archives. 213 Elmer L. Andersen Library, 222 - 21st Avenue South, Minneapolis, MN 55455; https://www.lib.umn.edu/mss",
+  "fiscal_sponsor_tesi": "This resource was created with support from the Institute of Museum and Library Services.",
+  "dls_identifier_te_split": [
+    "msp02337"
+  ],
+  "persistent_url_ssi": "http://purl.umn.edu/76648",
+  "local_rights_tesi": "Use of this item may be governed by US and international copyright laws. You may be able to use this item, but copyright and other considerations may apply. For possible additional information or guidance on your use, please contact the contributing organization.",
+  "contributing_organization_ssi": "University of Minnesota Libraries, Upper Midwest Literary Archives.",
+  "contact_information_ssi": "University of Minnesota Libraries, Upper Midwest Literary Archives. 213 Elmer L. Andersen Library, 222 - 21st Avenue South, Minneapolis, MN 55455; https://www.lib.umn.edu/mss",
+  "fiscal_sponsor_ssi": "This resource was created with support from the Institute of Museum and Library Services.",
+  "publisher_ssi": "U. S. Government Printing Office",
+  "notes_tesi": "OCD publication 7021\"/\"U. S. Government Printing Office : 1943--O-537768",
+  "types_ssim": [
+    "Still Image"
+  ],
+  "format_ssim": [
+    "Posters | http://vocab.getty.edu/aat/300027221"
+  ],
+  "format_name_ssimv": [
+    "Posters"
+  ],
+  "date_ssi": "1943",
+  "format_tesi": "Posters | http://vocab.getty.edu/aat/300027221",
+  "find_ssi": "815.jp2",
+  "dmcreated_ssi": "2017-12-18",
+  "dmmodified_ssi": "2019-11-14",
+  "restriction_code_ssi": "1",
+  "cdmfilesize_ssi": "2914457",
+  "cdmfilesizeformatted_ssi": "2.78 MB",
+  "cdmprintpdf_is": 0,
+  "cdmhasocr_is": 0,
+  "cdmisnewspaper_is": 0,
+  "record_type_ssi": "primary",
+  "page_count_isi": 0,
+  "document_type_ssi": "item",
+  "first_viewer_type_ssi": "image",
+  "viewer_type_ssi": "image",
+  "attachment_ss": "815.jp2",
+  "featured_collection_order_is": 999
+}

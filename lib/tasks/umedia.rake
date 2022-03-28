@@ -11,6 +11,7 @@ RuboCop::RakeTask.new(:rubocop)
 desc 'Run test suite'
 task ci: :environment do
   success = true
+  system('bundle exec rake umedia:index:seed') || success = false
   system('RAILS_ENV=test bundle exec rails test:system test') || success = false
   system('bundle exec rake bundle:audit') || success = false
   exit!(1) unless success
@@ -18,6 +19,13 @@ end
 
 namespace :umedia do
   namespace :index do
+    desc 'Put all sample data into solr'
+    task seed: :environment do
+      docs = Dir['test/fixtures/files/solr_documents/*.json'].map { |f| JSON.parse File.read(f) }.flatten
+      Blacklight.default_index.connection.add docs
+      Blacklight.default_index.connection.commit
+    end
+
     desc 'Harvest'
     task harvest: :environment do
       # mpls          => MDL collection
@@ -73,6 +81,28 @@ namespace :umedia do
 
       res = Faraday.get "#{solr}/#{replication}"
       puts res.body
+    end
+
+    desc 'Start solr server for testing.'
+    task test: :environment do
+      if Rails.env.test?
+        shared_solr_opts = { managed: true, verbose: true, persist: false, download_dir: 'tmp' }
+        shared_solr_opts[:version] = ENV['SOLR_VERSION'] if ENV['SOLR_VERSION']
+
+        SolrWrapper.wrap(shared_solr_opts.merge(port: 8983, instance_dir: 'tmp/blacklight-core')) do |solr|
+          solr.with_collection(name: 'blacklight-core', dir: Rails.root.join('solr/conf').to_s) do
+            puts 'Solr running at http://localhost:8983/solr/#/blacklight-core/, ^C to exit'
+            begin
+              Rake::Task['umedia:index:seed'].invoke
+              sleep
+            rescue Interrupt
+              puts "\nShutting down..."
+            end
+          end
+        end
+      else
+        system('rake umedia:index:test RAILS_ENV=test')
+      end
     end
   end
 
