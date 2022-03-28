@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
     concerns :searchable
   end
+
+  # For compatibility catalog show pages aliased as /item/:id
+  get '/item/:id', to: 'catalog#show'
+
   devise_for :users
   concern :exportable, Blacklight::Routes::Exportable.new
 
