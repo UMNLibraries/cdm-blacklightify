@@ -10,4 +10,9 @@ class CatalogControllerTest < ActionDispatch::IntegrationTest
     get '/catalog/p16022coll282:4660/raw'
     assert_response :success
   end
+
+  test 'should map item/:id to catalog#show' do
+    get '/item/p16022coll282:4660'
+    assert_response :success
+  end
 end
