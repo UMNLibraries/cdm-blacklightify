@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+
+# this class overrides the base class, adding 'more like this' functionality
 class SolrDocument
   include Blacklight::Solr::Document
   include Blacklight::Gallery::OpenseadragonSolrDocument
@@ -6,7 +8,6 @@ class SolrDocument
   include Spotlight::SolrDocument
 
   include Spotlight::SolrDocument::AtomicUpdates
-
 
   # self.unique_key = 'id'
 
@@ -25,7 +26,7 @@ class SolrDocument
 
   def more_like_this
     mlt_response = Blacklight.default_index.connection.get 'mlt', params: {
-      q: "id:#{RSolr.solr_escape(self.id)}",
+      q: "id:#{RSolr.solr_escape(id)}",
       rows: 5
     }
 

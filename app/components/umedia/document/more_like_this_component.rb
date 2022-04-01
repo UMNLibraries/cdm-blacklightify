@@ -8,6 +8,7 @@ module Umedia
 
       # @param [Blacklight::Document] document
       def initialize(document:)
+        super(document)
         @document = document
       end
 
