@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class SolrDocumentTest < ActiveSupport::TestCase
   def setup
-    @document = SolrDocument.find("p16022coll262:173")
+    @document = SolrDocument.find('p16022coll262:173')
   end
 
   test 'responds to instance methods' do
-    assert @document.respond_to? :more_like_this
-    assert @document.respond_to? :cdm_thumbnail
+    assert_respond_to @document, :more_like_this
+    assert_respond_to @document, :cdm_thumbnail
   end
 
   test 'more_like_this contains array' do
