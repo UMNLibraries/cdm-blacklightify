@@ -2,8 +2,8 @@
 
 require 'test_helper'
 
-class Umedia
-  class Document
+module Umedia
+  module Document
     class MoreLikeThisComponentTest < ViewComponent::TestCase
       def test_component_renders_something_useful
         # assert_equal(

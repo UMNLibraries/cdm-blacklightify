@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class Umedia
+module Umedia
   class DocumentComponentTest < ViewComponent::TestCase
     def test_component_renders_something_useful
       # assert_equal(
