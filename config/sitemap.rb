@@ -18,8 +18,6 @@ SitemapGenerator::Interpreter.send :include, Spotlight::Engine.routes.url_helper
 # create the sitemap itself
 SitemapGenerator::Sitemap.create do
   response['response']['docs'].each do |doc|
-    puts doc['id']
-    puts doc['dmmodified_ssi']
     add "/item/#{doc['id']}", changefreq: 'weekly', lastmod: doc['dmmodified_ssi']
   end
   Spotlight::Sitemap.add_all_exhibits(self)
