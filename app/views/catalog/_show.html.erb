@@ -1,0 +1,36 @@
+<% doc_presenter = document_presenter(document) %>
+<hr>
+
+<% doc_presenter.primary_fields do |field_name, field, field_presenter| %>
+  <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+<% end -%>
+
+<h3>Physical Description</h3>
+<% doc_presenter.physical_description_fields do |field_name, field, field_presenter| %>
+  <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+<% end -%>
+
+<h3>Topics</h3>
+<% doc_presenter.topic_fields do |field_name, field, field_presenter| %>
+  <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+<% end -%>
+
+<h3>Geographic Location</h3>
+<% doc_presenter.geographic_location_fields do |field_name, field, field_presenter| %>
+  <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+<% end -%>
+
+<h3>Collection Information</h3>
+<% doc_presenter.collection_information_fields do |field_name, field, field_presenter| %>
+  <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+<% end -%>
+
+<h3>Identifiers</h3>
+<% doc_presenter.identifier_fields do |field_name, field, field_presenter| %>
+  <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+<% end -%>
+
+<h3>Can I Use It?</h3>
+<% doc_presenter.use_field do |field_name, field, field_presenter| %>
+  <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+<% end -%>

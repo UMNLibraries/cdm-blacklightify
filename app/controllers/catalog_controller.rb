@@ -8,6 +8,7 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     config.show.oembed_field = :oembed_url_ssm
     config.show.partials.insert(1, :oembed)
+    config.show.document_presenter_class = ShowPresenter
     config.raw_endpoint.enabled = true
 
     config.view.gallery.document_component = Blacklight::Gallery::DocumentComponent
@@ -95,50 +96,53 @@ class CatalogController < ApplicationController
 
     # ITEM VIEW FIELDS
     # Title
-    config.add_show_field 'title_ssi', label: 'Title', itemprop: 'title'
+    config.add_show_field 'title_ssi', label: 'Title', itemprop: 'title', type: :primary
     # Description
-    config.add_show_field 'description_ts', label: 'Description', itemprop: 'description'
+    config.add_show_field 'description_ts', label: 'Description', itemprop: 'description', type: :primary
     # Date Created
-    config.add_show_field 'date_created_sort_ssortsi', label: 'Date Created', itemprop: 'date_created',
-                                                       link_to_facet: true
+    config.add_show_field 'date_ssi', label: 'Date Created', itemprop: 'date_created', link_to_facet: true, type: :primary
     # Creator
     config.add_show_field 'creator_ssim', label: 'Creator', itemprop: 'creator', link_to_facet: true
-
-    ## Physical Description
+    # Contributor
+    config.add_show_field 'contributor_ssim', label: 'Contributor', itemprop: 'contributor', link_to_facet: true
+    # // Physical Description
     # Item Type
-    config.add_show_field 'type_ssi', label: 'Type', itemprop: 'type', link_to_facet: true
+    config.add_show_field 'type_ssi', label: 'Item Type', itemprop: 'type', link_to_facet: true, type: :phys_desc
     # Format
-    config.add_show_field 'format_ssim', label: 'Format', itemprop: 'format', link_to_facet: true
-
-    ## Topics
+    config.add_show_field 'format_name_ssimv', label: 'Format', itemprop: 'format', link_to_facet: true, type: :phys_desc
+    # Dimensions
+    config.add_show_field 'dimensions_ssi', label: 'Dimensions', itemprop: 'dimensions', type: :phys_desc
+    # // Topics
     # Subjects
-    config.add_show_field 'subject_ssim', label: 'Subject', itemprop: 'subject', link_to_facet: true
+    config.add_show_field 'subject_ssim', label: 'Subjects', itemprop: 'subject', link_to_facet: true, type: :topic
     # Language
-    config.add_show_field 'language_ssi', label: 'Language', itemprop: 'language', link_to_facet: true
-
-    ## Geographic Location
+    config.add_show_field 'language_ssim', label: 'Language', itemprop: 'subject', link_to_facet: true, type: :topic
+    # // Geographic Location
+    # City
+    config.add_show_field 'city_ssim', label: 'City', itemprop: 'city', link_to_facet: true, type: :geo_loc
+    # State
+    config.add_show_field 'state_ssi', label: 'State', itemprop: 'state', link_to_facet: true, type: :geo_loc
     # Country
-    config.add_show_field 'country_ssi', label: 'Country', itemprop: 'country', link_to_facet: true
-
-    ## Collection Information
-    # Parent Collection
-    config.add_show_field 'collection_name_ssi', label: 'Parent Collection', itemprop: 'parent_collection_name',
-                                                 link_to_facet: true
+    config.add_show_field 'country_ssi', label: 'Country', itemprop: 'country', link_to_facet: true, type: :geo_loc
+    # Continent
+    config.add_show_field 'continent_tesim', label: 'Continent', itemprop: 'country', link_to_facet: true, type: :geo_loc
+    # GeoNames URL
+    # // Collection Information
     # Contributing Organization
-    config.add_show_field 'contributing_organization_ssi', label: 'Contributing Organization',
-                                                           itemprop: 'contributing_organization', link_to_facet: true
+    config.add_show_field 'contributing_organization_ssi', label: 'Contributing Organization', itemprop: 'contributing_organization', link_to_facet: true, type: :coll_info
     # Contact Information
-    config.add_show_field 'contact_information_ssi', label: 'Contact Information', itemprop: 'contact_information'
+    config.add_show_field 'contact_information_ssi', label: 'Contact Information', itemprop: 'contact_information', type: :coll_info
     # Fiscal Sponsor
-    config.add_show_field 'fiscal_sponsor_ssi', label: 'Fiscal Sponsor', itemprop: 'fiscal_sponsor'
-
-    ## Identifiers
+    # config.add_show_field 'fiscal_sponsor_ssi', label: 'Fiscal Sponsor', itemprop: 'fiscal_sponsor', type: :coll_info
+    # // Identifiers
+    # Local Identifier
+    config.add_show_field 'local_identifier_ssi', label: 'Local Identifier', itemprop: 'identifier', type: :identifiers
     # DLS Identifier
-    config.add_show_field 'local_identifier_ssi', label: 'DLS Identifier', itemprop: 'identifier'
-
-    ## Can I Use It?
-    # Copyright Statement...
-    config.add_show_field 'local_rights_tesi', label: 'Copyright Statement', itemprop: 'copyright'
+    config.add_show_field 'dls_identifier_te_split', label: 'DLS Identifier', itemprop: 'identifier', type: :identifiers
+    # Persistent URL
+    config.add_show_field 'persistent_url_ssi', label: 'Persistent URL', itemprop: 'persistent_url', type: :identifiers
+    # // Can I Use It? (copyright statement)
+    config.add_show_field 'local_rights_tesi', label: 'Copyright', itemprop: 'copyright', type: :use
 
     # View Helpers
     # config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)

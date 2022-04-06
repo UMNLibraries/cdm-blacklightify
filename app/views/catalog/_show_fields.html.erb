@@ -1,0 +1,12 @@
+<dt class="col-sm-12"><%= render_document_show_field_label document, field: field_name %></dt>
+<% rendered = Array.wrap(field_presenter.render).reject { |value| value.blank? }.map { |rendered| field_presenter.field_config[:raw] ? raw(rendered) : rendered } %>
+<% if rendered.length == 1 %>
+  <dd class="col-sm-12"><%= safe_join(Array.wrap(rendered)) %></dd>
+<% elsif rendered.length > 1 %>
+  <dd class="col-sm-12">
+    <% rendered.each do |value| %>
+      <%= value %>
+      <% concat(';') if rendered.last != value %>
+    <% end %>
+  </dd>
+<% end -%>
