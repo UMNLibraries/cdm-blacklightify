@@ -8,6 +8,7 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     config.show.oembed_field = :oembed_url_ssm
     config.show.partials.insert(1, :oembed)
+    config.show.partials.insert(1, :uv)
     config.raw_endpoint.enabled = true
 
     config.view.gallery.document_component = Blacklight::Gallery::DocumentComponent
