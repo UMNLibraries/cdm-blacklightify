@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-header">More Like This</div>
+  <div class="card-body">
+    <ul class="list-group">
+      <% @document.more_like_this.each do |document| %>
+        <li class="more_like_this_document list-group-item">
+          <%= link_to solr_document_path(document) do %>
+            <%= image_tag(document.cdm_thumbnail, { alt: document.fetch(:title_ssi), class: 'rounded mx-auto d-block' }) %>
+            <h5 class="mlt-title"><%= document.fetch(:title_ssi).truncate(30) %></h5>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
