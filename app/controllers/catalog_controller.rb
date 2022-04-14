@@ -94,8 +94,6 @@ class CatalogController < ApplicationController
     config.index.thumbnail_field = :object_ssi
 
     # ITEM VIEW FIELDS
-    # Title
-    config.add_show_field 'title_ssi', label: 'Title', itemprop: 'title'
     # Description
     config.add_show_field 'description_ts', label: 'Description', itemprop: 'description'
     # Date Created
