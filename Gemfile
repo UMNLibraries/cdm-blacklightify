@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '~>3.0'
+ruby '~> 3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
@@ -90,7 +90,7 @@ end
 # ContentDM Harvesting/Indexing
 gem 'config'
 gem 'contentdm_api', github: 'ewlarson/contentdm_api', branch: 'feature/http-latest'
-gem 'cdmdexer', '>= 0.22.0' 
+gem 'cdmdexer', '>= 0.22.0'
 gem 'foreman', '~> 0.80'
 gem 'sidekiq', '~> 6.0'
 gem 'dotenv-rails'
