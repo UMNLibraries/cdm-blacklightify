@@ -152,5 +152,11 @@ module Umedia
         order.presence || 999
       end
     end
+
+    class IiifManifestUrlFormatter
+      def self.format(value)
+        "https://cdm16022.contentdm.oclc.org/iiif/2/#{value}/manifest.json"
+      end
+    end
   end
 end
