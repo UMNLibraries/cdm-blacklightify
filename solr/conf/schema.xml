@@ -16,6 +16,10 @@
     <field name="lat" type="tdouble" stored="true" indexed="true" multiValued="false"/>
     <field name="lng" type="tdouble" stored="true" indexed="true" multiValued="false"/>
 
+    <!-- Autocomplete -->
+    <field name="full_title_ng" type="text_en_ng" stored="false" indexed="true" multiValued="true"/>
+    <field name="id_ng"         type="text_en_ng" stored="false" indexed="true" multiValued="false"/>
+
     <!-- UMedia Schema -->
     <!-- Original schema converted to dynamic fields -->
     <!--
@@ -319,6 +323,9 @@
   <copyField source="author_tsim" dest="author_spell"/>
   <copyField source="subject_ssim" dest="subject_spell"/>
   <copyField source="title_tsim" dest="title_spell"/>
+
+  <copyField source="id" dest="id_ng" maxChars="3000"/>
+  <copyField source="title_tesi" dest="full_title_ng" maxChars="3000"/>
 
   <types>
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" />
