@@ -1,0 +1,47 @@
+Spotlight::MainNavigation_1:
+  id: 4
+  label: Curated features
+  nav_type: curated_features
+  exhibit_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 14:20:21.694477000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 14:20:21.694477000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 16:34:48.709722000 Z
+    zone: *1
+    time: 2022-04-28 16:34:48.709722000 Z
+  display: true
+
+Spotlight::MainNavigation_2:
+  id: 5
+  label: Browse
+  nav_type: browse
+  exhibit_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 14:20:21.695950000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 14:20:21.695950000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 16:34:48.711304000 Z
+    zone: *1
+    time: 2022-04-28 16:34:48.711304000 Z
+  display: true
+
+Spotlight::MainNavigation_3:
+  id: 6
+  label: About
+  nav_type: about
+  exhibit_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 14:20:21.697183000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 14:20:21.697183000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 16:34:48.712367000 Z
+    zone: *1
+    time: 2022-04-28 16:34:48.712367000 Z
+  display: true

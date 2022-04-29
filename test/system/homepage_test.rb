@@ -9,7 +9,6 @@ class HomepageTest < ApplicationSystemTestCase
     visit '/'
     assert page.has_selector?('nav.navbar')
     assert page.has_selector?('main#main-container')
-    assert page.has_selector?('div.jumbotron')
   end
 
   test 'Homepage Facets' do
@@ -21,7 +20,6 @@ class HomepageTest < ApplicationSystemTestCase
       assert page.has_content?('Format')
       assert page.has_content?('Created')
       assert page.has_content?('Subject')
-      assert page.has_content?('Creator')
       assert page.has_content?('Publisher')
       assert page.has_content?('Contributor')
       assert page.has_content?('Language')

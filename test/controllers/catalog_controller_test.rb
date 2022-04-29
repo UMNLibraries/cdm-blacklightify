@@ -3,7 +3,7 @@
 class CatalogControllerTest < ActionDispatch::IntegrationTest
   test 'should get index' do
     get root_url
-    assert_response :success
+    assert_response :redirect
   end
 
   test 'should get catalog#show/raw' do

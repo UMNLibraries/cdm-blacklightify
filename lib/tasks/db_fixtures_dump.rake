@@ -7,7 +7,7 @@ namespace :db do
   namespace :fixtures do
     desc 'Dumps all models into fixtures.'
     task :dump => :environment do
-      models = %w(Spotlight::BlacklightConfiguration Spotlight::Site Spotlight::Search Spotlight::Page Spotlight::Filter Spotlight::FeaturedImage Spotlight::Exhibit FriendlyId::Slug)
+      models = %w(Spotlight::BlacklightConfiguration Spotlight::Site Spotlight::Search Spotlight::Page Spotlight::Filter Spotlight::FeaturedImage Spotlight::Exhibit Spotlight::MainNavigation FriendlyId::Slug)
 
       # excludes models
       excludes = %w(ApplicationRecord)
