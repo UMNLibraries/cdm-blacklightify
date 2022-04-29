@@ -1,0 +1,194 @@
+Spotlight::FeaturedImage_1:
+  id: 3
+  type: Spotlight::TemporaryImage
+  image: exhibit_thumbnail.jpg
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 16:21:45.114609000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 16:21:45.114609000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 16:21:45.114609000 Z
+    zone: *1
+    time: 2022-04-28 16:21:45.114609000 Z
+
+Spotlight::FeaturedImage_2:
+  id: 4
+  type: Spotlight::TemporaryImage
+  image: exhibit_thumbnail.jpg
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 16:33:13.772737000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 16:33:13.772737000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 16:33:13.772737000 Z
+    zone: *1
+    time: 2022-04-28 16:33:13.772737000 Z
+
+Spotlight::FeaturedImage_3:
+  id: 6
+  type: Spotlight::Masthead
+  image: exhibit_thumbnail.jpg
+  source: exhibit
+  document_global_id: gid://app-name/SolrDocument/p16022coll208%3A1894
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 16:34:48.689061000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 16:34:48.689061000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 18:29:13.790804000 Z
+    zone: *1
+    time: 2022-04-28 18:29:13.790804000 Z
+  iiif_region: 0,2905,7963,803
+  iiif_manifest_url: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:1894/manifest.json
+  iiif_canvas_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:1894/canvas/c0
+  iiif_image_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:1894/annotation/a0
+  iiif_tilesource: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:1894/info.json
+
+Spotlight::FeaturedImage_4:
+  id: 8
+  type: Spotlight::ExhibitThumbnail
+  image: exhibit_thumbnail.jpg
+  source: exhibit
+  document_global_id: gid://app-name/SolrDocument/p16022coll208%3A96
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 16:35:47.418585000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 16:35:47.418585000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 18:31:15.137066000 Z
+    zone: *1
+    time: 2022-04-28 18:31:15.137066000 Z
+  iiif_region: '1547,754,2399,2399'
+  iiif_manifest_url: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:96/manifest.json
+  iiif_canvas_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:96/canvas/c0
+  iiif_image_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:96/annotation/a0
+  iiif_tilesource: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:96/info.json
+
+Spotlight::FeaturedImage_5:
+  id: 10
+  source: exhibit
+  document_global_id: gid://app-name/SolrDocument/p16022coll208%3A1879
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 18:28:34.815372000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 18:28:34.815372000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 18:28:34.815372000 Z
+    zone: *1
+    time: 2022-04-28 18:28:34.815372000 Z
+  iiif_region: '266,2822,3297,2472'
+  iiif_manifest_url: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:1879/manifest.json
+  iiif_canvas_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:1879/canvas/c0
+  iiif_image_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:1879/annotation/a0
+  iiif_tilesource: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:1879/info.json
+
+Spotlight::FeaturedImage_6:
+  id: 11
+  type: Spotlight::Masthead
+  display: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 19:30:04.887737000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 19:30:04.887737000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 19:57:54.144858000 Z
+    zone: *1
+    time: 2022-04-28 19:57:54.144858000 Z
+  iiif_region: '473,1137,4020,402'
+  iiif_tilesource: http://localhost:3000/images/18-5a2090c8c6b220e88fa00dcc1f17a395/info.json
+
+Spotlight::FeaturedImage_7:
+  id: 12
+  source: exhibit
+  document_global_id: gid://app-name/SolrDocument/p16022coll208%3A1899
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 19:33:36.048424000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 19:33:36.048424000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 19:33:36.048424000 Z
+    zone: *1
+    time: 2022-04-28 19:33:36.048424000 Z
+  iiif_region: '335,2761,2271,1703'
+  iiif_manifest_url: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:1899/manifest.json
+  iiif_canvas_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:1899/canvas/c0
+  iiif_image_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:1899/annotation/a0
+  iiif_tilesource: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:1899/info.json
+
+Spotlight::FeaturedImage_8:
+  id: 17
+  source: exhibit
+  document_global_id: gid://app-name/SolrDocument/p16022coll208%3A3351
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 19:56:23.353670000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 19:56:23.353670000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:25:09.640489000 Z
+    zone: *1
+    time: 2022-04-28 20:25:09.640489000 Z
+  iiif_region: 0,55,6235,4686
+  iiif_manifest_url: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:3351/manifest.json
+  iiif_canvas_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:3351/canvas/c0
+  iiif_image_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:3351/annotation/a0
+  iiif_tilesource: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:3351/info.json
+
+Spotlight::FeaturedImage_9:
+  id: 18
+  type: Spotlight::TemporaryImage
+  image: exhibit_thumbnail.jpg
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 19:57:07.063459000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 19:57:07.063459000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 19:57:07.063459000 Z
+    zone: *1
+    time: 2022-04-28 19:57:07.063459000 Z
+
+Spotlight::FeaturedImage_10:
+  id: 19
+  source: exhibit
+  document_global_id: gid://app-name/SolrDocument/p16022coll208%3A1050
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:12:49.387506000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:12:49.387506000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:12:49.387506000 Z
+    zone: *1
+    time: 2022-04-28 20:12:49.387506000 Z
+  iiif_region: '472,0,4887,3661'
+  iiif_manifest_url: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:1050/manifest.json
+  iiif_canvas_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:1050/canvas/c0
+  iiif_image_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:1050/annotation/a0
+  iiif_tilesource: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:1050/info.json
+
+Spotlight::FeaturedImage_11:
+  id: 20
+  source: exhibit
+  document_global_id: gid://app-name/SolrDocument/p16022coll208%3A3205
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:16:56.375954000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:16:56.375954000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:16:56.375954000 Z
+    zone: *1
+    time: 2022-04-28 20:16:56.375954000 Z
+  iiif_region: '21,17,3174,2380'
+  iiif_manifest_url: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:3205/manifest.json
+  iiif_canvas_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:3205/canvas/c0
+  iiif_image_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:3205/annotation/a0
+  iiif_tilesource: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:3205/info.json

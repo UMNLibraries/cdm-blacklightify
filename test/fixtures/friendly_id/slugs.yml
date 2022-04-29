@@ -1,0 +1,143 @@
+---
+FriendlyId::Slug_1:
+  id: 4
+  slug: all-exhibit-items
+  sluggable_id: 2
+  sluggable_type: Spotlight::Search
+  scope: exhibit_id:2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 14:20:21.692694000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 14:20:21.692694000 Z
+
+---
+FriendlyId::Slug_2:
+  id: 5
+  slug: 27cf1519-111c-4057-a3fe-2be1251354f5
+  sluggable_id: 2
+  sluggable_type: Spotlight::Page
+  scope: exhibit_id:2,locale:en
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 14:20:21.732282000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 14:20:21.732282000 Z
+
+---
+FriendlyId::Slug_3:
+  id: 8
+  slug: food-in-the-war
+  sluggable_id: 2
+  sluggable_type: Spotlight::Page
+  scope: exhibit_id:2,locale:en
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 18:52:13.814649000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 18:52:13.814649000 Z
+
+---
+FriendlyId::Slug_4:
+  id: 9
+  slug: propaganda
+  sluggable_id: 4
+  sluggable_type: Spotlight::Search
+  scope: exhibit_id:2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 19:32:49.390095000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 19:32:49.390095000 Z
+
+---
+FriendlyId::Slug_5:
+  id: 12
+  slug: wwii
+  sluggable_id: 6
+  sluggable_type: Spotlight::Search
+  scope: exhibit_id:2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:10:10.480235000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:10:10.480235000 Z
+
+---
+FriendlyId::Slug_6:
+  id: 13
+  slug: wwi
+  sluggable_id: 7
+  sluggable_type: Spotlight::Search
+  scope: exhibit_id:2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:10:25.780339000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:10:25.780339000 Z
+
+---
+FriendlyId::Slug_7:
+  id: 14
+  slug: exhibits
+  sluggable_id: 2
+  sluggable_type: Spotlight::Page
+  scope: exhibit_id:2,locale:en
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:14:49.709134000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:14:49.709134000 Z
+
+---
+FriendlyId::Slug_8:
+  id: 15
+  slug: world-war-i
+  sluggable_id: 7
+  sluggable_type: Spotlight::Search
+  scope: exhibit_id:2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:17:41.875064000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:17:41.875064000 Z
+
+---
+FriendlyId::Slug_9:
+  id: 16
+  slug: world-war-ii
+  sluggable_id: 6
+  sluggable_type: Spotlight::Search
+  scope: exhibit_id:2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:17:58.259235000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:17:58.259235000 Z
+
+---
+FriendlyId::Slug_10:
+  id: 17
+  slug: collection-details
+  sluggable_id: 4
+  sluggable_type: Spotlight::Page
+  scope: exhibit_id:2,locale:en
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:26:04.229419000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:26:04.229419000 Z
+
+---
+FriendlyId::Slug_11:
+  id: 18
+  slug: reuse
+  sluggable_id: 5
+  sluggable_type: Spotlight::Page
+  scope: exhibit_id:2,locale:en
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:26:15.096166000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:26:15.096166000 Z
+

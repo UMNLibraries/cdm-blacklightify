@@ -1,0 +1,68 @@
+Spotlight::Page_1:
+  id: 4
+  title: Collection Details
+  type: Spotlight::FeaturePage
+  slug: collection-details
+  weight: 0
+  published: true
+  exhibit_id: 2
+  created_by_id: 1
+  last_edited_by_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:26:04.221727000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:26:04.221727000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:26:21.153747000 Z
+    zone: *1
+    time: 2022-04-28 20:26:21.153747000 Z
+  display_sidebar: true
+  locale: en
+
+Spotlight::Page_2:
+  id: 5
+  title: Reuse
+  type: Spotlight::FeaturePage
+  slug: reuse
+  weight: 1
+  published: true
+  exhibit_id: 2
+  created_by_id: 1
+  last_edited_by_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:26:15.087004000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:26:15.087004000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:26:21.160173000 Z
+    zone: *1
+    time: 2022-04-28 20:26:21.160173000 Z
+  display_sidebar: true
+  locale: en
+
+Spotlight::Page_3:
+  id: 2
+  title: Exhibits
+  type: Spotlight::HomePage
+  slug: exhibits
+  content: '{"data":[{"type":"browse","data":{"display-item-counts":"true","item":{"item_0":{"id":"world-war-i","full_title":"World
+    War I","weight":"0","display":"true"},"item_1":{"id":"world-war-ii","full_title":"World
+    War II","weight":"1","display":"true"},"item_2":{"id":"propaganda","full_title":"Propaganda","weight":"2","display":"true"}}}}]}'
+  weight: 1000
+  published: true
+  exhibit_id: 2
+  last_edited_by_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 14:20:21.705122000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 14:20:21.705122000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:25:09.650532000 Z
+    zone: *1
+    time: 2022-04-28 20:25:09.650532000 Z
+  display_sidebar: true
+  thumbnail_id: 17
+  locale: en

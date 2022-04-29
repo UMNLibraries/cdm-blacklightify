@@ -1,0 +1,83 @@
+Spotlight::Search_1:
+  id: 2
+  title: All exhibit items
+  slug: all-exhibit-items
+  long_description: All items in this exhibit.
+  weight: 0
+  published: true
+  exhibit_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 14:20:21.684996000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 14:20:21.684996000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 18:28:43.207492000 Z
+    zone: *1
+    time: 2022-04-28 18:28:43.207492000 Z
+  thumbnail_id: 10
+
+Spotlight::Search_2:
+  id: 7
+  title: World War I
+  slug: world-war-i
+  query_params: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    f: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      subject_ssim:
+      - World War, 1914 1918. United States. Posters
+  weight: 1
+  published: true
+  exhibit_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:10:25.770338000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:10:25.770338000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:17:41.863382000 Z
+    zone: *1
+    time: 2022-04-28 20:17:41.863382000 Z
+  thumbnail_id: 20
+
+Spotlight::Search_3:
+  id: 6
+  title: World War II
+  slug: world-war-ii
+  query_params: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    f: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      subject_ssim:
+      - World War, 1939 1945. United States. Posters
+  weight: 2
+  published: true
+  exhibit_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:10:10.469788000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:10:10.469788000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:17:58.227332000 Z
+    zone: *1
+    time: 2022-04-28 20:17:58.227332000 Z
+  thumbnail_id: 19
+
+Spotlight::Search_4:
+  id: 4
+  title: Propaganda
+  slug: propaganda
+  query_params: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    search_field: all_fields
+    q: propaganda
+  weight: 3
+  published: true
+  exhibit_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 19:32:49.378575000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 19:32:49.378575000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:13:42.606346000 Z
+    zone: *1
+    time: 2022-04-28 20:13:42.606346000 Z
+  thumbnail_id: 12

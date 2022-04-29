@@ -1,0 +1,46 @@
+Spotlight::BlacklightConfiguration_1:
+  id: 2
+  exhibit_id: 2
+  search_fields:
+    all_fields:
+      :enabled: true
+      :label: Everything
+  sort_fields:
+    relevance:
+      :enabled: true
+      :label: relevance
+    date_created_sort_ssortsi desc, title_sort_ssortsi asc:
+      :enabled: true
+      :label: Year (Newest first)
+    date_created_sort_ssortsi asc, title_sort_ssortsi asc:
+      :enabled: true
+      :label: Year (Oldest first)
+    title_sort_ssortsi asc:
+      :enabled: true
+      :label: Title (A-Z)
+    title_sort_ssortsi desc:
+      :enabled: true
+      :label: Title (Z-A)
+    creator_sort_ssortsi asc:
+      :enabled: true
+      :label: Creator (A-Z)
+    creator_sort_ssortsi desc:
+      :enabled: true
+      :label: Creator (Z-A)
+  default_per_page: 10
+  document_index_view_types:
+  - list
+  - atom
+  - rss
+  - gallery
+  - masonry
+  - slideshow
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 14:20:21.655971000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 14:20:21.655971000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 14:20:21.671185000 Z
+    zone: *1
+    time: 2022-04-28 14:20:21.671185000 Z
