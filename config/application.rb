@@ -8,7 +8,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module AppName
+module Umedia
   # Application
   class Application < Rails::Application
     config.action_mailer.default_url_options = { host: 'localhost:3000', from: 'noreply@example.com' }
@@ -22,5 +22,8 @@ module AppName
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Background Jobs
+    config.active_job.queue_adapter = :sidekiq
   end
 end

@@ -94,3 +94,7 @@ gem 'cdmdexer', '>= 0.22.0'
 gem 'foreman', '~> 0.80'
 gem 'sidekiq', '~> 6.0'
 gem 'dotenv-rails'
+
+# Cache thumbnails locally
+gem 'mimemagic', '~> 0.4.3'
+gem 'addressable', '~> 2.8'

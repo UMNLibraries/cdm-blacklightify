@@ -4,6 +4,7 @@
 # Simplified catalog controller
 class CatalogController < ApplicationController
   include Blacklight::Catalog
+  include Thumbnail
 
   configure_blacklight do |config|
     config.show.oembed_field = :oembed_url_ssm
@@ -90,8 +91,8 @@ class CatalogController < ApplicationController
     # Last Updated
     config.add_index_field 'dmmodified_ssi', label: 'Last Updated'
 
-    # Thumbnails
-    config.index.thumbnail_field = :object_ssi
+    # Thumbnails - A helper method that looks for attached image from solr_document_sidecar
+    config.index.thumbnail_method = :thumbnail
 
     # ITEM VIEW FIELDS
     # Description

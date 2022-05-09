@@ -25,6 +25,10 @@ Layout/LineLength:
   - 'config/initializers/spotlight_initializer.rb'
   - 'test/**/*'
 
+Lint/ShadowedException:
+  Exclude:
+  - 'app/services/umedia/image_service.rb'
+
 Metrics/BlockLength:
   Exclude:
   - 'app/controllers/catalog_controller.rb'

@@ -17,6 +17,16 @@ task ci: :environment do
   exit!(1) unless success
 end
 
+namespace :test do
+  desc 'Run tests with coverage'
+  task coverage: :environment do
+    require 'simplecov'
+    SimpleCov.start 'rails'
+
+    Rake::Task['test'].invoke
+  end
+end
+
 namespace :umedia do
   namespace :index do
     desc 'Put all sample data into solr'
@@ -103,17 +113,6 @@ namespace :umedia do
       else
         system('rake umedia:index:test RAILS_ENV=test')
       end
-    end
-  end
-
-  namespace :sidekiq do
-    desc 'Clear Queues'
-    task clear_queues: :environment do
-      require 'sidekiq/api'
-      Sidekiq::Queue.all.each(&:clear)
-      Sidekiq::RetrySet.new.clear
-      Sidekiq::ScheduledSet.new.clear
-      Sidekiq::DeadSet.new.clear
     end
   end
 end

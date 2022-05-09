@@ -1,0 +1,5 @@
+one:
+  name: 'image'
+  record_type: 'SolrDocumentSidecar'
+  record_id: <%= ActiveRecord::FixtureSet.identify(:the_fighting_scotsman) %>
+  blob_id: <%= ActiveRecord::FixtureSet.identify(:first_thumbnail_blob) %>

@@ -36,4 +36,8 @@ Rails.application.routes.draw do
 
   get 'robots.:format' => 'robots#robots'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # Sidekiq Web
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end
