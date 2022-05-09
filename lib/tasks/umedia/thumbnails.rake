@@ -7,15 +7,23 @@ class TaskSolrQuery
   # Space delimited
   # Ex. doc_ids = 'p16022coll208:0 p16022coll208:1'
   def scoped(doc_ids)
-    Blacklight.default_index.connection.get 'select', params: { q: "+(#{build_query(doc_ids)})", rows: '1000000' }
+    select query: "+(#{build_query(doc_ids)})", rows: doc_ids.split.length
   end
 
   def global
-    Blacklight.default_index.connection.get 'select', params: { q: '*:*', rows: '1000000' }
+    select rows: total_docs
   end
 
   def build_query(doc_ids)
     "+(#{doc_ids.gsub(':', '\:').split.join(' OR ')})"
+  end
+
+  def total_docs
+    select['response']['numFound']
+  end
+
+  def select(query: '*:*', rows: '1')
+    Blacklight.default_index.connection.get 'select', params: { q: query, rows: rows }
   end
 end
 
