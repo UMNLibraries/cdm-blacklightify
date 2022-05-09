@@ -22,8 +22,8 @@ class TaskSolrQuery
     select['response']['numFound']
   end
 
-  def select(query: '*:*', rows: '1')
-    Blacklight.default_index.connection.get 'select', params: { q: query, rows: rows }
+  def select(query: '*:*', rows: '1', fields: 'id')
+    Blacklight.default_index.connection.get 'select', params: { q: query, rows: rows, fl: fields }
   end
 end
 
