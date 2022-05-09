@@ -85,3 +85,20 @@ As your harvest is running, you can occasionally sent a `commit` to Solr to see 
 ```shell
 $ bundle exec rake umedia:index:commit
 ```
+
+## Additional Usage
+### Thumbnail management
+
+```shell
+# Store all thumbs
+$ bundle exec umedia:thumbnails:store
+
+# Store specific thumbs by doc id, space separated
+$ DOC_IDS='p16022coll262:172 p16022coll262:173' bundle exec rake umedia:thumbnails:store
+
+# Purge all thumbs
+$ bundle exec umedia:thumbnails:purge
+
+# Purge thumbs by doc id, space separated
+$ DOC_IDS='p16022coll262:172 p16022coll262:173' bundle exec rake umedia:thumbnails:purge
+```
