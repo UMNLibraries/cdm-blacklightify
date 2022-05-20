@@ -20,7 +20,8 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
       qt: 'search',
       rows: 10,
-      fl: '*'
+      fl: '*',
+      fq: 'record_type_ssi:primary'
     }
 
     config.document_solr_path = 'get'
@@ -91,7 +92,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'dmmodified_ssi', label: 'Last Updated'
 
     # Thumbnails
-    config.index.thumbnail_field = :object_ssi
+    config.index.thumbnail_field = :iiif_manifest_url_ssi
 
     # ITEM VIEW FIELDS
     # Description
