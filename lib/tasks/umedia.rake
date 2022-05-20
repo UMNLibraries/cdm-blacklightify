@@ -17,6 +17,16 @@ task ci: :environment do
   exit!(1) unless success
 end
 
+namespace :test do
+  desc 'Run tests with coverage'
+  task coverage: :environment do
+    require 'simplecov'
+    SimpleCov.start 'rails'
+
+    Rake::Task['test'].invoke
+  end
+end
+
 namespace :umedia do
   namespace :index do
     desc 'Put all sample data into solr'
@@ -40,9 +50,9 @@ namespace :umedia do
 
       example_sets.each do |set|
         CDMDEXER::ETLWorker.new.perform(
-          'solr_config' => { url: ENV['SOLR_URL'] },
-          'oai_endpoint' => ENV['OAI_ENDPOINT'],
-          'cdm_endpoint' => ENV['CDM_ENDPOINT'],
+          'solr_config' => { url: ENV.fetch('SOLR_URL', nil) },
+          'oai_endpoint' => ENV.fetch('OAI_ENDPOINT', nil),
+          'cdm_endpoint' => ENV.fetch('CDM_ENDPOINT', nil),
           'set_spec' => set,
           'batch_size' => 10,
           'max_compounds' => 10
@@ -57,7 +67,7 @@ namespace :umedia do
 
     desc 'Backup'
     task backup: :environment do
-      solr = ENV['SOLR_URL']
+      solr = ENV.fetch('SOLR_URL', nil)
       replication = 'replication?command=backup'
 
       res = Faraday.get "#{solr}/#{replication}"
@@ -72,7 +82,7 @@ namespace :umedia do
 
     desc 'Restore'
     task restore: :environment do
-      solr = ENV['SOLR_URL']
+      solr = ENV.fetch('SOLR_URL', nil)
       replication = 'replication?command=restore'
 
       snapshot = Dir.glob(Rails.root.join('solr/snapshots/snapshot.*').to_s).last
@@ -87,7 +97,7 @@ namespace :umedia do
     task test: :environment do
       if Rails.env.test?
         shared_solr_opts = { managed: true, verbose: true, persist: false, download_dir: 'tmp' }
-        shared_solr_opts[:version] = ENV['SOLR_VERSION'] if ENV['SOLR_VERSION']
+        shared_solr_opts[:version] = ENV.fetch('SOLR_VERSION', nil) if ENV['SOLR_VERSION']
 
         SolrWrapper.wrap(shared_solr_opts.merge(port: 8983, instance_dir: 'tmp/blacklight-core')) do |solr|
           solr.with_collection(name: 'blacklight-core', dir: Rails.root.join('solr/conf').to_s) do
@@ -103,17 +113,6 @@ namespace :umedia do
       else
         system('rake umedia:index:test RAILS_ENV=test')
       end
-    end
-  end
-
-  namespace :sidekiq do
-    desc 'Clear Queues'
-    task clear_queues: :environment do
-      require 'sidekiq/api'
-      Sidekiq::Queue.all.each(&:clear)
-      Sidekiq::RetrySet.new.clear
-      Sidekiq::ScheduledSet.new.clear
-      Sidekiq::DeadSet.new.clear
     end
   end
 end

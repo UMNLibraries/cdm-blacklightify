@@ -39,4 +39,27 @@ class SolrDocument
     collection, id = self.id.split(':')
     "https://cdm16022.contentdm.oclc.org/digital/api/singleitem/collection/#{collection}/id/#{id}/thumbnail"
   end
+
+  # Sidecar / ActiveRecord surrogate for a Solr document
+  # Allows us to use ActiveStorage with Solr docs
+  #
+  # Example console query
+  # cat = Blacklight::SearchService.new(
+  #    config: CatalogController.blacklight_config
+  #  )
+  # _resp, @document = cat.fetch('p16022coll208:11')
+  # @document.sidecar.image?
+
+  def sidecar
+    # Find or create, and set version
+    sidecar = SolrDocumentSidecar.where(
+      document_id: id,
+      document_type: self.class.to_s
+    ).first_or_create do |sc|
+      sc.version = _source['_version_']
+    end
+    sidecar.version = _source['_version_']
+    sidecar.save
+    sidecar
+  end
 end
