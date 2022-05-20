@@ -40,6 +40,8 @@ class SolrDocument
     "https://cdm16022.contentdm.oclc.org/digital/api/singleitem/collection/#{collection}/id/#{id}/thumbnail"
   end
 
+  alias :thumbnail :cdm_thumbnail
+
   # Sidecar / ActiveRecord surrogate for a Solr document
   # Allows us to use ActiveStorage with Solr docs
   #
@@ -50,7 +52,7 @@ class SolrDocument
   # _resp, @document = cat.fetch('p16022coll208:11')
   # @document.sidecar.image?
 
-  def sidecar
+  def sidecar(_args=false)
     # Find or create, and set version
     sidecar = SolrDocumentSidecar.where(
       document_id: id,
@@ -62,4 +64,5 @@ class SolrDocument
     sidecar.save
     sidecar
   end
+
 end
