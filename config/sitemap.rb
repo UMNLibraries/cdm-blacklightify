@@ -16,9 +16,21 @@ SitemapGenerator::Interpreter.send :include, Rails.application.routes.url_helper
 SitemapGenerator::Interpreter.send :include, Spotlight::Engine.routes.url_helpers
 
 # create the sitemap itself
-SitemapGenerator::Sitemap.create do
-  response['response']['docs'].each do |doc|
-    add "/item/#{doc['id']}", changefreq: 'weekly', lastmod: doc['dmmodified_ssi']
+if Rails.env.production? || Rails.env.development?
+  SitemapGenerator::Sitemap.create do
+    response['response']['docs'].each do |doc|
+      add "/item/#{doc['id']}", changefreq: 'weekly', lastmod: doc['dmmodified_ssi']
+    end
+    Spotlight::Sitemap.add_all_exhibits(self)
   end
-  Spotlight::Sitemap.add_all_exhibits(self)
+elsif Rails.env.test?
+  SitemapGenerator::Sitemap.create(
+    public_path: 'tmp/',
+    filename: 'sitemap-tmp'
+  ) do
+    response['response']['docs'].each do |doc|
+      add "/item/#{doc['id']}", changefreq: 'weekly', lastmod: doc['dmmodified_ssi']
+    end
+    Spotlight::Sitemap.add_all_exhibits(self)
+  end
 end
