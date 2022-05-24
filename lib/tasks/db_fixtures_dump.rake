@@ -7,7 +7,7 @@ namespace :db do
   namespace :fixtures do
     desc 'Dumps all models into fixtures.'
     task :dump => :environment do
-      models = %w(Spotlight::BlacklightConfiguration Spotlight::Site Spotlight::Search Spotlight::Page Spotlight::Filter Spotlight::FeaturedImage Spotlight::Exhibit Spotlight::MainNavigation FriendlyId::Slug)
+      models = %w(Spotlight::BlacklightConfiguration Spotlight::Site Spotlight::Search Spotlight::Page Spotlight::Filter Spotlight::FeaturedImage Spotlight::Exhibit Spotlight::MainNavigation Spotlight::Role FriendlyId::Slug)
 
       # excludes models
       excludes = %w(ApplicationRecord)
@@ -23,7 +23,7 @@ namespace :db do
 
         increment = 1
 
-        model_file = "#{Rails.root}/test/fixtures/#{m.underscore.pluralize}.yml"
+        model_file = "#{Rails.root}/tmp/fixtures/#{m.underscore.pluralize}.yml"
         File.open(model_file, 'w') do |f|
           entries.each do |a|
             attrs = a.attributes

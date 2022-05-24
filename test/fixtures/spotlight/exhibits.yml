@@ -24,3 +24,27 @@ Spotlight::Exhibit_1:
   thumbnail_id: 8
   weight: 50
   site_id: 1
+
+Spotlight::Exhibit_2:
+  id: 3
+  title: Medical Receipt Books
+  slug: exhibit-2
+  description: A growing collection of domestic receipt books dating from the 17th
+    through the 19th century. Often written by the mother of the house, they were
+    used to care for family and sometimes livestock. Some of the receipts are written
+    by physicians for the pharmacist to fill, but most consist of components that
+    were readily available in local fields or the apothecary’s shop.
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-20 15:36:03.367527000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-05-20 15:36:03.367527000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-20 19:09:16.638111000 Z
+    zone: *1
+    time: 2022-05-20 19:09:16.638111000 Z
+  published: true
+  masthead_id: 31
+  thumbnail_id: 24
+  weight: 50
+  site_id: 1

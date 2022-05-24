@@ -192,3 +192,128 @@ Spotlight::FeaturedImage_11:
   iiif_canvas_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:3205/canvas/c0
   iiif_image_id: https://cdm16022.contentdm.oclc.org/iiif/p16022coll208:3205/annotation/a0
   iiif_tilesource: https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:3205/info.json
+
+Spotlight::FeaturedImage_12:
+  id: 22
+  image: medical.jpg
+  source: remote
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-23 20:43:40.571392000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-05-23 20:43:40.571392000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-23 20:43:40.571392000 Z
+    zone: *1
+    time: 2022-05-23 20:43:40.571392000 Z
+  iiif_region: '302,610,603,452'
+
+Spotlight::FeaturedImage_13:
+  id: 24
+  type: Spotlight::ExhibitThumbnail
+  image: medical.jpg
+  source: remote
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-23 20:44:09.376560000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-05-23 20:44:09.376560000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-23 20:44:09.376560000 Z
+    zone: *1
+    time: 2022-05-23 20:44:09.376560000 Z
+  iiif_region: '302,534,603,603'
+
+Spotlight::FeaturedImage_14:
+  id: 25
+  type: Spotlight::TemporaryImage
+  image: uptownTheatre.png
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-23 21:15:41.795543000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-05-23 21:15:41.795543000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-23 21:15:41.795543000 Z
+    zone: *1
+    time: 2022-05-23 21:15:41.795543000 Z
+
+Spotlight::FeaturedImage_4:
+  id: 8
+  type: Spotlight::ExhibitThumbnail
+  image: war_posters.jpg
+  source: remote
+  document_global_id: gid://app-name/SolrDocument/p16022coll208%3A96
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 16:35:47.418585000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 16:35:47.418585000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-24 18:34:18.663919000 Z
+    zone: *1
+    time: 2022-05-24 18:34:18.663919000 Z
+  iiif_region: '331,1013,5879,5879'
+  iiif_tilesource: "/images/8-a1af419016ca599acc02b8ed6eeeb39d/info.json"
+
+Spotlight::FeaturedImage_15:
+  id: 28
+  type: Spotlight::TemporaryImage
+  image: uptownTheatre.png
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-24 18:40:14.145218000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-05-24 18:40:14.145218000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-24 18:40:14.145218000 Z
+    zone: *1
+    time: 2022-05-24 18:40:14.145218000 Z
+
+Spotlight::FeaturedImage_11:
+  id: 20
+  image: wwi.jpg
+  source: remote
+  document_global_id: gid://app-name/SolrDocument/p16022coll208%3A3205
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:16:56.375954000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:16:56.375954000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-24 18:56:24.236344000 Z
+    zone: *1
+    time: 2022-05-24 18:56:24.236344000 Z
+  iiif_region: '6,364,743,557'
+
+Spotlight::FeaturedImage_10:
+  id: 19
+  image: wwii.jpg
+  source: remote
+  document_global_id: gid://app-name/SolrDocument/p16022coll208%3A1050
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:12:49.387506000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:12:49.387506000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-24 19:01:23.283628000 Z
+    zone: *1
+    time: 2022-05-24 19:01:23.283628000 Z
+  iiif_region: '193,369,1285,963'
+
+Spotlight::FeaturedImage_7:
+  id: 12
+  image: propoganda.jpg
+  source: remote
+  document_global_id: gid://app-name/SolrDocument/p16022coll208%3A1899
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 19:33:36.048424000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 19:33:36.048424000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-24 19:06:26.316809000 Z
+    zone: *1
+    time: 2022-05-24 19:06:26.316809000 Z
+  iiif_region: '446,25,466,351'

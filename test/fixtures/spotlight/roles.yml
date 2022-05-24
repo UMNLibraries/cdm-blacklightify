@@ -1,0 +1,13 @@
+Spotlight::Role_1:
+  id: 1
+  user: one
+  role: admin
+  resource_id: 1
+  resource_type: Spotlight::Site
+
+Spotlight::Role_2:
+  id: 2
+  user: one
+  role: admin
+  resource_id: 1
+  resource_type: Spotlight::Exhibit

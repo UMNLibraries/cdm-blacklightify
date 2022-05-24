@@ -66,3 +66,36 @@ Spotlight::Page_3:
   display_sidebar: true
   thumbnail_id: 17
   locale: en
+
+Spotlight::Page_4:
+  id: 6
+  title: Exhibit home
+  type: Spotlight::HomePage
+  slug: 6fdffcef-5a2f-47c7-8e90-226e0bdc2f70
+  content: '{"data":[{"type":"text","data":{"format":"html","text":"<p>Handwritten
+    medical and domestic receipt/recipe books (16th - late 19th century) in various
+    languages. Recipes and advice for food preparation and preservation, animal husbandry,
+    allopathic medicines and treatments for maintaining personal health shared between
+    friends and family.</p>"}},{"type":"quote","data":{"text":"<p>Exhibit quote feature</p>","format":"html","cite":""}},{"type":"heading","data":{"text":"Exhibit
+    Heading","format":"html"}},{"type":"list","data":{"format":"html","listItems":[{"content":"One"},{"content":"Two"},{"content":"Three"}]}},{"type":"solr_documents","data":{"show-primary-caption":"true","primary-caption-field":"__spotlight_document_title___","show-secondary-caption":"true","secondary-caption-field":"","zpr_link":"true","title":"Test
+    Heading","text-align":"left","text":"","format":"html","item":{"item_0":{"id":"p16022coll282:7052","title":"Wan
+    guo yao fang, Volume 11","thumbnail_image_url":"","full_image_url":"","iiif_tilesource":"https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll282:6885/info.json","iiif_manifest_url":"https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll282:7052/manifest.json","iiif_canvas_id":"https://cdm16022.contentdm.oclc.org/iiif/p16022coll282:6885/canvas/c0","iiif_image_id":"https://cdm16022.contentdm.oclc.org/iiif/p16022coll282:6885/annotation/a0","weight":"0","display":"true"},"item_1":{"id":"p16022coll282:6884","title":"Notebook
+    of perfume and pharmaceutical preparations.","thumbnail_image_url":"","full_image_url":"","iiif_tilesource":"https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll282:6572/info.json","iiif_manifest_url":"https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll282:6884/manifest.json","iiif_canvas_id":"https://cdm16022.contentdm.oclc.org/iiif/p16022coll282:6572/canvas/c0","iiif_image_id":"https://cdm16022.contentdm.oclc.org/iiif/p16022coll282:6572/annotation/a0","weight":"1","display":"true"},"item_2":{"id":"p16022coll282:7121","title":"[Medical
+    and culinary recipies] -- 17??","thumbnail_image_url":"","full_image_url":"","iiif_tilesource":"https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll282:7053/info.json","iiif_manifest_url":"https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll282:7121/manifest.json","iiif_canvas_id":"https://cdm16022.contentdm.oclc.org/iiif/p16022coll282:7053/canvas/c0","iiif_image_id":"https://cdm16022.contentdm.oclc.org/iiif/p16022coll282:7053/annotation/a0","weight":"2","display":"true"},"item_3":{"id":"p16022coll282:4660","title":"Physical
+    receipts","thumbnail_image_url":"","full_image_url":"","iiif_tilesource":"https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll282:4472/info.json","iiif_manifest_url":"https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll282:4660/manifest.json","iiif_canvas_id":"https://cdm16022.contentdm.oclc.org/iiif/p16022coll282:4472/canvas/c0","iiif_image_id":"https://cdm16022.contentdm.oclc.org/iiif/p16022coll282:4472/annotation/a0","weight":"3","display":"true"}}}},{"type":"rule","data":{}}]}'
+  weight: 1000
+  published: true
+  exhibit_id: 3
+  last_edited_by_id: 980190962
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-20 15:36:03.444011000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-05-20 15:36:03.444011000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-20 19:09:16.636296000 Z
+    zone: *1
+    time: 2022-05-20 19:09:16.636296000 Z
+  display_sidebar: true
+  thumbnail_id: 26
+  locale: en
