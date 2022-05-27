@@ -12,6 +12,7 @@ class HomepageTest < ApplicationSystemTestCase
   end
 
   test 'Homepage Facets' do
+    skip('No longer showing facets on homepage')
     visit '/'
     within('#facets') do
       assert page.has_content?('Contributing Organization')

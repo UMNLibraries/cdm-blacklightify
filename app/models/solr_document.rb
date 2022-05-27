@@ -52,7 +52,7 @@ class SolrDocument
   # _resp, @document = cat.fetch('p16022coll208:11')
   # @document.sidecar.image?
 
-  def sidecar(_args: false)
+  def sidecar(_args = nil)
     # Find or create, and set version
     sidecar = SolrDocumentSidecar.where(
       document_id: id,
