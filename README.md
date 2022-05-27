@@ -49,8 +49,11 @@ Fill in missing env var values (@TODO: share via LastPass?)
 
 5. Prepare development database
 
+Build the project database tables and load our test fixtures for development use.
+
 ```shell
 $ bundle exec rails db:migrate
+$ bundle exec rails db:fixtures:load
 ```
 
 6. Start Solr server
