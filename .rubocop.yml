@@ -17,6 +17,7 @@ AllCops:
   - 'tmp/**/*'
   - 'vendor/**/*'
   - 'Rakefile'
+  - 'lib/tasks/db_fixtures_dump.rake'
 
 Layout/LineLength:
   Max: 120

@@ -3,7 +3,7 @@
 ##
 # ThumbnailHelper
 module ThumbnailHelper
-  def render_thumbnail(thumbnail=placeholder)
+  def render_thumbnail(thumbnail = placeholder)
     image_tag(thumbnail)
   end
 
