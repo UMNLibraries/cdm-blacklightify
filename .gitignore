@@ -72,3 +72,11 @@ yarn-debug.log*
 # Ignore solr snapshots
 /solr/snapshots/*
 !/solr/snapshots/.keep
+
+# Ignore /public/uploads, except chosen fixtures
+/public/uploads/*
+!/public/uploads/spotlight/exhibit_thumbnail/image/8/war_posters.jpg
+!/public/uploads/spotlight/exhibit_thumbnail/image/24/medical.jpg
+!/public/uploads/spotlight/featured_image/image/12/propoganda.jpg
+!/public/uploads/spotlight/featured_image/image/19/wwii.jpg
+!/public/uploads/spotlight/featured_image/image/20/wwi.jpg
