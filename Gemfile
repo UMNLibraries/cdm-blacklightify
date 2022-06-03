@@ -99,7 +99,14 @@ gem 'dotenv-rails'
 gem 'mimemagic', '~> 0.4.3'
 gem 'addressable', '~> 2.8'
 
+
 gem "net-smtp", "~> 0.3.1"
 
 gem "net-imap", "~> 0.2.3"
 gem "net-pop", "~> 0.1.1"
+
+# IIIF Manifests
+gem 'rack-cors', :require => 'rack/cors'
+
+# Citations
+gem 'rinku'

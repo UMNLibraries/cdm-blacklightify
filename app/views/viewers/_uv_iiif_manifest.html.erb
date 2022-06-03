@@ -1,0 +1,16 @@
+<% content_for(:head) do %>
+  <script src="/uv/UV.js"></script>
+  <link rel="stylesheet" href="/uv/uv.css">
+  <style>#uv { width: 70vw; height: 100vh; margin-bottom: 1rem; }</style>
+<% end %>
+
+<div id="uv" class="uv" style="width:auto;"></div>
+<script>
+  var uv = UV.init(
+    "uv",
+    {
+      manifest: "https://cdm16022.contentdm.oclc.org/iiif/2/<%= document.id %>/manifest.json",
+      config: "/uv/config.json",
+    },
+  );
+</script>
