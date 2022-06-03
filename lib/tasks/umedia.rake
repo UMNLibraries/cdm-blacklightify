@@ -39,13 +39,18 @@ namespace :umedia do
     desc 'Harvest'
     task harvest: :environment do
       # mpls          => MDL collection
-      # p16022coll262 => UMedia video collection
-      # p16022coll208 => UMedia WWII poster collection
-      # p16022coll171 => UMedia audio collection
-      # p16022coll282 => UMedia compound objects (ex. p16022coll282:6571)
+      # p16022coll262 => (Moving Image) UMedia video collection
+      # p16022coll208 => (Still Image) UMedia WWII poster collection
+      # p16022coll171 => (Sound) UMedia audio collection
+      # p16022coll282 => (Text) UMedia compound objects (ex. p16022coll282:6571)
+      # p16022coll402 => (Physical Objects) Sherlock Holmes Collections
+      # p16022coll251 => (Cartographic) James Ford Bell Library
+      # p16022coll416 => (Mixed Material) Kautz Family YMCA Archives
+      # p16022coll406 => (Noted Music) A. K. Collection of Silent Movie Music
+      # p16022coll535 => Spreadsheets as PDFs
 
       example_sets = %w[
-        p16022coll262 p16022coll208 p16022coll171 p16022coll282
+        p16022coll262 p16022coll208 p16022coll171 p16022coll282 p16022coll402 p16022coll251 p16022coll416 p16022coll406 p16022coll535
       ]
 
       example_sets.each do |set|
