@@ -7,6 +7,8 @@
       <%= render partial: 'viewers/uv_audio', locals: { document: document } %>
     <% when 'kaltura_video' %>
       <%= render partial: 'viewers/uv_video', locals: { document: document } %>
+    <% when 'kaltura_audio_playlist' %>
+      <%= render partial: 'viewers/uv_audio_playlist', locals: { document: document } %>
     <% else %>
       <%= render partial: 'viewers/uv_iiif_manifest', locals: { document: document } %>
   <% end %>

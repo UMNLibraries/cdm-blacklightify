@@ -52,7 +52,8 @@ module Umedia
         'pdf' => pdf_klass,
         'pdfpage' => pdf_klass,
         'application/pdf' => pdf_klass,
-        'pptx' => ppt_klass
+        'pptx' => ppt_klass,
+        'kaltura_audio_playlist' => audio_klass
       }
     end
   end
