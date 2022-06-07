@@ -34,6 +34,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :iiif, only: [] do
+    member do
+      get :manifest
+      get :search
+      get :autocomplete
+    end
+  end
+
   get 'robots.:format' => 'robots#robots'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
