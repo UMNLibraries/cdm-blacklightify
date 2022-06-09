@@ -1,0 +1,29 @@
+Spotlight::Filter_1:
+  id: 2
+  field: setspec_ssi
+  value: p16022coll208
+  exhibit_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 14:20:21.700027000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 14:20:21.700027000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 14:22:15.408279000 Z
+    zone: *1
+    time: 2022-04-28 14:22:15.408279000 Z
+
+Spotlight::Filter_2:
+  id: 4
+  field: setspec_ssi
+  value: p16022coll282
+  exhibit_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-20 15:36:03.438110000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-05-20 15:36:03.438110000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-20 15:36:31.431274000 Z
+    zone: *1
+    time: 2022-05-20 15:36:31.431274000 Z

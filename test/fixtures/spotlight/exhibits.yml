@@ -1,0 +1,50 @@
+Spotlight::Exhibit_1:
+  id: 2
+  title: World War Poster Collection
+  subtitle: Subjects include recruiting, war bond sales, food conservation, civil
+    defense and many other topics.
+  slug: world-war-poster-collection
+  description: "The posters are from World Wars I and II and the German election of
+    1932. War posters are from U.S., Britain, Canada, France, Germany, Italy, Latin
+    America, and Scandinavia. The collection comprises over 6,000 items, consisting
+    largely of posters but containing a few related materials that are not of poster
+    size. Also, a few items have been included that are outside the scope of the collection
+    but are closely related by time or other circumstance.\r\n"
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 14:20:21.647924000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 14:20:21.647924000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:26:15.088972000 Z
+    zone: *1
+    time: 2022-04-28 20:26:15.088972000 Z
+  published: true
+  masthead_id: 6
+  thumbnail_id: 8
+  weight: 50
+  site_id: 1
+
+Spotlight::Exhibit_2:
+  id: 3
+  title: Medical Receipt Books
+  slug: exhibit-2
+  description: A growing collection of domestic receipt books dating from the 17th
+    through the 19th century. Often written by the mother of the house, they were
+    used to care for family and sometimes livestock. Some of the receipts are written
+    by physicians for the pharmacist to fill, but most consist of components that
+    were readily available in local fields or the apothecary’s shop.
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-20 15:36:03.367527000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-05-20 15:36:03.367527000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-05-20 19:09:16.638111000 Z
+    zone: *1
+    time: 2022-05-20 19:09:16.638111000 Z
+  published: true
+  masthead_id: 31
+  thumbnail_id: 24
+  weight: 50
+  site_id: 1

@@ -21,7 +21,8 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
       qt: 'search',
       rows: 10,
-      fl: '*'
+      fl: '*',
+      fq: 'record_type_ssi:primary'
     }
 
     config.document_solr_path = 'get'

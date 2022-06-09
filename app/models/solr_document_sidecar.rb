@@ -22,4 +22,9 @@ class SolrDocumentSidecar < ApplicationRecord
     image.purge if image.attached?
     Umedia::StoreImageJob.perform_later(document.id)
   end
+
+  # Exhibits requires public flag
+  def public?
+    true
+  end
 end

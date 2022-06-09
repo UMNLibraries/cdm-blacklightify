@@ -866,3 +866,8 @@ field_mappings:
     formatters:
       - Umedia::Formatters::FeaturedCollectionOrderFormatter
     origin_path: /
+  -
+    dest_path: iiif_manifest_url_ssi
+    formatters:
+      - Umedia::Formatters::IiifManifestUrlFormatter
+    origin_path: id
