@@ -110,3 +110,6 @@ gem 'rack-cors', :require => 'rack/cors'
 
 # Citations
 gem 'rinku'
+
+# Kaltura
+gem 'kaltura-client', '17.5.0'
