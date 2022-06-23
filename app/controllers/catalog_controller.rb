@@ -32,6 +32,9 @@ class CatalogController < ApplicationController
     config.index.title_field = 'title_ssi'
 
     config.add_search_field 'all_fields', label: I18n.t('spotlight.search.fields.search.all_fields')
+    config.add_search_field 'title', label: 'Title'
+    config.add_search_field 'publisher', label: 'Publisher'
+    config.add_search_field 'subject', label: 'Subject'
 
     config.add_sort_field 'relevance', sort: 'score desc', label: I18n.t('spotlight.search.fields.sort.relevance')
     config.add_sort_field 'date_created_sort_ssortsi desc, title_sort_ssortsi asc', label: 'Year (Newest first)'
