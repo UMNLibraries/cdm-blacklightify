@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   mount Spotlight::Engine, at: 'spotlight'
   mount Blacklight::Engine => '/'
+  mount Blacklight::Citeproc::Engine => '/'
+
   #  root to: "catalog#index" # replaced by spotlight root path
   concern :searchable, Blacklight::Routes::Searchable.new
 

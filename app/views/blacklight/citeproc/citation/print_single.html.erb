@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h1 class="modal-title"><%= t("blacklight.citation")%></h1>
+  <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <h2>URL</h2>
+  <p><%= link_to solr_document_url(@document), solr_document_url(@document, host: request.host) %>
+
+  <% @citations.each do |citation| %>
+    <h2><%= t("blacklight.citeproc.styles.#{citation[:label]}") %></h2>
+    <p><%= citation[:citation] %></p>
+  <% end %>
+</div>
+
+<%= console %>

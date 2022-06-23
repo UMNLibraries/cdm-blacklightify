@@ -3,6 +3,8 @@
 # this class overrides the base class, adding 'more like this' functionality
 class SolrDocument
   include Blacklight::Solr::Document
+  use_extension(Blacklight::Document::Bibtex)
+
   include Blacklight::Gallery::OpenseadragonSolrDocument
 
   include Spotlight::SolrDocument

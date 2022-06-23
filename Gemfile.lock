@@ -129,6 +129,8 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     bcrypt (3.1.17)
+    bibtex-ruby (6.0.0)
+      latex-decode (~> 0.0)
     bindex (0.8.1)
     blacklight (7.24.0)
       deprecation
@@ -139,6 +141,10 @@ GEM
       ostruct (>= 0.3.2)
       rails (>= 5.1, < 7.1)
       view_component (~> 2.43)
+    blacklight-citeproc (0.2.0)
+      bibtex-ruby (>= 4.4.6, < 7)
+      citeproc-ruby (~> 1.1)
+      csl-styles (~> 1.0)
     blacklight-gallery (3.5.0)
       blacklight (~> 7.17)
       rails (>= 5.1, < 7)
@@ -193,6 +199,11 @@ GEM
       sidekiq (>= 3.5)
       titleize (~> 1.4)
     childprocess (4.1.0)
+    citeproc (1.0.10)
+      namae (~> 1.0)
+    citeproc-ruby (1.1.14)
+      citeproc (~> 1.0, >= 1.0.9)
+      csl (~> 1.6)
     clipboard-rails (1.7.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -207,6 +218,11 @@ GEM
       dry-validation (~> 1.0, >= 1.0.0)
     connection_pool (2.2.5)
     crass (1.0.6)
+    csl (1.6.0)
+      namae (~> 1.0)
+      rexml
+    csl-styles (1.0.1.11)
+      csl (~> 1.0)
     declarative (0.0.20)
     deep_merge (1.2.2)
     deprecation (1.1.0)
@@ -348,6 +364,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    latex-decode (0.3.2)
     launchy (2.5.0)
       addressable (~> 2.7)
     leaflet-rails (1.7.0)
@@ -388,6 +405,7 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
+    namae (1.1.1)
     nio4r (2.5.8)
     nokogiri (1.13.6-arm64-darwin)
       racc (~> 1.4)
@@ -626,6 +644,7 @@ PLATFORMS
 DEPENDENCIES
   addressable (~> 2.8)
   blacklight (~> 7.0)
+  blacklight-citeproc
   blacklight-gallery (~> 3.0)
   blacklight-oembed (~> 1.0)
   blacklight-spotlight!

@@ -98,3 +98,6 @@ gem 'dotenv-rails'
 # Cache thumbnails locally
 gem 'mimemagic', '~> 0.4.3'
 gem 'addressable', '~> 2.8'
+
+# Citations
+gem 'blacklight-citeproc'

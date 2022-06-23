@@ -140,6 +140,9 @@ class CatalogController < ApplicationController
     # Copyright Statement...
     config.add_show_field 'local_rights_tesi', label: 'Copyright Statement', itemprop: 'copyright'
 
+    # Show Tools
+    config.add_show_tools_partial(:citation)
+
     # View Helpers
     # config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
     config.add_results_collection_tool(:sort_widget)
@@ -151,5 +154,57 @@ class CatalogController < ApplicationController
 
     # Set which views by default only have the title displayed, e.g.,
     # config.view.gallery.title_only_by_default = true
+
+    # Citations
+    config.citeproc = {
+      fields: {
+        # address: 'published_ssm',
+        # annote: 'annotation_tsim',
+        author: 'creator_ssim',
+        # booktitle: 'booktitle_tsim',
+        # chapter: 'chapter_tsim',
+        # doi: 'doi_tsim',
+        # edition: 'edition_tsim',
+        # editor: 'editor_tsim',
+        # how_published: 'how_published_tsim',
+        institution: 'contributing_organization_ssi',
+        # journal: 'journal_tsim',
+        key: 'id',
+        # month: 'month_tsim',
+        note: 'note_tsim',
+        # number: 'number_tsim',
+        organization: 'organization_tsim',
+        # pages: 'pages_tsim',
+        publisher: 'publisher_ssi',
+        # school: 'school_tsim',
+        # series: 'series_tsim',
+        title: 'title_ssi',
+        type: 'type_ssi',
+        url: 'url_tsim',
+        # volume: 'number_tsim',
+        year: 'date_ssi'
+      },
+      styles: %w(modern-language-association chicago-fullnote-bibliography),
+      format: {
+        field: :type_ssi,
+        default_format: :misc,
+        mappings: {
+          article: [],
+          book: [],
+          booklet: [],
+          conference: [],
+          inbook: [],
+          incollection: [],
+          inproceedings: [],
+          manual: [],
+          mastersthesis: [],
+          misc: [],
+         phdthesis: [],
+         proceedings: [],
+         techreport: [],
+         unpublished: []
+        }
+      }
+    }
   end
 end

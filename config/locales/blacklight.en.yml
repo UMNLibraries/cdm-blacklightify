@@ -1,3 +1,9 @@
 en:
   blacklight:
     application_name: 'Blacklight'
+    citation: Citation
+    citeproc:
+      styles:
+        chicago-fullnote-bibliography: Chicago/Turabian Format
+        modern-language-association: MLA Format
+        wikipedia-templates: Wikipedia Format
