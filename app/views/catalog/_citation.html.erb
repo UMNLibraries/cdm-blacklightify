@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <h1 class="modal-title"><%= t("blacklight.citation")%></h1>
+  <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+
+<%- @documents.each do |item| %>
+  <div class="modal-body">
+    <h3>URL</h3>
+    <p><%= link_to solr_document_url(item), solr_document_url(item, host: request.host) %></p>
+
+    <h3>MLA Format</h3>
+    <p class="citation-mla-format">
+      <%= raw Umedia::Citation::Cite.new(mappings: Umedia::Citation::Styles::Mla.mappings, doc: item).to_s %>
+    </p>
+
+    <h3>Chicago/Turabian Format</h3>
+    <p class="citation-chicago-format">
+      <%= raw Umedia::Citation::Cite.new(mappings: Umedia::Citation::Styles::Chicago.mappings, doc: item).to_s %>
+    </p>
+    <h3>Wikipedia Format</h3>
+    <p class="citation-wikipedia-format">
+      <%= Umedia::Citation::Cite.new(mappings: Umedia::Citation::Styles::Wikipedia.mappings, doc: item).to_s %>
+    </p>
+  </div>
+<%- end %>

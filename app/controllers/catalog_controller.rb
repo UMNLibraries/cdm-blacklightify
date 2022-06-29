@@ -141,6 +141,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'local_rights_tesi', label: 'Copyright Statement', itemprop: 'copyright'
 
     # View Helpers
+    config.add_show_tools_partial(:citation)
+
     # config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
     config.add_results_collection_tool(:sort_widget)
     config.add_results_collection_tool(:per_page_widget)
