@@ -142,6 +142,9 @@ class CatalogController < ApplicationController
 
     # View Helpers
     config.add_show_tools_partial(:citation)
+    config.add_show_tools_partial(:transcript, if: proc { |_context, _config, options|
+                                                     options[:document].transcripts?
+                                                   })
 
     # config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
     config.add_results_collection_tool(:sort_widget)
