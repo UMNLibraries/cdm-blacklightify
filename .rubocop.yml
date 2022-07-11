@@ -12,6 +12,7 @@ AllCops:
   - '.internal_test_app/**/*'
   - 'app/controllers/concerns/spotlight/controller.rb'
   - 'bin/**/*'
+  - 'config/routes.rb'
   - 'db/**/*'
   - 'Gemfile'
   - 'tmp/**/*'

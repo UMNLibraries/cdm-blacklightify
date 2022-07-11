@@ -64,4 +64,16 @@ class SolrDocument
     sidecar.save
     sidecar
   end
+
+  def transcripts?
+    cat = Blacklight::SearchService.new(
+      config: TranscriptController.blacklight_config,
+      user_params: {
+        id: id,
+        rows: 1
+      }
+    )
+
+    cat.search_results.first.total > 1
+  end
 end
