@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class IiifManifest
   ANNOTATION_DATA_BY_TYPE = {
     Umedia::BorealisVideo => {

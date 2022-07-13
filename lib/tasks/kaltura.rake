@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :kaltura do
   desc <<~DESC
     Generate a new session token for API access - good for 10 years. Requires
@@ -10,7 +12,7 @@ namespace :kaltura do
     require 'kaltura'
 
     print 'Enter your Kaltura username: '
-    user_id = STDIN.gets.chomp
+    user_id = $stdin.gets.chomp
     secret = IO.console.getpass 'Enter your Kaltura User Secret: '
 
     partner_id = 1369852

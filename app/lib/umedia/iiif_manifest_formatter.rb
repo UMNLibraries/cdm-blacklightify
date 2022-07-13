@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Umedia
   class IiifManifestFormatter
     AV_KEYS = %w(audio audioa video videoa)

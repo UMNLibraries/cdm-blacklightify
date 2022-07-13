@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Umedia
   class BorealisAudio < BorealisAsset
     def src(entry_id = audio_id)

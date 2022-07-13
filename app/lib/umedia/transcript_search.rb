@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MDL
   class TranscriptSearch
     attr_reader :transcripts, :search_text

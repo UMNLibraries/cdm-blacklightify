@@ -23,6 +23,7 @@ AllCops:
 Layout/LineLength:
   Max: 120
   Exclude:
+  - 'app/lib/umedia/transformer.rb'
   - 'config/initializers/devise.rb'
   - 'config/initializers/spotlight_initializer.rb'
   - 'test/**/*'
@@ -33,8 +34,13 @@ Lint/ShadowedException:
 
 Metrics/BlockLength:
   Exclude:
+  - 'config/routes.rb'
   - 'app/controllers/catalog_controller.rb'
   - 'lib/tasks/umedia.rake'
+
+Metrics/ClassLength:
+  Exclude:
+  - 'app/lib/umedia/transformer.rb'
 
 Metrics/MethodLength:
   Exclude:

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Umedia
   class BorealisVideoPlayer < BorealisAssetsViewer
     def to_viewer

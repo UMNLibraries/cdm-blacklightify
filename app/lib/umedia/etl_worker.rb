@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'cdmbl'
 require 'Umedia/transformer'
 require 'Umedia/job_auditing'

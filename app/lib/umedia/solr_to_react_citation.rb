@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 # Transform a solr document to a React Citation Hash
 class SolrToReactCitation

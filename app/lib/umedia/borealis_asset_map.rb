@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Umedia
   class BorealisAssetMap
     attr_reader :format_field,

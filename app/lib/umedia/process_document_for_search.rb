@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Umedia
   class ProcessDocumentForSearch
     TMP_DIR = File.exist?('/swadm/tmp') ? '/swadm/tmp' : Dir.tmpdir

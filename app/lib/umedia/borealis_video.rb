@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Umedia
   class BorealisVideo < BorealisAsset
     def src(entry_id = nil)

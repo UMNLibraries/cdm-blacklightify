@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Umedia
   ###
   # This isn't a formatter, in the sense that it transforms

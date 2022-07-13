@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Umedia
   class CiteDownload
     attr_reader :assets

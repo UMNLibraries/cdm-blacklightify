@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Umedia
   class BorealisAsset
     attr_reader :id, :collection, :transcripts, :title, :document, :assets
