@@ -3,7 +3,7 @@ Blacklightify a CONTENTdm collection
 
 ### Requirements
 
-1. Ruby (3.0.3)
+1. Ruby (3.1)
 2. Ruby on Rails (6.1)
 3. Java Runtime Environment (JRE) version 1.8  *for Solr*
 4. ImageMagick (http://www.imagemagick.org/script/index.php) due to [carrierwave](https://github.com/carrierwaveuploader/carrierwave#adding-versions)

@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h1 class="modal-title"><%= t("blacklight.transcript")%></h1>
+  <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <%- # Sort title strings by the numbers within (Page 1, Page 2, etc.) %>
+  <%- @response.documents.sort_by { |x| x['title_ssi'][/\d+/].to_i }.each do |doc| %>
+    <% if doc['transcription_tesi'].present? %>
+      <div class="transcription">
+        <h3 class="title"><%= doc['title_ssi'] %></h3>
+        <p><%= doc['transcription_tesi'] %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>

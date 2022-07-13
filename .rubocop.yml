@@ -12,12 +12,14 @@ AllCops:
   - '.internal_test_app/**/*'
   - 'app/controllers/concerns/spotlight/controller.rb'
   - 'bin/**/*'
+  - 'config/routes.rb'
   - 'db/**/*'
   - 'Gemfile'
   - 'tmp/**/*'
   - 'vendor/**/*'
   - 'Rakefile'
   - 'lib/tasks/db_fixtures_dump.rake'
+  - 'app/lib/umedia/citation/styles/schema_org.rb'
 
 Layout/LineLength:
   Max: 120
@@ -35,6 +37,11 @@ Metrics/BlockLength:
   - 'app/controllers/catalog_controller.rb'
   - 'lib/tasks/umedia.rake'
 
+Metrics/MethodLength:
+  Exclude:
+  - 'app/lib/umedia/citation/styles/coins.rb'
+  - 'app/lib/umedia/citation/styles/mla.rb'
+  - 'app/lib/umedia/citation/styles/wikipedia.rb'
 
 Minitest/MultipleAssertions:
   Max: 20
