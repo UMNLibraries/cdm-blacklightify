@@ -13,9 +13,9 @@ class SitemapGeneratorTest < ActiveSupport::TestCase
     end
     it ':create - tests sitemap generation' do
       Rake::Task['sitemap:create'].invoke
-      # Test a known item is mapped within the first chunk of the file
-      sitemap_data = Zlib::GzipReader.open('tmp/sitemap-test.xml.gz').read(2000)
-      assert_match '<loc>https://umedia.lib.umn.edu/item/p16022coll171:580</loc>', sitemap_data
+      # Test a known item is mapped within the file
+      sitemap_data = Zlib::GzipReader.open('tmp/sitemap-test.xml.gz').read
+      assert_match '<loc>https://umedia.lib.umn.edu/item/p16022coll171:7</loc>', sitemap_data
     end
     def teardown
       File.exist?('tmp/sitemap-test.xml.gz') && File.delete('tmp/sitemap-test.xml.gz')
