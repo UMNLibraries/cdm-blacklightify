@@ -14,7 +14,7 @@ module Umedia
     end
 
     def type
-      (playlist_id) ? 'kaltura_video_playlist' : 'kaltura_video'
+      playlist_id ? 'kaltura_video_playlist' : 'kaltura_video'
     end
 
     def video_id

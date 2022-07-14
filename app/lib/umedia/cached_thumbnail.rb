@@ -10,7 +10,7 @@ module Umedia
       @id         = id
       @cache_dir  = cache_dir
       @title      = title
-      @url        = (url) ? url : default_url
+      @url        = url ? url : default_url
     end
 
     def data
