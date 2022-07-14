@@ -40,7 +40,7 @@ module Umedia
           'sequenceMode' => true,
           'showReferenceStrip' => false,
           'defaultZoomLevel' => 0,
-          'minZoomLevel': 0,
+          minZoomLevel: 0,
           'tileSources' => assets.map(&:src),
         },
         'getImageURL' => 'https://cdm16022.contentdm.oclc.org/utils/ajaxhelper',

@@ -58,8 +58,8 @@ class IiifSearchService
       beginning_of_link_template = '("%s*")'
       splits.map do |first, last|
         parts = []
-        parts << template % first.join(' ') if first.any?
-        parts << template % last.join(' ') if last.any?
+        parts << (template % first.join(' ')) if first.any?
+        parts << (template % last.join(' ')) if last.any?
         parts.join(' OR ')
       end
     end

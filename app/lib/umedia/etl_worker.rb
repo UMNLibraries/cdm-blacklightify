@@ -126,10 +126,10 @@ module Umedia
   class ETLWorker < CDMBL::ETLWorker
     prepend EtlAuditing
 
-    def initialize
+    def initialize 
       @transform_worker_klass = TransformWorker
       @extractor_klass = Extractor
-      @etl_worker_klass = self.class
+      super(self.class)
     end
   end
 end

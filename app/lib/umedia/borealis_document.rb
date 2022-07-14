@@ -55,7 +55,7 @@ module Umedia
         .split(':')
         .map(&:to_i)
       minutes += hours * 60
-      seconds += minutes * 60
+      seconds + (minutes * 60)
     end
 
     def rights_uri
@@ -125,5 +125,6 @@ module Umedia
     def bad_compound?(compound)
       compound['pagefile'].is_a?(Hash)
     end
+    
   end
 end

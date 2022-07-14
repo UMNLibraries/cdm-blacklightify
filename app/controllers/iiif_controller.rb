@@ -1,3 +1,5 @@
+# app/controllers/iiif_controller
+
 class IiifController < ApplicationController
   # include Blacklight::SearchHelper
 

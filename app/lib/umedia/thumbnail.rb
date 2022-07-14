@@ -33,7 +33,7 @@ module Umedia
     end
 
     def cached?
-      File.exists?(file_path)
+      File.exist?(file_path)
     end
 
     def url

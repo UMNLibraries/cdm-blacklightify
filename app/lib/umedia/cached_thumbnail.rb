@@ -26,7 +26,7 @@ module Umedia
     end
 
     def cached?
-      File.exists?("#{cache_dir}/#{filename}")
+      File.exist?("#{cache_dir}/#{filename}")
     end
 
     def save
