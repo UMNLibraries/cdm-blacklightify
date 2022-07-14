@@ -88,18 +88,18 @@ module Umedia
       compound['pagefile'].split('.').last
     end
 
-    def asset(asset_klass, id, transcript, title = false)
-      if !title
+    def asset(asset_klass, id, transcript, title: false)
+      if title
         asset_klass.new(id: id,
-                        collection: collection,
-                        transcript: transcript,
-                        document: document)
+          collection: collection,
+          transcript: transcript,
+          title: title,
+          document: document)
       else
         asset_klass.new(id: id,
-                        collection: collection,
-                        transcript: transcript,
-                        title: title,
-                        document: document)
+          collection: collection,
+          transcript: transcript,
+          document: document)
       end
     end
 

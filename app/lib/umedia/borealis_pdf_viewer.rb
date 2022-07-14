@@ -15,7 +15,7 @@ module Umedia
         'type' => type,
         'config' => {
           'height' => 800,
-          'width' => '100%',
+          'width' => '100%'
         },
        'thumbnail' => '/images/reflections-pdf-icon.png',
        'values' => values

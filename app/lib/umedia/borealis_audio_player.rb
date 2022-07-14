@@ -2,7 +2,7 @@ module Umedia
   class BorealisAudioPlayer < BorealisAssetsViewer
 
     def to_viewer
-      (asset.audio_playlist_id) ? playlist : player
+      asset.audio_playlist_id ? playlist : player
     end
 
     def player
@@ -14,11 +14,11 @@ module Umedia
         'entry_id' => asset.audio_id,
         'transcript' => {
           'texts' => asset.transcripts,
-          'label' => 'Audio',
+          'label' => 'Audio'
         },
         'wrapper_height' => '100%',
         'wrapper_width' => '100%',
-        'thumbnail' => "/images/audio-3.png"
+        'thumbnail' => '/images/audio-3.png'
       }
     end
 
@@ -30,15 +30,15 @@ module Umedia
         'uiconf_id' => 38719361,
         'flashvars' => {
           'streamerType' => 'auto',
-          'playlistAPI.kpl0Id' => asset.audio_playlist_id,
+          'playlistAPI.kpl0Id' => asset.audio_playlist_id
         },
         'transcript' => {
           'texts' => asset.transcripts,
-          'label' => 'Audio Playlist',
+          'label' => 'Audio Playlist'
         },
         'wrapper_height' => '100%',
         'wrapper_width' => '100%',
-        'thumbnail' => "/images/audio-3.png"
+        'thumbnail' => '/images/audio-3.png'
       }
     end
   end

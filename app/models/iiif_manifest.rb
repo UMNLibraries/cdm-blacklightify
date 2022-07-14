@@ -62,9 +62,7 @@ class IiifManifest
           'value' => borealis_document.document['rights_statement_ssi']
           }
       end
-      if renderable_assets.any?
-        hsh['rendering'] = renderable_assets.map { |a| rendering(a) }.flatten
-      end
+      if renderable_assets.any? hsh['rendering'] = renderable_assets.map { |a| rendering(a) }.flatten
       if rangeable_assets.any?
         hsh['structures'] = rangeable_assets
           .map

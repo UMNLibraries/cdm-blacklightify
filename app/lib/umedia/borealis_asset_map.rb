@@ -14,7 +14,7 @@ module Umedia
                    ppt_klass: Umedia::BorealisPpt,
                    image_klass: Umedia::BorealisImage)
 
-      @format_field = (format_field.nil?) ? 'jp2' : format_field
+      @format_field = format_field.nil? ? 'jp2' : format_field
       @video_klass  = video_klass
       @audio_klass  = audio_klass
       @pdf_klass    = pdf_klass

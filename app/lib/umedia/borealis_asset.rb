@@ -52,7 +52,7 @@ module Umedia
     end
 
     def sanitize_field(field)
-      (field == {} || field == false || field == '') ? nil : field
+      field == {} || field == false || field == '' ? nil : field
     end
   end
 end

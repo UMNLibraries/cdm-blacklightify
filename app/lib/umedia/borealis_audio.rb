@@ -17,7 +17,7 @@ module Umedia
     end
 
     def type
-      (audio_playlist_id) ? 'kaltura_audio_playlist' : 'kaltura_audio'
+      audio_playlist_id ? 'kaltura_audio_playlist' : 'kaltura_audio'
     end
 
     def audio_playlist_id

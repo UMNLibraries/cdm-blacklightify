@@ -7,7 +7,7 @@ module MDL
     end
 
     def page
-      (search == nil) ? 0 : search
+      search == nil ? 0 : search
     end
 
     def search
