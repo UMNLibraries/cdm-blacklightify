@@ -90,7 +90,7 @@ module Umedia
       compound['pagefile'].split('.').last
     end
 
-    def asset(asset_klass, id, transcript, title: false)
+    def asset(asset_klass, id, collection, transcript, title: false)
       if title
         asset_klass.new(id: id,
           collection: collection,

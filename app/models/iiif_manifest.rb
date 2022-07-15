@@ -65,6 +65,7 @@ class IiifManifest
           }
       end
       if renderable_assets.any? hsh['rendering'] = renderable_assets.map { |a| rendering(a) }.flatten
+      end
       if rangeable_assets.any?
         hsh['structures'] = rangeable_assets
           .map
