@@ -5,6 +5,7 @@ require_relative './multi_date_formatter'
 module Umedia
   # CDMBL field mappings
   class Transformer
+    # Formatter to exclude Hash
     class RemoveHashFormatter
       def self.format(values)
         values unless values.is_a?(Hash)
@@ -19,7 +20,7 @@ module Umedia
         # Borealis code though, b/c my plan is to migrate Umedia to the new UMedia
         # platform and get rid of React altogether...partially b/c we can get
         # rid of a lot of this ugly config generation code
-        if !doc.fetch('format').is_a?(Hash)
+        unless doc.fetch('format').is_a?(Hash)
           doc = doc.merge('format_tesi' => doc.fetch('format'))
         end
         compounds = (doc['page'].is_a?(Hash) ? [] : doc['page']).to_json
@@ -28,6 +29,7 @@ module Umedia
       end
     end
 
+    # Kaltura Playlist Formatter
     class KalturaPlaylistDataFormatter
       def self.format(value)
         data = value.split(';').map do |playlist_entry_id|
