@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 module Umedia
+  # Rights Statements Definitions
   class RightsConfig
     attr_reader :url
+
     def initialize(url: '')
       @url = url
     end
+
     def mappings
       [
         {
@@ -90,5 +93,5 @@ module Umedia
     def mapping
       mappings.select { |mapping| mapping[:url] == url }.first
     end
- end
+  end
 end
