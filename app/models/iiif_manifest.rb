@@ -52,7 +52,7 @@ class IiifManifest
             'en' => [detail[:label]]
           },
           'value' => {
-            'en' => detail[:field_values].map { |v| v[:text] }
+            'en' => detail[:field_values].pluck(:text)
           }
         }
       end,
@@ -62,13 +62,13 @@ class IiifManifest
         hsh['requiredStatement'] = {
           'label' => 'Attribution',
           'value' => borealis_document.document['rights_statement_ssi']
-          }
+        }
       end
-      if renderable_assets.any? hsh['rendering'] = renderable_assets.map { |a| rendering(a) }.flatten
+      hsh['rendering'] = renderable_assets.map { |a| rendering(a) }.flatten if renderable_assets.any?
       if rangeable_assets.any?
         hsh['structures'] = rangeable_assets
-          .map
-          .with_index { |a, idx| structure(a, idx) }
+                            .map
+                            .with_index { |a, idx| structure(a, idx) }
       end
     end
   end
@@ -107,11 +107,11 @@ class IiifManifest
         }
       ]
     }.tap do |hsh|
-      if asset.playlist?
-        hsh['duration'] = asset.playlist_data.sum { |d| d['duration'] }
-      else
-        hsh['duration'] = borealis_document.duration
-      end
+      hsh['duration'] = if asset.playlist?
+                          asset.playlist_data.sum { |d| d['duration'] }
+                        else
+                          borealis_document.duration
+                        end
       width, height = annotation_aspect(asset)
 
       if width && height
