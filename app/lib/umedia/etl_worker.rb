@@ -71,18 +71,21 @@ module Umedia
     end
   end
 
+  # Record Transformer
   class RecordTransformer < CDMBL::RecordTransformer
     def field_transformer
       CompoundAggregatingFieldTransformer
     end
   end
 
+  # Compound Aggregating Transformer
   class CompoundAggregatingTransformer < CDMBL::Transformer
     def record_transformer
       RecordTransformer
     end
   end
 
+  # Tansformer
   class TransformWorker < CDMBL::TransformWorker
     prepend EtlAuditing
 
@@ -91,12 +94,14 @@ module Umedia
     end
   end
 
+  # OAI Request
   class OaiRequest < CDMBL::OaiRequest
     def initialize(**kwargs)
       super(kwargs.merge(client: OAIClient))
     end
   end
 
+  # OAI Client
   class OAIClient
     class << self
       ###
@@ -119,12 +124,14 @@ module Umedia
     end
   end
 
+  # Extractor
   class Extractor < CDMBL::Extractor
     def initialize(**kwargs)
       super(kwargs.merge(oai_request_klass: OaiRequest))
     end
   end
 
+  # ETL worker
   class ETLWorker < CDMBL::ETLWorker
     prepend EtlAuditing
 

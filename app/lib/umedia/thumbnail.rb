@@ -2,8 +2,8 @@
 
 module Umedia
   class Thumbnail
-    DEFAULT_AUDIO_URL = '/images/audio-3.png'.freeze
-    DEFAULT_VIDEO_URL = '/images/video-1.png'.freeze
+    DEFAULT_AUDIO_URL = '/images/audio-3.png'
+    DEFAULT_VIDEO_URL = '/images/video-1.png'
 
     attr_accessor :collection, :id, :cache_dir, :title, :type
 

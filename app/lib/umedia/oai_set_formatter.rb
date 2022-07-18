@@ -11,7 +11,7 @@ require 'cdmbl/formatters'
 # CatalogController.
 module Umedia
   class OaiSetFormatter
-    DELIMITER = '||'.freeze
+    DELIMITER = '||'
 
     class << self
       def format(value)

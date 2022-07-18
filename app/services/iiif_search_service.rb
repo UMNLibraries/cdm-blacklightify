@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+# IIIF Search Service
 class IiifSearchService
+  # Search Client
   class SearchClient
     def initialize
       @solr = RSolr.connect(url: IIIF_SEARCH_SOLR_URL)
@@ -8,18 +10,18 @@ class IiifSearchService
 
     def search(query:, item_id:)
       @solr.get('select', params: {
-        start: 0,
-        rows: 100,
-        qt: 'search',
-        fq: "item_id:\"#{item_id}\"",
-        fl: 'id,item_id,line,canvas_id,word_boundaries:[json]',
-        q: "line:\"#{query}\"",
-        defType: 'edismax',
-        hl: 'on',
-        'hl.fl' => 'line',
-        'hl.method' => 'unified',
-        wt: 'json'
-      })
+                  start: 0,
+                  rows: 100,
+                  qt: 'search',
+                  fq: "item_id:\"#{item_id}\"",
+                  fl: 'id,item_id,line,canvas_id,word_boundaries:[json]',
+                  q: "line:\"#{query}\"",
+                  defType: 'edismax',
+                  hl: 'on',
+                  'hl.fl' => 'line',
+                  'hl.method' => 'unified',
+                  wt: 'json'
+                })
     end
   end
 
@@ -51,13 +53,12 @@ class IiifSearchService
     # span multiple Solr records. Could it work with wildcarding?
     def expanded_query(query)
       words = query.split(' ').map { |w| w.downcase.strip }
-      splits = words.map.with_index do |w, i|
+      splits = words.map.with_index do |_, i|
         before = words[0..i]
         after = words[(i + 1)..-1]
         [before, after]
       end
-      end_of_line_template = '("*%s")'
-      beginning_of_link_template = '("%s*")'
+
       splits.map do |first, last|
         parts = []
         parts << (template % first.join(' ')) if first.any?
