@@ -59,14 +59,13 @@ module Umedia
 
     def Umedia_identifiers
       identifiers = Array(record['page'])
-        .select { |p| p['resour'] }
-        .flat_map do |page|
-          self.class.superclass.new(
-            record: page,
-            field_mapping: CDMBL::FieldMapping.new(config: RESOUR_FIELD_MAPPING)
-          ).reduce.values
-        end
-
+                    .select { |p| p['resour'] }
+                    .flat_map do |page|
+                      self.class.superclass.new(
+                        record: page,
+                        field_mapping: CDMBL::FieldMapping.new(config: RESOUR_FIELD_MAPPING)
+                      ).reduce.values
+                    end
       { 'identifier_ssim' => identifiers }
     end
   end
@@ -135,7 +134,7 @@ module Umedia
   class ETLWorker < CDMBL::ETLWorker
     prepend EtlAuditing
 
-    def initialize 
+    def initialize
       @transform_worker_klass = TransformWorker
       @extractor_klass = Extractor
       super(self.class)

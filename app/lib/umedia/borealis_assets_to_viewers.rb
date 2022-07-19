@@ -3,9 +3,9 @@
 module Umedia
   class BorealisAssetsToViewers
     attr_reader :assets
-    
+
     def initialize(assets: [])
-      @assets          = assets
+      @assets = assets
     end
 
     def viewers

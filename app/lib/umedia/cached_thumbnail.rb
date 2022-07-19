@@ -3,6 +3,7 @@
 module Umedia
   class Thumbnail
     attr_accessor :collection, :id, :cache_dir, :title, :url
+
     def initialize(collection: :missing_collection,
                    id: :missing_id,
                    cache_dir: File.join(Rails.root, 'thumbnails'),
@@ -32,7 +33,7 @@ module Umedia
     end
 
     def save
-      File.open("#{cache_dir}/#{filename}", 'wb') { |file| file.write(data)}
+      File.open("#{cache_dir}/#{filename}", 'wb') { |file| file.write(data) }
     end
 
     def cached_file

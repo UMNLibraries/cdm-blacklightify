@@ -11,16 +11,16 @@ module Umedia
     def to_viewer
       {
         'transcript' => {
-            'texts' => [],
-            'label' => 'PDF'
+          'texts' => [],
+          'label' => 'PDF'
         },
         'type' => type,
         'config' => {
           'height' => 800,
           'width' => '100%'
         },
-       'thumbnail' => '/images/reflections-pdf-icon.png',
-       'values' => values
+        'thumbnail' => '/images/reflections-pdf-icon.png',
+        'values' => values
       }
     end
 

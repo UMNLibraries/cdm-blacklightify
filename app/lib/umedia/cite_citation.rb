@@ -3,6 +3,7 @@
 module Umedia
   class CiteCitation
     attr_reader :solr_doc, :base_url
+
     def initialize(solr_doc: '{}', base_url: '')
       @solr_doc = solr_doc
       @base_url = base_url

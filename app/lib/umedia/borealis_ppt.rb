@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
-  class BorealisPpt <  BorealisAsset
+  class BorealisPpt < BorealisAsset
     def src
       "http://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{collection}/id/#{id}/filename"
     end

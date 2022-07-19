@@ -6,6 +6,7 @@ require 'cgi'
 module Umedia
   class CiteDetails
     attr_reader :solr_doc, :auto_linker
+
     def initialize(solr_doc: '{}', auto_linker: Rinku)
       @solr_doc = solr_doc
       @auto_linker = auto_linker
@@ -64,9 +65,9 @@ module Umedia
     def map_details(values, label, delimiter = nil, facet = nil)
       if values != [{}]
         [
-          {label: label},
-          {delimiter: delimiter},
-          {field_values: values}
+          { label: label },
+          { delimiter: delimiter },
+          { field_values: values }
         ].inject({}) do |memo, item|
           !empty_value?(item) ? memo.merge(item) : memo
         end
@@ -79,7 +80,7 @@ module Umedia
 
     def field_values(values, key, facet)
       values.map do |val|
-        [{text: auto_link(val)}, {url: facet_url(key, val, facet)}].inject({}) do |memo, item|
+        [{ text: auto_link(val) }, { url: facet_url(key, val, facet) }].inject({}) do |memo, item|
           (item.values.first) ? memo.merge(item) : memo
         end
       end

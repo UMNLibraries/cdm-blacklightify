@@ -7,6 +7,7 @@
 module Umedia
   class CiteTranscript
     attr_reader :solr_doc
+
     def initialize(solr_doc: {})
       @solr_doc = solr_doc
     end

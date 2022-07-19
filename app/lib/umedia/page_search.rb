@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Umedia
-
   class PageSearch
     attr_reader :search_string, :compounds, :include_misses
+
     def initialize(search_string: '', compounds: [], include_misses: false)
       @search_string = search_string
       @compounds = compounds
@@ -12,6 +12,7 @@ module Umedia
 
     def results
       return compounds if search_string == ''
+
       filtered
     end
 
@@ -28,6 +29,5 @@ module Umedia
     def sanitize(val)
       val.class == String ? val : ''
     end
-
   end
 end

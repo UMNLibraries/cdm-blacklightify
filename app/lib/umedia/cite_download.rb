@@ -3,6 +3,7 @@
 module Umedia
   class CiteDownload
     attr_reader :assets
+
     def initialize(assets: [])
       @assets = assets
     end

@@ -129,6 +129,5 @@ module Umedia
     def bad_compound?(compound)
       compound['pagefile'].is_a?(Hash)
     end
-    
   end
 end

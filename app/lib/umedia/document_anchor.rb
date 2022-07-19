@@ -3,6 +3,7 @@
 module Umedia
   class DocumentAnchor
     attr_reader :doc, :search_text, :document_klass
+
     def initialize(doc: {}, search_text: false, document_klass: BorealisDocument)
       @doc = doc
       @search_text = search_text

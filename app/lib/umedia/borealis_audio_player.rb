@@ -2,7 +2,6 @@
 
 module Umedia
   class BorealisAudioPlayer < BorealisAssetsViewer
-
     def to_viewer
       asset.audio_playlist_id ? playlist : player
     end

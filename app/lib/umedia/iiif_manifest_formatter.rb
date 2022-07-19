@@ -7,6 +7,7 @@ module Umedia
     class << self
       def format(doc, retries = 3)
         return if av_media?(doc)
+
         collection, id = doc['id'].split('/')
 
         url = "https://cdm16022.contentdm.oclc.org/iiif/2/#{collection}:#{id}/manifest.json"
