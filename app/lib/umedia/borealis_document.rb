@@ -53,9 +53,9 @@ module Umedia
 
     def duration
       hours, minutes, seconds = document
-        .fetch('dimensions_ssi') { return }
-        .split(':')
-        .map(&:to_i)
+                                .fetch('dimensions_ssi') { return }
+                                .split(':')
+                                .map(&:to_i)
       minutes += hours * 60
       seconds + (minutes * 60)
     end
@@ -70,18 +70,20 @@ module Umedia
     # A non-compound record returns a list of one.
     def to_assets
       if compounds.empty?
-        [asset(asset_klass(format_field),
-              id,
-              transcript(document),
-              title)]
+        [asset(
+          asset_klass(format_field),
+          id,
+          transcript(document),
+          title
+        )]
       else
         compounds.map do |compound|
           next if bad_compound?(compound)
+
           asset(asset_klass(compound_format(compound)),
                 compound['pageptr'],
                 transcript(compound),
                 compound['title'])
-
         end.compact
       end
     end
@@ -93,15 +95,15 @@ module Umedia
     def asset(asset_klass, id, collection, transcript, title: false)
       if title
         asset_klass.new(id: id,
-          collection: collection,
-          transcript: transcript,
-          title: title,
-          document: document)
+                        collection: collection,
+                        transcript: transcript,
+                        title: title,
+                        document: document)
       else
         asset_klass.new(id: id,
-          collection: collection,
-          transcript: transcript,
-          document: document)
+                        collection: collection,
+                        transcript: transcript,
+                        document: document)
       end
     end
 
@@ -113,7 +115,7 @@ module Umedia
     end
 
     def transcript(doc)
-      doc.fetch('transc' , '')
+      doc.fetch('transc', '')
     end
 
     def compounds

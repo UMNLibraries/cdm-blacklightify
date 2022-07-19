@@ -2,7 +2,7 @@
 
 module Umedia
   class BorealisPdf < BorealisAsset
-     def src
+    def src
       if is_child?
         "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{collection}/id/#{id}/filename"
       else

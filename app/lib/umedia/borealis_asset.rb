@@ -4,6 +4,7 @@ module Umedia
   class BorealisAsset
     attr_reader :id, :collection, :transcripts, :title, :document, :assets
     attr_accessor :focus
+    
     def initialize(id: '',
                    collection: '',
                    transcript: false,

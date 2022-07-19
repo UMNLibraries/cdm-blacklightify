@@ -3,6 +3,7 @@
 module Umedia
   class BorealisAssetsToViewers
     attr_reader :assets
+    
     def initialize(assets: [])
       @assets          = assets
     end
@@ -28,7 +29,6 @@ module Umedia
         asset.type => asset.viewer.new(assets: assets).to_viewer
       }
     end
-
 
     # Sort assets into a hash keyed by asset type
     #
