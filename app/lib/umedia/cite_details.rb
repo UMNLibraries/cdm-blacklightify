@@ -68,7 +68,7 @@ module Umedia
           {delimiter: delimiter},
           {field_values: values}
         ].inject({}) do |memo, item|
-          (!empty_value?(item)) ? memo.merge(item) : memo
+          !empty_value?(item) ? memo.merge(item) : memo
         end
       end
     end

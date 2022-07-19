@@ -2,7 +2,7 @@
 
 module Umedia
   class IiifManifestFormatter
-    AV_KEYS = %w(audio audioa video videoa)
+    AV_KEYS = %w[audio audioa video videoa]
 
     class << self
       def format(doc, retries = 3)

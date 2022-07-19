@@ -22,7 +22,7 @@ class SolrToReactCitation
   end
 
   def items
-    transform.map { |item| !item.empty? ? item : nil }.compact
+    transform.map { |item| item.empty? ? nil : item }.compact
   end
 
   private

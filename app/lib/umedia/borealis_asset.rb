@@ -54,7 +54,8 @@ module Umedia
     end
 
     def sanitize_field(field)
-      field == {} || field == false || field == '' ? nil : field
+      # field == {} || field == false || field == '' ? nil : field
+      nil if [{}, false, ''].include?(field)
     end
   end
 end
