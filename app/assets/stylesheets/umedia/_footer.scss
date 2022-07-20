@@ -1,0 +1,58 @@
+footer {
+    flex-shrink: 0;
+    background-color: #f0efee;
+    #content {
+        margin-top: 1rem;
+        padding: 0;
+        padding-bottom: 2rem;
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        a {
+            display: block;
+            color: #0053b0;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        li {
+            padding: .8rem;
+            text-decoration: underline;
+        }
+        li:hover {
+            a {
+                color: #333;
+            }
+            background-color: #ffde7a;
+            padding: .8rem;
+            text-decoration: none;
+        }
+        #copyright {
+            a {
+                display: inline-block;
+                text-decoration: underline;
+            }
+            a:hover {
+                background-color: #ffde7a;
+                color: #333;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+// this may need to be refactored. 2022-05-17
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
