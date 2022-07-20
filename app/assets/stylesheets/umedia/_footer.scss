@@ -1,6 +1,10 @@
 footer {
     flex-shrink: 0;
-    background-color: #f0efee;
+    background-color: #333;
+    color: #fafafa;
+    .card {
+        background-color: #333;
+    }
     #content {
         margin-top: 1rem;
         padding: 0;
@@ -11,10 +15,11 @@ footer {
         }
         a {
             display: block;
-            color: #0053b0;
+            color: #ffde7a;
             text-decoration: underline;
         }
         a:hover {
+            color: #333;
             background-color: #ffde7a;
             text-decoration: none;
         }
@@ -34,14 +39,12 @@ footer {
             ul {
                 list-style-type: none;
             }
-            li:not(:first-child) {
-                text-decoration: underline;
-            }
             li {
                 display: inline-block;
             }
-            li:hover {
+            li:first-child:hover {
                 text-decoration: none;
+                background-color: #333;
             }
         }
         #copyright {
