@@ -6,7 +6,7 @@
         align-items: center;
         height: 60px;
         padding: .75rem;
-        color: #ffffff;
+        color: #fafafa;
     }
     a:hover {
         background-color: #ffcc33;
@@ -20,7 +20,7 @@
         height: 100%;
     }
     #workmark {
-        fill: #ffffff;
+        fill: #fafafa;
     }
     #workmark:hover {
         background-color: #ffde7a;
@@ -30,7 +30,7 @@
         margin-left: auto;
     }
     #lock {
-        fill: #ffffff;
+        fill: #fafafa;
         padding: .25rem;
     }
 }
@@ -38,7 +38,7 @@
 #top {
     padding: 0;
     background-color: #333;
-    color: green;
+    // color: green;
     svg {
         height: 100%;
     }
@@ -50,10 +50,17 @@
         height: 100%;
         background-color: #ffde7a;
         fill: #002d61;
+        svg #libraries {
+            fill: #333;
+        }
+        svg #maroon-fill {
+            fill: #7a0019;
+        }
+    }
+    svg #libraries {
+        fill: #fafafa;
+    }
+    svg #maroon-fill {
+        fill: #ffcc33;
     }
 }
-
-// .maroon-fill {
-//     background-color: #ffffff;
-//     color: red;
-// }
