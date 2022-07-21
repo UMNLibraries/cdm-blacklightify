@@ -1,6 +1,6 @@
 #umn {
     padding: 0;
-    background-color: #5b0013;
+    background-color: #ffde7a;
     a {
         display: flex;
         align-items: center;
@@ -9,7 +9,7 @@
         color: #ffffff;
     }
     a:hover {
-        background-color: #ffde7a;
+        background-color: #ffcc33;
         color: #002d61;
         text-decoration: underline;
         #lock {
@@ -37,13 +37,14 @@
 
 #top {
     padding: 0;
-    background-color: #ffffff;
+    background-color: #333;
+    color: green;
     svg {
         height: 100%;
     }
     #logo {
         padding: .75rem;
-        fill: black;
+        // fill: green;
     }
     #logo:hover {
         height: 100%;
@@ -51,3 +52,8 @@
         fill: #002d61;
     }
 }
+
+// .maroon-fill {
+//     background-color: #ffffff;
+//     color: red;
+// }
