@@ -64,3 +64,25 @@
         fill: #ffcc33;
     }
 }
+
+#main {
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    #umedia {
+        font-weight: bold;
+        color: #fafafa;
+        padding: 1rem;
+    }
+    a:not(:first-child) {
+        color: #fafafa;
+        padding: 1.25rem;
+    }
+    a:hover {
+        background-color: #ffde7a;
+        color: #333;
+        text-decoration: none;
+    }
+    nav-link {
+        color: white;
+    }
+}
