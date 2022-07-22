@@ -66,15 +66,15 @@
 }
 
 #main {
-    // background-color: rgba(0, 0, 0, .5);
     color: #fff;
     // BEGIN TESTING nav on image
+    position: relative;
+    // placholder image
     background-image: url("https://images.unsplash.com/photo-1602536021806-942116f6f56f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80");
     min-height: 300px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    // position: relative;
     #main-nav {
         position: absolute;
         padding: .8rem;
@@ -92,17 +92,20 @@
             text-decoration: none;
         }
     }
+    #search-bar {
+        position: relative;
+        bottom: 0;
+    }
     #lil-nav {
         position: absolute;
-        bottom: 4rem;
+        bottom: 0;
+        // left: 0;
+        // right: 0;
         width: 100%;
+        // height: 3rem;
         background-color: rgba(0, 0, 0, .5);
         padding: .8rem;
-        // overflow: hidden;
         text-align: right;
-        // vertical-align: middle;
-        // display: flex;
-        // justify-content: end;
         p {
             margin-bottom: 0;
             a {

@@ -45,6 +45,17 @@
     <a href="/">Formats</a>
     <a href="/">Help</a>
   </div>
+
+  <div id="search-bar">
+    <%- unless params[:controller] == 'transcript' %>
+      <%= content_tag :div, class: 'navbar-search navbar navbar-light bg-light', role: 'navigation', aria: { label: t('blacklight.search.header') } do %>
+        <div class="<%= container_classes %>">
+          <%= render_search_bar  %>
+        </div>
+      <% end %>
+    <%- end %>
+  </div>
+  
   <div id="lil-nav">
     <p>
       <a href="/">object placholder title</a> in the <a href="/">object placholder collection</a>
@@ -52,12 +63,4 @@
   </div>
 </nav>
 
-<%- unless params[:controller] == 'transcript' %>
-  <%= content_tag :div, class: 'navbar-search navbar navbar-light bg-light', role: 'navigation', aria: { label: t('blacklight.search.header') } do %>
-    <div class="<%= container_classes %>">
-      <%= render_search_bar  %>
-    </div>
-  <% end %>
 
-
-<%- end %>
