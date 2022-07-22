@@ -82,28 +82,43 @@
         width: 100%;
         background-color: rgba(0, 0, 0, .5);
         overflow: hidden;
-        // a:first-child {
-        //     color: green;
-        //     // padding-left: 1rem;
-        //     // margin-left: 2rem;
-        // }
+        a {
+            color: #fafafa;
+            padding: 1.25rem;
+        }
+        a:hover {
+            background-color: #ffde7a;
+            color: #333;
+            text-decoration: none;
+        }
+    }
+    #lil-nav {
+        position: absolute;
+        bottom: 4rem;
+        width: 100%;
+        background-color: rgba(0, 0, 0, .5);
+        padding: .8rem;
+        // overflow: hidden;
+        text-align: right;
+        // vertical-align: middle;
+        // display: flex;
+        // justify-content: end;
+        p {
+            margin-bottom: 0;
+            a {
+                color: #ffcc33;
+                text-decoration: underline;
+            }
+            a:hover {
+                color: #333;
+                text-decoration: none;
+                background-color: #ffde7a;
+            }
+        }
     }
     // END TESTING nav on image
     #umedia {
         font-weight: bold;
-        color: #fafafa;
-        padding: 1rem;
-    }
-    a:not(:first-child) {
-        color: #fafafa;
-        padding: 1.25rem;
-    }
-    a:hover {
-        background-color: #ffde7a;
-        color: #333;
-        text-decoration: none;
-    }
-    nav-link {
-        color: white;
+        padding: 1rem; // possibly redundant
     }
 }
