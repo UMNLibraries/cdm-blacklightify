@@ -4,6 +4,7 @@ require 'rinku'
 require 'cgi'
 
 module Umedia
+  # CiteDetails
   class CiteDetails
     attr_reader :solr_doc, :auto_linker
 

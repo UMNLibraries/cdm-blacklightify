@@ -2,6 +2,7 @@
 
 require 'kaltura'
 
+# KalturaMediaEntryService
 class KalturaMediaEntryService
   class << self
     def get(id)
@@ -20,7 +21,7 @@ class KalturaMediaEntryService
     params = {
       'entryId' => id,
       'version' => -1,
-      'ks' => ENV['KALTURA_SESSION']
+      'ks' => ENV.fetch('KALTURA_SESSION', nil)
     }
     client.queue_service_action_call(
       'baseentry',

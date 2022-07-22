@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # BorealisImage
   class BorealisImage < BorealisAsset
     def src
       "/contentdm-images/info?id=#{collection}:#{id}"

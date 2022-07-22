@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # PageSearch
   class PageSearch
     attr_reader :search_string, :compounds, :include_misses
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module MDL
+  # TranscriptSearch
   class TranscriptSearch
     attr_reader :transcripts, :search_text
     def initialize(transcripts: [], search_text: '')
@@ -9,7 +10,7 @@ module MDL
     end
 
     def page
-      search == nil? 0 : search
+      search || 0
     end
 
     def search

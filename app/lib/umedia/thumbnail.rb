@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # Thumbnail
   class Thumbnail
     DEFAULT_AUDIO_URL = '/images/audio-3.png'
     DEFAULT_VIDEO_URL = '/images/video-1.png'

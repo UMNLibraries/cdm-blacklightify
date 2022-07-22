@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # BorealisAssetMap
   class BorealisAssetMap
     attr_reader :format_field,
                 :video_klass,

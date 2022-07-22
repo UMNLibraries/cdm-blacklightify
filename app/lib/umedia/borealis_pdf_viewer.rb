@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # BorealisPDFViewer
   class BorealisPDFViewer < BorealisAssetsViewer
     def type
       'pdf'

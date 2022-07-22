@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # BorealisPdf
   class BorealisPdf < BorealisAsset
     def src
       if is_child?

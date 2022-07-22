@@ -15,7 +15,7 @@ class SidekiqTaskTest < ActiveSupport::TestCase
       end
       stats = Sidekiq::Stats.new
       assert_kind_of Sidekiq::Stats, stats
-      assert_match /Processed:\s+\d/, out
+      assert_match(/Processed:\s+\d/, out)
     end
 
     it ':clear_queues - clear all sidekiq queues' do
@@ -24,7 +24,7 @@ class SidekiqTaskTest < ActiveSupport::TestCase
       end
       stats = Sidekiq::Stats.new
       assert_equal(0, stats.enqueued)
-      assert_match /Processed:\s+0/, out
+      assert_match(/Processed:\s+0/, out)
     end
   end
 end

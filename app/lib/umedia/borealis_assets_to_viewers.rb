@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # BorealisAssetsToViewers
   class BorealisAssetsToViewers
     attr_reader :assets
 
@@ -9,7 +10,7 @@ module Umedia
     end
 
     def viewers
-      grouped_assets.map do |klass, assets|
+      grouped_assets.map do |_, assets|
         to_viewer(assets.first, assets)
       end.reduce({}, :merge)
     end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # BorealisAudioPlayer
   class BorealisAudioPlayer < BorealisAssetsViewer
     def to_viewer
       asset.audio_playlist_id ? playlist : player

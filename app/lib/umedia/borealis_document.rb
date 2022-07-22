@@ -7,6 +7,7 @@ require 'json'
 # a document from Solr, and the other half expects one from
 # ContentDM. We should get that sorted out.
 module Umedia
+  # BorealisDocument
   class BorealisDocument
     attr_reader :document,
                 :asset_map_klass,

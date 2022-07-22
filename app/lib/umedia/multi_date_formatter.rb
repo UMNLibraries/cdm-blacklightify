@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # MultiDateFormatter
   class MultiDateFormatter
     def self.format(value)
       years = String(value).scan(/\d{4}/)

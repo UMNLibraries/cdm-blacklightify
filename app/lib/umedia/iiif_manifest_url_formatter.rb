@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # IiifManifestUrlFormatter
   class IiifManifestUrlFormatter
     class << self
       def format(doc)

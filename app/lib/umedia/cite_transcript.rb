@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
-# frozen_string_literal: true
-
-# frozen_string_literal: true
-
 module Umedia
+  # CiteTranscript
   class CiteTranscript
     attr_reader :solr_doc
 

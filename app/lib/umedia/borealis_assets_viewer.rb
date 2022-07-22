@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # BorealisAssetsViewer
   class BorealisAssetsViewer
     attr_reader :assets
 

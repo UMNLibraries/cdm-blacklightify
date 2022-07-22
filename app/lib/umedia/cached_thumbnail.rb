@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # Thumbnail
   class Thumbnail
     attr_accessor :collection, :id, :cache_dir, :title, :url
 

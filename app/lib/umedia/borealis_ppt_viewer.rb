@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # BorealisPptViewer
   class BorealisPptViewer < BorealisAssetsViewer
     def to_viewer
       {

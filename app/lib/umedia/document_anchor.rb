@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # DocumentAnchor
   class DocumentAnchor
     attr_reader :doc, :search_text, :document_klass
 

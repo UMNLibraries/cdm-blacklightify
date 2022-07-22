@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Iiifcontroller
 class IiifController < ApplicationController
   # include Blacklight::SearchHelper
 

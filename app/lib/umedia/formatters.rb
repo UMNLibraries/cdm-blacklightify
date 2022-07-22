@@ -6,6 +6,7 @@ require 'net/http'
 
 # Formatters to clean up CONTENTdm API metadata
 module Umedia
+  # Formatters
   class Formatters
     # @TODO
     # - Move generic formatters to CDMDEXER

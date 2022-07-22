@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # BorealisOpenSeadragon
   class BorealisOpenSeadragon < BorealisAssetsViewer
     attr_accessor :focus
 

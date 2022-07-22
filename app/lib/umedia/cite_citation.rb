@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
+  # CiteCitation
   class CiteCitation
     attr_reader :solr_doc, :base_url
 

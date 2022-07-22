@@ -10,6 +10,7 @@ require 'cdmbl/formatters'
 # and then represent the result using the OaiSet model. See
 # CatalogController.
 module Umedia
+  # OaiSetFormatter
   class OaiSetFormatter
     DELIMITER = '||'
 
