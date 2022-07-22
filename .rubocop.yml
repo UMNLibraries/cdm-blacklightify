@@ -46,6 +46,7 @@ Metrics/ClassLength:
   Exclude:
   - 'app/lib/umedia/transformer.rb'
   - 'app/models/iiif_manifest.rb'
+  - 'app/lib/umedia/process_document_for_search.rb'
 
 Metrics/MethodLength:
   Max: 20
@@ -55,6 +56,21 @@ Metrics/MethodLength:
   - 'app/lib/umedia/citation/styles/wikipedia.rb'
   - 'app/lib/umedia/rights_config.rb'
   - 'app/lib/umedia/cite_details.rb'
+  - 'app/models/iiif_manifest.rb'
+
+Metrics/AbcSize:
+  Exclude:
+  - 'app/lib/umedia/process_document_for_search.rb'
 
 Minitest/MultipleAssertions:
   Max: 20
+
+# do_thing rescue Exception
+# MJB likes this form and rubocop can stuff it.
+Style/RescueModifier:
+  Enabled: false
+
+# x, y, z = [a, b, c]
+# Allowed
+Style/ParallelAssignment:
+  Enabled: false

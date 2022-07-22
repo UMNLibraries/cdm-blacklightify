@@ -124,7 +124,7 @@ module Umedia
       parts = title.split(';').map(&:strip)
       info = {}
       parts.each do |part|
-        sections = part.split(' ')
+        sections = part.split
         sections.shift
         if /^bbox/.match(part)
           x0, y0, x1, y1 = sections
@@ -218,9 +218,7 @@ module Umedia
           candidate.image_file.close
           candidate.image_file.unlink
         end
-        if File.exist?(candidate.ocr_output_file_path)
-          File.unlink(candidate.ocr_output_file_path)
-        end
+        File.unlink(candidate.ocr_output_file_path) rescue Errno::ENOENT
       end
     end
 
