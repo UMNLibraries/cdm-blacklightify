@@ -24,54 +24,54 @@ module Umedia
 
     def details
       details_with_actual_collections.map do |field|
-        if !redundant_rights_field?(field)
-          val = solr_doc[field[:key]]
-          vals = field_values([val].flatten, field[:key], field[:facet])
-          map_details(vals, field[:label], field[:delimiter])
-        end
+        next if redundant_rights_field?(field)
+
+        val = solr_doc[field[:key]]
+        vals = field_values([val].flatten, field[:key], field[:facet])
+        map_details(vals, field[:label], field[:delimiter])
       end.compact
     end
 
     private
 
     def redundant_rights_field?(field)
-      has_rights_uri? && field[:key] == 'rights_ssi'
+      rights_uri? && field[:key] == 'rights_ssi'
     end
 
-    def has_rights_uri?
+    def rights_uri?
       solr_doc.fetch('rights_uri_ssi', false) != false
     end
 
     # Many users add Contributing org details in the OAI collection name field.
     # We don't want to show these collections, because they are redundant with
     # contributing org. So, remove collection if these two field values are the same
-    def details_with_actual_collections()
+    def details_with_actual_collections
       details_fields.select do |field|
-        good_collection(field, solr_doc) || !is_collection(field)
+        good_collection?(field, solr_doc) || !collection?(field)
       end
     end
 
-    def is_collection(field)
+    def collection?(field)
       field[:key] == 'collection_name_ssi'
     end
 
-    def good_collection(field, doc)
-      is_collection(field) && !same_contrib_and_collection?(doc)
+    def good_collection?(field, doc)
+      collection?(field) && !same_contrib_and_collection?(doc)
     end
 
     def same_contrib_and_collection?(doc)
       doc['collection_name_ssi'] == doc['contributing_organization_ssi']
     end
 
-    def map_details(values, label, delimiter = nil, facet = nil)
-      if values != [{}]
-        [
-          { label: label },
-          { delimiter: delimiter },
-          { field_values: values }
-        ].inject({}) do |memo, item|
-          !empty_value?(item) ? memo.merge(item) : memo
-        end
+    def map_details(values, label, delimiter = nil)
+      return if values == [{}]
+
+      [
+        { label: label },
+        { delimiter: delimiter },
+        { field_values: values }
+      ].inject({}) do |memo, item|
+        empty_value?(item) ? memo : memo.merge(item)
       end
     end
 
@@ -82,7 +82,7 @@ module Umedia
     def field_values(values, key, facet)
       values.map do |val|
         [{ text: auto_link(val) }, { url: facet_url(key, val, facet) }].inject({}) do |memo, item|
-          (item.values.first) ? memo.merge(item) : memo
+          item.values.first ? memo.merge(item) : memo
         end
       end
     end
@@ -92,8 +92,8 @@ module Umedia
       auto_linker.auto_link(text) if text
     end
 
-    def facet_url(key, val, facet = false)
-      (facet && val) ? CGI.escape("/catalog?f[#{key}][]=#{val}") : nil
+    def facet_url(key, val, facet: false)
+      facet && val ? CGI.escape("/catalog?f[#{key}][]=#{val}") : nil
     end
 
     def details_fields

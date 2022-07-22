@@ -14,15 +14,15 @@ module Umedia
     def anchor
       case document_klass.new(document: doc).first_key
       when 'image'
-        initial_path = "/image/0#{search}"
+        "/image/0#{search}"
       when 'kaltura_video'
-        initial_path = '/kaltura_video'
+        '/kaltura_video'
       when 'kaltura_audio'
-        initial_path = '/kaltura_audio'
+        '/kaltura_audio'
       when 'pdf'
-        initial_path = '/pdf/0'
+        '/pdf/0'
       else
-        initial_path = ''
+        ''
       end
     end
 

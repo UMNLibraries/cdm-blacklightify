@@ -34,6 +34,7 @@ Lint/ShadowedException:
   - 'app/services/umedia/image_service.rb'
 
 Metrics/BlockLength:
+  Max: 30
   Exclude:
   - 'config/routes.rb'
   - 'app/controllers/catalog_controller.rb'
@@ -41,15 +42,19 @@ Metrics/BlockLength:
   - 'lib/tasks/umedia/sidekiq.rake'
 
 Metrics/ClassLength:
+  Max: 150
   Exclude:
   - 'app/lib/umedia/transformer.rb'
+  - 'app/models/iiif_manifest.rb'
 
 Metrics/MethodLength:
+  Max: 20
   Exclude:
   - 'app/lib/umedia/citation/styles/coins.rb'
   - 'app/lib/umedia/citation/styles/mla.rb'
   - 'app/lib/umedia/citation/styles/wikipedia.rb'
   - 'app/lib/umedia/rights_config.rb'
+  - 'app/lib/umedia/cite_details.rb'
 
 Minitest/MultipleAssertions:
   Max: 20
