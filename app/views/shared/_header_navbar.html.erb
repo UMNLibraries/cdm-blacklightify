@@ -38,15 +38,14 @@
 </nav>
 
 <nav class="nav" id="main">
-  <a href="/" id="umedia">UMedia</a>
-  <a href="/">Collections</a>
-  <a href="/">Subjects</a>
-  <a href="/">Formats</a>
-  <a href="/">Help</a>
+  <div id="main-nav">
+    <a href="/" id="umedia">UMedia</a>
+    <a href="/">Collections</a>
+    <a href="/">Subjects</a>
+    <a href="/">Formats</a>
+    <a href="/">Help</a>
+  </div>
 </nav>
-
-
-
 
 <%- unless params[:controller] == 'transcript' %>
   <%= content_tag :div, class: 'navbar-search navbar navbar-light bg-light', role: 'navigation', aria: { label: t('blacklight.search.header') } do %>
@@ -54,4 +53,6 @@
       <%= render_search_bar  %>
     </div>
   <% end %>
+
+
 <%- end %>
