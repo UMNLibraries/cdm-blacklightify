@@ -6,6 +6,7 @@ require 'net/http'
 
 # Formatters to clean up CONTENTdm API metadata
 module Umedia
+  # Formatters
   class Formatters
     # @TODO
     # - Move generic formatters to CDMDEXER
@@ -157,6 +158,23 @@ module Umedia
     class IiifManifestUrlFormatter
       def self.format(value)
         "https://cdm16022.contentdm.oclc.org/iiif/2/#{value}/manifest.json"
+      end
+    end
+
+    # KalturaPlaylistDataFormatter
+    class KalturaPlaylistDataFormatter
+      def self.format(value)
+        data = value.split(';').map do |playlist_entry_id|
+          id = playlist_entry_id.strip
+          entry = KalturaMediaEntryService.get(id)
+          {
+            entry_id: playlist_entry_id,
+            duration: entry.duration,
+            name: entry.name
+          }
+        end
+
+        JSON.generate(data)
       end
     end
   end

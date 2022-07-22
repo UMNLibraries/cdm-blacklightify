@@ -787,6 +787,12 @@ field_mappings:
       - CDMDEXER::StripFormatter
     origin_path: kaltua
   -
+    dest_path: kaltura_audio_playlist_entry_data_ts
+    formatters:
+      - CDMDEXER::StripFormatter
+      - Umedia::Formatters::KalturaPlaylistDataFormatter
+    origin_path: kaltur
+  -
     dest_path: kaltura_video_ssi
     formatters:
       - CDMDEXER::StripFormatter
@@ -801,6 +807,11 @@ field_mappings:
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: kaltud
+  -
+    dest_path: compound_objects_ts
+    formatters:
+      - CDMDEXER::ToJsonFormatter
+    origin_path: page
   -
     dest_path: coordinates_llsi
     formatters:

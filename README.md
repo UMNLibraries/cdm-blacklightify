@@ -105,3 +105,11 @@ $ bundle exec umedia:thumbnails:purge
 # Purge thumbs by doc id, space separated
 $ DOC_IDS='p16022coll262:172 p16022coll262:173' bundle exec rake umedia:thumbnails:purge
 ```
+
+## Example Items
+
+* Moving Image / http://localhost:3000/catalog/p16022coll262:494
+* Still Image / http://localhost:3000/catalog/p16022coll208:2288
+* Sound / http://localhost:3000/catalog/p16022coll171:610
+* Text / http://localhost:3000/catalog/p16022coll282:5610
+* Kaltura Audio Playlist / http://localhost:3000/catalog/p16022coll171:3715
