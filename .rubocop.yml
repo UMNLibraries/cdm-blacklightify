@@ -38,6 +38,7 @@ Metrics/BlockLength:
   - 'config/routes.rb'
   - 'app/controllers/catalog_controller.rb'
   - 'lib/tasks/umedia.rake'
+  - 'lib/tasks/umedia/sidekiq.rake'
 
 Metrics/ClassLength:
   Exclude:
