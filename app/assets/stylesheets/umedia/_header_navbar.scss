@@ -93,16 +93,22 @@
         }
     }
     #search-bar {
-        position: relative;
-        bottom: 0;
+        position: absolute;
+        top: 35%;
+        width: 60%;
+        height: 20%;
+        left: 20%;
+        #the-bar-itself {
+            background-color: rgba(255, 250, 250, 0.5);
+            padding: 1rem;
+            margin: 1rem;
+            margin: 0 auto;
+        }
     }
     #lil-nav {
         position: absolute;
         bottom: 0;
-        // left: 0;
-        // right: 0;
         width: 100%;
-        // height: 3rem;
         background-color: rgba(0, 0, 0, .5);
         padding: .8rem;
         text-align: right;
