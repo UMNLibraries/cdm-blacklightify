@@ -13,7 +13,7 @@ class ThumbnailsTaskTest < ActiveSupport::TestCase
     it ':store - should store a thumbnail image for a single doc' do
       ENV['DOC_IDS'] = 'p16022coll262:173'
 
-      out, _ = capture_io do
+      out, = capture_io do
         Rake::Task['umedia:thumbnails:store'].invoke
       end
       assert_equal 'Thumbnail storage jobs created: 1', out.strip
@@ -22,7 +22,7 @@ class ThumbnailsTaskTest < ActiveSupport::TestCase
     it 'purge - should purge a thumbnail image for a single doc' do
       ENV['DOC_IDS'] = 'p16022coll262:173'
 
-      out, _ = capture_io do
+      out, = capture_io do
         Rake::Task['umedia:thumbnails:purge'].invoke
       end
       assert_equal 'Thumbnail purge jobs created: 1', out.strip

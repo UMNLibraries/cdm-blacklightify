@@ -10,7 +10,7 @@ class SidekiqTaskTest < ActiveSupport::TestCase
     end
 
     it ':stats - should return sidekiq stats' do
-      out, _ = capture_io do
+      out, = capture_io do
         Rake::Task['umedia:sidekiq:stats'].invoke
       end
       stats = Sidekiq::Stats.new
@@ -19,7 +19,7 @@ class SidekiqTaskTest < ActiveSupport::TestCase
     end
 
     it ':clear_queues - clear all sidekiq queues' do
-      out, _ = capture_io do
+      out, = capture_io do
         Rake::Task['umedia:sidekiq:clear_queues'].invoke
       end
       stats = Sidekiq::Stats.new
