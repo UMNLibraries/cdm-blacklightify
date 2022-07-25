@@ -9,24 +9,17 @@
         color: #333;
     }
     a:hover {
-        background-color: #ffcc33;
-        color: #333;
+        background-color: #7a0019;
+        color: #fafafa;
         text-decoration: underline;
         #lock {
-            fill: #333;
-        }
-        #give {
-            color: green;
+            fill: #fafafa;
         }
     }
     svg {
         height: 100%;
     }
     #workmark {
-        fill: #7a0019;
-    }
-    #workmark:hover {
-        background-color: #ffde7a;
         fill: #7a0019;
     }
     #one_stop {
@@ -36,14 +29,22 @@
         fill: #333;
         padding: .25rem;
     }
+    #umn-logo:hover {
+        fill: #fafafa;
+        svg #workmark {
+            fill: #ffcc33
+        }
+    }
     #give {
         padding: 0px 1.25rem;
         border: 6px solid #ffde7a;
         box-shadow: 0px 0px 0px 2px #fafafa inset;
     }
     #give:hover {
-        border: 6px solid #ffcc33;
-        box-shadow: 0px 0px 0px 2px #333 inset;
+        border: 6px solid #7a0019;
+        box-shadow: 0px 0px 0px 2px #fafafa inset;
+        background-color: #7a0019;
+        color: #fafafa;
     }
 }
 
