@@ -15,6 +15,9 @@
         #lock {
             fill: #333;
         }
+        #give {
+            color: green;
+        }
     }
     svg {
         height: 100%;
@@ -33,18 +36,25 @@
         fill: #333;
         padding: .25rem;
     }
+    #give {
+        padding: 0px 1.25rem;
+        border: 6px solid #ffde7a;
+        box-shadow: 0px 0px 0px 2px #fafafa inset;
+    }
+    #give:hover {
+        border: 6px solid #ffcc33;
+        box-shadow: 0px 0px 0px 2px #333 inset;
+    }
 }
 
 #top {
     padding: 0;
     background-color: #333;
-    // color: green;
     svg {
         height: 100%;
     }
     #logo {
         padding: .75rem;
-        // fill: green;
     }
     #logo:hover {
         height: 100%;
