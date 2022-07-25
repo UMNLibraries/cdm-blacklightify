@@ -6,31 +6,31 @@
         align-items: center;
         height: 60px;
         padding: .75rem;
-        color: #fafafa;
+        color: #333;
     }
     a:hover {
         background-color: #ffcc33;
-        color: #002d61;
+        color: #333;
         text-decoration: underline;
         #lock {
-            fill: #002d61;
+            fill: #333;
         }
     }
     svg {
         height: 100%;
     }
     #workmark {
-        fill: #fafafa;
+        fill: #7a0019;
     }
     #workmark:hover {
         background-color: #ffde7a;
-        fill: #002d61;
+        fill: #7a0019;
     }
     #one_stop {
         margin-left: auto;
     }
     #lock {
-        fill: #fafafa;
+        fill: #333;
         padding: .25rem;
     }
 }
