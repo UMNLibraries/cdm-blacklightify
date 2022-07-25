@@ -77,19 +77,25 @@
     background-size: cover;
     #main-nav {
         position: absolute;
-        padding: .8rem;
-        padding-left: 0;
+        // padding: .8rem;
+        // padding-left: 0;
         width: 100%;
         background-color: rgba(0, 0, 0, .5);
         overflow: hidden;
         a {
             color: #fafafa;
-            padding: 1.25rem;
+            padding: 1rem;
+            // hover border bottom test
+            float: left;
+            padding: 14px 16px;
+            border-bottom: 3px solid transparent;
         }
         a:hover {
             background-color: #ffde7a;
             color: #333;
             text-decoration: none;
+            // hover border bottom test
+            border-bottom: 3px solid #ffcc33;
         }
     }
     #search-bar {
@@ -128,6 +134,5 @@
     // END TESTING nav on image
     #umedia {
         font-weight: bold;
-        padding: 1rem; // possibly redundant
     }
 }
