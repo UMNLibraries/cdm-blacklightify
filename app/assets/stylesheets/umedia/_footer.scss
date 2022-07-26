@@ -13,17 +13,17 @@ footer {
         padding: 0;
         padding-bottom: 2rem;
         ul {
-            list-style-type: none;
             padding: 0;
+            list-style-type: none;
         }
         a {
-            display: block;
             color: #ffde7a;
             text-decoration: underline;
+            display: block;
         }
         a:hover {
-            color: #333;
             background-color: #ffde7a;
+            color: #333;
             text-decoration: none;
         }
         li {
@@ -64,17 +64,15 @@ footer {
     }
 }
 
-// this may need to be refactored. 2022-05-17
 html,
 body {
     height: 100%;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    flex: 1 0 auto;
-}
+// body {
+//     display: flex;
+//     flex-direction: column;
+// }
+// main {
+//     flex: 1 0 auto;
+// }
