@@ -32,7 +32,7 @@ module Umedia
     end
 
     def save
-      File.open(file_path, 'wb') { |file| file.write(data) }
+      File.binwrite(file_path, data)
     end
 
     def cached?
@@ -66,7 +66,7 @@ module Umedia
     end
 
     def default?
-      [:sound, :video].include?(thumbnail_type)
+      %i[sound video].include?(thumbnail_type)
     end
 
     def remote_url
@@ -93,12 +93,7 @@ module Umedia
     end
 
     def default_cache_dir
-      File.join(
-        Rails.root,
-        'public',
-        'assets',
-        'thumbnails'
-      )
+      Rails.root.join(File.join('public', 'assets', 'thumbnails'))
     end
   end
 end

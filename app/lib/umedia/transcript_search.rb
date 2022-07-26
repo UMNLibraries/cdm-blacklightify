@@ -4,6 +4,7 @@ module MDL
   # TranscriptSearch
   class TranscriptSearch
     attr_reader :transcripts, :search_text
+
     def initialize(transcripts: [], search_text: '')
       @transcripts = transcripts
       @search_text = search_text

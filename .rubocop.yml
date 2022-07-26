@@ -61,15 +61,19 @@ Metrics/MethodLength:
 
 Metrics/AbcSize:
   Exclude:
-  - 'app/lib/umedia/process_document_for_search.rb'
   - 'app/models/iiif_manifest.rb'
-  - 'app/lib/umedia/cite_citation.rb'
+  - 'app/services/iiif_search_service.rb'
+  - 'app/lib/umedia/*.rb'
 
 Metrics/CyclomaticComplexity:
   Max: 8
 
 Minitest/MultipleAssertions:
   Max: 20
+
+Metrics/ParameterLists:
+  Exclude:
+  - 'app/lib/umedia/*.rb'
 
 # do_thing rescue Exception
 # MJB likes this form and rubocop can stuff it.

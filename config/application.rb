@@ -22,7 +22,7 @@ module Umedia
     #
     # config.time_zone = "Central Time (US & Canada)"
 
-    config.eager_load_paths += Dir[Rails.root.join('app', 'lib', '**', '**.rb')]
+    config.eager_load_paths += Dir[Rails.root.join(File.join('app', 'lib', '**', '**.rb'))]
 
     # Background Jobs
     config.active_job.queue_adapter = :sidekiq
