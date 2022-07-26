@@ -1,8 +1,8 @@
 #umn {
-    padding: 0;
     background-color: #ffde7a;
+    padding: 0;
     a {
-        display: flex;
+        display: flex; // Refactor w/o flexbox
         align-items: center;
         height: 60px;
         padding: .75rem;
@@ -19,21 +19,21 @@
     svg {
         height: 100%;
     }
-    #workmark {
+    #umn-logo:hover {
+        fill: #fafafa;
+        svg .maroon-fill {
+            fill: #ffcc33
+        }
+    }
+    .maroon-fill {
         fill: #7a0019;
     }
-    #one_stop {
+    #one-stop {
         margin-left: auto;
     }
     #lock {
         fill: #333;
         padding: .25rem;
-    }
-    #umn-logo:hover {
-        fill: #fafafa;
-        svg #workmark {
-            fill: #ffcc33
-        }
     }
     #give {
         padding: 0px 1.25rem;
@@ -41,16 +41,16 @@
         box-shadow: 0px 0px 0px 2px #fafafa inset;
     }
     #give:hover {
-        border: 6px solid #7a0019;
-        box-shadow: 0px 0px 0px 2px #fafafa inset;
         background-color: #7a0019;
         color: #fafafa;
+        border: 6px solid #7a0019;
+        box-shadow: 0px 0px 0px 2px #fafafa inset;
     }
 }
 
 #top {
-    padding: 0;
     background-color: #333;
+    padding: 0;
     svg {
         height: 100%;
     }
@@ -58,46 +58,41 @@
         padding: .75rem;
     }
     #logo:hover {
-        height: 100%;
         background-color: #ffde7a;
         fill: #002d61;
-        svg #libraries {
+        height: 100%;
+        svg .libraries-fill {
             fill: #333;
         }
-        svg #maroon-fill {
+        svg .maroon-fill {
             fill: #7a0019;
         }
     }
-    svg #libraries {
+    svg .libraries-fill {
         fill: #fafafa;
     }
-    svg #maroon-fill {
+    svg .maroon-fill {
         fill: #ffcc33;
     }
 }
 
 #main {
     color: #fff;
-    // BEGIN TESTING nav on image
     position: relative;
-    // placholder image
-    background-image: url("https://images.unsplash.com/photo-1602536021806-942116f6f56f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80");
+    background-image: url("https://images.unsplash.com/photo-1602536021806-942116f6f56f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"); // placholder image
     min-height: 300px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     #main-nav {
-        position: absolute;
-        // padding: .8rem;
-        // padding-left: 0;
-        width: 100%;
         background-color: rgba(0, 0, 0, .5);
+        position: absolute;
+        width: 100%;
         overflow: hidden;
         a {
             color: #fafafa;
-            padding: 1rem;
-            // hover border bottom test
             float: left;
+            padding: 1rem;
             padding: 14px 16px;
             border-bottom: 3px solid transparent;
         }
@@ -105,7 +100,6 @@
             background-color: #ffde7a;
             color: #333;
             text-decoration: none;
-            // hover border bottom test
             border-bottom: 3px solid #ffcc33;
         }
     }
@@ -122,7 +116,7 @@
             margin: 0 auto;
         }
     }
-    #lil-nav {
+    #main-image-attribute {
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -142,7 +136,6 @@
             }
         }
     }
-    // END TESTING nav on image
     #umedia {
         font-weight: bold;
     }
