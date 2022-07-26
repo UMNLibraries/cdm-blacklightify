@@ -28,7 +28,7 @@ module Umedia
     end
 
     def sanitize(val)
-      val.class == String ? val : ''
+      val.instance_of?(String) ? val : ''
     end
   end
 end

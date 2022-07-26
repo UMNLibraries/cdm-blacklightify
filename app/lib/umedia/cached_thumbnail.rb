@@ -7,14 +7,14 @@ module Umedia
 
     def initialize(collection: :missing_collection,
                    id: :missing_id,
-                   cache_dir: File.join(Rails.root, 'thumbnails'),
+                   cache_dir: Rails.root.join('thumbnails'),
                    title: '',
                    url: false)
       @collection = collection
       @id         = id
       @cache_dir  = cache_dir
       @title      = title
-      @url        = url ? url : default_url
+      @url        = url || default_url
     end
 
     def data
@@ -34,7 +34,7 @@ module Umedia
     end
 
     def save
-      File.open("#{cache_dir}/#{filename}", 'wb') { |file| file.write(data) }
+      File.binwrite("#{cache_dir}/#{filename}", data)
     end
 
     def cached_file

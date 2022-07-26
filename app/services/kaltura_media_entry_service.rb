@@ -5,9 +5,7 @@ require 'kaltura'
 # KalturaMediaEntryService
 class KalturaMediaEntryService
   class << self
-    def get(id)
-      new.get(id)
-    end
+    delegate :get, to: :new
   end
 
   attr_reader :client

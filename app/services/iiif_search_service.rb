@@ -52,7 +52,7 @@ class IiifSearchService
     # TODO: delete, probably. This was an attempt to provide results that
     # span multiple Solr records. Could it work with wildcarding?
     def expanded_query(query)
-      words = query.split(' ').map { |w| w.downcase.strip }
+      words = query.split.map { |w| w.downcase.strip }
       splits = words.map.with_index do |_, i|
         before = words[0..i]
         after = words[(i + 1)..-1]

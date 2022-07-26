@@ -42,7 +42,7 @@ module Umedia
         # hsh.merge!(child_field_2)
         # hsh.merge!(child_field_3)
         hsh.merge!(transcriptions)
-        hsh.merge!(Umedia_identifiers)
+        hsh.merge!(umedia_identifiers)
       end.select { |_, v| v.present? }
     end
 
@@ -57,7 +57,7 @@ module Umedia
       { 'transcription_tesim' => transcriptions }
     end
 
-    def Umedia_identifiers
+    def umedia_identifiers
       identifiers = Array(record['page'])
                     .select { |p| p['resour'] }
                     .flat_map do |page|

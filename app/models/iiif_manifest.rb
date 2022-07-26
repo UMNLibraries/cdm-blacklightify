@@ -31,6 +31,9 @@ class IiifManifest
     @borealis_document = borealis_document
   end
 
+  # TODO: Refactor this to be easier to read
+  # A lot of pluck, tap, map nested & chained
+  # Violates cyclomatic complexity in rubocop
   def as_json(*)
     {
       '@context' => 'http://iiif.io/api/presentation/3/context.json',
