@@ -11,8 +11,8 @@ module Umedia
       {
         'type' => asset.type,
         'targetId' => 'kaltura_player',
-        'wid' => '_1369852',
-        'uiconf_id' => 38708801,
+        'wid' => "_#{ENV.fetch('KALTURA_PARTNER_ID')}",
+        'uiconf_id' => ENV.fetch('KALTURA_PLAYER_UICONF_ID_SINGLE'),
         'entry_id' => asset.audio_id,
         'transcript' => {
           'texts' => asset.transcripts,
@@ -28,8 +28,8 @@ module Umedia
       {
         'type' => 'kaltura_audio_playlist',
         'targetId' => 'kaltura_player_playlist',
-        'wid' => '_1369852',
-        'uiconf_id' => 38719361,
+        'wid' => "_#{ENV.fetch('KALTURA_PARTNER_ID')}",
+        'uiconf_id' => ENV.fetch('KALTURA_PLAYER_UICONF_ID_COMPOUND'),
         'flashvars' => {
           'streamerType' => 'auto',
           'playlistAPI.kpl0Id' => asset.audio_playlist_id

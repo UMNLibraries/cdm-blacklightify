@@ -19,9 +19,9 @@
       <%= javascript_include_tag "application" %>
     <% end %>
 
-    <!-- Umedia Kaltura -->
-    <script src="https://cdnapisec.kaltura.com/p/1369852/sp/136985200/embedIframeJs/uiconf_id/41902002/partner_id/1369852"></script>
-    <script src="https://cdnapisec.kaltura.com/p/1369852/sp/136985200/embedIframeJs/uiconf_id/42156071/partner_id/1369852"></script>
+      <!-- Umedia Kaltura -->
+      <script src="https://cdnapisec.kaltura.com/p/<%= ENV.fetch('KALTURA_PARTNER_ID') %>/sp/136985200/embedIframeJs/uiconf_id/<%= ENV.fetch('KALTURA_PLAYER_UICONF_ID_SINGLE') %>/partner_id/<%= ENV.fetch('KALTURA_PARTNER_ID') %>"></script>
+      <script src="https://cdnapisec.kaltura.com/p/<%= ENV.fetch('KALTURA_PARTNER_ID') %>/sp/136985200/embedIframeJs/uiconf_id/<%= ENV.fetch('KALTURA_PLAYER_UICONF_ID_COMPOUND') %>/partner_id/<%= ENV.fetch('KALTURA_PARTNER_ID') %>"></script>
 
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>

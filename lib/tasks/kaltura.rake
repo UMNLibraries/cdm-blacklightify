@@ -15,7 +15,7 @@ namespace :kaltura do
     user_id = $stdin.gets.chomp
     secret = IO.console.getpass 'Enter your Kaltura User Secret: '
 
-    partner_id = 1369852
+    partner_id = ENV.fetch('KALTURA_PARTNER_ID')
     session_type = Kaltura::KalturaSessionType::USER
     expiry = 315_360_000 # ~10 years - assuming no leap years ¯\_(ツ)_/¯
     privileges = ''
