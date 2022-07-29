@@ -16,9 +16,7 @@ module Umedia
       end
 
       def ocr_temp_file_path
-        @ocr_temp_file_path ||= begin
-          Pathname.new(TMP_DIR).join("Umedia_tesseract_#{uuid}").to_s
-        end
+        @ocr_temp_file_path ||= Pathname.new(TMP_DIR).join("Umedia_tesseract_#{uuid}").to_s
       end
 
       def ocr_output_file_path

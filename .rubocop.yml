@@ -84,3 +84,11 @@ Style/RescueModifier:
 # Allowed
 Style/ParallelAssignment:
   Enabled: false
+
+Style/CaseLikeIf:
+  Exclude:
+  - 'app/lib/umedia/*.rb'
+
+Style/EachWithObject:
+  Exclude:
+  - 'app/lib/umedia/*.rb'

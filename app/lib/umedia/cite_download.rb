@@ -20,12 +20,12 @@ module Umedia
 
     def downloads
       assets.map do |asset|
-        unless asset.downloads.empty?
-          {
-            thumbnail: asset.thumbnail,
-            sources: asset.downloads
-          }
-        end
+        next if asset.downloads.empty?
+
+        {
+          thumbnail: asset.thumbnail,
+          sources: asset.downloads
+        }
       end
     end
   end

@@ -55,7 +55,7 @@ class IiifSearchService
       words = query.split.map { |w| w.downcase.strip }
       splits = words.map.with_index do |_, i|
         before = words[0..i]
-        after = words[(i + 1)..-1]
+        after = words[(i + 1)..]
         [before, after]
       end
 
