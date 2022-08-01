@@ -16,7 +16,15 @@ SitemapGenerator::Interpreter.send :include, Rails.application.routes.url_helper
 SitemapGenerator::Interpreter.send :include, Spotlight::Engine.routes.url_helpers
 
 # create the sitemap itself
-SitemapGenerator::Sitemap.create do
+sitemap_opts = if Rails.env.test?
+                 {
+                   public_path: 'tmp/',
+                   filename: 'sitemap-test'
+                 }
+               else
+                 {}
+               end
+SitemapGenerator::Sitemap.create(sitemap_opts) do
   response['response']['docs'].each do |doc|
     add "/item/#{doc['id']}", changefreq: 'weekly', lastmod: doc['dmmodified_ssi']
   end

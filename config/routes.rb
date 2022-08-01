@@ -24,6 +24,10 @@ Rails.application.routes.draw do
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :exportable
+
+    member do
+      get 'transcript' => 'transcript#index'
+    end
   end
 
   resources :bookmarks do
