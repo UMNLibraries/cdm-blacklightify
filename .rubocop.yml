@@ -51,13 +51,8 @@ Metrics/ClassLength:
 Metrics/MethodLength:
   Max: 20
   Exclude:
-  - 'app/lib/umedia/citation/styles/coins.rb'
-  - 'app/lib/umedia/citation/styles/mla.rb'
-  - 'app/lib/umedia/citation/styles/wikipedia.rb'
-  - 'app/lib/umedia/rights_config.rb'
-  - 'app/lib/umedia/cite_details.rb'
   - 'app/models/iiif_manifest.rb'
-  - 'app/lib/umedia/transformer.rb'
+  - 'app/lib/umedia/**/*.rb'
 
 Metrics/AbcSize:
   Exclude:
@@ -90,5 +85,9 @@ Style/CaseLikeIf:
   - 'app/lib/umedia/*.rb'
 
 Style/EachWithObject:
+  Exclude:
+  - 'app/lib/umedia/*.rb'
+
+Style/MultilineBlockChain:
   Exclude:
   - 'app/lib/umedia/*.rb'

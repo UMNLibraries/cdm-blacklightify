@@ -33,13 +33,11 @@ module Umedia
       def format_sequence(manifest)
         sequence = Array(manifest['sequences'])[0]
         canvases = Array(sequence['canvases'])
-        if sequence && canvases.size > 2
-          ###
-          # With this, UV will support "two-up" (side-by-side) pages
-          # in the viewer. Only makes sense visually if there are
-          # at least three canvases (pages).
-          manifest['sequences'][0]['viewingHint'] = 'paged'
-        end
+        ###
+        # With this, UV will support "two-up" (side-by-side) pages
+        # in the viewer. Only makes sense visually if there are
+        # at least three canvases (pages).
+        manifest['sequences'][0]['viewingHint'] = 'paged' if sequence && canvases.size > 2
       end
 
       private

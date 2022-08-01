@@ -41,7 +41,7 @@ module Umedia
     #   "kaltura_video" => {"type"=>"kaltura_video", "targetId"=>"blah"...
     # }
     def grouped_assets
-      assets.group_by { |asset| asset.class }
+      assets.group_by(&:class)
     end
   end
 end

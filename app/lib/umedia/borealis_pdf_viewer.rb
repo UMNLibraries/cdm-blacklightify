@@ -26,9 +26,9 @@ module Umedia
     end
 
     def values
-      assets.each_with_index.map do |pdf, i|
+      assets.each_with_index.map do |pdf, idx|
         {
-          'src' => pdf_src(pdf, i),
+          'src' => pdf_src(pdf, idx),
           'thumbnail' => pdf.thumbnail,
           'transcript' => {
             'texts' => pdf.transcripts,
@@ -41,9 +41,9 @@ module Umedia
     # Collection "p16022coll64" is special case: it is a compound object
     # made-up of a single multi-page PDF. We are working on ways to detect
     # these sorts of cases. For now, this behavior is hard-coded
-    def pdf_src(pdf, i)
+    def pdf_src(pdf, idx)
       if pdf.collection == 'p16022coll64'
-        "#{pdf.src}?page=#{i + 1}"
+        "#{pdf.src}?page=#{idx + 1}"
       else
         pdf.src
       end

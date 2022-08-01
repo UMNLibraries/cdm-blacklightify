@@ -28,7 +28,7 @@ class SolrToReactCitation
   private
 
   def transform
-    transformers.inject([]) { |tranformer| tranformer.new(solr_doc).to_hash }
+    transformers.inject([]) { |tranformer, _| tranformer.new(solr_doc).to_hash }
   end
 
   def transformers

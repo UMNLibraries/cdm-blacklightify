@@ -156,18 +156,17 @@ module Umedia
       uri = URI(candidate.image_url)
       req = Net::HTTP::Get.new(uri)
       response = http_connection.request(req)
-      if response.code == '200'
-        Tempfile.new(
-          candidate.image_filename_parts,
-          TMP_DIR,
-          mode: File::Constants::BINARY,
-          encoding: 'ascii-8bit'
-        ).tap do |file|
-          file << response.body
-          file.rewind
-        end
-      else
-        raise "failed to fetch image #{candidate.image_url}"
+      # Rubocop prefers this to a surrounding if/else
+      raise "Failed to fetch image #{candidate.image_url}" unless response.code == '200'
+
+      Tempfile.new(
+        candidate.image_filename_parts,
+        TMP_DIR,
+        mode: File::Constants::BINARY,
+        encoding: 'ascii-8bit'
+      ).tap do |file|
+        file << response.body
+        file.rewind
       end
     end
 
@@ -178,16 +177,17 @@ module Umedia
     end
 
     def fetch_manifest(http_connection)
+      # rubocop:disable Naming/MemoizedInstanceVariableName
+      # rubocop would prefer this method be named manifest or the var named @fetch_manifest
       @manifest ||= begin
         log("Fetching manifest at #{manifest_uri}")
         req = Net::HTTP::Get.new(manifest_uri)
         response = http_connection.request(req)
-        if response.code == '200'
-          JSON.parse(response.body)
-        else
-          raise 'Failed to fetch manifest'
-        end
+        raise 'Failed to fetch manifest' unless response.code == '200'
+
+        JSON.parse(response.body)
       end
+      # rubocop:enable Naming/MemoizedInstanceVariableName
     end
 
     def manifest_uri

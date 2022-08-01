@@ -20,9 +20,8 @@ module Umedia
         # Borealis code though, b/c my plan is to migrate Umedia to the new UMedia
         # platform and get rid of React altogether...partially b/c we can get
         # rid of a lot of this ugly config generation code
-        unless doc.fetch('format').is_a?(Hash)
-          doc = doc.merge('format_tesi' => doc.fetch('format'))
-        end
+        doc = doc.merge('format_tesi' => doc.fetch('format')) unless doc.fetch('format').is_a?(Hash)
+
         compounds = (doc['page'].is_a?(Hash) ? [] : doc['page']).to_json
         doc = doc.merge('compound_objects_ts' => compounds)
         Umedia::DocumentAnchor.new(doc: doc).anchor
