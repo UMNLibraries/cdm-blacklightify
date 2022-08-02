@@ -55,11 +55,9 @@
 
   <div id="search-bar">
     <%- unless params[:controller] == 'transcript' %>
-      <%= content_tag :div, class: 'navbar-search navbar-light', role: 'navigation', aria: { label: t('blacklight.search.header') } do %>
         <div class="<%= container_classes %>" id="the-bar-itself">
           <%= render_search_bar  %>
         </div>
-      <% end %>
     <%- end %>
   </div>
   
