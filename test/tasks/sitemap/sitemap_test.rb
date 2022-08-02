@@ -12,7 +12,9 @@ class SitemapGeneratorTest < ActiveSupport::TestCase
       Umedia::Application.load_tasks if Rake::Task.tasks.empty?
     end
     it ':create - tests sitemap generation' do
-      Rake::Task['sitemap:create'].invoke
+      capture_io do
+        Rake::Task['sitemap:create'].invoke
+      end
       # Test a known item is mapped within the file
       sitemap_data = Zlib::GzipReader.open('tmp/sitemap-test.xml.gz').read
       assert_match '<loc>https://umedia.lib.umn.edu/item/p16022coll171:7</loc>', sitemap_data
