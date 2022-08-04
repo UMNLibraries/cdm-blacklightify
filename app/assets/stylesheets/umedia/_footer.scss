@@ -54,6 +54,10 @@ footer {
                 background-color: #333;
             }
         }
+        .card-body:hover {
+            outline: 3px solid #ffde7a;
+            outline-offset: 4px;
+        }
         #copyright {
             a {
                 display: inline-block;
