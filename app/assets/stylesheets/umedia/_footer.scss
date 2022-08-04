@@ -23,7 +23,9 @@ footer {
             text-decoration: underline;
             display: block;
         }
-        a:hover {
+        a:hover,
+        a:focus {
+            outline: none;
             background-color: #ffde7a;
             color: #333;
             text-decoration: none;
@@ -57,7 +59,8 @@ footer {
                 display: inline-block;
                 text-decoration: underline;
             }
-            a:hover {
+            a:hover,
+            a:focus {
                 background-color: #ffde7a;
                 color: #333;
                 text-decoration: none;
@@ -76,4 +79,8 @@ body {
     font-family: Tahoma, Verdana, sans-serif;
     line-height: 1.6;
     height: 100%;
+}
+
+* {
+    border-radius: 0 !important;
 }
