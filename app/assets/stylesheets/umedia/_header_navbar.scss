@@ -59,7 +59,8 @@
     #logo {
         padding: .75rem;
     }
-    #logo:hover {
+    #logo:hover,
+    #logo:focus {
         background-color: #ffde7a;
         fill: #002d61;
         height: 100%;
@@ -128,8 +129,8 @@
             #search:hover,
             #search:focus {
                 box-shadow: none;
-                outline: 4px solid #0053b0;
-                outline-offset: 4px;
+                outline: 3px solid #0053b0;
+                outline-offset: 2px;
             }
         }
         #the-bar-itself>div>#q {
@@ -139,8 +140,8 @@
         #the-bar-itself>div>#q:hover,
         #the-bar-itself>div>#q:focus {
             box-shadow: none;
-            outline: 4px solid #0053b0;
-            outline-offset: 4px;
+            outline: 3px solid #0053b0;
+            outline-offset: 2px;
         }
     }
     #main-image-attribute {

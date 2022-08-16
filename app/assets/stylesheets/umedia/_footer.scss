@@ -54,9 +54,15 @@ footer {
                 background-color: #333;
             }
         }
-        .card-body:hover {
+        .card-body:hover,
+        .card-body:focus-within {
             outline: 3px solid #ffde7a;
             outline-offset: 4px;
+            a {
+                background-color: #ffde7a;
+                color: #333;
+                text-decoration: none;
+            }
         }
         #copyright {
             a {
