@@ -54,7 +54,17 @@ footer {
                 background-color: #333;
             }
         }
-        .card-body:hover,
+        .card-as-link:hover, //  WORKING
+        .card-as-link:focus-within {
+            outline: 3px solid #ffde7a;
+            outline-offset: 4px;
+            a {
+                background-color: #ffde7a;
+                color: #333;
+                text-decoration: none;
+            }
+        }
+        .card-body:hover, // check for redundancy
         .card-body:focus-within {
             outline: 3px solid #ffde7a;
             outline-offset: 4px;
