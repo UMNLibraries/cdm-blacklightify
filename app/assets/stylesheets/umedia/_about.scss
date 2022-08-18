@@ -1,0 +1,63 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#section-about {
+    background-color: #333;
+    // width: 100%;
+    #test-about-card_1 {
+        padding-top: 1.75rem;
+        padding-bottom: 2.5rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    #test-about-card_2 {
+        padding-top: 1.75rem;
+        padding-bottom: 2.5rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        #about-image {
+            border: none;
+            color: #fff;
+            position: relative;
+            background-image: url("https://images.unsplash.com/photo-1602536021806-942116f6f56f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"); // placholder image
+            min-height: 250px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            // margin-bottom: 0;
+        }
+        #about-image-desc {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #fafafa;
+            color: #333;
+            padding: .8rem;
+            text-align: left;
+            p {
+                margin-bottom: 0;
+                a {
+                    color: #0053b0;
+                    text-decoration: underline;
+                    border-bottom: 3px solid transparent;
+                }
+                a:hover,
+                a:focus {
+                    outline: none;
+                    color: #fafafa;
+                    text-decoration: none;
+                    background-color: #0053b0;
+                }
+            }
+        }
+    }
+}
+
+.card-action-button {
+    position: absolute;
+    bottom: -1.5rem;
+    right: 0.5rem;
+    z-index: 10;
+}
