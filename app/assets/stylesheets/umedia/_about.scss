@@ -8,15 +8,30 @@ body {
     // width: 100%;
     #test-about-card_1 {
         padding-top: 1.75rem;
-        padding-bottom: 2.5rem;
-        padding-left: 2rem;
-        padding-right: 2rem;
+        padding-bottom: 2.25rem;
+        // padding-left: 2rem;
+        // padding-right: 2rem;
+        .card-action-button {
+            position: absolute;
+            bottom: -1.5rem;
+            right: 0.5rem;
+            z-index: 10;
+            text-decoration: underline;
+            background-color: #7a0019;
+            border: none;
+        }
+        .card-action-button:hover {
+            background-color: #5b0013;
+            text-decoration: none;
+            outline: 3px solid #0053b0;
+            outline-offset: 2px;
+        }
     }
     #test-about-card_2 {
         padding-top: 1.75rem;
-        padding-bottom: 2.5rem;
-        padding-left: 2rem;
-        padding-right: 2rem;
+        padding-bottom: 2.25rem;
+        // padding-left: 2rem;
+        // padding-right: 2rem;
         #about-image {
             border: none;
             color: #fff;
@@ -55,9 +70,9 @@ body {
     }
 }
 
-.card-action-button {
-    position: absolute;
-    bottom: -1.5rem;
-    right: 0.5rem;
-    z-index: 10;
-}
+// .card-action-button {
+//     position: absolute;
+//     bottom: -1.5rem;
+//     right: 0.5rem;
+//     z-index: 10;
+// }
