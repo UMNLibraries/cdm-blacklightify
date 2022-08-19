@@ -37,9 +37,9 @@
       <%= render partial: 'shared/about' %>
       <%# <%= content_for(:container_header) %>
       <%# <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
-      <div class="row">
+      <section class="col-12" id="spotlight">
         <%= content_for?(:content) ? yield(:content) : yield %>
-      </div>
+      </section>
     </main>
 
     <%= render partial: 'shared/footer' %>

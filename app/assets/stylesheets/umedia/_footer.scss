@@ -3,6 +3,8 @@ footer {
     background-color: #333;
     color: #fafafa;
     padding-top: .6rem;
+    padding-left: 5vw;
+    padding-right: 5vw;
     .card {
         background-color: #333;
     }
@@ -14,6 +16,8 @@ footer {
         padding: 0;
         padding-bottom: 2rem;
         font-family: Tahoma, Verdana, sans-serif;
+        margin-left: 0;
+        margin-right: 0;
         ul {
             padding: 0;
             list-style-type: none;
