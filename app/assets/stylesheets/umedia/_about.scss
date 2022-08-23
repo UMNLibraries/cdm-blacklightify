@@ -1,58 +1,44 @@
-body {
-    padding: 0;
-    margin: 0;
-}
-
 #section-about {
     background-color: #333;
-    // width: 100%;
-    #test-about-card_1 {
+    #about-primary {
         padding-top: 2.25rem;
         padding-bottom: 2.5rem;
-        // padding-left: 2rem;
-        // padding-right: 2rem;
         .card-action-button {
             position: absolute;
             bottom: -1.5rem;
             right: 0.5rem;
             z-index: 10;
-            text-decoration: underline;
             background-color: #7a0019;
             border: none;
+            padding: 1rem;
+            text-decoration: underline;
         }
         .card-action-button:hover,
         .card-action-button:focus {
             box-shadow: none;
             background-color: #5b0013;
-            text-decoration: none;
             outline: 3px solid #0053b0;
             outline-offset: 2px;
+            text-decoration: none;
         }
         #about-stats {
+            padding: 0;
+            margin-bottom: 1.25rem;
             p {
                 padding: 0;
                 margin: 0;
             }
-            padding: 0;
         }
     }
-    #test-about-card_2 {
+    #about-image {
         padding-top: 2.25rem;
         padding-bottom: 2.5rem;
-        // padding-left: 2rem;
-        // padding-right: 2rem;
-        #about-image {
-            border: none;
-            color: #fff;
-            position: relative;
-            background-image: url("https://images.unsplash.com/photo-1602536021806-942116f6f56f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"); // placholder image
-            min-height: 250px;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            // margin-bottom: 0;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: none;
         }
-        #about-image-desc {
+        #about-image-attribute {
             position: absolute;
             bottom: 0;
             width: 100%;
@@ -64,15 +50,15 @@ body {
                 margin-bottom: 0;
                 a {
                     color: #0053b0;
-                    text-decoration: underline;
                     border-bottom: 3px solid transparent;
+                    text-decoration: underline;
                 }
                 a:hover,
                 a:focus {
-                    outline: none;
-                    color: #fafafa;
-                    text-decoration: none;
                     background-color: #0053b0;
+                    color: #fafafa;
+                    outline: none;
+                    text-decoration: none;
                 }
             }
         }

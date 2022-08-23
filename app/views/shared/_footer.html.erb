@@ -1,17 +1,14 @@
 <footer class="">
   <div class="container-fluid" id="content">
-    <%# this is messy . . . refactor the section, ul %>
     <section class="col-12">
       <h2>University of Minnesota Libraries</h2>
     </section>
-
     <ul id="contact">
       <li><h3>Contact the Libraries</h3></li>
       <li><a href=”/”>Live chat 24/7</a></li>
       <li><a href=”/”>Call us 612-624-3321</a></li>
       <li><a href=”/”>Email us</a></li>
     </ul>
-
     <section class="col-12">
       <div class="row">
         <article class="col-12 col-lg-4 col-md-6 mb-4 mb-lg-0">
@@ -45,14 +42,12 @@
         </article>
       </div>
     </section>
-
     <div class="col-12" id="copyright">
       <hr>
-      <p>&copy;2022 Regents of the University of Minnesota. All rights reserved. The University of Minnesota is an equal opportunity educator and employer.
+      <p>&copy;<%= Date.current.year %> Regents of the University of Minnesota. All rights reserved. The University of Minnesota is an equal opportunity educator and employer.
         <br>
         <a href="https://www.lib.umn.edu/about/privacy">Privacy statement</a> &#124; <a href="https://policy.umn.edu/it/itresources">Acceptable Use of IT Resources</a>
       </p>
     </div>
-
   </div>
 </footer>

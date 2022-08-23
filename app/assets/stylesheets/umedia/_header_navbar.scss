@@ -80,10 +80,10 @@
 }
 
 #main {
-    color: #fff;
-    position: relative;
     background-image: url("https://images.unsplash.com/photo-1602536021806-942116f6f56f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"); // placholder image
+    color: #fff;
     min-height: 300px;
+    position: relative;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -91,7 +91,6 @@
         background-color: rgba(0, 0, 0, .5);
         position: absolute;
         width: 100%;
-        // overflow: hidden;
         a {
             color: #fafafa;
             float: left;
@@ -107,7 +106,7 @@
             border-bottom: 3px solid #ffcc33;
         }
     }
-    #search-bar {
+    #main-search {
         * {
             border-radius: 0 !important;
         }
@@ -116,14 +115,14 @@
         width: 60%;
         height: 20%;
         left: 20%;
-        #the-bar-itself {
+        #search-form {
             background-color: rgba(255, 250, 250, 0.5);
-            padding: 1rem;
             margin: 1rem;
             margin: 0 auto;
+            padding: 1rem;
             #search {
-                border: 1px solid transparent;
                 background-color: #7a0019;
+                border: 1px solid transparent;
                 border-color: #333;
             }
             #search:hover,
@@ -133,12 +132,12 @@
                 outline-offset: 2px;
             }
         }
-        #the-bar-itself>div>#q {
+        #search-form>div>#q {
             border-color: #333;
             height: 50px;
         }
-        #the-bar-itself>div>#q:hover,
-        #the-bar-itself>div>#q:focus {
+        #search-form>div>#q:hover,
+        #search-form>div>#q:focus {
             box-shadow: none;
             outline: 3px solid #0053b0;
             outline-offset: 2px;
@@ -146,10 +145,10 @@
     }
     #main-image-attribute {
         position: absolute;
-        bottom: 0;
-        width: 100%;
         background-color: rgba(0, 0, 0, .5);
+        bottom: 0;
         padding: .8rem;
+        width: 100%;
         text-align: right;
         p {
             margin-bottom: 0;
@@ -160,10 +159,10 @@
             }
             a:hover,
             a:focus {
-                outline: none;
-                color: #333;
-                text-decoration: none;
                 background-color: #ffde7a;
+                color: #333;
+                outline: none;
+                text-decoration: none;
             }
         }
     }

@@ -20,7 +20,6 @@
   </a>
   <a href="/" id="give">Give</a>
 </nav>
-
 <nav aria-label="Libraries" class="nav" id="top">
   <a href="/" id="logo" aria-label="University Libraries">
     <svg x="0" y="0" viewBox="108 0 335 70" width="285" height="35">
@@ -43,7 +42,6 @@
     </svg>
   </a>
 </nav>
-
 <nav aria-label="Main" class="nav" id="main">
   <div id="main-nav">
     <a href="/" id="umedia">UMedia</a>
@@ -52,15 +50,13 @@
     <a href="/">Formats</a>
     <a href="/">Help</a>
   </div>
-
-  <div id="search-bar">
+  <div id="main-search">
     <%- unless params[:controller] == 'transcript' %>
-        <form class="<%= container_classes %>" id="the-bar-itself">
-          <%= render_search_bar  %>
-        </form>
+			<form class="<%= container_classes %>" id="search-form">
+				<%= render_search_bar  %>
+			</form>
     <%- end %>
   </div>
-  
   <div id="main-image-attribute">
     <p>
       <a href="/">object placeholder title</a> in the <a href="/">object placeholder collection</a>

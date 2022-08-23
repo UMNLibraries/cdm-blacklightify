@@ -12,26 +12,26 @@ footer {
         background-color: #fafafa;
     }
     #content {
-        margin-top: 1rem;
+        font-family: Tahoma, Verdana, sans-serif;
         padding: 0;
         padding-bottom: 2rem;
-        font-family: Tahoma, Verdana, sans-serif;
+        margin-top: 1rem;
         margin-left: 0;
         margin-right: 0;
         ul {
-            padding: 0;
             list-style-type: none;
+            padding: 0;
         }
         a {
+            display: block;
             color: #ffde7a;
             text-decoration: underline;
-            display: block;
         }
         a:hover,
         a:focus {
-            outline: none;
             background-color: #ffde7a;
             color: #333;
+            outline: none;
             text-decoration: none;
         }
         li {
@@ -54,8 +54,8 @@ footer {
                 display: inline-block;
             }
             li:first-child:hover {
-                text-decoration: none;
                 background-color: #333;
+                text-decoration: none;
             }
         }
         .card-body-as-link:hover, // check for redundancy
@@ -86,15 +86,4 @@ footer {
             margin-bottom: 2rem;
         }
     }
-}
-
-html,
-body {
-    font-family: Tahoma, Verdana, sans-serif;
-    line-height: 1.6;
-    height: 100%;
-}
-
-* {
-    border-radius: 0 !important;
 }
