@@ -44,10 +44,10 @@
     #give {
         padding: 0px 1.25rem;
         border: 6px solid #ffde7a;
-        box-shadow: 0px 0px 0px 2px #fafafa inset;
+        box-shadow: 0px 0px 0px 2px #333 inset;
     }
-    #give:hover,
-    #give:focus {
+    #give>a:hover,
+    #give>a:focus {
         background-color: #7a0019;
         color: #fafafa;
         border: 6px solid #7a0019;
@@ -89,7 +89,7 @@
 }
 
 #main {
-    background-image: url("https://images.unsplash.com/photo-1602536021806-942116f6f56f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"); // placholder image
+    background-image: url("https://cdm16022.contentdm.oclc.org/digital/iiif/p16022coll106/1026/full/1920,/0/default.jpg"); // placholder image
     color: #fff;
     min-height: 300px;
     position: relative;
@@ -97,7 +97,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     #main-nav {
-        background-color: rgba(0, 0, 0, .5);
+        background-color: rgba(0, 0, 0, .8);
         position: absolute;
         width: 100%;
         display: flex;
@@ -132,7 +132,7 @@
         height: 20%;
         left: 20%;
         #search-form {
-            background-color: rgba(255, 250, 250, 0.5);
+            background-color: rgba(255, 250, 250, 0.8);
             margin: 1rem;
             margin: 0 auto;
             padding: 1rem;
@@ -140,6 +140,7 @@
                 background-color: #7a0019;
                 border: 1px solid transparent;
                 border-color: #333;
+                padding-right: 1.5rem;
             }
             #search:hover,
             #search:focus {
@@ -161,7 +162,7 @@
     }
     #main-image-attribute {
         position: absolute;
-        background-color: rgba(0, 0, 0, .5);
+        background-color: rgba(0, 0, 0, .8);
         bottom: 0;
         padding: .8rem;
         width: 100%;
