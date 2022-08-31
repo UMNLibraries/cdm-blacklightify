@@ -1,4 +1,4 @@
-#umn {
+nav[aria-label="University"] {
     background-color: #ffde7a;
     a {
         display: flex;
@@ -55,7 +55,7 @@
     }
 }
 
-#top {
+nav[aria-label="Libraries"] {
     background-color: #333;
     #logo {
         padding: 0 0.5rem;
@@ -88,7 +88,7 @@
     }
 }
 
-#main {
+nav[aria-label="Main"] {
     background-image: url("https://cdm16022.contentdm.oclc.org/digital/iiif/p16022coll106/1026/full/1920,/0/default.jpg"); // placholder image
     color: #fff;
     min-height: 300px;
@@ -166,7 +166,6 @@
         bottom: 0;
         padding: .8rem;
         width: 100%;
-        text-align: right;
         p {
             margin-bottom: 0;
             a {
@@ -180,6 +179,43 @@
                 color: #333;
                 outline: none;
                 text-decoration: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    nav[aria-label="University"] {
+        a {
+            height: 59px;
+        }
+        #umn-logo {
+            width: calc(170px + 1rem);
+        }
+    }
+    nav[aria-label="Libraries"] {
+        line-height: 0;
+        #logo {
+            width: calc(170px + 1rem);
+            svg {
+                width: 100%;
+                height: 37px;
+            }
+        }
+    }
+    nav[aria-label="Main"] {
+        #main-nav {
+            line-height: .6;
+            a:not(:first-child) {
+                background-color: #ffde7a;
+                color: #333;
+                text-decoration: none;
+            }
+            a:not(:first-child):not(:last-child) {
+                border-right: 1px solid #fafafa;
+            }
+            #umedia {
+                line-height: 0;
             }
         }
     }
