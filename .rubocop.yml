@@ -24,6 +24,8 @@ AllCops:
 Layout/LineLength:
   Max: 120
   Exclude:
+  - 'app/lib/umedia/transformer.rb'
+  - 'app/lib/umedia/rights_config.rb'
   - 'config/initializers/devise.rb'
   - 'config/initializers/spotlight_initializer.rb'
   - 'test/**/*'
@@ -33,15 +35,60 @@ Lint/ShadowedException:
   - 'app/services/umedia/image_service.rb'
 
 Metrics/BlockLength:
+  Max: 30
   Exclude:
+  - 'config/routes.rb'
   - 'app/controllers/catalog_controller.rb'
   - 'lib/tasks/umedia.rake'
+  - 'lib/tasks/umedia/sidekiq.rake'
+
+Metrics/ClassLength:
+  Max: 150
+  Exclude:
+  - 'app/lib/umedia/transformer.rb'
+  - 'app/models/iiif_manifest.rb'
+  - 'app/lib/umedia/process_document_for_search.rb'
 
 Metrics/MethodLength:
+  Max: 20
   Exclude:
-  - 'app/lib/umedia/citation/styles/coins.rb'
-  - 'app/lib/umedia/citation/styles/mla.rb'
-  - 'app/lib/umedia/citation/styles/wikipedia.rb'
+  - 'app/models/iiif_manifest.rb'
+  - 'app/lib/umedia/**/*.rb'
+
+Metrics/AbcSize:
+  Exclude:
+  - 'app/models/iiif_manifest.rb'
+  - 'app/services/iiif_search_service.rb'
+  - 'app/lib/umedia/*.rb'
+
+Metrics/CyclomaticComplexity:
+  Max: 8
 
 Minitest/MultipleAssertions:
   Max: 20
+
+Metrics/ParameterLists:
+  Exclude:
+  - 'app/lib/umedia/*.rb'
+
+# do_thing rescue Exception
+# MJB likes this form and rubocop can stuff it.
+Style/RescueModifier:
+  Enabled: false
+
+# x, y, z = [a, b, c]
+# Allowed
+Style/ParallelAssignment:
+  Enabled: false
+
+Style/CaseLikeIf:
+  Exclude:
+  - 'app/lib/umedia/*.rb'
+
+Style/EachWithObject:
+  Exclude:
+  - 'app/lib/umedia/*.rb'
+
+Style/MultilineBlockChain:
+  Exclude:
+  - 'app/lib/umedia/*.rb'
