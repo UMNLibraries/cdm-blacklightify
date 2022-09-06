@@ -1,0 +1,19 @@
+#!/bin/sh
+
+redis_url=https://download.redis.io/redis-stable.tar.gz
+tmp_dir="$(dirname $0)/../tmp"
+redis_tgz="$tmp_dir/$(basename $redis_url)"
+src_dir="$tmp_dir/redis-stable"
+redis_bin="$src_dir/src/redis-server"
+
+if [ ! -f "$redis_bin" ]; then
+  echo "Downloading redis"
+  curl --output "$redis_tgz" "$redis_url"
+  tar -zxf "$redis_tgz" -C "$tmp_dir"
+  cd "$src_dir"
+  make
+  cd -
+fi
+echo "Starting redis"
+mkdir -p "$tmp_dir/redis-data"
+$redis_bin --dir "$tmp_dir/redis-data" --dbfilename redis-dev-dump.rdb --port 63799 --maxmemory-policy noeviction
