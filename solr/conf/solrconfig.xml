@@ -22,81 +22,221 @@
 
   <dataDir>${solr.data.dir:}</dataDir>
 
-  <requestHandler name="search" class="solr.SearchHandler" default="true">
+  <requestHandler name="/search" class="solr.SearchHandler" default="true">
     <!-- default values for query parameters can be specified, these
          will be overridden by parameters in the request
       -->
-     <lst name="defaults">
-       <str name="defType">edismax</str>
-       <str name="echoParams">explicit</str>
-       <str name="q.alt">*:*</str>
-       <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
-       <int name="qs">1</int>
-       <int name="ps">2</int>
-       <float name="tie">0.01</float>
-       <!-- this qf and pf are used by default, if not otherwise specified by
-            client. The default blacklight_config will use these for the
-            "keywords" search. See the author_qf/author_pf, title_qf, etc
-            below, which the default blacklight_config will specify for
-            those searches. You may also be interested in:
-            http://wiki.apache.org/solr/LocalParams
-       -->
-        <str name="qf">
-          id
-          full_title_tsim
-          short_title_tsim
-          alternative_title_tsim
-          active_fedora_model_ssi
-          title_tsim
-          author_tsim
-          subject_tsim
-          all_text_timv
-        </str>
-        <str name="pf">
-          all_text_timv^10
-        </str>
+    <lst name="defaults">
+      <str name="defType">edismax</str>
+      <str name="echoParams">explicit</str>
+      <int name="rows">10</int>
+`     <str name="q.alt">*:*</str>
+      <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
 
-       <str name="author_qf">
-          author_tsim
-       </str>
-       <str name="author_pf">
-       </str>
-       <str name="title_qf">
-          title_tsim
-          full_title_tsim
-          short_title_tsim
-          alternative_title_tsim
-       </str>
-       <str name="title_pf">
-       </str>
-       <str name="subject_qf">
-          subject_tsim
-       </str>
-       <str name="subject_pf">
-       </str>
+      <!-- this qf and pf are used by default, if not otherwise specified by
+          client. The default blacklight_config will use these for the
+          "keywords" search. See the author_qf/author_pf, title_qf, etc
+          below, which the default blacklight_config will specify for
+          those searches. You may also be interested in:
+          http://wiki.apache.org/solr/LocalParams
+      -->
+      <str name="qf">
+        id
+        title^2.4
+        title_t^2.4
+        title_search^2.4
+        title_s^2.6
+        title_alternative^.5
+        title_alternative_s^.55
+        title_alternative_t^.55
+        contributor^1.1
+        contributor_ss^1.1
+        creator^1.5
+        creator_ss^1.5
+        description
+        publisher
+        publisher_s
+        publisher_t
+        subject^2
+        subject_ss^2.1
+        subject_fast^2
+        subject_fast_ss^2.1
+        notes
+        caption
+        date_created
+        historical_era
+        type
+        format
+        city
+        state
+        country
+        region
+        continent
+        languagelanguage
+        contributing_organization
+        contributing_organization_s
+        transcription
+        translation
+        kaltura_audio
+        kaltura_audio_playlist
+        kaltura_video
+        kaltura_video_playlist
+        kaltura_combo_playlist
+        set_spec
+        collection_name_t
+        collection_name
+        parent_collection_name
+        local_identifier
+        barcode
+        system_identifier
+        dls_identifier
+        persistent_url
+        local_rights
+        fiscal_sponsor
+      </str>
+      <str name="pf">
+        title^2.4
+        title_s^2.6
+        title_t^2.4
+        title_search^2.4
+        title_alternative^.5
+        title_alternative_s^.55
+        title_alternative_t^.55
+        contributor^1.1
+        contributor_ss^1.1
+        creator^1.5
+        creator_ss^1.5
+        description
+        publisher
+        publisher_s
+        publisher_t
+        subject^2
+        subject_ss^2.1
+        subject_fast^2
+        subject_fast_ss^2.1
+        notes
+        caption
+        contributing_organization
+        transcription
+        translation
+        collection_name_t
+        fiscal_sponsor
+      </str>
 
-       <str name="fl">
-         *,
-         score
-       </str>
+      <str name="title_qf">
+        title
+        title_s^2
+      </str>
 
-       <str name="facet">true</str>
-       <str name="facet.mincount">1</str>
-       <str name="facet.limit">10</str>
-       <str name="facet.field">active_fedora_model_ssi</str>
-       <str name="facet.field">subject_ssim</str>
+      <str name="creator_qf">
+        creator
+        creator_ss^2
+      </str>
 
-       <str name="spellcheck">true</str>
-       <str name="spellcheck.dictionary">default</str>
-       <str name="spellcheck.onlyMorePopular">true</str>
-       <str name="spellcheck.extendedResults">true</str>
-       <str name="spellcheck.collate">false</str>
-       <str name="spellcheck.count">5</str>
+      <str name="subject_qf">
+        subject^2
+        subject_ss^2.1
+        subject_fast^2
+        subject_fast_ss^2.1
+      </str>
 
-     </lst>
+      <str name="facet">true</str>
+      <str name="facet.mincount">1</str>
+    </lst>
+
     <arr name="last-components">
       <str>spellcheck</str>
     </arr>
+  </requestHandler>
+
+  <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
+  <requestHandler name="/document" class="solr.SearchHandler" >
+    <lst name="defaults">
+      <str name="echoParams">all</str>
+      <str name="fl">*</str>
+      <str name="rows">1</str>
+      <str name="q">{!term f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
+    </lst>
+  </requestHandler>
+
+  <requestHandler name="/children" class="solr.SearchHandler" >
+    <lst name="defaults">
+      <str name="echoParams">all</str>
+      <str name="fl">*</str>
+      <str name="q">{!term f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
+    </lst>
+  </requestHandler>
+
+  <requestHandler name="/child_search" class="solr.SearchHandler" default="true">
+    <lst name="defaults">
+      <str name="defType">edismax</str>
+      <str name="echoParams">explicit</str>
+      <int name="rows">10</int>
+`     <str name="q.alt">*:*</str>
+      <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
+
+      <str name="qf">
+        id
+        title^2.4
+        title_s^2.6
+        dls_identifier
+        transcription
+      </str>
+      <str name="pf">
+        id
+        title^2.4
+        title_s^2.6
+        transcription
+      </str>
+
+      <str name="facet">false</str>
+    </lst>
+
+    <arr name="last-components">
+      <str>spellcheck</str>
+    </arr>
+  </requestHandler>
+
+  <requestHandler name="/collections" class="solr.SearchHandler" default="true">
+    <lst name="defaults">
+      <str name="defType">edismax</str>
+      <str name="echoParams">explicit</str>
+      <int name="rows">25</int>
+`     <str name="q.alt">*:*</str>
+
+      <str name="qf">
+        collection_name
+        collection_name_s^2.4
+        collection_description
+        contributing_organization_name
+        contributing_organization_name_s^4
+        set_spec
+      </str>
+      <str name="pf">
+        collection_name
+        collection_name_s^2.4
+        collection_description
+        contributing_organization
+        contributing_organization_name
+        contributing_organization_name_s^4
+      </str>
+    </lst>
+  </requestHandler>
+
+  <requestHandler name="/mlt" class="solr.MoreLikeThisHandler">
+    <lst name="defaults">
+       <str name="qf">
+          title
+          subject
+          subject_fast
+          creator
+          format_name
+       </str>
+       <!--The fields to use for similarity-->
+      <str name="mlt.fl">title,subject,subject_fast,creator</str>
+      <int name="mlt.mintf">1</int>
+      <int name="mlt.mindf">1</int>
+    </lst>
   </requestHandler>
 
   <requestHandler name="permissions" class="solr.SearchHandler" >
