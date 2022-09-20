@@ -31,10 +31,10 @@
         <%= content_for(:skip_links) %>
       </div>
       <%= render partial: 'shared/header_navbar' %>
+			<%= render partial: 'shared/about' if current_page?(root_path) %>
     </header>
 
     <main id="main-container" class="" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
-      <%= render partial: 'shared/about' %>
       <%# <%= content_for(:container_header) %>
       <%# <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
       <section class="col-12" id="spotlight">
