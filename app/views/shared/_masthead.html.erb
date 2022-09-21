@@ -7,8 +7,8 @@
 <%- masthead_navbar = capture do %>
   <% if content_for? :masthead_navbar %>
     <%= content_for :masthead_navbar %>
-  <% elsif current_exhibit %>
-    <%= render 'shared/exhibit_navbar' %>
+  <%# <% elsif current_exhibit %>
+  <%#  <%= render 'shared/exhibit_navbar' %>
   <% else %>
     <%= render 'shared/site_navbar' %>
   <% end %>

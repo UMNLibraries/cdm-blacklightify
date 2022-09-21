@@ -33,11 +33,14 @@
       <%= render partial: 'shared/header_navbar' %>
 			<%= render partial: 'shared/about' if current_page?(root_path) %>
     </header>
+		
+		  <%= render partial: 'shared/masthead' %>
+    	<%# <%= content_for?(:header_content) ? yield(:header_content) : "" %>
 
     <main id="main-container" class="" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
       <%# <%= content_for(:container_header) %>
       <%# <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
-      <section class="col-12" id="spotlight">
+      <section class="row" id="spotlight">
         <%= content_for?(:content) ? yield(:content) : yield %>
       </section>
     </main>
