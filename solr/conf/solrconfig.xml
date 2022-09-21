@@ -150,7 +150,7 @@
   </requestHandler>
 
   <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
-  <requestHandler name="/document" class="solr.SearchHandler" >
+  <requestHandler name="document" class="solr.SearchHandler" >
     <lst name="defaults">
       <str name="echoParams">all</str>
       <str name="fl">*</str>
@@ -159,7 +159,7 @@
     </lst>
   </requestHandler>
 
-  <requestHandler name="/children" class="solr.SearchHandler" >
+  <requestHandler name="children" class="solr.SearchHandler" >
     <lst name="defaults">
       <str name="echoParams">all</str>
       <str name="fl">*</str>
@@ -167,7 +167,7 @@
     </lst>
   </requestHandler>
 
-  <requestHandler name="/child_search" class="solr.SearchHandler" default="true">
+  <requestHandler name="child_search" class="solr.SearchHandler" default="true">
     <lst name="defaults">
       <str name="defType">edismax</str>
       <str name="echoParams">explicit</str>
@@ -197,7 +197,7 @@
     </arr>
   </requestHandler>
 
-  <requestHandler name="/collections" class="solr.SearchHandler" default="true">
+  <requestHandler name="collections" class="solr.SearchHandler" default="true">
     <lst name="defaults">
       <str name="defType">edismax</str>
       <str name="echoParams">explicit</str>
@@ -220,22 +220,6 @@
         contributing_organization_name
         contributing_organization_name_s^4
       </str>
-    </lst>
-  </requestHandler>
-
-  <requestHandler name="/mlt" class="solr.MoreLikeThisHandler">
-    <lst name="defaults">
-       <str name="qf">
-          title
-          subject
-          subject_fast
-          creator
-          format_name
-       </str>
-       <!--The fields to use for similarity-->
-      <str name="mlt.fl">title,subject,subject_fast,creator</str>
-      <int name="mlt.mintf">1</int>
-      <int name="mlt.mindf">1</int>
     </lst>
   </requestHandler>
 
@@ -314,7 +298,7 @@
     </lst>
   </searchComponent>
 
-  <requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
+  <requestHandler name="suggest" class="solr.SearchHandler" startup="lazy">
     <lst name="defaults">
       <str name="suggest">true</str>
       <str name="suggest.count">5</str>
