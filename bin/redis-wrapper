@@ -16,4 +16,4 @@ if [ ! -f "$redis_bin" ]; then
 fi
 echo "Starting redis"
 mkdir -p "$tmp_dir/redis-data"
-$redis_bin --dir "$tmp_dir/redis-data" --dbfilename redis-dev-dump.rdb --port 63799 --maxmemory-policy noeviction
+$redis_bin --dir "$tmp_dir/redis-data" --dbfilename redis-dev-dump.rdb --port 63799 --maxmemory-policy noeviction --daemonize no --supervised no --pidfile "$tmp_dir/redis-data/redis-63799.pid"
