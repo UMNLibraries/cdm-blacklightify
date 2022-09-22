@@ -86,3 +86,6 @@ yarn-debug.log*
 
 # Ignore Universal Viewer
 public/uv/*
+
+# Redis database files, should they end up outside tmp/
+*.rdb

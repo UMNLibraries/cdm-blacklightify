@@ -56,33 +56,33 @@ $ bundle exec rails db:migrate
 $ bundle exec rails db:fixtures:load
 ```
 
-6. Start Solr server
-
-```shell
-$ bundle exec solr_wrapper --config .solr_wrapper.yml
-```
-
-7. Start Rails server
-
-```shell
-$ bundle exec rails server
-```
-
-Go to [http://localhost:3000](http://localhost:3000) in your browser.
-
-#### Harvest Documents
-
-8. Start Sidekiq
+6. Start development services via `foreman`. This will result in Redis being downloaded, compiled, and started up in `tmp/`, Solr being download and/or started via `solr_wrapper` using the config at `.solr_wrapper.yml`, Sidekiq queuing service starting, and finally, the Rails development web server.
 
 ```shell
 $ bundle exec foreman start
 ```
 
-9. Run Harvest rake task
+OPTIONAL: Starting some services independently is possible if a fast startup is deesired, especially when the Sidekiq job queue won't be needed.
+
+```shell
+# Start solr without the whole foreman suite
+$ bundle exec solr_wrapper --config .solr_wrapper.yml
+
+# Start Rails/Puma without the whole foreman suite
+# (port 3000, limited to only the local network interface)
+$ bundle exec rails server -b 127.0.0.1 -p 3000
+```
+
+Visit [http://localhost:3000](http://localhost:3000) in your browser to see your locally running instance
+
+#### Harvest Documents
+
+7. Assuming Redis and Sidekiq are running (started with `foreman`), run Harvest rake task
+
 ```shell
 $ bundle exec rake umedia:index:harvest
 ```
-10. (Optional) Commit to Solr
+8. (Optional) Commit to Solr
 
 As your harvest is running, you can occasionally sent a `commit` to Solr to see what documents you have harvested.
 ```shell
