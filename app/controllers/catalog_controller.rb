@@ -83,17 +83,19 @@ class CatalogController < ApplicationController
     
     # Collection
     config.add_index_field 'collection_name_ssi', label: 'Collection'
+    
     # Creator
     config.add_index_field 'creator_ssim', label: 'Creator'
 
     # Created
-    config.add_index_field 'date_created_sort_ssortsi', label: 'Date'
+    # config.add_index_field 'date_created_sort_ssortsi', label: 'Date', itemprop: "date_created"
+    config.add_index_field 'date_created_sort_ssortsi', label: 'Date Created'
 
     # Format
     config.add_index_field 'format_name_ssimv', label: 'Format'
 
     # Subject
-    config.add_index_field 'subject_ssim', label: 'Subjects'
+    config.add_index_field 'subject_ssim', label: 'Subjects', itemprop: 'format', link_to_facet: true
 
     # Contributed By
     # config.add_index_field 'contributor_ssim', label: 'Contributed By'
