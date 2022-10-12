@@ -79,18 +79,27 @@ class CatalogController < ApplicationController
 
     # SEARCH RESULTS FIELDS
     # Description
-    config.add_index_field 'description_ts', label: 'Description'
+    # config.add_index_field 'description_ts', label: 'Description'
+    
+    # Collection
+    config.add_index_field 'collection_name_ssi', label: 'Collection'
     # Creator
     config.add_index_field 'creator_ssim', label: 'Creator'
 
     # Created
-    config.add_index_field 'date_created_sort_ssortsi', label: 'Created'
+    config.add_index_field 'date_created_sort_ssortsi', label: 'Date'
+
+    # Format
+    config.add_index_field 'format_name_ssimv', label: 'Format'
+
+    # Subject
+    config.add_index_field 'subject_ssim', label: 'Subjects'
 
     # Contributed By
-    config.add_index_field 'contributor_ssim', label: 'Contributed By'
+    # config.add_index_field 'contributor_ssim', label: 'Contributed By'
 
     # Last Updated
-    config.add_index_field 'dmmodified_ssi', label: 'Last Updated'
+    # config.add_index_field 'dmmodified_ssi', label: 'Last Updated'
 
     # Thumbnails - A helper method that looks for attached image from solr_document_sidecar
     config.index.thumbnail_method = :thumbnail
