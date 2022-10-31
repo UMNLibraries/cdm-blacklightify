@@ -1,4 +1,4 @@
-### CDMDEXER Gem Field mappings
+### Default Gem Field mappings
 ---
 field_mappings:
   -
@@ -10,11 +10,6 @@ field_mappings:
     dest_path: id
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: id
-  -
-    dest_path: object_ssi
-    formatters:
-      - Umedia::Formatters::ObjectFormatter
     origin_path: id
   -
     dest_path: setspec_ssi
@@ -29,7 +24,7 @@ field_mappings:
       - CDMDEXER::CollectionNameFormatter
     origin_path: /
   -
-    dest_path: collection_name_tesi
+    dest_path: collection_name_tei
     formatters:
       - CDMDEXER::AddSetSpecFormatter
       - CDMDEXER::CollectionNameFormatter
@@ -42,35 +37,17 @@ field_mappings:
       - CDMDEXER::FilterBadCollections
     origin_path: /
   -
-    dest_path: super_collection_names_tesim
-    formatters:
-      - CDMDEXER::AddSetSpecFormatter
-      - Umedia::Formatters::SuperCollectionNamesFormatter
-    origin_path: /
-  -
-    dest_path: super_collection_set_specs_ssim
-    formatters:
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: projea
-  -
-    dest_path: super_collection_descriptions_tesim
-    formatters:
-      - CDMDEXER::AddSetSpecFormatter
-      - Umedia::Formatters::SuperCollectionDescriptionsFormatter
-    origin_path: /
-  -
     dest_path: parent_collection_name_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: par
   -
-    dest_path: parent_collection_name_tesi
+    dest_path: parent_collection_name_tei
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: par
   -
-    dest_path: parent_collection_description_tesi
+    dest_path: parent_collection_description_tei
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: par
@@ -85,17 +62,7 @@ field_mappings:
       - CDMDEXER::StripFormatter
     origin_path: title
   -
-    dest_path: title_sort_ssortsi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: title
-  -
-    dest_path: title_alternative_tesi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: altern
-  -
-    dest_path: title_search_te_ascii
+    dest_path: title_sort
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: title
@@ -105,7 +72,7 @@ field_mappings:
       - CDMDEXER::StripFormatter
     origin_path: title
   -
-    dest_path: contributor_tesim
+    dest_path: contributor_teim
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: contri
@@ -118,33 +85,32 @@ field_mappings:
     dest_path: contributor_ssim
     formatters:
       - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
     origin_path: contri
   -
-    dest_path: creator_tesimv
+    dest_path: creator_tesi
     formatters:
       - CDMDEXER::JoinFormatter
       - CDMDEXER::StripFormatter
-    origin_path: creato
+    origin_path: photog
   -
     dest_path: creator_unstem_search
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: creato
+    origin_path: photog
   -
     dest_path: creator_ssim
     formatters:
       - CDMDEXER::SplitFormatter
       - CDMDEXER::StripFormatter
-    origin_path: creato
+    origin_path: photog
   -
-    dest_path: creator_sort_ssortsi
+    dest_path: creator_sort
     formatters:
       - CDMDEXER::StripFormatter
-      - CDMDEXER::JoinFormatter
-      - Umedia::Formatters::LetterSortFormatter
-    origin_path: creato
+    origin_path: photog
   -
-    dest_path: description_tesi
+    dest_path: description_tei
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: descri
@@ -154,37 +120,20 @@ field_mappings:
       - CDMDEXER::StripFormatter
     origin_path: descri
   -
-    dest_path: date_created_te_split
-    formatters:
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: date
-  -
-    dest_path: date_created_sort_ssortsi
+    dest_path: dat_ssi
     formatters:
       - CDMDEXER::StripFormatter
-      - Umedia::Formatters::NumberSortFormatter
-    origin_path: date
+    origin_path: dat
   -
-    dest_path: date_added_dr
-    formatters:
-      - Umedia::Formatters::ToSolrDateFormatter
-    origin_path: dmcreated
-  -
-    dest_path: date_modified_dr
-    formatters:
-      - Umedia::Formatters::ToSolrDateFormatter
-    origin_path: dmmodified
-  -
-    dest_path: date_added_sort_dttsi
-    formatters:
-      - Umedia::Formatters::ToSolrDateFormatter
-    origin_path: dmcreated
-  -
-    dest_path: historical_era_ssim
+    dest_path: dat_tesi
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: histor
+    origin_path: dat
+  -
+    dest_path: dat_sort
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: dat
   -
     dest_path: publishing_agency_tei
     formatters:
@@ -286,96 +235,10 @@ field_mappings:
   -
     dest_path: subject_ssim
     formatters:
-      - CDMDEXER::Titlieze
+      - CDMDEXER::StripFormatter
       - CDMDEXER::SplitFormatter
-      - Umedia::Formatters::SubjectFormatter
       - CDMDEXER::StripFormatter
     origin_path: subjec
-  -
-    dest_path: subject_tesimv
-    formatters:
-      - CDMDEXER::Titlieze
-      - CDMDEXER::SplitFormatter
-      - Umedia::Formatters::SubjectFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: subjec
-  -
-    dest_path: subject_fast_tesimv
-    formatters:
-      - CDMDEXER::Titlieze
-      - CDMDEXER::SplitFormatter
-      - Umedia::Formatters::SubjectFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: fast
-  -
-    dest_path: language_ssim
-    formatters:
-      - CDMDEXER::StripFormatter
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: langua
-  -
-    dest_path: city_tesim
-    formatters:
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: city
-  -
-    dest_path: state_tesim
-    formatters:
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: state
-  -
-    dest_path: country_tesim
-    formatters:
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: countr
-  -
-    dest_path: region_tesim
-    formatters:
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: region
-  -
-    dest_path: continent_tesim
-    formatters:
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: contin
-  -
-    dest_path: geonames_ssim
-    formatters:
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: geonam
-  -
-    dest_path: projection_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: projec
-  -
-    dest_path: scale_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: scale
-  -
-    dest_path: coordinates_ssim
-    formatters:
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: coordi
-  -
-    dest_path: parent_collection_tesi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: a
-  -
-    dest_path: parent_collection_name_ssi
-    formatters:
-      - Umedia::Formatters::SemiSplitFirstFormatter
-    origin_path: a
   -
     dest_path: keyword_unstem_search
     formatters:
@@ -477,72 +340,6 @@ field_mappings:
       - CDMDEXER::StripFormatter
     origin_path: contra
   -
-    dest_path: contributing_organization_name_tesi
-    formatters:
-      - Umedia::Formatters::SemiSplitFirstFormatter
-    origin_path: contra
-  -
-    dest_path: contact_information_tesi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: contac
-  -
-    dest_path: fiscal_sponsor_tesi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: fiscal
-  -
-    dest_path: local_identifier_te_split
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: identi
-  -
-    dest_path: barcode_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: barcod
-  -
-    dest_path: system_identifier_te_split
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: system
-  -
-    dest_path: dls_identifier_te_split
-    formatters:
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: dls
-  -
-    dest_path: persistent_url_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: persis
-  -
-    dest_path: local_rights_tesi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: local
-  -
-    dest_path: standardized_rights_tesi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: standa
-  -
-    dest_path: rights_statement_uri_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: righta
-  -
-    dest_path: expected_public_domain_year_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: expect
-  -
-    dest_path: additional_rights_information_tesi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: addita
-  -
     dest_path: contributing_organization_ssi
     formatters:
       - CDMDEXER::Titlieze
@@ -583,40 +380,6 @@ field_mappings:
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: publis
-  -
-    dest_path: caption_tesi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: captio
-  -
-    dest_path: notes_tesi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: additi
-  -
-    dest_path: types_ssim
-    formatters:
-      - CDMDEXER::StripFormatter
-      - CDMDEXER::Titlieze
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::UniqueFormatter
-    origin_path: type
-  -
-    dest_path: format_ssim
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: format
-  -
-    dest_path: format_name_ssimv
-    formatters:
-      - Umedia::Formatters::FormatNameFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: format
-  -
-    dest_path: dimensions_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: dimens
   -
     dest_path: date_ssi
     formatters:
@@ -742,17 +505,9 @@ field_mappings:
     origin_path: image_uri
   -
     dest_path: record_type_ssi
-    origin_path: record_type
-  -
-    dest_path: page_count_isi
-    formatters:
-      - Umedia::Formatters::PageCountFormatter
-    origin_path: /
-  -
-    dest_path: parent_id_ssi
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: parent_id
+    origin_path: record_type
   -
     dest_path: geographic_feature_ssim
     formatters:
@@ -780,38 +535,22 @@ field_mappings:
     dest_path: kaltura_audio_ssi
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: kaltur
+    origin_path: audio
   -
     dest_path: kaltura_audio_playlist_ssi
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: kaltua
-  -
-    dest_path: kaltura_audio_playlist_entry_data_ts
-    formatters:
-      - CDMDEXER::StripFormatter
-      - Umedia::Formatters::KalturaPlaylistDataFormatter
-    origin_path: kaltur
+    origin_path: audioa
   -
     dest_path: kaltura_video_ssi
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: kaltub
+    origin_path: video
   -
     dest_path: kaltura_video_playlist_ssi
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: kaltuc
-  -
-    dest_path: kaltura_combo_playlist_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: kaltud
-  -
-    dest_path: compound_objects_ts
-    formatters:
-      - CDMDEXER::ToJsonFormatter
-    origin_path: page
+    origin_path: videoa
   -
     dest_path: coordinates_llsi
     formatters:
@@ -841,44 +580,11 @@ field_mappings:
       - CDMDEXER::StripFormatter
     origin_path: table
   -
-    dest_path: Umedia_ssi
+    dest_path: umedia_ssi
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: Umedia
+    origin_path: umedia
   -
-    dest_path: child_index_isi
+    dest_path: child_index
     formatters: []
     origin_path: child_index
-  -
-    dest_path: document_type_ssi
-    formatters:
-      - Umedia::Formatters::DocumentFormatter
-    origin_path: id
-  -
-    dest_path: first_viewer_type_ssi
-    formatters:
-      - Umedia::Formatters::FirstViewerTypeFormatter
-    origin_path: /
-  -
-    dest_path: viewer_type_ssi
-    formatters:
-      - Umedia::Formatters::ViewerTypeFormatter
-    origin_path: /
-  -
-    dest_path: attachment_ss
-    origin_path: find
-  -
-    dest_path: attachment_format_ss
-    formatters:
-      - Umedia::Formatters::AttachmentFormatter
-    origin_path: /
-  -
-    dest_path: featured_collection_order_is
-    formatters:
-      - Umedia::Formatters::FeaturedCollectionOrderFormatter
-    origin_path: /
-  -
-    dest_path: iiif_manifest_url_ssi
-    formatters:
-      - Umedia::Formatters::IiifManifestUrlFormatter
-    origin_path: id

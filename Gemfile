@@ -89,8 +89,8 @@ end
 
 # ContentDM Harvesting/Indexing
 gem 'config'
-gem 'contentdm_api', github: 'ewlarson/contentdm_api', branch: 'feature/http-latest'
-gem 'cdmdexer', '>= 0.22.0'
+gem 'contentdm_api', github: 'UMNLibraries/contentdm_api'
+gem 'cdmdexer', github: 'UMNLibraries/cdmdexer', branch: 'sp-lang'
 gem 'foreman', '~> 0.80'
 gem 'sidekiq', '~> 6.0'
 gem 'dotenv-rails'
