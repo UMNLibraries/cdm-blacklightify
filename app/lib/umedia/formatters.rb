@@ -105,11 +105,7 @@ module Umedia
     # PageCountFormatter
     class PageCountFormatter
       def self.format(values)
-        if values['page'].respond_to?(:length)
-          values['page'].length
-        else
-          1
-        end
+        (values['page'].length if values['page'].respond_to?(:length)) || 1
       end
     end
 

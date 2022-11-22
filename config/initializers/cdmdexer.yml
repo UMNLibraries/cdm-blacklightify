@@ -1,590 +1,714 @@
 ### Default Gem Field mappings
 ---
 field_mappings:
-  -
-    dest_path: location_llsi
+  - dest_path: location_llsi
     formatters:
       - CDMDEXER::LocationFormatter
     origin_path: /
-  -
-    dest_path: id
+
+  - dest_path: id
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: id
-  -
-    dest_path: setspec_ssi
+
+  - dest_path: object_ssi
+    formatters:
+      - Umedia::Formatters::ObjectFormatter
+    origin_path: id
+
+  - dest_path: setspec_ssi
     formatters:
       - CDMDEXER::AddSetSpecFormatter
       - CDMDEXER::SetSpecFormatter
     origin_path: /
-  -
-    dest_path: collection_name_ssi
+
+  - dest_path: collection_name_ssi
     formatters:
       - CDMDEXER::AddSetSpecFormatter
       - CDMDEXER::CollectionNameFormatter
     origin_path: /
-  -
-    dest_path: collection_name_tei
+
+  - dest_path: collection_name_tesi
     formatters:
       - CDMDEXER::AddSetSpecFormatter
       - CDMDEXER::CollectionNameFormatter
     origin_path: /
-  -
-    dest_path: collection_description_tesi
+
+  - dest_path: collection_description_tesi
     formatters:
       - CDMDEXER::AddSetSpecFormatter
       - CDMDEXER::CollectionDescriptionFormatter
       - CDMDEXER::FilterBadCollections
     origin_path: /
-  -
-    dest_path: parent_collection_name_ssi
+
+  - dest_path: parent_collection_name_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: par
-  -
-    dest_path: parent_collection_name_tei
+
+  - dest_path: parent_collection_name_tesi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: par
-  -
-    dest_path: parent_collection_description_tei
+
+  - dest_path: parent_collection_description_tei
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: par
-  -
-    dest_path: title_tesi
+
+  - dest_path: title_tesi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: title
-  -
-    dest_path: title_ssi
+
+  - dest_path: title_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: title
-  -
-    dest_path: title_sort
+
+  - dest_path: title_sort_ssortsi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: title
-  -
-    dest_path: title_unstem_search
+
+  - dest_path: title_unstem_search
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: title
-  -
-    dest_path: contributor_teim
+
+  - dest_path: contributor_teim
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: contri
-  -
-    dest_path: contributor_unstem_search
+
+  - dest_path: contributor_unstem_search
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: contri
-  -
-    dest_path: contributor_ssim
+
+  - dest_path: contributor_ssim
     formatters:
       - CDMDEXER::SplitFormatter
       - CDMDEXER::StripFormatter
     origin_path: contri
-  -
-    dest_path: creator_tesi
+
+  - dest_path: creator_tesi
     formatters:
       - CDMDEXER::JoinFormatter
       - CDMDEXER::StripFormatter
     origin_path: photog
-  -
-    dest_path: creator_unstem_search
+
+  - dest_path: creator_unstem_search
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: photog
-  -
-    dest_path: creator_ssim
+
+  - dest_path: creator_ssim
     formatters:
       - CDMDEXER::SplitFormatter
       - CDMDEXER::StripFormatter
     origin_path: photog
-  -
-    dest_path: creator_sort
+
+  - dest_path: creator_sort_ssortsi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: photog
-  -
-    dest_path: description_tei
+
+  - dest_path: description_tei
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: descri
-  -
-    dest_path: description_ts
+
+  - dest_path: description_ts
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: descri
-  -
-    dest_path: dat_ssi
+
+  - dest_path: sp_description_ts
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: dat
-  -
-    dest_path: dat_tesi
+    origin_path: spdesc
+
+  - dest_path: sp_description_tei
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: dat
-  -
-    dest_path: dat_sort
+    origin_path: spdesc
+
+  - dest_path: sp_additional_notes_tei
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: dat
-  -
-    dest_path: publishing_agency_tei
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: publia
-  -
-    dest_path: publishing_agency_unstem_search
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: publia
-  -
-    dest_path: publishing_agency_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: publia
-  -
-    dest_path: dimensions_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: dimens
-  -
-    dest_path: topic_teim
-    formatters:
-      - CDMDEXER::StripFormatter
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: genera
-  -
-    dest_path: topic_ssim
-    formatters:
-      - CDMDEXER::Titlieze
-      - CDMDEXER::StripFormatter
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: genera
-  -
-    dest_path: topic_unstem_search
-    formatters:
-      - CDMDEXER::StripSemicolonFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: genera
-  -
-    dest_path: type_ssi
-    formatters:
-      - CDMDEXER::Titlieze
-      - CDMDEXER::StripSemicolonFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: type
-  -
-    dest_path: type_tesi
-    formatters:
-      - CDMDEXER::Titlieze
-      - CDMDEXER::StripSemicolonFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: type
-  -
-    dest_path: physical_format_ssi
-    formatters:
-      - CDMDEXER::StripSemicolonFormatter
-    origin_path: physic
-  -
-    dest_path: physical_format_tesi
-    formatters:
-      - CDMDEXER::StripSemicolonFormatter
-    origin_path: physic
-  -
-    dest_path: formal_subject_unstem_search
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: specif
-  -
-    dest_path: formal_subject_ssim
-    formatters:
-      - CDMDEXER::Titlieze
-      - CDMDEXER::StripFormatter
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: specif
-  -
-    dest_path: formal_subject_teim
-    formatters:
-      - CDMDEXER::Titlieze
-      - CDMDEXER::StripFormatter
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: specif
-  -
-    dest_path: subject_unstem_search
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: subjec
-  -
-    dest_path: subject_teim
-    formatters:
-      - CDMDEXER::StripFormatter
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: subjec
-  -
-    dest_path: subject_ssim
-    formatters:
-      - CDMDEXER::StripFormatter
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: subjec
-  -
-    dest_path: keyword_unstem_search
-    formatters:
-      - CDMDEXER::KeywordFormatter
-      - CDMDEXER::Titlieze
-      - CDMDEXER::UniqueFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: /
-  -
-    dest_path: keyword_tesi
-    formatters:
-      - CDMDEXER::KeywordFormatter
-      - CDMDEXER::Titlieze
-      - CDMDEXER::UniqueFormatter
-      - CDMDEXER::JoinFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: /
-  -
-    dest_path: keyword_ssim
-    formatters:
-      - CDMDEXER::KeywordFormatter
-      - CDMDEXER::Titlieze
-      - CDMDEXER::UniqueFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: /
-  -
-    dest_path: city_ssim
-    formatters:
-      - CDMDEXER::StripFormatter
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: city
-  -
-    dest_path: city_unstem_search
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: city
-  -
-    dest_path: district_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: distri
-  -
-    dest_path: district_unstem_search
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: distri
-  -
-    dest_path: county_ssim
-    formatters:
-      - CDMDEXER::Titlieze
-      - CDMDEXER::StripFormatter
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-    origin_path: county
-  -
-    dest_path: county_unstem_search
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: county
-  -
-    dest_path: state_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: state
-  -
-    dest_path: state_unstem_search
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: state
-  -
-    dest_path: country_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: countr
-  -
-    dest_path: country_unstem_search
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: countr
-  -
-    dest_path: language_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: langua
-  -
-    dest_path: language_unstem_search
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: langua
-  -
-    dest_path: contributing_unstem_search
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: contra
-  -
-    dest_path: contributing_organization_tesi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: contra
-  -
-    dest_path: contributing_organization_ssi
-    formatters:
-      - CDMDEXER::Titlieze
-      - CDMDEXER::StripFormatter
-    origin_path: contra
-  -
-    dest_path: contact_information_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: contac
-  -
-    dest_path: rights_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: righta
-  -
-    dest_path: local_identifier_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: identi
-  -
-    dest_path: identifier_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: resour
-  -
-    dest_path: project_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: projec
-  -
-    dest_path: fiscal_sponsor_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: fiscal
-  -
-    dest_path: publisher_ssi
-    formatters:
-      - CDMDEXER::StripFormatter
-    origin_path: publis
-  -
-    dest_path: date_ssi
+    origin_path: spaddi
+
+  - dest_path: date_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: date
-  -
-    dest_path: format_tesi
+
+  - dest_path: date_tesi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: date
+
+  - dest_path: date_created_sort_ssortsi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: date
+
+  - dest_path: publishing_agency_tei
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: publia
+
+  - dest_path: publishing_agency_unstem_search
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: publia
+
+  - dest_path: publishing_agency_ssi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: publia
+
+  - dest_path: dimensions_ssi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: dimens
+
+  - dest_path: topic_teim
+    formatters:
+      - CDMDEXER::StripFormatter
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: genera
+
+  - dest_path: topic_ssim
+    formatters:
+      - CDMDEXER::Titlieze
+      - CDMDEXER::StripFormatter
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: genera
+
+  - dest_path: topic_unstem_search
+    formatters:
+      - CDMDEXER::StripSemicolonFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: genera
+
+  - dest_path: type_ssi
+    formatters:
+      - CDMDEXER::Titlieze
+      - CDMDEXER::StripSemicolonFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: type
+
+  - dest_path: type_tesi
+    formatters:
+      - CDMDEXER::Titlieze
+      - CDMDEXER::StripSemicolonFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: type
+
+  - dest_path: physical_format_ssi
+    formatters:
+      - CDMDEXER::StripSemicolonFormatter
+    origin_path: physic
+
+  - dest_path: physical_format_tesi
+    formatters:
+      - CDMDEXER::StripSemicolonFormatter
+    origin_path: physic
+
+  - dest_path: sp_physical_format_ssi
+    formatters:
+      -CDMDEXER::StripFormatter
+    origin_path: spitem
+
+  - dest_path: sp_physical_format_tesi
+    formatters:
+      -CDMDEXER::StripFormatter
+    origin_path: spitem
+
+  - dest_path: formal_subject_unstem_search
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: specif
+
+  - dest_path: formal_subject_ssim
+    formatters:
+      - CDMDEXER::Titlieze
+      - CDMDEXER::StripFormatter
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: specif
+
+  - dest_path: formal_subject_teim
+    formatters:
+      - CDMDEXER::Titlieze
+      - CDMDEXER::StripFormatter
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: specif
+
+  - dest_path: subject_unstem_search
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: subjec
+
+  - dest_path: subject_teim
+    formatters:
+      - CDMDEXER::StripFormatter
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: subjec
+
+  - dest_path: subject_ssim
+    formatters:
+      - CDMDEXER::StripFormatter
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: subjec
+
+  - dest_path: subject_fast_ssim
+    formatters:
+      - CDMDEXER::Titlieze
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: fast
+
+  - dest_path: sp_subject_teim
+    formatters:
+      - CDMDEXER::StripFormatter
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: sploca
+
+  - dest_path: sp_subject_ssim
+    formatters:
+      - CDMDEXER::StripFormatter
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: sploca
+
+  - dest_path: keyword_unstem_search
+    formatters:
+      - CDMDEXER::KeywordFormatter
+      - CDMDEXER::Titlieze
+      - CDMDEXER::UniqueFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: /
+
+  - dest_path: keyword_tesi
+    formatters:
+      - CDMDEXER::KeywordFormatter
+      - CDMDEXER::Titlieze
+      - CDMDEXER::UniqueFormatter
+      - CDMDEXER::JoinFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: /
+
+  - dest_path: keyword_ssim
+    formatters:
+      - CDMDEXER::KeywordFormatter
+      - CDMDEXER::Titlieze
+      - CDMDEXER::UniqueFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: /
+
+  - dest_path: city_ssim
+    formatters:
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: city
+
+  - dest_path: city_unstem_search
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: city
+
+  - dest_path: district_ssi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: distri
+
+  - dest_path: district_unstem_search
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: distri
+
+  - dest_path: county_ssim
+    formatters:
+      - CDMDEXER::Titlieze
+      - CDMDEXER::StripFormatter
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: county
+
+  - dest_path: county_unstem_search
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: county
+
+  - dest_path: state_ssim
+    formatters:
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: state
+
+  - dest_path: state_unstem_search
+    formatters:
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: state
+
+  - dest_path: country_ssim
+    formatters:
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: countr
+
+  - dest_path: sp_country_ssim
+    formatters:
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: spcoun
+
+  - dest_path: continent_tesim
+    formatters:
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: contin
+
+  - dest_path: sp_continent_ssim
+    formatters:
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: spcont
+
+  - dest_path: country_unstem_search
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: countr
+
+  - dest_path: language_ssi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: langua
+
+  - dest_path: language_unstem_search
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: langua
+
+  - dest_path: sp_language_ssi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: splang
+
+  - dest_path: contributing_unstem_search
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: contra
+
+  - dest_path: contributing_organization_tesi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: contra
+
+  - dest_path: contributing_organization_ssi
+    formatters:
+      - CDMDEXER::Titlieze
+      - CDMDEXER::StripFormatter
+    origin_path: contra
+
+  - dest_path: contributing_organization_name_tesi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: contra
+
+  - dest_path: contributing_organization_name_ssi
+    formatters:
+      - CDMDEXER::Titlieze
+      - CDMDEXER::StripFormatter
+    origin_path: contra
+
+  - dest_path: contact_information_ssi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: contac
+
+  - dest_path: local_rights_tesi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: local
+
+  - dest_path: rights_uri_ssi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: righta
+
+  - dest_path: sp_local_rights_tesi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: splocb
+
+  - dest_path: sp_rights_uri_ssi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: sprigh
+
+  - dest_path: local_identifier_ssi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: identi
+
+  - dest_path: identifier_ssi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: resour
+
+  - dest_path: geonames_ssim
+    formatters:
+      - CDMDEXER::SplitFormatter
+      - CDMDEXER::StripFormatter
+    origin_path: geonam
+
+  - dest_path: projection_ssi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: projec
+
+  - dest_path: fiscal_sponsor_ssi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: fiscal
+
+  - dest_path: publisher_ssi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: publis
+
+  - dest_path: caption_tesi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: captio
+
+  - dest_path: notes_tesi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: additi
+
+  - dest_path: format_tesi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: format
-  -
-    dest_path: digspa_ssi
+
+  - dest_path: digspa_ssi
     origin_path: digspa
-  -
-    dest_path: digspb_ssi
+
+  - dest_path: digspb_ssi
     origin_path: digspb
-  -
-    dest_path: digspc_ssi
+
+  - dest_path: digspc_ssi
     origin_path: digspc
-  -
-    dest_path: digspd_ssi
+
+  - dest_path: digspd_ssi
     origin_path: digspd
-  -
-    dest_path: digspe_ssi
+
+  - dest_path: digspe_ssi
     origin_path: digspe
-  -
-    dest_path: digspf_ssi
+
+  - dest_path: digspf_ssi
     origin_path: digspf
-  -
-    dest_path: digspg_ssi
+
+  - dest_path: digspg_ssi
     origin_path: digspg
-  -
-    dest_path: digsph_ssi
+
+  - dest_path: digsph_ssi
     origin_path: digsph
-  -
-    dest_path: digspi_ssi
+
+  - dest_path: digspi_ssi
     origin_path: digspi
-  -
-    dest_path: digspj_ssi
+
+  - dest_path: digspj_ssi
     origin_path: digspj
-  -
-    dest_path: digspk_ssi
+
+  - dest_path: digspk_ssi
     origin_path: digspk
-  -
-    dest_path: transcription_tesi
+
+  - dest_path: transcription_tesi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: transc
-  -
-    dest_path: translation_tesi
+
+  - dest_path: translation_tesi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: transl
-  -
-    dest_path: fullrs_tesi
+
+  - dest_path: fullrs_tesi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: fullrs
-  -
-    dest_path: find_ssi
+
+  - dest_path: find_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: find
-  -
-    dest_path: dmaccess_ssi
+
+  - dest_path: dmaccess_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: dmaccess
-  -
-    dest_path: dmimage_ssi
+
+  - dest_path: dmimage_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: dmimage
-  -
-    dest_path: dmcreated_ssi
+
+  - dest_path: dmcreated_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: dmcreated
-  -
-    dest_path: dmmodified_ssi
+
+  - dest_path: dmmodified_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: dmmodified
-  -
-    dest_path: dmoclcno_ssi
+
+  - dest_path: dmoclcno_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: dmoclcno
-  -
-    dest_path: restriction_code_ssi
+
+  - dest_path: restriction_code_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: restrictionCode
-  -
-    dest_path: cdmfilesize_ssi
+
+  - dest_path: cdmfilesize_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: cdmfilesize
-  -
-    dest_path: cdmfilesizeformatted_ssi
+
+  - dest_path: cdmfilesizeformatted_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: cdmfilesizeformatted
-  -
-    dest_path: cdmprintpdf_is
+
+  - dest_path: cdmprintpdf_is
     formatters:
       - CDMDEXER::ToIFormatter
     origin_path: cdmprintpdf
-  -
-    dest_path: cdmhasocr_is
+
+  - dest_path: cdmhasocr_is
     formatters:
       - CDMDEXER::ToIFormatter
     origin_path: cdmhasocr
-  -
-    dest_path: cdmisnewspaper_is
+
+  - dest_path: cdmisnewspaper_is
     formatters:
       - CDMDEXER::ToIFormatter
     origin_path: cdmisnewspaper
-  -
-    dest_path: image_uri_ssi
+
+  - dest_path: image_uri_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: image_uri
-  -
-    dest_path: record_type_ssi
+
+  - dest_path: record_type_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: record_type
-  -
-    dest_path: geographic_feature_ssim
+
+  - dest_path: geographic_feature_ssim
     formatters:
       - CDMDEXER::Titlieze
       - CDMDEXER::StripFormatter
       - CDMDEXER::SplitFormatter
       - CDMDEXER::StripFormatter
     origin_path: geogra
-  -
-    dest_path: geographic_feature_teim
+
+  - dest_path: geographic_feature_teim
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: geogra
-  -
-    dest_path: geographic_feature_unstem_search
+
+  - dest_path: geographic_feature_unstem_search
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: geogra
-  -
-    dest_path: geonam_ssi
+
+  - dest_path: geonam_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: geonam
-  -
-    dest_path: kaltura_audio_ssi
+
+  - dest_path: kaltura_audio_ssi
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: audio
-  -
-    dest_path: kaltura_audio_playlist_ssi
+    origin_path: kaltur
+
+  - dest_path: kaltura_audio_playlist_ssi
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: audioa
-  -
-    dest_path: kaltura_video_ssi
+    origin_path: kaltua
+
+  - dest_path: kaltura_video_ssi
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: video
-  -
-    dest_path: kaltura_video_playlist_ssi
+    origin_path: kaltub
+
+  - dest_path: kaltura_video_playlist_ssi
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: videoa
-  -
-    dest_path: coordinates_llsi
+    origin_path: kaltuc
+
+  - dest_path: kaltura_combo_playlist_ssi
+    formatters:
+      - CDMDEXER::StripFormatter
+    origin_path: kaltud
+
+  - dest_path: coordinates_llsi
     formatters:
       - CDMDEXER::GeoNameID
       - CDMDEXER::GeoNameIDToJson
       - CDMDEXER::GeoNameToLocation
     origin_path: geonam
-  -
-    dest_path: placename_ssim
+
+  - dest_path: coordinates_ssi
+    formatters:
+      - CDMDEXER::GeoNameID
+      - CDMDEXER::GeoNameIDToJson
+      - CDMDEXER::GeoNameToLocation
+    origin_path: coordi
+
+  - dest_path: placename_ssim
     formatters:
       - CDMDEXER::GeoNameID
       - CDMDEXER::GeoNameIDToJson
       - CDMDEXER::GeoNameToPlaceName
     origin_path: geonam
-  -
-    dest_path: placename_unstem_search
+
+  - dest_path: placename_unstem_search
     formatters:
       - CDMDEXER::GeoNameID
       - CDMDEXER::GeoNameIDToJson
       - CDMDEXER::GeoNameToPlaceName
     origin_path: geonam
-  -
-    dest_path: table_ssim
+
+  - dest_path: table_ssim
     formatters:
       - CDMDEXER::StripFormatter
       - CDMDEXER::SplitFormatter
       - CDMDEXER::StripFormatter
     origin_path: table
-  -
-    dest_path: umedia_ssi
+
+  - dest_path: umedia_ssi
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: umedia
-  -
-    dest_path: child_index
+
+  - dest_path: child_index_isi
     formatters: []
     origin_path: child_index

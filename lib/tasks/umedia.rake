@@ -51,10 +51,11 @@ namespace :umedia do
 
       example_sets.each do |set|
         CDMDEXER::ETLWorker.new.perform(
-          'solr_config' => { url: ENV.fetch('SOLR_URL', nil) },
+          'solr_config' => { 'url' => ENV.fetch('SOLR_URL', nil) },
           'oai_endpoint' => ENV.fetch('OAI_ENDPOINT', nil),
           'cdm_endpoint' => ENV.fetch('CDM_ENDPOINT', nil),
           'set_spec' => set,
+          'field_mappings' => Settings.field_mappings,
           'batch_size' => 10,
           'max_compounds' => 10
         )

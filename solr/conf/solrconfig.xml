@@ -42,102 +42,79 @@
       -->
       <str name="qf">
         id
-        title^2.4
-        title_t^2.4
-        title_search^2.4
-        title_s^2.6
-        title_alternative^.5
-        title_alternative_s^.55
-        title_alternative_t^.55
-        contributor^1.1
-        contributor_ss^1.1
-        creator^1.5
-        creator_ss^1.5
-        description
-        publisher
-        publisher_s
-        publisher_t
-        subject^2
-        subject_ss^2.1
-        subject_fast^2
-        subject_fast_ss^2.1
-        notes
-        caption
-        date_created
-        historical_era
-        type
-        format
-        city
-        state
-        country
-        region
-        continent
-        languagelanguage
-        contributing_organization
-        contributing_organization_s
-        transcription
-        translation
-        kaltura_audio
-        kaltura_audio_playlist
-        kaltura_video
-        kaltura_video_playlist
-        kaltura_combo_playlist
-        set_spec
-        collection_name_t
-        collection_name
-        parent_collection_name
-        local_identifier
-        barcode
-        system_identifier
-        dls_identifier
-        persistent_url
-        local_rights
-        fiscal_sponsor
+        title_tesiv^2.4
+        title_search_te_ascii^2.4
+        title_alternative_tesi^.5
+        contributor_tesim^1.1
+        creator_tesimv^1.5
+        description_tesi
+        publisher_tesi
+        subject_tesimv^2
+        subject_fast_tesimv^2
+        notes_tesi
+        caption_tesi
+        date_created_te_split
+        historical_era_ssim
+        document_type_ssi
+        format_ssim
+        format_name_ssimv
+        city_ssi
+        state_ssi
+        country_ssi
+        region_ssi
+        continent_ssi
+        language_ssi
+        contributing_organization_tesi
+        contributing_organization_name_tesi
+        transcription_tesi
+        translation_tesi
+        kaltura_audio_ssi
+        kaltura_audio_playlist_ssi
+        kaltura_video_ssi
+        kaltura_video_playlist_ssi
+        kaltura_combo_playlist_ssi
+        setspec_ssi
+        collection_name_tesi
+        parent_collection_tesi
+        parent_collection_name_ssi
+        local_identifier_te_split
+        barcode_ssi
+        system_identifier_te_split
+        dls_identifier_te_split
+        persistent_url_ssi
+        local_rights_tesi
+        fiscal_sponsor_tesi
       </str>
       <str name="pf">
-        title^2.4
-        title_s^2.6
-        title_t^2.4
-        title_search^2.4
-        title_alternative^.5
-        title_alternative_s^.55
-        title_alternative_t^.55
-        contributor^1.1
-        contributor_ss^1.1
-        creator^1.5
-        creator_ss^1.5
-        description
-        publisher
-        publisher_s
-        publisher_t
-        subject^2
-        subject_ss^2.1
-        subject_fast^2
-        subject_fast_ss^2.1
-        notes
-        caption
-        contributing_organization
-        transcription
-        translation
-        collection_name_t
-        fiscal_sponsor
+        title_tesiv^2.4
+        title_search_te_ascii^2.4
+        title_alternative_tesi^.5
+        contributor_tesim^1.1
+        creator_tesimv^1.5
+        description_tesi
+        publisher_tesi
+        subject_tesimv^2
+        subject_fast_tesimv^2
+        notes_tesi
+        caption_tesi
+        contributing_organization_name_tesi
+        transcription_tesi
+        translation_tesi
+        collection_name_tesi
+        fiscal_sponsor_tesi
       </str>
 
       <str name="title_qf">
-        title
-        title_s^2
+        title_tesiv^2
       </str>
 
       <str name="creator_qf">
-        creator
-        creator_ss^2
+        creator_tesimv^2
       </str>
 
       <str name="subject_qf">
-        subject^2
-        subject_ss^2.1
-        subject_fast^2
-        subject_fast_ss^2.1
+        subject_tesimv^2
+        subject_fast_tesimv^2.1
       </str>
 
       <str name="facet">true</str>
@@ -177,16 +154,14 @@
 
       <str name="qf">
         id
-        title^2.4
-        title_s^2.6
-        dls_identifier
-        transcription
+        title_tesi^2.4
+        dls_identifier_te_split
+        transcription_tesi
       </str>
       <str name="pf">
         id
-        title^2.4
-        title_s^2.6
-        transcription
+        title_tesi^2.4
+        transcription_tesi
       </str>
 
       <str name="facet">false</str>
@@ -197,7 +172,7 @@
     </arr>
   </requestHandler>
 
-  <requestHandler name="collections" class="solr.SearchHandler" default="true">
+  <requestHandler name="collections" class="solr.SearchHandler" default="false">
     <lst name="defaults">
       <str name="defType">edismax</str>
       <str name="echoParams">explicit</str>
@@ -205,20 +180,16 @@
 `     <str name="q.alt">*:*</str>
 
       <str name="qf">
-        collection_name
         collection_name_s^2.4
-        collection_description
-        contributing_organization_name
-        contributing_organization_name_s^4
+        collection_name_tesi^2.4
+        collection_description_tesi
+        contributing_organization_name_tesi^4
         set_spec
       </str>
       <str name="pf">
-        collection_name
-        collection_name_s^2.4
-        collection_description
-        contributing_organization
-        contributing_organization_name
-        contributing_organization_name_s^4
+        collection_name_tesi^2.4
+        collection_description_tesi
+        contributing_organization_name_tesi^4
       </str>
     </lst>
   </requestHandler>
