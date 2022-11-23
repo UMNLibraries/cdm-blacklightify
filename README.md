@@ -7,8 +7,9 @@ Blacklightify a CONTENTdm collection
 2. Ruby on Rails (6.1)
 3. Java Runtime Environment (JRE) version 1.8  *for Solr*
 4. ImageMagick (http://www.imagemagick.org/script/index.php) due to [carrierwave](https://github.com/carrierwaveuploader/carrierwave#adding-versions)
-5. Redis for sidekiq
-6. Git-flow branching workflow tools ([Installation docs](https://github.com/nvie/gitflow/wiki/FAQ))
+5. [Oniguruma](https://github.com/stedolan/jq/wiki/FAQ#installation) for `ruby-jq` bindings, used by fast solr export (`brew install oniguruma`, `apt-get install libonig-dev`, `yum install oniguruma-devel` )
+6. Redis for sidekiq
+7. Git-flow branching workflow tools ([Installation docs](https://github.com/nvie/gitflow/wiki/FAQ))
 
 ### Installation
 
