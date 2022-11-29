@@ -29,15 +29,15 @@ end
 
 namespace :umedia do
   namespace :index do
-    desc 'Put all sample data into solr'
+    desc 'Index required test fixtures into Solr'
     task seed: :environment do
       docs = Dir['test/fixtures/files/solr_documents/*.json'].map { |f| JSON.parse File.read(f) }.flatten
       Blacklight.default_index.connection.add docs
       Blacklight.default_index.connection.commit
     end
 
-    desc 'Harvest'
-    task harvest: :environment do
+    desc 'Harvest a sample set of collections into Solr for development purposes'
+    task harvest_dev: :environment do
       # mpls          => MDL collection
       # p16022coll548 => MDL Khmer Oral History Project
       # p16022coll262 => UMedia video collection

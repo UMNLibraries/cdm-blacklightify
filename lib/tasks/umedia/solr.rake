@@ -23,11 +23,11 @@ namespace :umedia do
     end
 
     # Takes the current state of the development Solr index and dumps it
-    # out to test/fixtures/dev-solr-index.json for use with testing.
+    # out to test/fixtures/dev_solr_harvest.json for use in development
     # Be sure to commit changes
     desc 'Update Solr fixtures file with the current index state'
     task update_fixtures: :environment do
-      ENV['EXPORT_FILENAME'] = "#{Rails.root}/test/fixtures/dev-solr-index.json.gz"
+      ENV['EXPORT_FILENAME'] = "#{Rails.root}/test/fixtures/dev_solr_harvest.json.gz"
       Rake::Task['umedia:solr:export_data'].invoke
       puts "Don't forget to commit the modified fixtures to source control."
     end
@@ -48,9 +48,12 @@ namespace :umedia do
       end
     end
 
+    # Fills your Solr index very quickly with a sizable set of documents,
+    # more expansive than the small set of fixtures needed for tests to pass
+    # This is handy when you don't wish to wait for a harvest to finish
     desc 'Populate a development Solr index from JSON fixtures (Optional env filename IMPORT_FILENAME=path/to/file.json, skip prompts with WIPE_DATA=1)'
     task index_dev: [:environment, :wipe_data] do
-      importfile = (ENV['EXPORT_FILENAME'] || "#{Rails.root}/test/fixtures/dev-solr-index.json.gz")
+      importfile = (ENV['EXPORT_FILENAME'] || "#{Rails.root}/test/fixtures/dev_solr_harvest.json.gz")
 
       # Run Solr's bin/post with the inupt JSON, probably the fastest way of indexing
       puts "Importing from #{importfile}..."
