@@ -30,12 +30,13 @@ namespace :umedia do
       <<~SQSTATS
         Sidekiq status & stats
         ----------------------
-        Processed:     #{stats.processed}
-        Failed:        #{stats.failed}
-        Scheduled:     #{stats.scheduled_size}
-        Retry:         #{stats.retry_size}
-        Dead:          #{stats.dead_size}
-        Num Processes: #{stats.processes_size}
+        Queued (default) #{stats.queues['default']}
+        Processed:       #{stats.processed}
+        Failed:          #{stats.failed}
+        Scheduled:       #{stats.scheduled_size}
+        Retry:           #{stats.retry_size}
+        Dead:            #{stats.dead_size}
+        Num Processes:   #{stats.processes_size}
       SQSTATS
     end
   end
