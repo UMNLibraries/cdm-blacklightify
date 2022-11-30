@@ -14,6 +14,11 @@
     <updateLog>
       <str name="dir">${solr.core0.data.dir:}</str>
     </updateLog>
+    <autoCommit>
+      <maxDocs>10000</maxDocs>
+      <!-- 5min commit interval -->
+      <maxTime>${solr.autoCommit.maxTime:300000}</maxTime>
+    </autoCommit>
   </updateHandler>
 
   <!-- solr lib dirs -->
