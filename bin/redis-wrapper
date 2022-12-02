@@ -5,6 +5,7 @@ tmp_dir="$(dirname $0)/../tmp"
 redis_tgz="$tmp_dir/$(basename $redis_url)"
 src_dir="$tmp_dir/redis-stable"
 redis_bin="$src_dir/src/redis-server"
+redis_port=63799
 
 if [ ! -f "$redis_bin" ]; then
   echo "Downloading redis"
@@ -14,6 +15,10 @@ if [ ! -f "$redis_bin" ]; then
   make
   cd -
 fi
+
+# If a redis instance hung around on this port, kill it and give it a second to shut down
+lsof -t -i tcp@127.0.0.1:$redis_port | xargs -r kill
+sleep 2
 echo "Starting redis"
 mkdir -p "$tmp_dir/redis-data"
-$redis_bin --dir "$tmp_dir/redis-data" --dbfilename redis-dev-dump.rdb --port 63799 --maxmemory-policy noeviction --daemonize no --supervised no --pidfile "$tmp_dir/redis-data/redis-63799.pid"
+$redis_bin --dir "$tmp_dir/redis-data" --dbfilename redis-dev-dump.rdb --bind 127.0.0.1 --port $redis_port --maxmemory-policy noeviction --daemonize no --supervised no --pidfile "$tmp_dir/redis-data/redis-$redis_port.pid"
