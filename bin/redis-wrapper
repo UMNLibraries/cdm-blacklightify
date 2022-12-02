@@ -17,8 +17,7 @@ if [ ! -f "$redis_bin" ]; then
 fi
 
 # If a redis instance hung around on this port, kill it and give it a second to shut down
-lsof -t -i tcp@127.0.0.1:$redis_port | xargs -r kill
-sleep 2
+lsof -t -i tcp@127.0.0.1:$redis_port | xargs -r kill && sleep 1
 echo "Starting redis"
 mkdir -p "$tmp_dir/redis-data"
 $redis_bin --dir "$tmp_dir/redis-data" --dbfilename redis-dev-dump.rdb --bind 127.0.0.1 --port $redis_port --maxmemory-policy noeviction --daemonize no --supervised no --pidfile "$tmp_dir/redis-data/redis-$redis_port.pid"
