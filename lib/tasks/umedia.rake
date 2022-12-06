@@ -48,6 +48,7 @@ namespace :umedia do
       example_sets = %w[
         p16022coll548 p16022coll262 p16022coll208 p16022coll171 p16022coll282
       ]
+      run_etl!(example_sets)
 
       example_sets.each do |set|
         CDMDEXER::ETLWorker.new.perform(
@@ -62,7 +63,18 @@ namespace :umedia do
       end
     end
 
-    desc 'Commit'
+    desc 'Index collections for UMedia'
+    task :harvest, [:set_spec] => :environment do
+      set_specs = CDMDEXER::FilteredSetSpecs.new(
+        oai_base_url: ENV.fetch('OAI_ENDPOINT', nil),
+        # Libraries (non-MDL) collections prefixed ul_abbrevname - Full Set Name
+        callback: CDMDEXER::RegexFilterCallback.new(pattern: /^ul_([a-zA-Z0-9])*\s-\s/)
+      ).set_specs
+
+      run_etl!(set_specs)
+    end
+
+    desc 'Commit pending Solr transactions'
     task commit: :environment do
       Blacklight.default_index.connection.commit
     end
@@ -115,6 +127,20 @@ namespace :umedia do
       else
         system('rake umedia:index:test RAILS_ENV=test')
       end
+    end
+  end
+
+  def run_etl!(set_specs)
+    set_specs.each do |set|
+      CDMDEXER::ETLWorker.new.perform(
+        'solr_config' => { 'url' => ENV.fetch('SOLR_URL', nil) },
+        'oai_endpoint' => ENV.fetch('OAI_ENDPOINT', nil),
+        'cdm_endpoint' => ENV.fetch('CDM_ENDPOINT', nil),
+        'set_spec' => set,
+        'field_mappings' => Settings.field_mappings,
+        'batch_size' => 10,
+          'max_compounds' => 10
+      )
     end
   end
 end
