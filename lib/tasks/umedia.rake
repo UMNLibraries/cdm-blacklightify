@@ -49,18 +49,6 @@ namespace :umedia do
         p16022coll548 p16022coll262 p16022coll208 p16022coll171 p16022coll282
       ]
       run_etl!(example_sets)
-
-      example_sets.each do |set|
-        CDMDEXER::ETLWorker.new.perform(
-          'solr_config' => { 'url' => ENV.fetch('SOLR_URL', nil) },
-          'oai_endpoint' => ENV.fetch('OAI_ENDPOINT', nil),
-          'cdm_endpoint' => ENV.fetch('CDM_ENDPOINT', nil),
-          'set_spec' => set,
-          'field_mappings' => Settings.field_mappings,
-          'batch_size' => 10,
-          'max_compounds' => 10
-        )
-      end
     end
 
     desc 'Index collections for UMedia'
