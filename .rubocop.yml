@@ -26,6 +26,7 @@ Layout/LineLength:
   Exclude:
   - 'app/lib/umedia/transformer.rb'
   - 'app/lib/umedia/rights_config.rb'
+  - 'lib/tasks/umedia/solr.rake'
   - 'config/initializers/devise.rb'
   - 'config/initializers/spotlight_initializer.rb'
   - 'test/**/*'
@@ -41,6 +42,7 @@ Metrics/BlockLength:
   - 'app/controllers/catalog_controller.rb'
   - 'lib/tasks/umedia.rake'
   - 'lib/tasks/umedia/sidekiq.rake'
+  - 'lib/tasks/umedia/solr.rake'
 
 Metrics/ClassLength:
   Max: 150

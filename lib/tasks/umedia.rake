@@ -127,7 +127,7 @@ namespace :umedia do
         'set_spec' => set,
         'field_mappings' => Settings.field_mappings,
         'batch_size' => 10,
-          'max_compounds' => 10
+        'max_compounds' => 10
       )
     end
   end
