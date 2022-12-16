@@ -52,13 +52,16 @@ namespace :umedia do
     end
 
     desc 'Index collections for UMedia'
-    task :harvest, [:set_spec] => :environment do
-      set_specs = CDMDEXER::FilteredSetSpecs.new(
-        oai_base_url: ENV.fetch('OAI_ENDPOINT', nil),
-        # Libraries (non-MDL) collections prefixed ul_abbrevname - Full Set Name
-        callback: CDMDEXER::RegexFilterCallback.new(pattern: /^ul_([a-zA-Z0-9])*\s-\s/)
-      ).set_specs
-
+    task :harvest, [:set_spec] => :environment do |_t, args|
+      if args[:set_spec]
+        set_specs = [args[:set_spec]]
+      else
+        set_specs = CDMDEXER::FilteredSetSpecs.new(
+          oai_base_url: ENV.fetch('OAI_ENDPOINT', nil),
+          # Libraries (non-MDL) collections prefixed ul_abbrevname - Full Set Name
+          callback: CDMDEXER::RegexFilterCallback.new(pattern: /^ul_([a-zA-Z0-9])*\s-\s/)
+        ).set_specs
+      end
       run_etl!(set_specs)
     end
 
