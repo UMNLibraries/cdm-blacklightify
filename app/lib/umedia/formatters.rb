@@ -135,6 +135,15 @@ module Umedia
       end
     end
 
+    # UMedia collection name formatter, strips collection prefix like "ul_mss - "
+    class UmediaCollectionNameFormatter
+      def self.format(value)
+        value['oai_sets'].fetch(value['setSpec'], {})
+                         .fetch(:name, '')
+                         .gsub(/^ul_([a-zA-Z0-9])*\s-\s/, '')
+      end
+    end
+
     # AttachmentFormatter
     class AttachmentFormatter
       def self.format(record)

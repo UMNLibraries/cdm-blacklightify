@@ -327,6 +327,26 @@
   <copyField source="id" dest="id_ng" maxChars="3000"/>
   <copyField source="title_tesi" dest="full_title_ng" maxChars="3000"/>
 
+
+  <!-- Auto copy unstem_search for several fields -->
+  <copyField source="title_tesi" dest="title_unstem_search"/>
+  <copyField source="contributor_teim" dest="contributor_unstem_search"/>
+  <copyField source="creator_ssim" dest="creator_unstem_search"/>
+  <copyField source="subject_teim" dest="subject_unstem_search"/>
+  <copyField source="keyword_ssim" dest="keyword_unstem_search"/>
+  <copyField source="topic_ssim" dest="topic_unstem_search"/>
+  <copyField source="formal_subject_ssim" dest="formal_subject_unstem_search"/>
+  <copyField source="publishing_agency_ssim" dest="publishing_agency_unstem_search"/>
+  <copyField source="city_ssim" dest="city_unstem_search"/>
+  <copyField source="district_ssi" dest="district_unstem_search"/>
+  <copyField source="county_ssim" dest="county_unstem_search"/>
+  <copyField source="state_ssim" dest="state_unstem_search"/>
+  <copyField source="country_ssim" dest="country_unstem_search"/>
+  <copyField source="contributing_organization_tesi" dest="contributing_unstem_search"/>
+  <copyField source="geographic_feature_teim" dest="geographic_feature_unstem_search"/>
+  <copyField source="placename_ssim" dest="placename_unstem_search"/>
+
+
   <types>
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" />
     <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
