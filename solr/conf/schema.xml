@@ -345,7 +345,7 @@
   <copyField source="contributing_organization_tesi" dest="contributing_unstem_search"/>
   <copyField source="geographic_feature_teim" dest="geographic_feature_unstem_search"/>
   <copyField source="placename_ssim" dest="placename_unstem_search"/>
-
+  <copyField source="language_ssi" dest="placename_unstem_search"/>
 
   <types>
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" />
