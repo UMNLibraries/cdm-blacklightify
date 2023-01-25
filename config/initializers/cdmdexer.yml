@@ -216,12 +216,12 @@ field_mappings:
 
   - dest_path: es_physical_format_ssi
     formatters:
-      -CDMDEXER::StripFormatter
+      - CDMDEXER::StripFormatter
     origin_path: spitem
 
   - dest_path: es_physical_format_tesi
     formatters:
-      -CDMDEXER::StripFormatter
+      - CDMDEXER::StripFormatter
     origin_path: spitem
 
   - dest_path: formal_subject_ssim
