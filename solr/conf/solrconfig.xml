@@ -16,8 +16,8 @@
     </updateLog>
     <autoSoftCommit>
       <maxDocs>10000</maxDocs>
-      <!-- 5min commit interval -->
-      <maxTime>${solr.autoCommit.maxTime:300000}</maxTime>
+      <!-- 1min commit interval -->
+      <maxTime>${solr.autoCommit.maxTime:60000}</maxTime>
     </autoSoftCommit>
   </updateHandler>
 
