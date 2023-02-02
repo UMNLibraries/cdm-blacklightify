@@ -51,14 +51,13 @@ field_mappings:
     formatters:
       - CDMDEXER::SplitFormatter
       - CDMDEXER::StripFormatter
-      - Umedia::Formatters::SuperCollectionNamesFormatter
     origin_path: projea
 
   - dest_path: super_collection_descriptions_tesim
     formatters:
       - CDMDEXER::AddSetSpecFormatter
       - Umedia::Formatters::SuperCollectionDescriptionsFormatter
-    origin_path: projea
+    origin_path: /
 
   - dest_path: parent_collection_ssi
     formatters:
@@ -74,7 +73,7 @@ field_mappings:
   - dest_path: parent_id_ssi
     formatters:
       - CDMDEXER::StripFormatter
-    origin_path: 'parent_id'
+    origin_path: parent_id
 
   - dest_path: title_tesi
     formatters:
@@ -159,6 +158,21 @@ field_mappings:
     formatters:
       - CDMDEXER::StripFormatter
     origin_path: date
+
+  - dest_path: date_added_ssi
+    formatters:
+      - Umedia::Formatters::ToSolrDateFormatter
+    origin_path: dmcreated
+
+  - dest_path: date_added_sort_ssi
+    formatters:
+      - Umedia::Formatters::ToSolrDateFormatter
+    origin_path: dmcreated
+
+  - dest_path: date_modified_ssi
+    formatters:
+      - Umedia::Formatters::ToSolrDateFormatter
+    origin_path: dmmodified
 
   - dest_path: publishing_agency_tei
     formatters:
@@ -593,6 +607,11 @@ field_mappings:
       - CDMDEXER::StripFormatter
     origin_path: record_type
 
+  - dest_path: page_count_isi
+    formatters:
+      - Umedia::Formatters::PageCountFormatter
+    origin_path: /
+
   - dest_path: geographic_feature_ssim
     formatters:
       - CDMDEXER::Titlieze
@@ -678,3 +697,34 @@ field_mappings:
   - dest_path: child_index_isi
     formatters: []
     origin_path: child_index
+
+  # Attachments can appear below kaltura items or complex objects that
+  # have an attachment specified in the parent item. Attachments offer
+  # complimentary content for the featured item. A video about a paiting
+  # might have a iiif image attachment that shows the painting, for example
+  - dest_path: attachment_ssim
+    formatters: []
+    origin_path: find
+
+  # Attachment format is a "viewer" format (iiif, pdf, etc). If this
+  # field is missing, the UI code will not display an attachment
+  - dest_path: attachment_format_ssi
+    formatters:
+      - Umedia::Formatters::AttachmentFormatter
+    origin_path: /
+
+        # We have both collection and item data in the index
+  - dest_path: document_type_ssi
+    formatters:
+      - Umedia::Formatters::DocumentFormatter
+    origin_path: 'id'
+
+  - dest_path: featured_collection_order_isi
+    formatters:
+      - Umedia::Formatters::FeaturedCollectionOrderFormatter
+    origin_path: /
+
+  - dest_path: first_viewer_type_ss
+    formatters:
+      - Umedia::Formatters::FirstViewerTypeFormatter
+    origin_path: /
