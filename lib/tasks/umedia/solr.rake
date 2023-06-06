@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+#
+require 'fileutils'
 
 namespace :umedia do
   namespace :solr do
@@ -61,9 +63,10 @@ namespace :umedia do
     # rubocop:disable Rails/FilePath
     desc 'Populate a development Solr index from JSON fixtures (Optional env filename IMPORT_FILENAME=path/to/file.json, skip prompts with WIPE_DATA=1)'
     task index_dev: %i[environment wipe_data] do
-      importfile = (ENV.fetch('EXPORT_FILENAME') || Rails.root.join('test/fixtures/dev_solr_harvest.json.gz'))
+      importfile = (ENV.fetch('EXPORT_FILENAME', nil) || Rails.root.join('test/fixtures/dev_solr_harvest.json.gz'))
 
       # Run Solr's bin/post with the inupt JSON, probably the fastest way of indexing
+      FileUtils.chmod('+x', 'tmp/solr/bin/post')
       puts "Importing from #{importfile}..."
       system("gunzip -c '#{importfile}' | #{Rails.root.join('tmp/solr/bin/post')} -url '#{ENV.fetch('SOLR_URL')}/update' -commit yes -type application/json -d")
     end
