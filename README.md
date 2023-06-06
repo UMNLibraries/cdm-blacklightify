@@ -76,14 +76,23 @@ $ bundle exec rails server -b 127.0.0.1 -p 3000
 
 Visit [http://localhost:3000](http://localhost:3000) in your browser to see your locally running instance
 
-#### Harvest Documents
-
-7. Assuming Redis and Sidekiq are running (started with `foreman`), run Harvest rake task
+#### Load the Development Index
+7. For development, a test record set can be quickly loaded from a stored JSON
+   fixture. This will load `test/fixtures/dev_solr_harvest.json.gz` directly
+   into Solr. **NOTE** This will erase your current index.
 
 ```shell
-$ bundle exec rake umedia:index:harvest
+$ bundle exec rake umedia:solr:index_dev
 ```
-8. (Optional) Commit to Solr
+
+#### Harvest More Documents
+
+8. Assuming Redis and Sidekiq are running (started with `foreman`), run Harvest rake task
+
+```shell
+$ bundle exec rake umedia:index:harvest_dev
+```
+9. (Optional) Commit to Solr
 
 As your harvest is running, you can occasionally sent a `commit` to Solr to see what documents you have harvested.
 ```shell
