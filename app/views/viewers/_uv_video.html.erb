@@ -1,0 +1,23 @@
+<%
+
+borealis_doc = Umedia::BorealisDocument.new(document: document)
+borealis_doc.manifest_url
+
+%>
+
+<% content_for(:head) do %>
+  <%= javascript_include_tag "/uv/UV.js" %>
+  <%= stylesheet_link_tag "/uv/uv.css" %>
+  <style>#uv { width: 70vw; height: 80vh; margin-bottom: 1rem; }</style>
+<% end %>
+
+<div id="uv" class="uv" style="width:auto;"></div>
+<script>
+  var uv = UV.init(
+    "uv",
+    {
+      manifest: "<%= borealis_doc.manifest_url %>",
+      config: "/uv/config.json",
+    },
+  );
+</script>

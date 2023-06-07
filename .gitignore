@@ -57,6 +57,8 @@ node_modules/
 /public/packs-test
 /public/assets
 
+/public/sitemap.xml.gz
+
 # Ignore yarn files
 /yarn-error.log
 yarn-debug.log*
@@ -81,3 +83,9 @@ yarn-debug.log*
 !/public/uploads/spotlight/featured_image/image/19/wwii.jpg
 !/public/uploads/spotlight/featured_image/image/20/wwi.jpg
 !/public/uploads/spotlight/temporary_image/image/32/uptownTheatre.png
+
+# Ignore Universal Viewer
+public/uv/*
+
+# Redis database files, should they end up outside tmp/
+*.rdb

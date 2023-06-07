@@ -14,6 +14,7 @@ module Umedia
     config.action_mailer.default_url_options = { host: 'localhost:3000', from: 'noreply@example.com' }
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.active_record.yaml_column_permitted_classes = [ActiveSupport::HashWithIndifferentAccess, Symbol, Struct]
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -21,7 +22,8 @@ module Umedia
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+
+    config.eager_load_paths += Dir[Rails.root.join(File.join('app', 'lib', '**', '**.rb'))]
 
     # Background Jobs
     config.active_job.queue_adapter = :sidekiq

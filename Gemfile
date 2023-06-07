@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '~> 3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
+gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+gem 'ruby-jq'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -89,9 +91,11 @@ end
 
 # ContentDM Harvesting/Indexing
 gem 'config'
-gem 'contentdm_api', github: 'ewlarson/contentdm_api', branch: 'feature/http-latest'
-gem 'cdmdexer', '>= 0.22.0'
+gem 'contentdm_api', github: 'UMNLibraries/contentdm_api'
+gem 'cdmdexer', github: 'UMNLibraries/cdmdexer', branch: 'sp-lang'
 gem 'foreman', '~> 0.80'
+# We cannot move to Sidekiq 7 as long as the ETLWorker and TransformWorker
+# pass complex objects (including multiple FieldMapping classes) to Sidekiq worker perform() methods
 gem 'sidekiq', '~> 6.0'
 gem 'dotenv-rails'
 
@@ -99,7 +103,17 @@ gem 'dotenv-rails'
 gem 'mimemagic', '~> 0.4.3'
 gem 'addressable', '~> 2.8'
 
+
 gem "net-smtp", "~> 0.3.1"
 
 gem "net-imap", "~> 0.2.3"
 gem "net-pop", "~> 0.1.1"
+
+# IIIF Manifests
+gem 'rack-cors', :require => 'rack/cors'
+
+# Citations
+gem 'rinku'
+
+# Kaltura
+gem 'kaltura-client', '17.5.0'
