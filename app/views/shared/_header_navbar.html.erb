@@ -41,6 +41,7 @@
   </a>
 </nav>
 
+<%# issue is somewhere in here, b/c if we replace all this with the default spotlight base nav, search works again . . . %>
 <nav aria-label="Main" class="container-fluid">
   <div class="row" id="main-nav">
     <a class="col-md-auto col-12 text-center" href="/" id="umedia">UMedia</a>
@@ -52,9 +53,11 @@
 
   <div id="main-search">
     <%- unless params[:controller] == 'transcript' %> 
-			<form class="<%= container_classes %>" aria-label="Search UMedia resources">
-				<%= render_search_bar  %>
-			</form>
+			<%= content_tag :div, role: 'navigation', aria: { label: t('blacklight.search.header') } do %>
+				<div class="<%= container_classes %>" aria-label="Search UMedia resources">
+					<%= render_search_bar  %>
+				</div>
+			<% end %>
     <%- end %>
   </div>
 
