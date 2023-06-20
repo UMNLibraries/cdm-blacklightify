@@ -6,6 +6,7 @@ require 'net/http'
 
 # Formatters to clean up CONTENTdm API metadata
 module Umedia
+  # Formatters
   class Formatters
     # @TODO
     # - Move generic formatters to CDMDEXER
@@ -104,11 +105,7 @@ module Umedia
     # PageCountFormatter
     class PageCountFormatter
       def self.format(values)
-        if values['page'].respond_to?(:length)
-          values['page'].length
-        else
-          1
-        end
+        (values['page'].length if values['page'].respond_to?(:length)) || 1
       end
     end
 
@@ -138,6 +135,15 @@ module Umedia
       end
     end
 
+    # UMedia collection name formatter, strips collection prefix like "ul_mss - "
+    class UmediaCollectionNameFormatter
+      def self.format(value)
+        value['oai_sets'].fetch(value['setSpec'], {})
+                         .fetch(:name, '')
+                         .gsub(/^ul_([a-zA-Z0-9])*\s-\s/, '')
+      end
+    end
+
     # AttachmentFormatter
     class AttachmentFormatter
       def self.format(record)
@@ -157,6 +163,23 @@ module Umedia
     class IiifManifestUrlFormatter
       def self.format(value)
         "https://cdm16022.contentdm.oclc.org/iiif/2/#{value}/manifest.json"
+      end
+    end
+
+    # KalturaPlaylistDataFormatter
+    class KalturaPlaylistDataFormatter
+      def self.format(value)
+        data = value.split(';').map do |playlist_entry_id|
+          id = playlist_entry_id.strip
+          entry = KalturaMediaEntryService.get(id)
+          {
+            entry_id: playlist_entry_id,
+            duration: entry.duration,
+            name: entry.name
+          }
+        end
+
+        JSON.generate(data)
       end
     end
   end

@@ -1,0 +1,22 @@
+<!-- Viewer -->
+<div data-viewer-type="<%=document._source['viewer_type_ssi']%>">
+  <% case document._source['viewer_type_ssi'] %>
+    <% when 'image' %>
+      <%= render partial: 'viewers/uv_image', locals: { document: document } %>
+    <% when 'kaltura_audio' %>
+      <%= render partial: 'viewers/uv_audio', locals: { document: document } %>
+    <% when 'kaltura_video' %>
+      <%= render partial: 'viewers/uv_video', locals: { document: document } %>
+    <% when 'kaltura_audio_playlist' %>
+      <%= render partial: 'viewers/uv_audio_playlist', locals: { document: document } %>
+    <% else %>
+      <%= render partial: 'viewers/uv_iiif_manifest', locals: { document: document } %>
+  <% end %>
+</div>
+
+<%= render(
+  Blacklight::DocumentMetadataComponent.new(
+    fields: document_presenter(document).field_presenters,
+    show: true
+  )
+) %>

@@ -25,6 +25,10 @@ module Umedia
       case format
       when 'jpg', 'jp2'
         'image'
+      when 'mp3'
+        'kaltura_audio'
+      when 'mp4'
+        'kaltura_video'
       when 'pdf'
         'pdf'
       when 'cpd'
