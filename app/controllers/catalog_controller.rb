@@ -33,6 +33,17 @@ class CatalogController < ApplicationController
 
     config.add_search_field 'all_fields', label: I18n.t('spotlight.search.fields.search.all_fields')
 
+		# additional targeted search query field. 
+		config.add_search_field 'type_ssi', label: 'Type'
+		config.add_search_field 'date_ssi', label: 'Date'
+		config.add_search_field('subject') do |field|
+      field.query_parameters = { :'spellcheck.dictionary' => 'subject' }
+      field.query_local_parameters = { 
+        :qf => 'subject_ssim'
+      }
+    end
+
+
     config.add_sort_field 'relevance', sort: 'score desc', label: I18n.t('spotlight.search.fields.sort.relevance')
     config.add_sort_field 'date_created_sort_ssortsi desc, title_sort_ssortsi asc', label: 'Year (Newest first)'
     config.add_sort_field 'date_created_sort_ssortsi asc, title_sort_ssortsi asc', label: 'Year (Oldest first)'

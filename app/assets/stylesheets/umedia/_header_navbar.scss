@@ -6,14 +6,14 @@ nav[aria-label="University"] {
 		height: 4rem;
 		padding: 1.25rem;
 		color: #333;
-	}
-	a:hover,
-	a:focus {
-		background-color: #7a0019;
-		color: #fafafa;
-		text-decoration: underline;
-		#lock {
-			fill: #fafafa;
+		&:hover,
+		&:focus {
+			background-color: #7a0019;
+			color: #fafafa;
+			text-decoration: underline;
+			#lock {
+				fill: #fafafa;
+			}
 		}
 	}
 	svg {
@@ -23,12 +23,12 @@ nav[aria-label="University"] {
 		padding: .5rem;
 		min-width: calc(170px + 1rem);
 		max-width: calc(220px + 1rem);
-	}
-	#umn-logo:hover,
-	#umn-logo:focus {
-		fill: #fafafa;
-		svg .maroon-fill {
-			fill: #ffcc33
+		&:hover,
+		&:focus {
+			fill: #fafafa;
+			svg .maroon-fill {
+				fill: #ffcc33
+			}
 		}
 	}
 	.maroon-fill {
@@ -45,13 +45,13 @@ nav[aria-label="University"] {
 		padding: 0 1.25rem;
 		border: 6px solid #ffde7a;
 		box-shadow: 0px 0px 0px 2px #333 inset;
-	}
-	#give>a:hover,
-	#give>a:focus {
-		background-color: #7a0019;
-		color: #fafafa;
-		border: 6px solid #7a0019;
-		box-shadow: 0px 0px 0px 2px #fafafa inset;
+		&>a:hover,
+		&>a:focus {
+			background-color: #7a0019;
+			color: #fafafa;
+			border: 6px solid #7a0019;
+			box-shadow: 0px 0px 0px 2px #fafafa inset;
+		}
 	}
 }
 
@@ -67,17 +67,17 @@ nav[aria-label="Libraries"] {
 			width: 100%;
 			height: 3.5rem;
 		}
-	}
-	#logo:hover,
-	#logo:focus {
-		background-color: #ffde7a;
-		fill: #002d61;
-		height: 100%;
-		svg .libraries-fill {
-			fill: #333;
-		}
-		svg .maroon-fill {
-			fill: #7a0019;
+		&:hover,
+		&:focus {
+			background-color: #ffde7a;
+			fill: #002d61;
+			height: 100%;
+			svg .libraries-fill {
+				fill: #333;
+			}
+			svg .maroon-fill {
+				fill: #7a0019;
+			}
 		}
 	}
 	svg .libraries-fill {
@@ -108,13 +108,13 @@ nav[aria-label="Main"] {
 			padding: 1rem;
 			padding: .875rem 1rem;
 			border-bottom: 3px solid transparent;
-		}
-		a:hover,
-		a:focus {
-			background-color: #ffde7a;
-			color: #333;
-			text-decoration: none;
-			border-bottom: 3px solid #ffcc33;
+			&:hover,
+			&:focus {
+				background-color: #ffde7a;
+				color: #333;
+				text-decoration: none;
+				border-bottom: 3px solid #ffcc33;
+			}
 		}
 		#umedia {
 			font-weight: bold;
@@ -135,6 +135,15 @@ nav[aria-label="Main"] {
 			margin: 1rem;
 			margin: 0 auto;
 			padding: 1rem;
+			#search_field {
+				background-color: #f0efee;
+				height: 3.125rem;
+				&:hover {
+					box-shadow: none;
+					outline: 3px solid #0053b0;
+					outline-offset: 2px;
+				}
+			}
 			.search-btn {
 				max-height: 3.125rem;
 			}
@@ -144,12 +153,12 @@ nav[aria-label="Main"] {
 				border-color: #333;
 				padding-right: 1rem;
 				padding-top: .5rem;
-			}
-			#search:hover,
-			#search:focus {
-				box-shadow: none;
-				outline: 3px solid #0053b0;
-				outline-offset: 2px;
+				&:hover,
+				&:focus {
+					box-shadow: none;
+					outline: 3px solid #0053b0;
+					outline-offset: 2px;
+				}
 			}
 		}
 		form>div>#q {
