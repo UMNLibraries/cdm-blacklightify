@@ -3,3 +3,8 @@ en:
     application_name: 'Blacklight'
     citation: 'Citation'
     transcript: 'Transcript'
+    search:
+      form:
+        search:
+          label: 'search for'
+          placeholder: ''
