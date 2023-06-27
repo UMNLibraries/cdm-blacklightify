@@ -15,8 +15,9 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.1'
+
     - name: Install jq
-      run: sudo apt-get install -y jq
+      run: sudo apt-get install -y jq libjq-dev libonig5 libonig-dev
     - name: Install dependencies
       run: bundle install
     - name: Run linter
@@ -56,7 +57,7 @@ jobs:
       run: docker run -d -p 8983:8983 geoblacklight/solr:8.9-v1.0.0 server/scripts/ci-start.sh
 
     - name: Install jq
-      run: sudo apt-get install -y jq
+      run: sudo apt-get install -y jq libjq-dev libonig5 libonig-dev
 
     - name: Install bundler
       run: gem install bundler -v 2.3.17
