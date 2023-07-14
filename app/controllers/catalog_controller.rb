@@ -4,6 +4,8 @@
 # Simplified catalog controller
 class CatalogController < ApplicationController
   include Blacklight::Catalog
+  include BlacklightRangeLimit::ControllerOverride
+
   include Thumbnail
 
   configure_blacklight do |config|

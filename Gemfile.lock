@@ -160,6 +160,8 @@ GEM
       blacklight (~> 7.0)
       rails
       ruby-oembed
+    blacklight_range_limit (7.9.1)
+      blacklight (~> 7.0)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
     bootstrap (4.6.1)
@@ -228,7 +230,7 @@ GEM
       actionmailer (>= 5.0)
       devise (>= 4.6)
     diffy (3.4.2)
-    digest (3.1.0)
+    digest (3.1.1)
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -670,6 +672,7 @@ DEPENDENCIES
   blacklight-gallery (~> 3.0)
   blacklight-oembed (~> 1.0)
   blacklight-spotlight!
+  blacklight_range_limit (~> 7.0)
   bootsnap (>= 1.4.4)
   bootstrap (~> 4.0)
   bundler-audit

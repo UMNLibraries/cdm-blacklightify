@@ -52,7 +52,8 @@ module Umedia
       def self.format(val)
         # Ah, library metadata; strip off the fake ranges
         val = val.gsub(/^- /, '')
-        val.split('-').first.gsub(/([^0-9|\s]*)/i, '')
+        # support either 'yyyy-mm-dd - yyyy-mm-dd' or ISO 'yyyy-mm-dd / yyyy-mm-dd'
+        val = val.split(/ [-\/] /).first.gsub(/([^0-9|\s]*)/i, '').strip
       end
     end
 
