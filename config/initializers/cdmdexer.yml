@@ -571,3 +571,16 @@ field_mappings:
     origin_path: sprigh
     formatters:
       - CDMDEXER::StripFormatter
+
+  ##########################################
+  # IIIF support
+  ##########################################
+  - dest_path: iiif_manifest_url
+    origin_path: /
+    formatters:
+      - Umedia::Formatters::IiifManifestUrlFormatter
+
+  - dest_path: iiif_manifest
+    origin_path: /
+    formatters:
+      - Umedia::Formatters::IiifManifestFormatter
