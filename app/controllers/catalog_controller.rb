@@ -24,141 +24,141 @@ class CatalogController < ApplicationController
       qt: 'search',
       rows: 10,
       fl: '*',
-      fq: 'record_type_ssi:primary'
+      fq: 'record_type:primary'
     }
 
     config.document_solr_path = 'get'
     config.document_unique_id_param = 'ids'
 
     # solr field configuration for search results/index views
-    config.index.title_field = 'title_ssi'
+    config.index.title_field = 'title'
 
     config.add_search_field 'all_fields', label: I18n.t('spotlight.search.fields.search.all_fields')
 
     config.add_sort_field 'relevance', sort: 'score desc', label: I18n.t('spotlight.search.fields.sort.relevance')
-    config.add_sort_field 'date_created_sort_ssortsi desc, title_sort_ssortsi asc', label: 'Year (Newest first)'
-    config.add_sort_field 'date_created_sort_ssortsi asc, title_sort_ssortsi asc', label: 'Year (Oldest first)'
-    config.add_sort_field 'title_sort_ssortsi asc', label: 'Title (A-Z)'
-    config.add_sort_field 'title_sort_ssortsi desc', label: 'Title (Z-A)'
-    config.add_sort_field 'creator_sort_ssortsi asc', label: 'Creator (A-Z)'
-    config.add_sort_field 'creator_sort_ssortsi desc', label: 'Creator (Z-A)'
+    config.add_sort_field 'date_created_sort desc, title_sort asc', label: 'Year (Newest first)'
+    config.add_sort_field 'date_created_sort asc, title_sort asc', label: 'Year (Oldest first)'
+    config.add_sort_field 'title_sort asc', label: 'Title (A-Z)'
+    config.add_sort_field 'title_sort desc', label: 'Title (Z-A)'
+    config.add_sort_field 'creator_sort asc', label: 'Creator (A-Z)'
+    config.add_sort_field 'creator_sort desc', label: 'Creator (Z-A)'
 
     # FACETS
     # @TODO - Special Projects
     ## config.add_facet_field 'super_collection_name_ss', label: 'Special Projects',
     ##                        limit: 4, collapse: true
 
-    # Contributing Organization / contributing_organization_ssi
-    config.add_facet_field 'contributing_organization_ssi', label: 'Contributing Organization',
+    # Contributing Organization / contributing_organization
+    config.add_facet_field 'contributing_organization', label: 'Contributing Organization',
                                                             limit: 4, collapse: true
 
-    # Collection / collection_name_ssi
-    config.add_facet_field 'collection_name_ssi', label: 'Collection', limit: 4, collapse: true
+    # Collection / collection_name
+    config.add_facet_field 'collection_name', label: 'Collection', limit: 4, collapse: true
 
-    # Type / type_ssi
-    config.add_facet_field 'type_ssi', label: 'Type', limit: 4, collapse: true
+    # Type / types
+    config.add_facet_field 'types', label: 'Type', limit: 4, collapse: true
 
-    # Format / format_name_ssimv
-    config.add_facet_field 'format_name_ssimv', label: 'Format', limit: 4, collapse: true
+    # Format / format_name
+    config.add_facet_field 'format_name', label: 'Format', limit: 4, collapse: true
 
-    # Created / date_created_ssortsi
-    config.add_facet_field 'date_ssi', label: 'Created', limit: 4, collapse: true
+    # Created / date_created
+    config.add_facet_field 'date_created', label: 'Created', limit: 4, collapse: true
 
-    # Subject / subject_ssim
-    config.add_facet_field 'subject_ssim', label: 'Subject', limit: 4, collapse: true
+    # Subject / subject
+    config.add_facet_field 'subject', label: 'Subject', limit: 4, collapse: true
 
-    # Creator / creator_ssim
-    config.add_facet_field 'creator_ssim', label: 'Creator', limit: 4, collapse: true
+    # Creator / creator
+    config.add_facet_field 'creator', label: 'Creator', limit: 4, collapse: true
 
-    # Publisher / publisher_ssi
-    config.add_facet_field 'publisher_ssi', label: 'Publisher', limit: 4, collapse: true
+    # Publisher / publisher
+    config.add_facet_field 'publisher', label: 'Publisher', limit: 4, collapse: true
 
-    # Contributor / contributor_ssim
-    config.add_facet_field 'contributor_ssim', label: 'Contributor', limit: 4, collapse: true
+    # Contributor / contributor
+    config.add_facet_field 'contributor', label: 'Contributor', limit: 4, collapse: true
 
-    # Language / language_ssi
-    config.add_facet_field 'language_ssi', label: 'Language', limit: 4, collapse: true
+    # Language / language
+    config.add_facet_field 'language', label: 'Language', limit: 4, collapse: true
 
     # SEARCH RESULTS FIELDS
     # Description
-    config.add_index_field 'description_ts', label: 'Description'
-    config.add_index_field 'sp_description_ts', label: 'Description (Spanish)'
+    config.add_index_field 'description', label: 'Description'
+    config.add_index_field 'es_description', label: 'Description (Spanish)'
     # Creator
-    config.add_index_field 'creator_ssim', label: 'Creator'
+    config.add_index_field 'creator', label: 'Creator'
 
     # Created
-    config.add_index_field 'date_created_sort_ssortsi', label: 'Created'
+    config.add_index_field 'date_created_sort', label: 'Created'
 
     # Contributed By
-    config.add_index_field 'contributor_ssim', label: 'Contributed By'
+    config.add_index_field 'contributor', label: 'Contributed By'
 
     # Last Updated
-    config.add_index_field 'dmmodified_ssi', label: 'Last Updated'
+    config.add_index_field 'dmmodified', label: 'Last Updated'
 
-    config.add_index_field 'child_index_isi', label: 'Child Index'
+    config.add_index_field 'child_index', label: 'Child Index'
 
     # Thumbnails - A helper method that looks for attached image from solr_document_sidecar
     config.index.thumbnail_method = :thumbnail
 
     # ITEM VIEW FIELDS
-    config.add_show_field 'object_ssi', label: 'Thumbnail Source', itemprop: 'object'
+    config.add_show_field 'object', label: 'Thumbnail Source', itemprop: 'object'
     # Description
-    config.add_show_field 'description_ts', label: 'Description', itemprop: 'description'
-    config.add_show_field 'sp_description_ts', label: 'Description (Spanish)', itemprop: 'description_sp'
+    config.add_show_field 'description', label: 'Description', itemprop: 'description'
+    config.add_show_field 'es_description', label: 'Description (Spanish)', itemprop: 'description_es'
     # Date Created
     config.add_show_field 'date_created_sort_ssortsi', label: 'Date Created', itemprop: 'date_created',
                                                        link_to_facet: true
     # Creator
-    config.add_show_field 'creator_ssim', label: 'Creator', itemprop: 'creator', link_to_facet: true
+    config.add_show_field 'creator', label: 'Creator', itemprop: 'creator', link_to_facet: true
 
     ## Physical Description
     # Item Type
-    config.add_show_field 'type_ssi', label: 'Type', itemprop: 'type', link_to_facet: true
+    config.add_show_field 'type', label: 'Type', itemprop: 'type', link_to_facet: true
     # Format
-    config.add_show_field 'format_ssim', label: 'Format', itemprop: 'format', link_to_facet: true
-    config.add_show_field 'sp_physical_format_ssi', label: 'Format (Spanish)', itemprop: 'format_sp', link_to_facet: false
+    config.add_show_field 'format', label: 'Format', itemprop: 'format', link_to_facet: true
+    config.add_show_field 'es_physical_format_', label: 'Format (Spanish)', itemprop: 'format_sp', link_to_facet: false
 
     ## Topics
     # Subjects
-    config.add_show_field 'subject_ssim', label: 'Subject', itemprop: 'subject', link_to_facet: true
-    config.add_show_field 'sp_subject_ssim', label: 'Subject (Spanish)', itemprop: 'subject_sp', link_to_facet: false
+    config.add_show_field 'subject', label: 'Subject', itemprop: 'subject', link_to_facet: true
+    config.add_show_field 'sp_subject', label: 'Subject (Spanish)', itemprop: 'subject_sp', link_to_facet: false
     # Language
-    config.add_show_field 'language_ssi', label: 'Language', itemprop: 'language', link_to_facet: true
-    config.add_show_field 'sp_language_ssi', label: 'Language (Spanish)', itemprop: 'language_sp', link_to_facet: false
+    config.add_show_field 'language', label: 'Language', itemprop: 'language', link_to_facet: true
+    config.add_show_field 'es_language', label: 'Language (Spanish)', itemprop: 'language_sp', link_to_facet: false
 
     ## Geographic Location
     # Country
-    config.add_show_field 'country_ssi', label: 'Country', itemprop: 'country', link_to_facet: true
-    config.add_show_field 'sp_country_ssi', label: 'Country (Spanish)', itemprop: 'country_sp', link_to_facet: false
+    config.add_show_field 'country', label: 'Country', itemprop: 'country', link_to_facet: true
+    config.add_show_field 'es_country', label: 'Country (Spanish)', itemprop: 'country_sp', link_to_facet: false
 
-    config.add_show_field 'continent_ssi', label: 'Continent', itemprop: 'continent', link_to_facet: true
-    config.add_show_field 'sp_continent_ssi', label: 'Continent (Spanish)', itemprop: 'continent_sp', link_to_facet: false
+    config.add_show_field 'continent', label: 'Continent', itemprop: 'continent', link_to_facet: true
+    config.add_show_field 'es_continent', label: 'Continent (Spanish)', itemprop: 'continent_sp', link_to_facet: false
 
     ## Collection Information
     # Parent Collection
-    config.add_show_field 'collection_name_ssi', label: 'Parent Collection', itemprop: 'parent_collection_name',
+    config.add_show_field 'collection_name', label: 'Parent Collection', itemprop: 'parent_collection_name',
                                                  link_to_facet: true
     # Contributing Organization
-    config.add_show_field 'contributing_organization_ssi', label: 'Contributing Organization',
+    config.add_show_field 'contributing_organization', label: 'Contributing Organization',
                                                            itemprop: 'contributing_organization', link_to_facet: true
-    config.add_show_field 'contributing_organization_name_ssi', label: 'Contributing Organization',
+    config.add_show_field 'contributing_organization_name', label: 'Contributing Organization',
                                                            itemprop: 'contributing_organization_name', link_to_facet: true
     # Contact Information
-    config.add_show_field 'contact_information_ssi', label: 'Contact Information', itemprop: 'contact_information'
+    config.add_show_field 'contact_information', label: 'Contact Information', itemprop: 'contact_information'
     # Fiscal Sponsor
-    config.add_show_field 'fiscal_sponsor_ssi', label: 'Fiscal Sponsor', itemprop: 'fiscal_sponsor'
+    config.add_show_field 'fiscal_sponsor', label: 'Fiscal Sponsor', itemprop: 'fiscal_sponsor'
 
     ## Identifiers
     # DLS Identifier
-    config.add_show_field 'local_identifier_ssi', label: 'DLS Identifier', itemprop: 'identifier'
+    config.add_show_field 'local_identifier', label: 'DLS Identifier', itemprop: 'identifier'
 
     ## Can I Use It?
     # Copyright Statement...
-    config.add_show_field 'local_rights_tesi', label: 'Copyright Statement', itemprop: 'copyright'
-    config.add_show_field 'sp_local_rights_tesi', label: 'Copyright Statement (Spanish)', itemprop: 'copyright_sp'
+    config.add_show_field 'local_rights', label: 'Copyright Statement', itemprop: 'copyright'
+    config.add_show_field 'esp_local_rights', label: 'Copyright Statement (Spanish)', itemprop: 'copyright_sp'
 
-    config.add_show_field 'rights_uri_ssi', label: 'Rights Statement URI', itemprop: 'rights_uri'
-    config.add_show_field 'sp_rights_uri_ssi', label: 'Rights Statement URI (Spanish)', itemprop: 'rights_uri_sp'
+    config.add_show_field 'rights_uri', label: 'Rights Statement URI', itemprop: 'rights_uri'
+    config.add_show_field 'es_rights_uri', label: 'Rights Statement URI (Spanish)', itemprop: 'rights_uri_sp'
 
     # View Helpers
     config.add_show_tools_partial(:citation)

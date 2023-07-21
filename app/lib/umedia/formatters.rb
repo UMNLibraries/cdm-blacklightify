@@ -3,6 +3,7 @@
 require 'titleize'
 require 'json'
 require 'net/http'
+require_relative 'iiif_manifest_formatter'
 
 # Formatters to clean up CONTENTdm API metadata
 module Umedia
@@ -162,8 +163,16 @@ module Umedia
 
     # IiifManifestUrlFormatter
     class IiifManifestUrlFormatter
-      def self.format(value)
-        "https://cdm16022.contentdm.oclc.org/iiif/2/#{value}/manifest.json"
+      def self.format(doc)
+        collection, id = doc['id'].split('/')
+        "https://cdm16022.contentdm.oclc.org/iiif/2/#{collection}:#{id}/manifest.json"
+      end
+    end
+
+    class LocalIiifManifestUrlFormatter
+      def self.format(doc)
+        collection, id = doc['id'].split('/')
+        "/iiif/#{collection}:#{id}/manifest.json"
       end
     end
 
@@ -181,6 +190,12 @@ module Umedia
         end
 
         JSON.generate(data)
+      end
+    end
+
+    class RemoveHashFormatter
+      def self.format(values)
+        values unless values.is_a?(Hash)
       end
     end
   end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Umedia
-  module Formatters
+  class Formatters
     # IiifManifestFormatter
     class IiifManifestFormatter
       AV_KEYS = %w[audio audioa video videoa].freeze

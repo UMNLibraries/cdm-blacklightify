@@ -46,7 +46,7 @@ namespace :umedia do
       # p16022coll282 => UMedia compound objects (ex. p16022coll282:6571)
 
       example_sets = %w[
-        p16022coll548 p16022coll262 p16022coll208 p16022coll171 p16022coll282
+        p16022coll262 p16022coll208 p16022coll171 p16022coll282
       ]
       run_etl!(example_sets)
     end

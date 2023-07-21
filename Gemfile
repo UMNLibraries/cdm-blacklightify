@@ -56,7 +56,7 @@ gem 'blacklight_range_limit', '~> 7.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
-  gem 'solr_wrapper', '>= 0.3'
+  gem 'solr_wrapper', '~> 4.0'
 end
 gem 'blacklight-gallery', '~> 3.0'
 gem 'blacklight-oembed', '~> 1.0'
