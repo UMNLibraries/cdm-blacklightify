@@ -125,49 +125,6 @@ field_mappings:
     formatters:
       - CDMDEXER::StripFormatter
 
-  - dest_path: topic_teim
-    origin_path: genera
-    formatters:
-      - CDMDEXER::StripFormatter
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-
-  - dest_path: topic_ssim
-    origin_path: genera
-    formatters:
-      - CDMDEXER::Titlieze
-      - CDMDEXER::StripFormatter
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-
-  - dest_path: formal_subject
-    origin_path: specif
-    formatters:
-      - CDMDEXER::Titlieze
-      - CDMDEXER::StripFormatter
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-
-  - dest_path: keyword
-    origin_path: /
-    formatters:
-      - CDMDEXER::KeywordFormatter
-      - CDMDEXER::Titlieze
-      - CDMDEXER::UniqueFormatter
-      - CDMDEXER::JoinFormatter
-      - CDMDEXER::StripFormatter
-
-  - dest_path: geonames_ssim
-    origin_path: geonam
-    formatters:
-      - CDMDEXER::SplitFormatter
-      - CDMDEXER::StripFormatter
-
-  - dest_path: publisher_ssi
-    origin_path: publis
-    formatters:
-      - CDMDEXER::StripFormatter
-
   - dest_path: caption
     origin_path: captio
     formatters:
@@ -538,7 +495,7 @@ field_mappings:
     formatters:
       - CDMDEXER::StripFormatter
 
-  - dest_pat: es_subject
+  - dest_path: es_subject
     formatters:
       - CDMDEXER::StripFormatter
       - CDMDEXER::SplitFormatter
@@ -580,7 +537,7 @@ field_mappings:
     formatters:
       - Umedia::Formatters::IiifManifestUrlFormatter
 
-  - dest_path: iiif_manifest
-    origin_path: /
-    formatters:
-      - Umedia::Formatters::IiifManifestFormatter
+  #- dest_path: iiif_manifest
+  #  origin_path: /
+  #  formatters:
+  #    - Umedia::Formatters::IiifManifestFormatter

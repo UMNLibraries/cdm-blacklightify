@@ -44,9 +44,10 @@ namespace :umedia do
       # p16022coll208 => UMedia WWII poster collection
       # p16022coll171 => UMedia audio collection
       # p16022coll282 => UMedia compound objects (ex. p16022coll282:6571)
+      # p16022coll613 => Spanish Lanugage La Prensa
 
       example_sets = %w[
-        p16022coll262 p16022coll208 p16022coll171 p16022coll282
+        p16022coll262 p16022coll208 p16022coll171 p16022coll282 p16022coll613
       ]
       run_etl!(example_sets)
     end
@@ -128,7 +129,9 @@ namespace :umedia do
         'oai_endpoint' => ENV.fetch('OAI_ENDPOINT', nil),
         'cdm_endpoint' => ENV.fetch('CDM_ENDPOINT', nil),
         'set_spec' => set,
-        'field_mappings' => Settings.field_mappings,
+        # Settings contains Config objects, and Sidekiq requires plain string keys
+        # to convert to JSON, no symbols or objects allowed
+        'field_mappings' => Settings.field_mappings.map(&:to_h).map(&:stringify_keys),
         'batch_size' => 10,
         'max_compounds' => 10
       )

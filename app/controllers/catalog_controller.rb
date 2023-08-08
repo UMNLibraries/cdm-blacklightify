@@ -49,7 +49,7 @@ class CatalogController < ApplicationController
     ##                        limit: 4, collapse: true
 
     # Contributing Organization / contributing_organization
-    config.add_facet_field 'contributing_organization', label: 'Contributing Organization',
+    config.add_facet_field 'contributing_organization_name', label: 'Contributing Organization',
                                                             limit: 4, collapse: true
 
     # Collection / collection_name
