@@ -42,6 +42,10 @@ class CatalogController < ApplicationController
         :qf => 'subject_ssim'
       }
     end
+
+    # Show Presenter Class ("registers" the show_presenter file/class)
+    config.show.document_presenter_class = ShowPresenter
+
     
     config.add_sort_field 'relevance', sort: 'score desc', label: I18n.t('spotlight.search.fields.sort.relevance')
     config.add_sort_field 'date_created_sort_ssortsi desc, title_sort_ssortsi asc', label: 'Year (Newest first)'
