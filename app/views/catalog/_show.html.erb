@@ -14,9 +14,34 @@
   <% end %>
 </div>
 
-<%= render(
-  Blacklight::DocumentMetadataComponent.new(
-    fields: document_presenter(document).field_presenters,
-    show: true
-  )
-) %>
+<!-- Metadata Fields -->
+<% doc_presenter = document_presenter(document) %>
+<hr>
+<% doc_presenter.primary_fields do |field_name, field, field_presenter| %>
+  <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+<% end -%>
+
+<% doc_presenter.physical_description_fields do |field_name, field, field_presenter| %>
+  <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+<% end -%>
+
+<% doc_presenter.topic_fields do |field_name, field, field_presenter| %>
+  <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+<% end -%>
+
+<% doc_presenter.geographic_location_fields do |field_name, field, field_presenter| %>
+  <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+<% end -%>
+
+<% doc_presenter.collection_information_fields do |field_name, field, field_presenter| %>
+  <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+<% end -%>
+
+<% doc_presenter.identifier_fields do |field_name, field, field_presenter| %>
+  <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+<% end -%>
+
+<% doc_presenter.use_field do |field_name, field, field_presenter| %>
+  <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+<% end -%>
+ 
