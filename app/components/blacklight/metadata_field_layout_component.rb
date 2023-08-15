@@ -7,6 +7,7 @@ module Blacklight
 
     with_collection_parameter :field
     renders_one :label
+    renders_one :type
     renders_many :values, (lambda do |value: nil, &block|
       if block
         content_tag :dd, class: "#{@value_class} blacklight-#{@key}", &block
