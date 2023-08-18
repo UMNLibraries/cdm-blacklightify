@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class ShowPresenter < Blacklight::ShowPresenter
+
+  def test_field
+    arr = [ "type_ssi", "format_ssim", "sp_physical_format_ssi" ]
+
+    arr.each do |field|
+      return document[field].present?
+    end
+  end
+  
   def each_primary_field
     fields_to_render do |field_name, field_config, field_presenter|
       yield field_name, field_config, field_presenter if field_config[:type] == :primary
