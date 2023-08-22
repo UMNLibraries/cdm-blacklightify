@@ -27,15 +27,11 @@
 <% doc_presenter = document_presenter(document) %>
 <hr>
 
-<%= doc_presenter.test_field==true ? "Details" : "" %> 
 <% doc_presenter.each_primary_field do |field_name, field, field_presenter| %>
   <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
 <% end -%>
 
-
-<%= doc_presenter.test_field==true ? "Details" : "" %>
-<%= doc_presenter.test_field %>
-
+<%= doc_presenter.type_arr==true ? "Details" : "" %>
 <% doc_presenter.each_secondary_field do |field_name, field, field_presenter| %>
   <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
 <% end -%>
