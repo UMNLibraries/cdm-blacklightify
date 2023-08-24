@@ -125,44 +125,44 @@ class CatalogController < ApplicationController
 
     ## Physical Description
     # Item Type
-    config.add_show_field 'type_ssi', label: 'Type', itemprop: 'type', link_to_facet: true, type: :phys_desc
+    config.add_show_field 'type_ssi', label: 'Type', itemprop: 'type', link_to_facet: true, type: :phys_desc, section: 'Physical Description'
     # Format
-    config.add_show_field 'format_ssim', label: 'Format', itemprop: 'format', link_to_facet: true, type: :phys_desc
-    config.add_show_field 'sp_physical_format_ssi', label: 'Format (Spanish)', itemprop: 'format_sp', link_to_facet: false, type: :phys_desc
+    config.add_show_field 'format_ssim', label: 'Format', itemprop: 'format', link_to_facet: true, type: :phys_desc, section: 'Physical Description'
+    config.add_show_field 'sp_physical_format_ssi', label: 'Format (Spanish)', itemprop: 'format_sp', link_to_facet: false, type: :phys_desc, section: 'Physical Description'
 
     ## Topics
     # Subjects
-    config.add_show_field 'subject_ssim', label: 'Subject', itemprop: 'subject', link_to_facet: true, type: :topic
-    config.add_show_field 'sp_subject_ssim', label: 'Subject (Spanish)', itemprop: 'subject_sp', link_to_facet: false, type: :topic
+    config.add_show_field 'subject_ssim', label: 'Subject', itemprop: 'subject', link_to_facet: true, type: :topic, section: 'Topics'
+    config.add_show_field 'sp_subject_ssim', label: 'Subject (Spanish)', itemprop: 'subject_sp', link_to_facet: false, type: :topic, section: 'Topics'
     # Language
-    config.add_show_field 'language_ssi', label: 'Language', itemprop: 'language', link_to_facet: true, type: :topic
-    config.add_show_field 'sp_language_ssi', label: 'Language (Spanish)', itemprop: 'language_sp', link_to_facet: false, type: :topic
+    config.add_show_field 'language_ssi', label: 'Language', itemprop: 'language', link_to_facet: true, type: :topic, section: 'Topics'
+    config.add_show_field 'sp_language_ssi', label: 'Language (Spanish)', itemprop: 'language_sp', link_to_facet: false, type: :topic, section: 'Topics'
 
     ## Geographic Location
     # Country
-    config.add_show_field 'country_ssi', label: 'Country', itemprop: 'country', link_to_facet: true, type: :geo_loc
-    config.add_show_field 'sp_country_ssi', label: 'Country (Spanish)', itemprop: 'country_sp', link_to_facet: false, type: :geo_loc
+    config.add_show_field 'country_ssi', label: 'Country', itemprop: 'country', link_to_facet: true, type: :geo_loc, section: 'Geographic Location'
+    config.add_show_field 'sp_country_ssi', label: 'Country (Spanish)', itemprop: 'country_sp', link_to_facet: false, type: :geo_loc, section: 'Geographic Location'
 
-    config.add_show_field 'continent_ssi', label: 'Continent', itemprop: 'continent', link_to_facet: true, type: :geo_loc
-    config.add_show_field 'sp_continent_ssi', label: 'Continent (Spanish)', itemprop: 'continent_sp', link_to_facet: false, type: :geo_loc
+    config.add_show_field 'continent_ssi', label: 'Continent', itemprop: 'continent', link_to_facet: true, type: :geo_loc, section: 'Geographic Location'
+    config.add_show_field 'sp_continent_ssi', label: 'Continent (Spanish)', itemprop: 'continent_sp', link_to_facet: false, type: :geo_loc, section: 'Geographic Location'
 
     ## Collection Information
     # Parent Collection
     config.add_show_field 'collection_name_ssi', label: 'Parent Collection', itemprop: 'parent_collection_name',
-                                                 link_to_facet: true, type: :coll_info
+                                                 link_to_facet: true, type: :coll_info, section: 'Collection Information'
     # Contributing Organization
     config.add_show_field 'contributing_organization_ssi', label: 'Contributing Organization',
-                                                           itemprop: 'contributing_organization', link_to_facet: true, type: :coll_info
+                                                           itemprop: 'contributing_organization', link_to_facet: true, type: :coll_info, section: 'Collection Information'
     # config.add_show_field 'contributing_organization_name_ssi', label: 'Contributing Organization',
     #                                                        itemprop: 'contributing_organization_name', link_to_facet: true, type: :coll_info
     # Contact Information
-    config.add_show_field 'contact_information_ssi', label: 'Contact Information', itemprop: 'contact_information', type: :coll_info
+    config.add_show_field 'contact_information_ssi', label: 'Contact Information', itemprop: 'contact_information', type: :coll_info, section: 'Collection Information'
     # Fiscal Sponsor
-    config.add_show_field 'fiscal_sponsor_ssi', label: 'Fiscal Sponsor', itemprop: 'fiscal_sponsor', type: :coll_info
+    config.add_show_field 'fiscal_sponsor_ssi', label: 'Fiscal Sponsor', itemprop: 'fiscal_sponsor', type: :coll_info, section: 'Collection Information'
 
     ## Identifiers
     # DLS Identifier
-    config.add_show_field 'local_identifier_ssi', label: 'DLS Identifier', itemprop: 'identifier', type: :identifiers
+    config.add_show_field 'local_identifier_ssi', label: 'DLS Identifier', itemprop: 'identifier', type: :identifiers, section: 'Identifiers'
 
     ## Can I Use It?
     # Copyright Statement...

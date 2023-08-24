@@ -1,31 +1,27 @@
 # frozen_string_literal: true
 
 class ShowPresenter < Blacklight::ShowPresenter
+  def config_type
+    arr = [[:primary, ""], [:phys_desc, "Physical Description"], [:topic, "Topics"], [:geo_loc, "Geographic Location"], [:coll_info, "Collection Information"], [:identifiers, "Identifiers"]]
+  end
 
-  def type_arr
-    new_arr =[]
+  def type_arr(type)    # returns boolean if any field in new_arr is present in the document
+    type_arr =[]
 
     configuration.show_fields.to_a.each do |item| 
-      if item[1][:type]==:primary
-        new_arr.push(item[0])
+      if item[1][:type]==type   # sets the field type
+        type_arr.push(item[0])
       end
     end
 
-    new_arr.each do |field|   # returns boolean if any field in new_arr is present in the document
+    type_arr.each do |field|   # checks document for field presence
       return document[field].present? 
     end
   end
-  
-  def each_primary_field
+
+  def each_field(type)
     fields_to_render do |field_name, field_config, field_presenter|
-      yield field_name, field_config, field_presenter if field_config[:type] == :primary
+      yield field_name, field_config, field_presenter if field_config[:type] == type
     end
   end
-
-  def each_secondary_field
-    fields_to_render.each do |field_name, field_config, field_presenter|
-      yield field_name, field_config, field_presenter unless field_config[:type] == :primary
-    end
-  end
-
 end
