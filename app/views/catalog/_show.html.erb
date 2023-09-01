@@ -18,10 +18,10 @@
 <% doc_presenter = document_presenter(document) %>
 <hr>
 
-<% doc_presenter.config_type.each do | obj | %>
-  <div><%= doc_presenter.type_arr( obj[0] )==true ? obj[1] : "" %></div>
+<% doc_presenter.config_type.each do | type, heading | %>
+  <div class=""><%= doc_presenter.type_arr( type )==true ? heading : "" %></div>
 
-  <% doc_presenter.each_field( obj[0] ) do |field_name, field, field_presenter| %>
+  <% doc_presenter.each_field( type ) do |field_name, field, field_presenter| %>
     <%= render "show_fields", document: document, field_name: field_name, field_presenter: field_presenter %>
   <% end -%>
 <% end %>
