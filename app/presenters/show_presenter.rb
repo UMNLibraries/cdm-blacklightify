@@ -2,7 +2,10 @@
 
 class ShowPresenter < Blacklight::ShowPresenter
   def config_type
-    arr = {primary: "", phys_desc: "Physical Description", topic: "Topics", geo_loc: "Geographic Location", coll_info: "Collection Information", identifiers: "Identifiers", use: "Can I use It?"}
+    arr = { primary: "", phys_desc: "Physical Description", topic: "Topics", geo_loc: "Geographic Location", 
+                                                                             coll_info: "Collection Information", 
+                                                                             identifiers: "Identifiers", 
+                                                                             use: "Can I use It?" }
   end
 
   def type_arr(type)    # returns boolean if any field in type_arr is present in the document
