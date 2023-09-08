@@ -41,7 +41,7 @@
   </a>
 </nav>
 
-<nav aria-label="secondary" class="container-fluid">
+<nav aria-label="Main" class="container-fluid umn-nav">
   <div class="row" id="main-nav">
     <a class="col-md-auto col-12 text-center" href="/" id="umedia">UMedia</a>
     <a class="col-md-auto col-3 text-center" href="/">Collections</a>
@@ -50,7 +50,7 @@
     <a class="col-md-auto col-3 text-center" href="/">Help</a>
   </div>
 
-  <div id="main-search-two">
+  <div id="main-search" class="catalog-main-nav">
     <%- unless params[:controller] == 'transcript' %> 
 			<%= content_tag :div, role: 'navigation', aria: { label: t('blacklight.search.header') } do %>
 				<div class="<%= container_classes %>" aria-label="Search UMedia resources">

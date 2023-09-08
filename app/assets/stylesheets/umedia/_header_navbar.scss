@@ -88,18 +88,11 @@ nav[aria-label="Libraries"] {
 	}
 }
 
-nav[aria-label="Main"] {
-	background-image: url("https://cdm16022.contentdm.oclc.org/digital/iiif/p16022coll106/1026/full/1920,/0/default.jpg"); // placholder image
+// primary nav class
+.umn-nav {
 	color: #fff;
-	min-height: 20rem;
-	position: relative;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
 	#main-nav {
 		background-color: #000000cc;
-		position: absolute;
-		width: 100%;
 		display: flex;
 		align-items: center;
 		a {
@@ -126,118 +119,8 @@ nav[aria-label="Main"] {
 		* {
 			border-radius: 0 !important;
 		}
-		position: absolute;
-		top: 35%;
-		width: 80%;
-		left: 10%;
-		form {
-			background-color: #ffffffcc;
-			margin: 1rem;
-			margin: 0 auto;
-			padding: 1rem;
-			#search_field {
-				background-color: #f0efee;
-				height: 3.125rem;
-				&:hover {
-					box-shadow: none;
-					outline: 3px solid #0053b0;
-					outline-offset: 2px;
-				}
-			}
-			.search-btn {
-				max-height: 3.125rem;
-			}
-			#search {
-				background-color: #7a0019;
-				border: 1px solid transparent;
-				border-color: #333;
-				padding-right: 1rem;
-				padding-top: .5rem;
-				&:hover,
-				&:focus {
-					box-shadow: none;
-					outline: 3px solid #0053b0;
-					outline-offset: 2px;
-				}
-			}
-		}
-		form>div>#q {
-			border-color: #333;
-			height: 3.125rem;
-		}
-		form>div>#q:hover,
-		form>div>#q:focus {
-			box-shadow: none;
-			outline: 3px solid #0053b0;
-			outline-offset: 2px;
-		}
-	}
-	#main-image-attribute {
-		position: absolute;
-		background-color: #000000cc;
-		bottom: 0;
-		padding: .8rem;
-		width: 100%;
-		p {
-			margin-bottom: 0;
-			a {
-				color: #ffcc33;
-				text-decoration: underline;
-				border-bottom: 3px solid transparent;
-			}
-			a:hover,
-			a:focus {
-				background-color: #ffde7a;
-				color: #333;
-				outline: none;
-				text-decoration: none;
-			}
-		}
-	}
-}
-
-// S E C O N D A R Y nav
-nav[aria-label="secondary"] {
-	color: #fff;
-	// min-height: 20rem;
-	// position: relative;
-	// background-position: center;
-	// background-repeat: no-repeat;
-	// background-size: cover;
-	#main-nav {
-		background-color: #000000cc;
-		// position: absolute;
-		// width: 100%;
-		display: flex;
-		align-items: center;
-		a {
-			color: #fafafa;
-			float: left;
-			padding: 1rem;
-			padding: .875rem 1rem;
-			border-bottom: 3px solid transparent;
-			&:hover,
-			&:focus {
-				background-color: #ffde7a;
-				color: #333;
-				text-decoration: none;
-				border-bottom: 3px solid #ffcc33;
-			}
-		}
-		#umedia {
-			font-weight: bold;
-			font-size: 1.6rem;
-			line-height: 1.6rem;
-		}
-	}
-	#main-search-two { // redundant ?
-		* {
-			border-radius: 0 !important;
-		}
 		position: relative;
-		// top: 35%;
 		width: 80%;
-		// left: 10%;
 		.container-fluid {
 			padding: 0;
 		}
@@ -245,7 +128,7 @@ nav[aria-label="secondary"] {
 			background-color: #ffffffcc;
 			margin: 1rem;
 			margin: 0 auto;
-			padding: 1rem 0;
+			padding: .5rem 0;
 			#search_field {
 				background-color: #f0efee;
 				height: 3.125rem;
@@ -283,6 +166,32 @@ nav[aria-label="secondary"] {
 			outline-offset: 2px;
 		}
 	}
+}
+
+// secondary nav id for root path nav
+#umn-main-nav {
+	background-image: url("https://cdm16022.contentdm.oclc.org/digital/iiif/p16022coll106/1026/full/1920,/0/default.jpg"); // placholder image
+	min-height: 20rem;
+	position: relative;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	#main-nav {
+		background-color: #000000cc;
+		position: absolute;
+		width: 100%;
+		display: flex;
+		align-items: center;
+	}
+	#main-search {
+		position: absolute;
+		top: 35%;
+		width: 80%;
+		left: 10%;
+		form {
+			padding: 1rem 1rem;
+		}
+	}
 	#main-image-attribute {
 		position: absolute;
 		background-color: #000000cc;
@@ -306,8 +215,6 @@ nav[aria-label="secondary"] {
 		}
 	}
 }
-
-
 
 @media (max-width: 768px) {
 	nav[aria-label="University"] {
@@ -328,7 +235,7 @@ nav[aria-label="secondary"] {
 			}
 		}
 	}
-	nav[aria-label="Main"] {
+	.umn-nav {
 		#main-nav {
 			line-height: .6;
 			a:not(:first-child) {
@@ -342,44 +249,15 @@ nav[aria-label="secondary"] {
 			#umedia {
 				line-height: 0;
 			}
-		}
-		#main-search {
-			position: absolute;
-			top: 39%;
-			width: 100%;
-			height: 20%;
-			left: 0%;
-			right: 0%;
 		}
 	}
+}
 
-	// tempt for now. consolidate later
-	
-	nav[aria-label="secondary"] {
-		#main-search-two { // not redundant . . .
-			width: 100%;
-		}
-		#main-nav {
-			line-height: .6;
-			a:not(:first-child) {
-				background-color: #ffde7a;
-				color: #333;
-				text-decoration: none;
-			}
-			a:not(:first-child):not(:last-child) {
-				border-right: 1px solid #fafafa;
-			}
-			#umedia {
-				line-height: 0;
-			}
-		}
+// temporary? accommodates facet toggler fixed breakpoint
+@media (max-width: 992px) {
+	.umn-nav {
 		#main-search {
-			position: absolute;
-			top: 39%;
 			width: 100%;
-			height: 20%;
-			left: 0%;
-			right: 0%;
 		}
 	}
 }
