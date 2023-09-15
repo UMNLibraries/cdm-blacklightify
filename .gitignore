@@ -72,6 +72,8 @@ yarn-debug.log*
 # Ignore test reports
 /test/reports/*
 
+/test/test_helper.rb
+
 # Ignore solr snapshots
 /solr/snapshots/*
 !/solr/snapshots/.keep
