@@ -20,7 +20,9 @@
 
 <div id="item-details">
   <% doc_presenter.config_type.each do | type, heading | %>
-    <h3 class=""><%= doc_presenter.type_arr( type )==true ? heading : "" %></h3>
+    <% if doc_presenter.type_arr( type )==true %>
+     <h3><%= heading %></h3>
+    <% end %>
 
     <dl class="px-3">
       <% doc_presenter.each_field( type ) do |field_name, field, field_presenter| %>
