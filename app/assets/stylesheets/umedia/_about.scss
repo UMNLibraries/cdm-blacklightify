@@ -64,3 +64,9 @@
         }
     }
 }
+
+@media (max-width: 992px) {
+	#about-image {
+		display: none;
+	}
+}
