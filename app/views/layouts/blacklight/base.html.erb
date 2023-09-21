@@ -12,15 +12,14 @@
     <%= opensearch_description_tag application_name, opensearch_catalog_url(format: 'xml') %>
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", media: "all" %>
+    <%= content_for(:head) %>
     <%= javascript_include_tag "application" %>
-
 
     <!-- Umedia Kaltura -->
     <script src="https://cdnapisec.kaltura.com/p/<%= ENV.fetch('KALTURA_PARTNER_ID') %>/sp/136985200/embedIframeJs/uiconf_id/<%= ENV.fetch('KALTURA_PLAYER_UICONF_ID_SINGLE') %>/partner_id/<%= ENV.fetch('KALTURA_PARTNER_ID') %>"></script>
     <script src="https://cdnapisec.kaltura.com/p/<%= ENV.fetch('KALTURA_PARTNER_ID') %>/sp/136985200/embedIframeJs/uiconf_id/<%= ENV.fetch('KALTURA_PLAYER_UICONF_ID_COMPOUND') %>/partner_id/<%= ENV.fetch('KALTURA_PARTNER_ID') %>"></script>
 
     <%= csrf_meta_tags %>
-    <%= content_for(:head) %>
   </head>
   <body class="<%= render_body_class %>">
     <header>
@@ -29,7 +28,7 @@
         <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
         <%= content_for(:skip_links) %>
       </nav>
-      <%= render partial: 'shared/header_navbar' %>
+      <%= render partial: 'shared/header_navbar_catalog' %>
     </header>
 
 		<main id="main-container" class="<%= container_classes %>" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">

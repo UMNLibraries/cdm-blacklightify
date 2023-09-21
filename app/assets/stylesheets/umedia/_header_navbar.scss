@@ -88,18 +88,11 @@ nav[aria-label="Libraries"] {
 	}
 }
 
-nav[aria-label="Main"] {
-	background-image: url("https://cdm16022.contentdm.oclc.org/digital/iiif/p16022coll106/1026/full/1920,/0/default.jpg"); // placholder image
+// primary nav class
+.umn-nav {
 	color: #fff;
-	min-height: 20rem;
-	position: relative;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
 	#main-nav {
 		background-color: #000000cc;
-		position: absolute;
-		width: 100%;
 		display: flex;
 		align-items: center;
 		a {
@@ -126,15 +119,16 @@ nav[aria-label="Main"] {
 		* {
 			border-radius: 0 !important;
 		}
-		position: absolute;
-		top: 35%;
+		position: relative;
 		width: 80%;
-		left: 10%;
+		.container-fluid {
+			padding: 0;
+		}
 		form {
 			background-color: #ffffffcc;
 			margin: 1rem;
 			margin: 0 auto;
-			padding: 1rem;
+			padding: .5rem 0;
 			#search_field {
 				background-color: #f0efee;
 				height: 3.125rem;
@@ -170,6 +164,32 @@ nav[aria-label="Main"] {
 			box-shadow: none;
 			outline: 3px solid #0053b0;
 			outline-offset: 2px;
+		}
+	}
+}
+
+// secondary nav id for root path nav
+#umn-main-nav {
+	background-image: url("https://cdm16022.contentdm.oclc.org/digital/iiif/p16022coll106/1026/full/1920,/0/default.jpg"); // placholder image
+	min-height: 20rem;
+	position: relative;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	#main-nav {
+		background-color: #000000cc;
+		position: absolute;
+		width: 100%;
+		display: flex;
+		align-items: center;
+	}
+	#main-search {
+		position: absolute;
+		top: 35%;
+		width: 80%;
+		left: 10%;
+		form {
+			padding: 1rem 1rem;
 		}
 	}
 	#main-image-attribute {
@@ -215,7 +235,7 @@ nav[aria-label="Main"] {
 			}
 		}
 	}
-	nav[aria-label="Main"] {
+	.umn-nav {
 		#main-nav {
 			line-height: .6;
 			a:not(:first-child) {
@@ -230,13 +250,14 @@ nav[aria-label="Main"] {
 				line-height: 0;
 			}
 		}
+	}
+}
+
+// temporary? accommodates facet toggler fixed breakpoint
+@media (max-width: 992px) {
+	.umn-nav {
 		#main-search {
-			position: absolute;
-			top: 39%;
 			width: 100%;
-			height: 20%;
-			left: 0%;
-			right: 0%;
 		}
 	}
 }

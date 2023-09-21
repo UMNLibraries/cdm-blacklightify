@@ -119,3 +119,5 @@ gem 'rinku'
 
 # Kaltura
 gem 'kaltura-client', '17.5.0'
+
+gem 'rails-controller-testing'
