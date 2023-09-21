@@ -47,79 +47,80 @@
       -->
       <str name="qf">
         id
-        title_tesiv^2.4
-        title_search_te_ascii^2.4
-        title_alternative_tesi^.5
-        contributor_tesim^1.1
-        creator_tesimv^1.5
-        description_tesi
-        publisher_tesi
-        subject_tesimv^2
-        subject_fast_tesimv^2
-        notes_tesi
-        caption_tesi
-        date_created_te_split
-        historical_era_ssim
-        document_type_ssi
-        format_ssim
-        format_name_ssimv
-        city_ssi
-        state_ssi
-        country_ssi
-        region_ssi
-        continent_ssi
-        language_ssi
-        contributing_organization_tesi
-        contributing_organization_name_tesi
-        transcription_tesi
-        translation_tesi
-        kaltura_audio_ssi
-        kaltura_audio_playlist_ssi
-        kaltura_video_ssi
-        kaltura_video_playlist_ssi
-        kaltura_combo_playlist_ssi
-        setspec_ssi
-        collection_name_tesi
-        parent_collection_tesi
-        parent_collection_name_ssi
-        local_identifier_te_split
-        barcode_ssi
-        system_identifier_te_split
-        dls_identifier_te_split
-        persistent_url_ssi
-        local_rights_tesi
-        fiscal_sponsor_tesi
+        title^2.4
+        title_search^2.4
+        title_alternative^.5
+        contributor^1.1
+        creator^1.5
+        description
+        publisher
+        subject^2
+        subject_fast^2
+        notes
+        caption
+        date_created
+        historical_era
+        document_type
+        format
+        format_name
+        city
+        state
+        country
+        region
+        continent
+        language
+        contributing_organization
+        contributing_organization_name
+        transcription
+        translation
+        kaltura_audio
+        kaltura_audio_playlist
+        kaltura_video
+        kaltura_video_playlist
+        kaltura_combo_playlist
+        setspec
+        collection_name
+        parent_collection
+        parent_collection_name
+        local_identifier
+        barcode
+        system_identifier
+        dls_identifier
+        persistent_url
+        local_rights
+        rights_statement_uri
+        fiscal_sponsor
       </str>
       <str name="pf">
-        title_tesiv^2.4
-        title_search_te_ascii^2.4
-        title_alternative_tesi^.5
-        contributor_tesim^1.1
-        creator_tesimv^1.5
-        description_tesi
-        publisher_tesi
-        subject_tesimv^2
-        subject_fast_tesimv^2
-        notes_tesi
-        caption_tesi
-        contributing_organization_name_tesi
-        transcription_tesi
-        translation_tesi
-        collection_name_tesi
-        fiscal_sponsor_tesi
+        title^2.4
+        title_search^2.4
+        title_alternative^.5
+        contributor^1.1
+        creator^1.5
+        description
+        publisher
+        subject^2
+        subject_fast^2
+        notes
+        caption
+        contributing_organization_name
+        transcription
+        translation
+        collection_name
+        fiscal_sponsor
       </str>
 
       <str name="title_qf">
-        title_tesiv^2
+        title^2
       </str>
 
       <str name="creator_qf">
-        creator_tesimv^2
+        creator^2
       </str>
 
       <str name="subject_qf">
-        subject_tesimv^2
-        subject_fast_tesimv^2.1
+        subject^2
+        subject_fast^2.1
       </str>
 
       <str name="facet">true</str>
@@ -159,14 +160,14 @@
 
       <str name="qf">
         id
-        title_tesi^2.4
-        dls_identifier_te_split
-        transcription_tesi
+        title^2.4
+        dls_identifier
+        transcription
       </str>
       <str name="pf">
         id
-        title_tesi^2.4
-        transcription_tesi
+        title^2.4
+        transcription
       </str>
 
       <str name="facet">false</str>
@@ -182,7 +183,7 @@
       <str name="defType">edismax</str>
       <str name="echoParams">explicit</str>
       <int name="rows">25</int>
-`     <str name="q.alt">*:*</str>
+      <str name="q.alt">*:*</str>
 
       <str name="qf">
         collection_name_s^2.4
@@ -296,17 +297,16 @@
    <requestHandler name="/mlt" class="solr.MoreLikeThisHandler">
      <lst name="defaults">
         <str name="qf">
-           title_tesi
-           subject_tesimv
-           subject_fast_tesimv
-           creator_tesimv
-           format_name_ssimv
+           title
+           subject
+           subject_fast
+           creator
+           format_name
         </str>
         <!--The fields to use for similarity-->
-       <str name="mlt.fl">title_tesi,subject_tesimv,subject_fast_tesimv,creator_tesimv</str>
+       <str name="mlt.fl">title,subject,subject_fast,creator</str>
        <int name="mlt.mintf">1</int>
        <int name="mlt.mindf">1</int>
      </lst>
    </requestHandler>
-   
 </config>

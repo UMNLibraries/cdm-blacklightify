@@ -9,7 +9,7 @@ class TranscriptSearchBuilder < Blacklight::SearchBuilder
 
   def scope_to_parent(solr_parameters)
     solr_parameters[:rows] = blacklight_params[:rows] || 1000
-    solr_parameters[:fq] = "parent_id_ssi:\"#{blacklight_params[:id]}\""
-    solr_parameters[:sort] = 'title_sort_ssortsi asc'
+    solr_parameters[:fq] = "parent_id:\"#{blacklight_params[:id]}\""
+    solr_parameters[:sort] = 'title_sort asc'
   end
 end
