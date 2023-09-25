@@ -1,0 +1,263 @@
+nav[aria-label="University"] {
+	background-color: #ffde7a;
+	a {
+		display: flex;
+		align-items: center;
+		height: 4rem;
+		padding: 1.25rem;
+		color: #333;
+		&:hover,
+		&:focus {
+			background-color: #7a0019;
+			color: #fafafa;
+			text-decoration: underline;
+			#lock {
+				fill: #fafafa;
+			}
+		}
+	}
+	svg {
+		height: 100%;
+	}
+	#umn-logo {
+		padding: .5rem;
+		min-width: calc(170px + 1rem);
+		max-width: calc(220px + 1rem);
+		&:hover,
+		&:focus {
+			fill: #fafafa;
+			svg .maroon-fill {
+				fill: #ffcc33
+			}
+		}
+	}
+	.maroon-fill {
+		fill: #7a0019;
+	}
+	#one-stop {
+		margin-left: auto;
+	}
+	#lock {
+		fill: #333;
+		padding: .25rem;
+	}
+	#give {
+		padding: 0 1.25rem;
+		border: 6px solid #ffde7a;
+		box-shadow: 0px 0px 0px 2px #333 inset;
+		&>a:hover,
+		&>a:focus {
+			background-color: #7a0019;
+			color: #fafafa;
+			border: 6px solid #7a0019;
+			box-shadow: 0px 0px 0px 2px #fafafa inset;
+		}
+	}
+}
+
+nav[aria-label="Libraries"] {
+	background-color: #333;
+	#logo {
+		padding: 0 0.5rem;
+		min-width: 170px;
+		max-width: 220px;
+		min-width: calc(170px + 1rem);
+		max-width: calc(220px + 1rem);
+		svg {
+			width: 100%;
+			height: 3.5rem;
+		}
+		&:hover,
+		&:focus {
+			background-color: #ffde7a;
+			fill: #002d61;
+			height: 100%;
+			svg .libraries-fill {
+				fill: #333;
+			}
+			svg .maroon-fill {
+				fill: #7a0019;
+			}
+		}
+	}
+	svg .libraries-fill {
+		fill: #fafafa;
+	}
+	svg .maroon-fill {
+		fill: #ffcc33;
+	}
+}
+
+// primary nav class
+.umn-nav {
+	color: #fff;
+	#main-nav {
+		background-color: #000000cc;
+		display: flex;
+		align-items: center;
+		a {
+			color: #fafafa;
+			float: left;
+			padding: 1rem;
+			padding: .875rem 1rem;
+			border-bottom: 3px solid transparent;
+			&:hover,
+			&:focus {
+				background-color: #ffde7a;
+				color: #333;
+				text-decoration: none;
+				border-bottom: 3px solid #ffcc33;
+			}
+		}
+		#umedia {
+			font-weight: bold;
+			font-size: 1.6rem;
+			line-height: 1.6rem;
+		}
+	}
+	#main-search {
+		* {
+			border-radius: 0 !important;
+		}
+		position: relative;
+		width: 80%;
+		.container-fluid {
+			padding: 0;
+		}
+		form {
+			background-color: #ffffffcc;
+			margin: 1rem;
+			margin: 0 auto;
+			padding: .5rem 0;
+			#search_field {
+				background-color: #f0efee;
+				height: 3.125rem;
+				&:hover {
+					box-shadow: none;
+					outline: 3px solid #0053b0;
+					outline-offset: 2px;
+				}
+			}
+			.search-btn {
+				max-height: 3.125rem;
+			}
+			#search {
+				background-color: #7a0019;
+				border: 1px solid transparent;
+				border-color: #333;
+				padding-right: 1rem;
+				padding-top: .5rem;
+				&:hover,
+				&:focus {
+					box-shadow: none;
+					outline: 3px solid #0053b0;
+					outline-offset: 2px;
+				}
+			}
+		}
+		form>div>#q {
+			border-color: #333;
+			height: 3.125rem;
+		}
+		form>div>#q:hover,
+		form>div>#q:focus {
+			box-shadow: none;
+			outline: 3px solid #0053b0;
+			outline-offset: 2px;
+		}
+	}
+}
+
+// secondary nav id for root path nav
+#umn-main-nav {
+	background-image: url("https://cdm16022.contentdm.oclc.org/digital/iiif/p16022coll106/1026/full/1920,/0/default.jpg"); // placholder image
+	min-height: 20rem;
+	position: relative;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	#main-nav {
+		background-color: #000000cc;
+		position: absolute;
+		width: 100%;
+		display: flex;
+		align-items: center;
+	}
+	#main-search {
+		position: absolute;
+		top: 35%;
+		width: 80%;
+		left: 10%;
+		form {
+			padding: 1rem 1rem;
+		}
+	}
+	#main-image-attribute {
+		position: absolute;
+		background-color: #000000cc;
+		bottom: 0;
+		padding: .8rem;
+		width: 100%;
+		p {
+			margin-bottom: 0;
+			a {
+				color: #ffcc33;
+				text-decoration: underline;
+				border-bottom: 3px solid transparent;
+			}
+			a:hover,
+			a:focus {
+				background-color: #ffde7a;
+				color: #333;
+				outline: none;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	nav[aria-label="University"] {
+		a {
+			height: 3.70em;
+			padding: .5rem;
+		}
+		#umn-logo {
+			width: calc(170px + 1rem);
+		}
+	}
+	nav[aria-label="Libraries"] {
+		#logo {
+			width: calc(170px + 1rem);
+			svg {
+				width: 100%;
+				height: 2.5em;
+			}
+		}
+	}
+	.umn-nav {
+		#main-nav {
+			line-height: .6;
+			a:not(:first-child) {
+				background-color: #ffde7a;
+				color: #333;
+				text-decoration: none;
+			}
+			a:not(:first-child):not(:last-child) {
+				border-right: 1px solid #fafafa;
+			}
+			#umedia {
+				line-height: 0;
+			}
+		}
+	}
+}
+
+// temporary? accommodates facet toggler fixed breakpoint
+@media (max-width: 992px) {
+	.umn-nav {
+		#main-search {
+			width: 100%;
+		}
+	}
+}

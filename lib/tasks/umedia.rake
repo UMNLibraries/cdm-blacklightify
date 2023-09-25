@@ -29,39 +29,44 @@ end
 
 namespace :umedia do
   namespace :index do
-    desc 'Put all sample data into solr'
+    desc 'Index required test fixtures into Solr'
     task seed: :environment do
       docs = Dir['test/fixtures/files/solr_documents/*.json'].map { |f| JSON.parse File.read(f) }.flatten
       Blacklight.default_index.connection.add docs
       Blacklight.default_index.connection.commit
     end
 
-    desc 'Harvest'
-    task harvest: :environment do
+    desc 'Harvest a sample set of collections into Solr for development purposes'
+    task harvest_dev: :environment do
       # mpls          => MDL collection
       # p16022coll548 => MDL Khmer Oral History Project
       # p16022coll262 => UMedia video collection
       # p16022coll208 => UMedia WWII poster collection
       # p16022coll171 => UMedia audio collection
       # p16022coll282 => UMedia compound objects (ex. p16022coll282:6571)
+      # p16022coll613 => Spanish Lanugage La Prensa
 
       example_sets = %w[
-        p16022coll548 p16022coll262 p16022coll208 p16022coll171 p16022coll282
+        p16022coll262 p16022coll208 p16022coll171 p16022coll282 p16022coll613
       ]
-
-      example_sets.each do |set|
-        CDMDEXER::ETLWorker.new.perform(
-          'solr_config' => { url: ENV.fetch('SOLR_URL', nil) },
-          'oai_endpoint' => ENV.fetch('OAI_ENDPOINT', nil),
-          'cdm_endpoint' => ENV.fetch('CDM_ENDPOINT', nil),
-          'set_spec' => set,
-          'batch_size' => 10,
-          'max_compounds' => 10
-        )
-      end
+      run_etl!(example_sets)
     end
 
-    desc 'Commit'
+    desc 'Index collections for UMedia'
+    task :harvest, [:set_spec] => :environment do |_t, args|
+      if args[:set_spec]
+        set_specs = [args[:set_spec]]
+      else
+        set_specs = CDMDEXER::FilteredSetSpecs.new(
+          oai_base_url: ENV.fetch('OAI_ENDPOINT', nil),
+          # Libraries (non-MDL) collections prefixed ul_abbrevname - Full Set Name
+          callback: CDMDEXER::RegexFilterCallback.new(pattern: /^ul_([a-zA-Z0-9])*\s-\s/)
+        ).set_specs
+      end
+      run_etl!(set_specs)
+    end
+
+    desc 'Commit pending Solr transactions'
     task commit: :environment do
       Blacklight.default_index.connection.commit
     end
@@ -114,6 +119,22 @@ namespace :umedia do
       else
         system('rake umedia:index:test RAILS_ENV=test')
       end
+    end
+  end
+
+  def run_etl!(set_specs)
+    set_specs.each do |set|
+      CDMDEXER::ETLWorker.new.perform(
+        'solr_config' => { 'url' => ENV.fetch('SOLR_URL', nil) },
+        'oai_endpoint' => ENV.fetch('OAI_ENDPOINT', nil),
+        'cdm_endpoint' => ENV.fetch('CDM_ENDPOINT', nil),
+        'set_spec' => set,
+        # Settings contains Config objects, and Sidekiq requires plain string keys
+        # to convert to JSON, no symbols or objects allowed
+        'field_mappings' => Settings.field_mappings.map(&:to_h).map(&:stringify_keys),
+        'batch_size' => 10,
+        'max_compounds' => 10
+      )
     end
   end
 end

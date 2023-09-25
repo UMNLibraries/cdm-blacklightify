@@ -37,7 +37,7 @@ class SolrDocument
 
   def cdm_thumbnail
     collection, id = self.id.split(':')
-    "https://cdm16022.contentdm.oclc.org/digital/api/singleitem/collection/#{collection}/id/#{id}/thumbnail"
+    "https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/#{collection}/id/#{id}"
   end
 
   alias thumbnail cdm_thumbnail

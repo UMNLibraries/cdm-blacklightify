@@ -1,15 +1,18 @@
 # frozen_string_literal: true
 
 require 'simplecov'
+require 'minitest/autorun'
+require "minitest/reporters"
+require_relative '../config/environment'
+require 'rails/test_help'
+
 SimpleCov.start 'rails' do
   # minimum_coverage 100
 end
 
 ENV['RAILS_ENV'] ||= 'test'
-require 'minitest/autorun'
 
-require_relative '../config/environment'
-require 'rails/test_help'
+Minitest::Reporters.use!
 
 module ActiveSupport
   class TestCase

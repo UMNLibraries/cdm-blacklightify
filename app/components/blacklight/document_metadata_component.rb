@@ -1,7 +1,8 @@
 # frozen_string_literal: true
+# component for the metadata list <dl>, the label and the field 
 
 module Blacklight
-  class DocumentMetadataComponent < ::ViewComponent::Base
+  class DocumentMetadataComponent < Blacklight::Component
     renders_many :fields, (lambda do |component: nil, **kwargs|
       (component || Blacklight::MetadataFieldComponent).new(**kwargs)
     end)

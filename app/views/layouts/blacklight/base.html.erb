@@ -12,42 +12,36 @@
     <%= opensearch_description_tag application_name, opensearch_catalog_url(format: 'xml') %>
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", media: "all" %>
+    <%= content_for(:head) %>
+    <%= javascript_include_tag "application" %>
 
-    <% if defined? Importmap %>
-      <%= javascript_importmap_tags %>
-    <% else %>
-      <%= javascript_include_tag "application" %>
-    <% end %>
-
-      <!-- Umedia Kaltura -->
-      <script src="https://cdnapisec.kaltura.com/p/<%= ENV.fetch('KALTURA_PARTNER_ID') %>/sp/136985200/embedIframeJs/uiconf_id/<%= ENV.fetch('KALTURA_PLAYER_UICONF_ID_SINGLE') %>/partner_id/<%= ENV.fetch('KALTURA_PARTNER_ID') %>"></script>
-      <script src="https://cdnapisec.kaltura.com/p/<%= ENV.fetch('KALTURA_PARTNER_ID') %>/sp/136985200/embedIframeJs/uiconf_id/<%= ENV.fetch('KALTURA_PLAYER_UICONF_ID_COMPOUND') %>/partner_id/<%= ENV.fetch('KALTURA_PARTNER_ID') %>"></script>
+    <!-- Umedia Kaltura -->
+    <script src="https://cdnapisec.kaltura.com/p/<%= ENV.fetch('KALTURA_PARTNER_ID') %>/sp/136985200/embedIframeJs/uiconf_id/<%= ENV.fetch('KALTURA_PLAYER_UICONF_ID_SINGLE') %>/partner_id/<%= ENV.fetch('KALTURA_PARTNER_ID') %>"></script>
+    <script src="https://cdnapisec.kaltura.com/p/<%= ENV.fetch('KALTURA_PARTNER_ID') %>/sp/136985200/embedIframeJs/uiconf_id/<%= ENV.fetch('KALTURA_PLAYER_UICONF_ID_COMPOUND') %>/partner_id/<%= ENV.fetch('KALTURA_PARTNER_ID') %>"></script>
 
     <%= csrf_meta_tags %>
-    <%= content_for(:head) %>
-    <script type="module">
-      import githubAutoCompleteElement from 'https://cdn.skypack.dev/@github/auto-complete-element';
-    </script>
   </head>
   <body class="<%= render_body_class %>">
-    <nav id="skip-link" role="navigation" aria-label="<%= t('blacklight.skip_links.label') %>">
-      <%= link_to t('blacklight.skip_links.search_field'), '#search_field', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
-      <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
-      <%= content_for(:skip_links) %>
-    </nav>
-    <%= render partial: 'shared/header_navbar' %>
+    <header>
+      <nav id="skip-link" role="navigation" aria-label="<%= t('blacklight.skip_links.label') %>">
+        <%= link_to t('blacklight.skip_links.search_field'), '#search_field', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
+        <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
+        <%= content_for(:skip_links) %>
+      </nav>
+      <%= render partial: 'shared/header_navbar_catalog' %>
+    </header>
 
-  <main id="main-container" class="<%= container_classes %>" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
-    <%= content_for(:container_header) %>
+		<main id="main-container" class="<%= container_classes %>" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
+			<%= content_for(:container_header) %>
+			<%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
+			<section class="col-12" id="">
+				<div class="row">
+					<%= content_for?(:content) ? yield(:content) : yield %>
+				</div>
+			</section>
+		</main>
 
-    <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
-
-    <div class="row">
-      <%= content_for?(:content) ? yield(:content) : yield %>
-    </div>
-  </main>
-
-    <%= render partial: 'shared/footer' %>
-    <%= render partial: 'shared/modal' %>
+		<%= render partial: 'shared/footer' %>
+		<%= render partial: 'shared/modal' %>
   </body>
 <% end %>

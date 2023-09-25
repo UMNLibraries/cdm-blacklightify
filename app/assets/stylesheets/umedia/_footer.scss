@@ -1,0 +1,96 @@
+footer {
+    flex-shrink: 0;
+    background-color: #333;
+    color: #fafafa;
+    padding-top: .6rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    .card {
+        background-color: #333;
+    }
+    .hr {
+        background-color: #fafafa;
+    }
+    #content {
+        font-family: Tahoma, Verdana, sans-serif;
+        padding: 0;
+        padding-bottom: 2rem;
+        margin-top: 1rem;
+        margin-left: 0;
+        margin-right: 0;
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        a {
+            display: block;
+            color: #ffde7a;
+            text-decoration: underline;
+        }
+        a:hover,
+        a:focus {
+            background-color: #ffde7a;
+            color: #333;
+            outline: none;
+            text-decoration: none;
+        }
+        li {
+            padding: .8rem;
+        }
+        li:hover {
+            a {
+                color: #333;
+                text-decoration: none;
+            }
+            background-color: #ffde7a;
+            padding: .8rem;
+            text-decoration: none;
+        }
+        #contact {
+            ul {
+                list-style-type: none;
+            }
+            li {
+                display: inline-block;
+            }
+            li:first-child:hover {
+                background-color: #333;
+                text-decoration: none;
+            }
+        }
+        .card-body-as-link:hover, // check for redundancy
+        .card-body-as-link:focus-within {
+            outline: 3px solid #ffde7a;
+            outline-offset: 4px;
+            a {
+                background-color: #ffde7a;
+                color: #333;
+                text-decoration: none;
+            }
+        }
+        #copyright {
+            a {
+                display: inline-block;
+                text-decoration: underline;
+            }
+            a:hover,
+            a:focus {
+                background-color: #ffde7a;
+                color: #333;
+                text-decoration: none;
+            }
+        }
+        hr {
+            background-color: #fafafa;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

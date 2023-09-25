@@ -3,6 +3,7 @@
 require 'titleize'
 require 'json'
 require 'net/http'
+require_relative 'iiif_manifest_formatter'
 
 # Formatters to clean up CONTENTdm API metadata
 module Umedia
@@ -52,7 +53,8 @@ module Umedia
       def self.format(val)
         # Ah, library metadata; strip off the fake ranges
         val = val.gsub(/^- /, '')
-        val.split('-').first.gsub(/([^0-9|\s]*)/i, '')
+        # support either 'yyyy-mm-dd - yyyy-mm-dd' or ISO 'yyyy-mm-dd / yyyy-mm-dd'
+        val = val.split(/ [-\/] /).first.gsub(/([^0-9|\s]*)/i, '').strip
       end
     end
 
@@ -105,11 +107,7 @@ module Umedia
     # PageCountFormatter
     class PageCountFormatter
       def self.format(values)
-        if values['page'].respond_to?(:length)
-          values['page'].length
-        else
-          1
-        end
+        (values['page'].length if values['page'].respond_to?(:length)) || 1
       end
     end
 
@@ -139,6 +137,15 @@ module Umedia
       end
     end
 
+    # UMedia collection name formatter, strips collection prefix like "ul_mss - "
+    class UmediaCollectionNameFormatter
+      def self.format(value)
+        value['oai_sets'].fetch(value['setSpec'], {})
+                         .fetch(:name, '')
+                         .gsub(/^ul_([a-zA-Z0-9])*\s-\s/, '')
+      end
+    end
+
     # AttachmentFormatter
     class AttachmentFormatter
       def self.format(record)
@@ -156,8 +163,16 @@ module Umedia
 
     # IiifManifestUrlFormatter
     class IiifManifestUrlFormatter
-      def self.format(value)
-        "https://cdm16022.contentdm.oclc.org/iiif/2/#{value}/manifest.json"
+      def self.format(doc)
+        collection, id = doc['id'].split('/')
+        "https://cdm16022.contentdm.oclc.org/iiif/2/#{collection}:#{id}/manifest.json"
+      end
+    end
+
+    class LocalIiifManifestUrlFormatter
+      def self.format(doc)
+        collection, id = doc['id'].split('/')
+        "/iiif/#{collection}:#{id}/manifest.json"
       end
     end
 
@@ -175,6 +190,12 @@ module Umedia
         end
 
         JSON.generate(data)
+      end
+    end
+
+    class RemoveHashFormatter
+      def self.format(values)
+        values unless values.is_a?(Hash)
       end
     end
   end

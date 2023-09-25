@@ -14,6 +14,11 @@
     <updateLog>
       <str name="dir">${solr.core0.data.dir:}</str>
     </updateLog>
+    <autoSoftCommit>
+      <maxDocs>10000</maxDocs>
+      <!-- 1min commit interval -->
+      <maxTime>${solr.autoCommit.maxTime:60000}</maxTime>
+    </autoSoftCommit>
   </updateHandler>
 
   <!-- solr lib dirs -->
@@ -43,38 +48,29 @@
       <str name="qf">
         id
         title^2.4
-        title_t^2.4
         title_search^2.4
-        title_s^2.6
         title_alternative^.5
-        title_alternative_s^.55
-        title_alternative_t^.55
         contributor^1.1
-        contributor_ss^1.1
         creator^1.5
-        creator_ss^1.5
         description
         publisher
-        publisher_s
-        publisher_t
         subject^2
-        subject_ss^2.1
         subject_fast^2
-        subject_fast_ss^2.1
         notes
         caption
         date_created
         historical_era
-        type
+        document_type
         format
+        format_name
         city
         state
         country
         region
         continent
-        languagelanguage
+        language
         contributing_organization
-        contributing_organization_s
+        contributing_organization_name
         transcription
         translation
         kaltura_audio
@@ -82,9 +78,9 @@
         kaltura_video
         kaltura_video_playlist
         kaltura_combo_playlist
-        set_spec
-        collection_name_t
+        setspec
         collection_name
+        parent_collection
         parent_collection_name
         local_identifier
         barcode
@@ -92,52 +88,39 @@
         dls_identifier
         persistent_url
         local_rights
+        rights_statement_uri
         fiscal_sponsor
       </str>
       <str name="pf">
         title^2.4
-        title_s^2.6
-        title_t^2.4
         title_search^2.4
         title_alternative^.5
-        title_alternative_s^.55
-        title_alternative_t^.55
         contributor^1.1
-        contributor_ss^1.1
         creator^1.5
-        creator_ss^1.5
         description
         publisher
-        publisher_s
-        publisher_t
         subject^2
-        subject_ss^2.1
         subject_fast^2
-        subject_fast_ss^2.1
         notes
         caption
-        contributing_organization
+        contributing_organization_name
         transcription
         translation
-        collection_name_t
+        collection_name
         fiscal_sponsor
       </str>
 
       <str name="title_qf">
-        title
-        title_s^2
+        title^2
       </str>
 
       <str name="creator_qf">
-        creator
-        creator_ss^2
+        creator^2
       </str>
 
       <str name="subject_qf">
         subject^2
-        subject_ss^2.1
-        subject_fast^2
-        subject_fast_ss^2.1
+        subject_fast^2.1
       </str>
 
       <str name="facet">true</str>
@@ -178,14 +161,12 @@
       <str name="qf">
         id
         title^2.4
-        title_s^2.6
         dls_identifier
         transcription
       </str>
       <str name="pf">
         id
         title^2.4
-        title_s^2.6
         transcription
       </str>
 
@@ -197,28 +178,24 @@
     </arr>
   </requestHandler>
 
-  <requestHandler name="collections" class="solr.SearchHandler" default="true">
+  <requestHandler name="collections" class="solr.SearchHandler" default="false">
     <lst name="defaults">
       <str name="defType">edismax</str>
       <str name="echoParams">explicit</str>
       <int name="rows">25</int>
-`     <str name="q.alt">*:*</str>
+      <str name="q.alt">*:*</str>
 
       <str name="qf">
-        collection_name
         collection_name_s^2.4
-        collection_description
-        contributing_organization_name
-        contributing_organization_name_s^4
+        collection_name_tesi^2.4
+        collection_description_tesi
+        contributing_organization_name_tesi^4
         set_spec
       </str>
       <str name="pf">
-        collection_name
-        collection_name_s^2.4
-        collection_description
-        contributing_organization
-        contributing_organization_name
-        contributing_organization_name_s^4
+        collection_name_tesi^2.4
+        collection_description_tesi
+        contributing_organization_name_tesi^4
       </str>
     </lst>
   </requestHandler>
@@ -320,17 +297,16 @@
    <requestHandler name="/mlt" class="solr.MoreLikeThisHandler">
      <lst name="defaults">
         <str name="qf">
-           title_tesi
-           subject_tesimv
-           subject_fast_tesimv
-           creator_tesimv
-           format_name_ssimv
+           title
+           subject
+           subject_fast
+           creator
+           format_name
         </str>
         <!--The fields to use for similarity-->
-       <str name="mlt.fl">title_tesi,subject_tesimv,subject_fast_tesimv,creator_tesimv</str>
+       <str name="mlt.fl">title,subject,subject_fast,creator</str>
        <int name="mlt.mintf">1</int>
        <int name="mlt.mindf">1</int>
      </lst>
    </requestHandler>
-   
 </config>

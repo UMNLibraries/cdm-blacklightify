@@ -14,6 +14,10 @@ class TaskSolrQuery
     select rows: total_docs
   end
 
+  def all_primary
+    select_primary rows: total_docs
+  end
+
   def build_query(doc_ids)
     "+(#{doc_ids.gsub(':', '\:').split.join(' OR ')})"
   end
@@ -22,8 +26,16 @@ class TaskSolrQuery
     select['response']['numFound']
   end
 
+  def total_primary_docs
+    select_primary['response']['numFound']
+  end
+
   def select(query: '*:*', rows: '1', fields: 'id')
     Blacklight.default_index.connection.get 'select', params: { q: query, rows: rows, fl: fields }
+  end
+
+  def select_primary(query: '*:*', rows: '1', fields: 'id')
+    select(query: "#{query} AND record_type_ssi:primary", rows: rows, fields: fields)
   end
 end
 
@@ -33,7 +45,11 @@ namespace :umedia do
     task store: :environment do
       query = TaskSolrQuery.new
 
-      response = ENV['DOC_IDS'].present? ? query.scoped(ENV.fetch('DOC_IDS', nil)) : query.global
+      # We are only storing thumbnails locally for "primary" record types, never for the
+      # individual pages of a complex item from CONTENTdm. It is only on search results
+      # where we really need the benefit of fast thumbnails and IIIF will supply them
+      # on the show views. DOC_IDS may include child doc ids if you want.
+      response = ENV['DOC_IDS'].present? ? query.scoped(ENV.fetch('DOC_IDS', nil)) : query.all_primary
 
       @steps = 0
 
@@ -49,6 +65,8 @@ namespace :umedia do
     task purge: :environment do
       query = TaskSolrQuery.new
 
+      # Though it is likely only primary doc thumbs were stored, this will purge ALL of them
+      # including any one-off child doc thumbs that may have been collected.
       response = ENV['DOC_IDS'].present? ? query.scoped(ENV.fetch('DOC_IDS', nil)) : query.global
 
       @steps = 0
