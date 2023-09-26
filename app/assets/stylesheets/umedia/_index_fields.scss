@@ -16,4 +16,10 @@ section[aria-label="search results"] {
   .document-type {
     font-weight: 700;
   }
+  // gallery view
+  .thumbnail-container {
+    .index_title { 
+      padding-left: 0;
+    }
+  }
 }
