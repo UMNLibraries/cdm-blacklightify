@@ -16,9 +16,31 @@ body {
 	padding: 1rem 1rem 0 1rem;
 }
 
+.show-document > .constraints-container{
+	padding-left: 0;
+}
+
 #umedia {
 	padding: 1.5rem;
 	.empty-page-block {
 		padding: 1.5rem
 	}
+}
+
+#blacklight-modal {
+	a {
+		color: #0053b0;
+		text-decoration: underline;
+	} 
+	a:hover,
+	a:focus {
+		background-color: #0053b0;
+		color: #fafafa;
+		outline: none;
+		text-decoration: none;
+	}
+}
+
+#main-container {
+	padding: 0;
 }

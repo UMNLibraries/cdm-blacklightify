@@ -1,66 +1,66 @@
 #section-about {
-    background-color: #333;
-    #about-primary {
-        padding-top: 2.25rem;
-        padding-bottom: 2.5rem;
-        .card-action-button {
-            position: absolute;
-            bottom: -1.5rem;
-            right: 0.5rem;
-            z-index: 10;
-            background-color: #7a0019;
-            border: none;
-            padding: 1rem;
-            text-decoration: underline;
-        }
-        .card-action-button:hover,
-        .card-action-button:focus {
-            box-shadow: none;
-            background-color: #5b0013;
-            outline: 3px solid #0053b0;
-            outline-offset: 2px;
-            text-decoration: none;
-        }
-        #about-stats {
-            padding: 0;
-            margin-bottom: 1.25rem;
-            p {
-                padding: 0;
-                margin: 0;
-            }
-        }
+  background-color: #333;
+  #about-primary {
+    padding-top: 2.25rem;
+    padding-bottom: 2.5rem;
+    .card-action-button {
+      position: absolute;
+      bottom: -1.5rem;
+      right: 0.5rem;
+      z-index: 10;
+      background-color: #7a0019;
+      border: none;
+      padding: 1rem;
+      text-decoration: underline;
     }
-    #about-image {
-        padding-top: 2.25rem;
-        padding-bottom: 2.5rem;
-        img {
+    .card-action-button:hover,
+    .card-action-button:focus {
+      box-shadow: none;
+      background-color: #5b0013;
+      outline: 3px solid #0053b0;
+      outline-offset: 2px;
+      text-decoration: none;
+    }
+    #about-stats {
+      padding: 0;
+      margin-bottom: 1.25rem;
+      p {
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+  #about-image {
+    padding-top: 2.25rem;
+    padding-bottom: 2.5rem;
+    img {
 						max-height: 30rem;
-            width: 100%;
-            height: 100%;
-            object-fit: none;
-        }
-        #about-image-attribute {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background-color: #fafafa;
-            color: #333;
-            padding: .8rem;
-            text-align: left;
-            p {
-                margin-bottom: 0;
-                a {
-                    color: #0053b0;
-                    text-decoration: underline;
-                }
-                a:hover,
-                a:focus {
-                    background-color: #0053b0;
-                    color: #fafafa;
-                    outline: none;
-                    text-decoration: none;
-                }
-            }
-        }
+      width: 100%;
+      height: 100%;
+      object-fit: none;
     }
+    #about-image-attribute {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: #fafafa;
+      color: #333;
+      padding: .8rem;
+      text-align: left;
+      p {
+        margin-bottom: 0;
+        a {
+          color: #0053b0;
+          text-decoration: underline;
+        }
+        a:hover,
+        a:focus {
+          background-color: #0053b0;
+          color: #fafafa;
+          outline: none;
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }

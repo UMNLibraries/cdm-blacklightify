@@ -1,14 +1,15 @@
-section[aria-label="search results"] {
+section[aria-label="search results"],
+section[aria-label="limit your search"] {
   a {
     color: #0053b0;
     text-decoration: underline;
   } 
   a:hover,
   a:focus {
-      background-color: #0053b0;
-      color: #fafafa;
-      outline: none;
-      text-decoration: none;
+    background-color: #0053b0;
+    color: #fafafa;
+    outline: none;
+    text-decoration: none;
   }
   dt {
     padding-left: 0;
