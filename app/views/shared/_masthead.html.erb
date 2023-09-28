@@ -7,8 +7,8 @@
 <%- masthead_navbar = capture do %>
   <% if content_for? :masthead_navbar %>
     <%= content_for :masthead_navbar %>
-  <%# <% elsif current_exhibit %>
-  <%#  <%= render 'shared/exhibit_navbar' %>
+  <% elsif current_exhibit %>
+    <%= render 'shared/exhibit_navbar' %>
   <% else %>
     <%= render 'shared/site_navbar' %>
   <% end %>
@@ -33,7 +33,9 @@
           <%= masthead_heading_content %>
         </h1>
         <% if masthead_subheading_content %>
-          <small><%= masthead_subheading_content %></small>
+          <!-- temporarily commented out for example of subheading . . . -->
+          <!-- <small><%= masthead_subheading_content %></small> -->
+          <small>Discover <%= record_count %> images, maps, manuscripts, video, audio, and more.</small>
         <% end %>
       <% end %>
     </div>
