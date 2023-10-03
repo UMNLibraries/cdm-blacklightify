@@ -9,7 +9,7 @@ SitemapGenerator::Sitemap.default_host = 'https://umedia.lib.umn.edu'
 solrinst = RSolr.connect url: Blacklight.connection_config[:url]
 
 # grab primary items and the dates they were last modified
-response = solrinst.get('select', params: { q: 'record_type_ssi:primary', fl: 'id,dmmodified_ssi', rows: 9_999_999 })
+response = solrinst.get('select', params: { q: 'record_type:primary', fl: 'id,date_modified', rows: 9_999_999 })
 
 # including the routes already defined in Rails and Spotlight
 SitemapGenerator::Interpreter.send :include, Rails.application.routes.url_helpers
@@ -26,7 +26,7 @@ sitemap_opts = if Rails.env.test?
                end
 SitemapGenerator::Sitemap.create(sitemap_opts) do
   response['response']['docs'].each do |doc|
-    add "/item/#{doc['id']}", changefreq: 'weekly', lastmod: doc['dmmodified_ssi']
+    add "/item/#{doc['id']}", changefreq: 'weekly', lastmod: doc['date_modified']
   end
   Spotlight::Sitemap.add_all_exhibits(self)
 end
