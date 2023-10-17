@@ -162,6 +162,7 @@
   <field name="date_added_sort" type="pdate" indexed="true" stored="true" multiValued="false" />
 
   <field name="date_modified" type="rdate" indexed="true" stored="true" multiValued="false" />
+  <field name="dmmodified" type="rdate" indexed="true" stored="true" multiValued="false" />
   <copyField source="date_modified" dest="date_modified_ssi" />
   <copyField source="date_modified" dest="date_modified_tesi" />
   <copyField source="date_modified" dest="dmmodified" />
