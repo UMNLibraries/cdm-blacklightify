@@ -12,13 +12,15 @@ Rails.application.routes.draw do
   #  root to: "catalog#index" # replaced by spotlight root path
   concern :searchable, Blacklight::Routes::Searchable.new
 
-  # For compatibility catalog show pages aliased as /item/:id
-  get '/item/:id', to: 'catalog#show'
-
   # Compatibility with old UMedia JSON views, override what Rails/Blacklight want to do with JSON
   get '/catalog/:id.json', controller: 'catalog', action: 'raw'
   get '/item/:id.json', controller: 'catalog', action: 'raw'
   get '/item', to: redirect('/catalog?search_field=all_fields&q=')
+
+  # For compatibility catalog show pages aliased as /item/:id
+  # (must be after the raw .json route so this does not supercede it)
+  get '/item/:id', to: 'catalog#show'
+
 
   # Finally allow Blacklight to do its normal stuff
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
