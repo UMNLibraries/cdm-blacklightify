@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   # Compatibility with old UMedia JSON views, override what Rails/Blacklight want to do with JSON
   get '/catalog/:id.json', controller: 'catalog', action: 'raw'
   get '/item/:id.json', controller: 'catalog', action: 'raw'
-  get '/item', to: redirect('/catalog?search_field=all_fields&q=')
+  # Calling /item with no doc id is a fault
+  get '/item', controller: 'catalog', action: 'bad_request_no_search'
 
   # For compatibility catalog show pages aliased as /item/:id
   # (must be after the raw .json route so this does not supercede it)

@@ -48,7 +48,6 @@ class CatalogController < ApplicationController
     # Show Presenter Class ("registers" the show_presenter file/class)
     config.show.document_presenter_class = ShowPresenter
 
-    
     config.add_sort_field 'relevance', sort: 'score desc', label: I18n.t('spotlight.search.fields.sort.relevance')
     config.add_sort_field 'date_created_sort desc, title_sort asc', label: 'Year (Newest first)'
     config.add_sort_field 'date_created_sort asc, title_sort asc', label: 'Year (Oldest first)'
@@ -248,5 +247,9 @@ class CatalogController < ApplicationController
 
     # Set which views by default only have the title displayed, e.g.,
     # config.view.gallery.title_only_by_default = true
+  end
+
+  def bad_request_no_search
+    head :bad_request
   end
 end
