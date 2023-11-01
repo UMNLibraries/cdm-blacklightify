@@ -31,11 +31,11 @@
         <%= content_for(:skip_links) %>
       </div>
       <%= render partial: 'shared/header_navbar' %>
-			<%= render partial: 'shared/about' if current_page?(root_path) %>
+      <%= render partial: 'shared/about' if current_page?(root_path) %>
     </header>
-		
-		  <%= render partial: 'shared/masthead' %>
-    	<%# <%= content_for?(:header_content) ? yield(:header_content) : "" %>
+
+      <%= render partial: 'shared/masthead' %>
+      <%# <%= content_for?(:header_content) ? yield(:header_content) : "" %>
 
     <main id="main-container" class="" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
       <%# <%= content_for(:container_header) %>
