@@ -38,4 +38,11 @@ class IiifController < ApplicationController
     )
     render json: response
   end
+
+  def show
+    response = "https://cdm16022.contentdm.oclc.org/iiif/2/" + params[:id] + "/manifest.json"
+    res = Net::HTTP.get_response(URI(response))
+    parsed_response = res.body
+    render json: parsed_response
+  end
 end
