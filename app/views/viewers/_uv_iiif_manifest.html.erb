@@ -13,4 +13,13 @@
       config: "/uv/uvconfig.json",
     },
   );
+
+  uv.on("configure", function ({ config, cb }) {
+    cb({
+      options: {
+        <%= doc_format %>
+      }
+    });
+  });
+  
 </script>
