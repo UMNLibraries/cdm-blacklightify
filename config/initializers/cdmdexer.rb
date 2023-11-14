@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require 'yaml'
+
+Rails.application.config.field_mappings = YAML.load_file(File.expand_path(File.dirname(__FILE__) + '/cdmdexer.yml'))
+
 module CDMDEXER
   # Callback for job completion
   class CompletedCallback

@@ -63,7 +63,7 @@ $ bundle exec rails db:fixtures:load
 $ bundle exec foreman start
 ```
 
-OPTIONAL: Starting some services independently is possible if a fast startup is deesired, especially when the Sidekiq job queue won't be needed.
+OPTIONAL: Starting some services independently is possible if a fast startup is desired, especially when the Sidekiq job queue won't be needed.
 
 ```shell
 # Start solr without the whole foreman suite

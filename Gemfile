@@ -50,11 +50,13 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'blacklight', ' ~> 7.0'
-gem 'blacklight-spotlight', github: 'projectblacklight/spotlight'
+gem 'blacklight-spotlight', github: 'projectblacklight/spotlight', branch: 'v3.5.0.2'
+# https://github.com/projectblacklight/blacklight_range_limit#configuration
+gem 'blacklight_range_limit', '~> 7.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
-  gem 'solr_wrapper', '>= 0.3'
+  gem 'solr_wrapper', '~> 4.0'
 end
 gem 'blacklight-gallery', '~> 3.0'
 gem 'blacklight-oembed', '~> 1.0'
@@ -92,7 +94,7 @@ end
 # ContentDM Harvesting/Indexing
 gem 'config'
 gem 'contentdm_api', github: 'UMNLibraries/contentdm_api'
-gem 'cdmdexer', github: 'UMNLibraries/cdmdexer', branch: 'sp-lang'
+gem 'cdmdexer', github: 'UMNLibraries/cdmdexer', branch: 'develop'
 gem 'foreman', '~> 0.80'
 # We cannot move to Sidekiq 7 as long as the ETLWorker and TransformWorker
 # pass complex objects (including multiple FieldMapping classes) to Sidekiq worker perform() methods
@@ -117,3 +119,5 @@ gem 'rinku'
 
 # Kaltura
 gem 'kaltura-client', '17.5.0'
+
+gem 'rails-controller-testing'

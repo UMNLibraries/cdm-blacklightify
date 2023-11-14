@@ -72,6 +72,8 @@ yarn-debug.log*
 # Ignore test reports
 /test/reports/*
 
+/test/test_helper.rb
+
 # Ignore solr snapshots
 /solr/snapshots/*
 !/solr/snapshots/.keep
@@ -90,3 +92,10 @@ public/uv/*
 
 # Redis database files, should they end up outside tmp/
 *.rdb
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets

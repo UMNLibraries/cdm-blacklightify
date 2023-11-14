@@ -13,7 +13,7 @@ namespace :umedia do
       # Rubocop does not like URI.open & kin but it's safe in a task like this
       # rubocop:disable Security/Open
       # Accepts 1 argument specifying the filename to write
-      exportfile = (ENV.fetch('EXPORT_FILENAME') || Rails.root.join('umedia-solr-dump.json.gz')).chomp
+      exportfile = (ENV.fetch('EXPORT_FILENAME') || Rails.root.join('umedia-solr-dump.json.gz').to_s).chomp
 
       # Use a raw HTTP call into JQ instead of SolrDocument because it is WAY faster
       jsondata = URI.open("#{ENV.fetch('SOLR_URL')}/select?q=*:*&fl=*&rows=999999&wt=json").read
@@ -34,7 +34,7 @@ namespace :umedia do
     # Be sure to commit changes
     desc 'Update Solr fixtures file with the current index state'
     task update_fixtures: :environment do
-      ENV['EXPORT_FILENAME'] = Rails.root.join('test/fixtures/dev_solr_harvest.json.gz')
+      ENV['EXPORT_FILENAME'] = Rails.root.join('test/fixtures/dev_solr_harvest.json.gz').to_s
       Rake::Task['umedia:solr:export_data'].invoke
       puts "Don't forget to commit the modified fixtures to source control."
     end
@@ -63,12 +63,12 @@ namespace :umedia do
     # rubocop:disable Rails/FilePath
     desc 'Populate a development Solr index from JSON fixtures (Optional env filename IMPORT_FILENAME=path/to/file.json, skip prompts with WIPE_DATA=1)'
     task index_dev: %i[environment wipe_data] do
-      importfile = (ENV.fetch('EXPORT_FILENAME', nil) || Rails.root.join('test/fixtures/dev_solr_harvest.json.gz'))
+      importfile = (ENV.fetch('EXPORT_FILENAME', nil) || Rails.root.join('test/fixtures/dev_solr_harvest.json.gz').to_s)
 
       # Run Solr's bin/post with the inupt JSON, probably the fastest way of indexing
       FileUtils.chmod('+x', 'tmp/solr/bin/post')
       puts "Importing from #{importfile}..."
-      system("gunzip -c '#{importfile}' | #{Rails.root.join('tmp/solr/bin/post')} -url '#{ENV.fetch('SOLR_URL')}/update' -commit yes -type application/json -d")
+      system("gunzip -c '#{importfile}' | #{Rails.root.join('tmp/solr/bin/post').to_s} -url '#{ENV.fetch('SOLR_URL')}/update' -commit yes -type application/json -d")
     end
     # rubocop:enable Rails/FilePath
   end
