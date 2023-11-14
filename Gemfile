@@ -50,7 +50,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'blacklight', ' ~> 7.0'
-gem 'blacklight-spotlight', github: 'projectblacklight/spotlight'
+gem 'blacklight-spotlight', github: 'projectblacklight/spotlight', branch: 'v3.5.0.2'
 # https://github.com/projectblacklight/blacklight_range_limit#configuration
 gem 'blacklight_range_limit', '~> 7.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
