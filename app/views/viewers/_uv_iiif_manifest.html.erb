@@ -5,6 +5,9 @@
 <% end %>
 
 <div id="uv" class="uv" style="width:auto;"></div>
+
+<% uvconfig = UvPresenter.new(@document) %>
+
 <script>
   var uv = UV.init(
     "uv",
@@ -17,9 +20,8 @@
   uv.on("configure", function ({ config, cb }) {
     cb({
       options: {
-        <%= doc_format %>
+        <%= uvconfig.paging_enabled %>
       }
     });
   });
-  
 </script>
