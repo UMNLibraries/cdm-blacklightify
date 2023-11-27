@@ -1,9 +1,9 @@
 class UvPresenter
+  attr_reader :document
+  
   def initialize(document)
     @document = document
   end
-
-  attr_reader :document
 
   def format_name
     arr = ["Cookbooks", "Educational events", "Newspapers", "Posters", "Radio programs"]
