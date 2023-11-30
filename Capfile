@@ -13,7 +13,7 @@ require 'capistrano/bundler'
 require 'capistrano/capistrano_plugin_template'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
-require 'capistrano/maintenance'
+#require 'capistrano/maintenance'
 require 'capistrano/yarn'
 
 # Whenever gem autocreates crontab
