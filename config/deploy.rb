@@ -124,10 +124,10 @@ namespace :deploy do
         execute :sudo, 'systemctl status --no-pager puma-umedia'
 
         # Refresh the Google/Crawler Sitemap
-        execute :rake, 'sitemap:refresh', "RAILS_ENV=#{fetch(:rails_env)}"
+        # execute :rake, 'sitemap:refresh', "RAILS_ENV=#{fetch(:rails_env)}"
 
         # Stop and Restart Sidekiq
-        execute :sudo, 'systemctl restart puma-umedia'
+        execute :sudo, 'systemctl restart sidekiq'
       end
     end
   end
