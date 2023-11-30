@@ -32,14 +32,18 @@ gem 'ruby-jq'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
-group :development, :test do
+group :development, :test, :publicdev do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  # ONLY on local dev, not if running publicdev on a srver
   gem 'web-console', '>= 4.1.0'
+end
+
+group :development, :publicdev do
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'listen', '~> 3.3'
@@ -55,9 +59,10 @@ gem 'blacklight-spotlight', github: 'projectblacklight/spotlight', branch: 'v3.5
 gem 'blacklight_range_limit', '~> 7.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-group :development, :test do
+group :development, :test, :publicdev do
   gem 'solr_wrapper', '~> 4.0'
 end
+
 gem 'blacklight-gallery', '~> 3.0'
 gem 'blacklight-oembed', '~> 1.0'
 gem 'bootstrap', '~> 4.0'
@@ -121,3 +126,10 @@ gem 'rinku'
 gem 'kaltura-client', '17.5.0'
 
 gem 'rails-controller-testing'
+
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-template', git: 'https://github.com/UMNLibraries/capistrano-template-ruby3'
+gem 'capistrano-bundler'
+gem 'capistrano-maintenance'
+gem 'capistrano-yarn'
