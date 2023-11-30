@@ -79,7 +79,7 @@ gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'uglifier', '>= 1.3.0'
 
 # Test suite
-group :test do
+group :test, :publicdev do
   gem 'bundler-audit'
   gem 'capybara'
   gem 'capybara-screenshot'
@@ -94,10 +94,6 @@ group :test do
   gem 'shoulda-context'
   gem 'simplecov', require: false
   gem 'webdrivers'
-end
-
-group :publicdev do
-  gem 'bundler-audit'
 end
 
 # ContentDM Harvesting/Indexing
