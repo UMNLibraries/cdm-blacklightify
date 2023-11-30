@@ -97,7 +97,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'object', label: 'Thumbnail Source', itemprop: 'object'
     # Description
     config.add_show_field 'description_ts', label: 'Description', itemprop: 'description', type: :primary
-    config.add_show_field 'sp_description_ts', label: 'Description (Spanish)', itemprop: 'description_sp', type: :primary
+    config.add_show_field 'es_description_ts', label: 'Description (Spanish)', itemprop: 'description_sp', type: :primary
     config.add_show_field 'description', label: 'Description', itemprop: 'description'
     config.add_show_field 'es_description', label: 'Description (Spanish)', itemprop: 'description_es'
     # Date Created
@@ -110,20 +110,20 @@ class CatalogController < ApplicationController
     config.add_show_field 'type_ssi', label: 'Type', itemprop: 'type', link_to_facet: true, type: :phys_desc
     # Format
     config.add_show_field 'format_ssim', label: 'Format', itemprop: 'format', link_to_facet: true, type: :phys_desc
-    config.add_show_field 'sp_physical_format_ssi', label: 'Format (Spanish)', itemprop: 'format_sp', link_to_facet: false, type: :phys_desc
+    config.add_show_field 'es_physical_format_ssi', label: 'Format (Spanish)', itemprop: 'format_sp', link_to_facet: false, type: :phys_desc
     ## Topics
     # Subjects
     config.add_show_field 'subject_ssim', label: 'Subject', itemprop: 'subject', link_to_facet: true, type: :topic
-    config.add_show_field 'sp_subject_ssim', label: 'Subject (Spanish)', itemprop: 'subject_sp', link_to_facet: false, type: :topic
+    config.add_show_field 'es_subject_ssim', label: 'Subject (Spanish)', itemprop: 'subject_sp', link_to_facet: false, type: :topic
     # Language
     config.add_show_field 'language_ssi', label: 'Language', itemprop: 'language', link_to_facet: true, type: :topic
-    config.add_show_field 'sp_language_ssi', label: 'Language (Spanish)', itemprop: 'language_sp', link_to_facet: false, type: :topic
+    config.add_show_field 'es_language_ssi', label: 'Language (Spanish)', itemprop: 'language_sp', link_to_facet: false, type: :topic
     ## Geographic Location
     # Country
     config.add_show_field 'country_ssi', label: 'Country', itemprop: 'country', link_to_facet: true, type: :geo_loc
-    config.add_show_field 'sp_country_ssi', label: 'Country (Spanish)', itemprop: 'country_sp', link_to_facet: false, type: :geo_loc
+    config.add_show_field 'es_country_ssi', label: 'Country (Spanish)', itemprop: 'country_sp', link_to_facet: false, type: :geo_loc
     config.add_show_field 'continent_ssi', label: 'Continent', itemprop: 'continent', link_to_facet: true, type: :geo_loc
-    config.add_show_field 'sp_continent_ssi', label: 'Continent (Spanish)', itemprop: 'continent_sp', link_to_facet: false, type: :geo_loc
+    config.add_show_field 'es_continent_ssi', label: 'Continent (Spanish)', itemprop: 'continent_sp', link_to_facet: false, type: :geo_loc
     ## Collection Information
     # Parent Collection
     config.add_show_field 'collection_name_ssi', label: 'Parent Collection', itemprop: 'parent_collection_name',
@@ -143,9 +143,9 @@ class CatalogController < ApplicationController
     ## Can I Use It?
     # Copyright Statement...
     config.add_show_field 'local_rights_tesi', label: 'Copyright Statement', itemprop: 'copyright', type: :use
-    config.add_show_field 'sp_local_rights_tesi', label: 'Copyright Statement (Spanish)', itemprop: 'copyright_sp', type: :use
+    config.add_show_field 'es_local_rights_tesi', label: 'Copyright Statement (Spanish)', itemprop: 'copyright_sp', type: :use
     config.add_show_field 'rights_uri_ssi', label: 'Rights Statement URI', itemprop: 'rights_uri', type: :use
-    config.add_show_field 'sp_rights_uri_ssi', label: 'Rights Statement URI (Spanish)', itemprop: 'rights_uri_sp', type: :use
+    config.add_show_field 'es_rights_uri_ssi', label: 'Rights Statement URI (Spanish)', itemprop: 'rights_uri_sp', type: :use
     config.add_show_field 'creator', label: 'Creator', itemprop: 'creator', link_to_facet: true
     ## Physical Description
     # Item Type
@@ -156,7 +156,7 @@ class CatalogController < ApplicationController
     ## Topics
     # Subjects
     config.add_show_field 'subject', label: 'Subject', itemprop: 'subject', link_to_facet: true
-    config.add_show_field 'sp_subject', label: 'Subject (Spanish)', itemprop: 'subject_sp', link_to_facet: false
+    config.add_show_field 'es_subject', label: 'Subject (Spanish)', itemprop: 'subject_sp', link_to_facet: false
     # Language
     config.add_show_field 'language', label: 'Language', itemprop: 'language', link_to_facet: true
     config.add_show_field 'es_language', label: 'Language (Spanish)', itemprop: 'language_sp', link_to_facet: false
@@ -185,7 +185,7 @@ class CatalogController < ApplicationController
     ## Can I Use It?
     # Copyright Statement...
     config.add_show_field 'local_rights', label: 'Copyright Statement', itemprop: 'copyright'
-    config.add_show_field 'esp_local_rights', label: 'Copyright Statement (Spanish)', itemprop: 'copyright_sp'
+    config.add_show_field 'es_local_rights', label: 'Copyright Statement (Spanish)', itemprop: 'copyright_sp'
     config.add_show_field 'rights_uri', label: 'Rights Statement URI', itemprop: 'rights_uri'
     config.add_show_field 'es_rights_uri', label: 'Rights Statement URI (Spanish)', itemprop: 'rights_uri_sp'
 

@@ -96,6 +96,10 @@ group :test do
   gem 'webdrivers'
 end
 
+group :publicdev do
+  gem 'bundler-audit'
+end
+
 # ContentDM Harvesting/Indexing
 gem 'config'
 gem 'contentdm_api', github: 'UMNLibraries/contentdm_api'

@@ -5,6 +5,8 @@
 class TranscriptController < ApplicationController
   include Blacklight::Catalog
   include Thumbnail
+  #after_action ->{ Rails.logger.debug(@response.documents.map{|doc| doc['transcription']}) }
+  after_action ->{ Rails.logger.debug(@response.documents.map{|doc| doc['transcription']}.inspect) }
 
   configure_blacklight do |config|
     # special search builder

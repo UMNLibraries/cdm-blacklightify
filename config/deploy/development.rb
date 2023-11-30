@@ -15,6 +15,7 @@ set :deploy_to, "/var/www/#{fetch(:application)}"
 # Geoblacklight development server is in production mode to stay identical to prod!
 set :rails_env, 'publicdev'
 
+set :linked_files, [".env.#{fetch(:rails_env, 'production')}"]
 # Geoblacklight development Solr URL with user/password
 
 ## Database configuration (NOT YET USED, copy/paste from geoportal)

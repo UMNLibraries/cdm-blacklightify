@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   # (must be after the raw .json route so this does not supercede it)
   get '/item/:id', to: 'catalog#show'
 
-
   # Finally allow Blacklight to do its normal stuff
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
     concerns :searchable
