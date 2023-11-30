@@ -43,6 +43,11 @@ group :development do
   gem 'web-console', '>= 4.1.0'
 end
 
+group :publicdev, :production do
+  # For puma with systemd integration
+  gem 'sd_notify', '>= 0.1.0'
+end
+
 group :development, :publicdev do
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
