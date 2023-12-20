@@ -26,10 +26,10 @@ class CatalogController < ApplicationController
       fq: 'record_type:primary',
       'hl': true,
       'hl.method': 'original',
-      'hl.fl': 'description subject',
-      "hl.simple.pre": "<span class='search-highlight' style='background-color: #ffde7a'>",
-      "hl.simple.post": "</span>",
-      "hl.fragsize": 0
+      'hl.fl': 'collection_* format_* subject title ',
+      'hl.preserveMulti': true,
+      'hl.simple.pre': '<span style=\'background-color: #ffde7a\'>',
+      'hl.simple.post': '</span>',
     }
 
     config.document_solr_path = 'get'
@@ -41,12 +41,12 @@ class CatalogController < ApplicationController
     config.add_search_field 'all_fields', label: I18n.t('spotlight.search.fields.search.all_fields')
 
 		# additional targeted search query field. 
-		config.add_search_field 'type_ssi', label: 'Type'
-		config.add_search_field 'date_ssi', label: 'Date'
+		config.add_search_field 'types', label: 'Type'
+		config.add_search_field 'date_created', label: 'Date'
 		config.add_search_field('subject') do |field|
       field.query_parameters = { :'spellcheck.dictionary' => 'subject' }
       field.query_local_parameters = { 
-        :qf => 'subject_ssim'
+        :qf => 'subject_ssm'
       }
     end
 
@@ -86,15 +86,15 @@ class CatalogController < ApplicationController
     config.add_facet_field 'contributor', label: 'Contributor', limit: 4, collapse: true
 
     # SEARCH RESULTS FIELDS
+    config.add_index_field 'title', label: 'Title', highlight: true
     # Collection / collection_name
-    config.add_index_field 'collection_name_s', label: 'Collection'
+    config.add_index_field 'collection_name', label: 'Collection', highlight: true
     # Created
     config.add_index_field 'date_created', label: 'Date'
     # Format / format_name
-    config.add_index_field 'format_name', label: 'Format'
+    config.add_index_field 'format_name', label: 'Format', highlight: true
     # Subject / subject
     config.add_index_field 'subject', label: 'Subjects', link_to_facet: true, highlight: true
-    config.add_index_field 'description', label: 'description', highlight: true
 
     # Thumbnails - A helper method that looks for attached image from solr_document_sidecar
     config.index.thumbnail_method = :thumbnail
