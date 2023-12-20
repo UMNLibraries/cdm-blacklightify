@@ -1,7 +1,8 @@
 :concurrency:  5
-:max_retries: 1
+:max_retries: 25
 
 :queues:
-  - priority
+  # cdmdexer expects a 'critical' queue for CDMDEXER::LoadWorker jobs
+  - critical
   - devise
   - default
