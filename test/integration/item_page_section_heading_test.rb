@@ -1,7 +1,7 @@
-require "test_helper"
+require 'test_helper'
 
 class ItemPageSectionHeadingTest < ActionDispatch::IntegrationTest
-  test "section headings display" do
+  test 'section headings display' do
     get root_path + '/catalog' + '/p16022coll208:11'
     assert_response :success
     assert_template partial: '_show'

@@ -38,4 +38,9 @@ class IiifController < ApplicationController
     )
     render json: response
   end
+
+  def show
+    response = IiifViewingHintService.new(params[:id]).call
+    render json: response
+  end
 end

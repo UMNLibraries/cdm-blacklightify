@@ -52,7 +52,7 @@ Rails.application.routes.draw do
 
   resources :iiif, only: [] do
     member do
-      get :manifest
+      get :manifest, action: 'show'
       get :search
       get :autocomplete
     end
