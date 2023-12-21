@@ -103,7 +103,7 @@ module Umedia
 
     # Returns the thumbnail url.
     def image_url
-      @image_url ||= @document._source['object_ssi']
+      @image_url ||= @document._source['object']
     end
 
     # Faraday timeout value.
