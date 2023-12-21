@@ -99,7 +99,7 @@ namespace :deploy do
     on roles(:app) do
       execute :mkdir, '-p', "#{shared_path}/storage"
       execute :chown, "#{fetch(:deploy_user)}:#{fetch(:app_user)}", "#{shared_path}/storage"
-      execute :chmod, '2755', "#{shared_path}/storage"
+      execute :chmod, '2775', "#{shared_path}/storage"
     end
   end
 
@@ -111,6 +111,16 @@ namespace :deploy do
       execute :sudo, "chmod -R g+w #{shared_path}/tmp/cache"
     end
   end
+
+  desc 'Prepare Universal Viewer in public docroot'
+  task :universal_viewer do
+    on roles(:app) do
+      within release_path do
+        execute './prep_uv.sh'
+      end
+    end
+  end
+
 
   after 'deploy:symlink:release', :clear_cache do
     on roles(:app) do
@@ -136,3 +146,4 @@ end
 before 'deploy:starting', 'setup:secrets_exists'
 before 'deploy:compile_assets', 'deploy:prepare_cache_dir'
 before 'deploy:symlink:shared', 'deploy:create_storage_dir'
+before  'deploy:symlink:release', 'deploy:universal_viewer'
