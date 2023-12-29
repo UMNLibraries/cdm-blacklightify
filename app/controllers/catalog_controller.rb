@@ -40,19 +40,19 @@ class CatalogController < ApplicationController
 
     config.add_search_field 'all_fields', label: I18n.t('spotlight.search.fields.search.all_fields')
 
-		# additional targeted search query field. 
-		config.add_search_field 'types', label: 'Type'
-		config.add_search_field 'date_created', label: 'Date'
-		config.add_search_field('subject') do |field|
+    # additional targeted search query field.
+    config.add_search_field 'types', label: 'Type'
+    config.add_search_field 'date_created', label: 'Date'
+    config.add_search_field('subject') do |field|
       field.query_parameters = { :'spellcheck.dictionary' => 'subject' }
-      field.query_local_parameters = { 
+      field.query_local_parameters = {
         :qf => 'subject_ssm'
       }
     end
 
     # Show Presenter Class ("registers" the show_presenter file/class)
     config.show.document_presenter_class = ShowPresenter
-    
+
     config.add_sort_field 'relevance', sort: 'score desc', label: I18n.t('spotlight.search.fields.sort.relevance')
     config.add_sort_field 'date_created_sort desc, title_sort asc', label: 'Year (Newest first)'
     config.add_sort_field 'date_created_sort asc, title_sort asc', label: 'Year (Oldest first)'
