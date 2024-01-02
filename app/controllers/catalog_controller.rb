@@ -32,7 +32,7 @@ class CatalogController < ApplicationController
       'hl.simple.post': '</span>',
     }
 
-    config.document_solr_path = 'get'
+    config.document_solr_path = 'select'
     config.document_unique_id_param = 'ids'
 
     # solr field configuration for search results/index views
