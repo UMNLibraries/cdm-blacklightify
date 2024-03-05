@@ -17,4 +17,3 @@ module Umedia
     end
   end
 end
-

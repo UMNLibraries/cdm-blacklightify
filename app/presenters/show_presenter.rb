@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class ShowPresenter < Blacklight::ShowPresenter
-  def config_type
-    arr = { primary: "", phys_desc: "Physical Description", topic: "Topics", geo_loc: "Geographic Location", 
-                                                                             coll_info: "Collection Information", 
-                                                                             identifiers: "Identifiers", 
-                                                                             use: "Can I use It?" }
+  def config_type(locale = :en)
+    h = {}
+    [:primary, :phys_desc, :topic, :geo_loc, :coll_info, :identifiers, :use].each do |sect|
+      h[sect] = I18n.t("item.field_sections.#{sect.to_s}", locale: locale)
+    end
+    h
   end
 
   def type_arr(type)    # returns boolean if any field in type_arr is present in the document

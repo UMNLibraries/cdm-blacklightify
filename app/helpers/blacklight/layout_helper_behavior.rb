@@ -15,7 +15,7 @@ module Blacklight
     # Attributes to add to the <html> tag (e.g. lang and dir)
     # @return [Hash]
     def html_tag_attributes
-      { lang: I18n.locale }
+      { lang: current_locale }
     end
 
     ##
