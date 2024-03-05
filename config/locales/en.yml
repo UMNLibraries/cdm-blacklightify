@@ -27,7 +27,109 @@
 #   'true': 'foo'
 #
 # To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
+# available at http://guides.rubyonrails.org/i18n.html.
 en:
-  hello: "Hello world"
+  ui:
+    change_lang_to: "Change to English"
+  search:
+    facets:
+      types: "Type"
+      format_name: "Format"
+      date_created_ss: "Created"
+      subject_ss: "Subject"
+      creator_ss: "Creator"
+      publisher_s: "Publisher"
+      contributor_ss: "Contributor"
+      collection_name_s: "Collection"
+      super_collection_name_ss: "Special Projects"
+      page_count: "Page Count"
+      city: "City"
+      state: "State"
+      country: "Country"
+      region: "Region"
+      continent: "Continent"
+      parent_collection_name: "Parent Collection"
+      contributing_organization_name: "Contributing Organization"
+      contributing_organization_name_s: "Contributing Organization"
+      language: "Language"
+    index_fields:
+      date_created_ss: "Created"
+      date_added: "Last Updated"
+      description: "Description"
+      creator: "Creator"
+      contributor: "Contributor"
+      contributing_organization: "Contributed By"
+      page_count: "Page Count"
+  item:
+    fields:
+      title: "Title"
+      title_alternative: "Alternative Title"
+      description: "Description"
+      date_created_ss: "Date Created"
+      object:  "Thumbnail source"
+      historical_era: "Historical Era"
+      creator_ss: "Creator"
+      contributor_ss: "Contributor"
+      contributor: "Contributor"
+      publisher: "Publisher"
+      caption: "Caption"
+      notes: "Notes"
+      types: "Item Type"
+      format: "Format"
+      format_name: "Format"
+      dimensions: "Dimensions"
+      subject_ss: "Subjects"
+      subject_fast: "FAST Subject Headings"
+      language: "Language"
+      city: "City"
+      state: "State"
+      country: "Country"
+      region: "Region"
+      continent: "Continent"
+      geonames: "GeoNames URI"
+      projection: "Projection"
+      scale: "Scale"
+      coordinates: "Coordinates"
+      parent_collection_name: "Parent Collection"
+      contributing_organization_name_s: "Contributing Organization"
+      contributing_organization_name: "Contributing Organization"
+      contact_information: "Contact Information"
+      fiscal_sponsor: "Fiscal Sponsor"
+      local_identifier: "Local Identifier"
+      barcode: "Barcode Identifier"
+      system_identifier: "System Identifier"
+      dls_identifier: "DLS Identifier"
+      persistent_url: "Persistent URL"
+      subject: "Subjects"
+      expected_public_domain_year: "Expected Public Domain Year of Entry"
+      additional_rights_information: "Additional Rights Information"
+      transcription: "Transcription"
+      translation: "Translation"
+
+      contributing_organization: "Contributed By"
+      page_count: "Page Count"
+
+    field_sections:
+      primary: ""
+      phys_desc: "Physical Description"
+      topic: "Topics"
+      geo_loc: "Geographic Location"
+      coll_info: "Collection Information"
+      identifiers: "Identifiers"
+      use: "Can I use It?"
+
+  rights:
+    "//rightsstatements.org/vocab/CNE/1.0": 'The copyright and related rights status of this Item has not been evaluated. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use.'
+    "//rightsstatements.org/vocab/InC-EDU/1.0": 'The University of Minnesota believes this Item is protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. In addition, no permission is required from the rights-holder(s) for educational uses. For other uses, you need to obtain permission from the rights-holder(s).'
+    "//rightsstatements.org/vocab/InC-NC/1.0": 'The University of Minnesota believes this Item is protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. In addition, no permission is required from the rights-holder(s) for non-commercial uses. For other uses you need to obtain permission from the rights-holder(s).'
+    "//rightsstatements.org/vocab/InC-RUU/1.0": 'The University of Minnesota believes that this iItem is protected by copyright and/or related rights. However, for this item, either (a) no rights-holder(s) have been identified or (b) one or more rights-holder(s) have been identified but none have been located. You are free to use this item in any way that is permitted by the copyright and related rights legislation that applies to your use.'
+    "//rightsstatements.org/vocab/InC/1.0": 'The University of Minnesota believes that this item is protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).'
+    "//rightsstatements.org/vocab/NKC/1.0": 'The University of Minnesota reasonably believes that the item is not restricted by copyright or related rights, but a conclusive determination could not be made. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use.'
+    "//rightsstatements.org/vocab/NoC-CR/1.0": 'The University of Minnesota believes that this Item is not restricted by copyright and/or related rights. As part of the acquisition or digitization of this Work, the University of Minnesota is contractually required to limit the use of this Item. Limitations may include, but are not limited to, privacy issues, cultural protections, digitization agreements or donor agreements. For more information, contact us.'
+    "//rightsstatements.org/vocab/NoC-NC/1.0": 'The University of Minnesota has digitized this work in a public-private partnership. As part of this partnership, the partners have agreed to limit commercial uses of this digital representation of the Work by third parties. You can, without permission, copy, modify, distribute, display, or perform the Item, for non-commercial uses. For any other permissible uses, please contact us.'
+    "//rightsstatements.org/vocab/NoC-OKLR/1.0": 'The University of Minnesota believes that this Item is not restricted by copyright and/or related rights. In one or more jurisdictions, laws other than copyright are known to impose restrictions on the use of this Item. For more information, contact us.'
+    "//rightsstatements.org/vocab/NoC-US/1.0": 'The University of Minnesota believes that this item is in the Public Domain under the laws of the United States, but did not make a determination as to its copyright status under the copyright laws of other countries. The item may not be in the Public Domain under the laws of other countries.'
+    "//rightsstatements.org/vocab/UND/1.0": 'The University of Minnesota has reviewed the copyright and related rights status of this item, but was unable to make a conclusive determination as to the copyright status of the item. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use.'
+    "//creativecommons.org/licenses/by-nc/4.0": 'This item is being shared with a Creative Commons license. You are free to share and adapt the item under the following conditions: you must give attribution or credit anytime you use it, and you may not use the item for commercial purposes (except as otherwise permitted by law.) For more details about this license, https://creativecommons.org/licenses/by-nc/4.0.'
+    "//creativecommons.org/licenses/by/3.0": 'This item is being shared with a Creative Commons license. You are free to share and adapt the item under the following conditions: you must give attribution or credit anytime you use it. For more details about this license, https://creativecommons.org/licenses/by/3.0/.'
+    "//creativecommons.org/publicdomain/mark/1.0": 'This work has been identified as being free of known restrictions under copyright law, including all related and neighboring rights. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For mor details about this license, https://creativecommons.org/publicdomain/mark/1.0.'

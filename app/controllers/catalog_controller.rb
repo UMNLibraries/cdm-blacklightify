@@ -5,7 +5,8 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
   include BlacklightRangeLimit::ControllerOverride
 
-  include Thumbnail
+  include Umedia::Thumbnail
+  include Umedia::Localizable
 
   configure_blacklight do |config|
     config.show.oembed_field = :oembed_url_ssm
@@ -103,7 +104,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'object', label: 'Thumbnail Source', itemprop: 'object'
     # Description
     config.add_show_field 'description', label: 'Description', itemprop: 'description', type: :primary
-    config.add_show_field 'es_description', label: 'Description (Spanish)', itemprop: 'description_es'
+    config.add_show_field 'es_description', label: 'Description (Spanish)', itemprop: 'es_description'
     # Date Created
     config.add_show_field 'date_created', label: 'Date Created', itemprop: 'date_created', type: :primary
     # Creator
@@ -113,20 +114,20 @@ class CatalogController < ApplicationController
     config.add_show_field 'types', label: 'Type', itemprop: 'type', link_to_facet: true, type: :phys_desc
     # Format
     config.add_show_field 'format_name', label: 'Format', itemprop: 'format', link_to_facet: true, type: :phys_desc
-    config.add_show_field 'es_physical_format_ssi', label: 'Format (Spanish)', itemprop: 'format_sp', link_to_facet: false, type: :phys_desc
+    config.add_show_field 'es_format_name', label: 'Format (Spanish)', itemprop: 'es_format_name', link_to_facet: false, type: :phys_desc
     ## Topics
     # Subjects
     config.add_show_field 'subject', label: 'Subject', itemprop: 'subject', link_to_facet: true, type: :topic
-    config.add_show_field 'es_subject_ssim', label: 'Subject (Spanish)', itemprop: 'subject_sp', link_to_facet: false, type: :topic
+    config.add_show_field 'es_subject', label: 'Subject (Spanish)', itemprop: 'es_subject', link_to_facet: false, type: :topic
     # Language
     config.add_show_field 'language', label: 'Language', itemprop: 'language', link_to_facet: true, type: :topic
-    config.add_show_field 'es_language_ssi', label: 'Language (Spanish)', itemprop: 'language_sp', link_to_facet: false, type: :topic
+    config.add_show_field 'es_language', label: 'Language (Spanish)', itemprop: 'es_language', link_to_facet: false, type: :topic
     ## Geographic Location
     # Country
     config.add_show_field 'country', label: 'Country', itemprop: 'country', link_to_facet: true, type: :geo_loc
-    config.add_show_field 'es_country_ssi', label: 'Country (Spanish)', itemprop: 'country_sp', link_to_facet: false, type: :geo_loc
+    config.add_show_field 'es_country', label: 'Country (Spanish)', itemprop: 'es_country', link_to_facet: false, type: :geo_loc
     config.add_show_field 'continent', label: 'Continent', itemprop: 'continent', link_to_facet: true, type: :geo_loc
-    config.add_show_field 'es_continent_ssi', label: 'Continent (Spanish)', itemprop: 'continent_sp', link_to_facet: false, type: :geo_loc
+    config.add_show_field 'es_continent', label: 'Continent (Spanish)', itemprop: 'es_continent', link_to_facet: false, type: :geo_loc
     ## Collection Information
     # Parent Collection
     config.add_show_field 'collection_name', label: 'Parent Collection', itemprop: 'parent_collection_name',
@@ -144,9 +145,9 @@ class CatalogController < ApplicationController
     ## Can I Use It?
     # Copyright Statement...
     config.add_show_field 'local_rights', label: 'Copyright Statement', itemprop: 'copyright', type: :use
-    config.add_show_field 'es_local_rights_tesi', label: 'Copyright Statement (Spanish)', itemprop: 'copyright_sp', type: :use
+    config.add_show_field 'es_local_rights', label: 'Copyright Statement (Spanish)', itemprop: 'es_copyright', type: :use
     config.add_show_field 'rights_uri_ssi', label: 'Rights Statement URI', itemprop: 'rights_uri', type: :use
-    config.add_show_field 'es_rights_uri_ssi', label: 'Rights Statement URI (Spanish)', itemprop: 'rights_uri_sp', type: :use
+    config.add_show_field 'es_rights_staatement_uri', label: 'Rights Statement URI (Spanish)', itemprop: 'es_rights_uri', type: :use
 
     # View Helpers
     config.add_show_tools_partial(:citation)

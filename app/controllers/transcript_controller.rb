@@ -4,7 +4,8 @@
 # Simplified catalog controller
 class TranscriptController < ApplicationController
   include Blacklight::Catalog
-  include Thumbnail
+  include Umedia::Thumbnail
+  include Umedia::Localizable
   #after_action ->{ Rails.logger.debug(@response.documents.map{|doc| doc['transcription']}) }
   after_action ->{ Rails.logger.debug(@response.documents.map{|doc| doc['transcription']}.inspect) }
 
