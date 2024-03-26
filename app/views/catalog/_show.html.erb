@@ -26,7 +26,8 @@
 
     <dl class="px-3">
       <% doc_presenter.each_field( type ) do |field_name, field, field_presenter| %>
-        <%= render "show_fields", document: document, field_name: field_name, field_presenter: field_presenter %>
+        <% next if field_locale(field_name) != current_locale && localizable_field_name?(field_name) %>
+        <%= render "show_fields", document: document, field_name: field_name, field_presenter: field_presenter, field: field %>
       <% end -%>
     </dl>
   <% end %>

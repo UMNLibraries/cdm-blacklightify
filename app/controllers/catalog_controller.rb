@@ -8,6 +8,34 @@ class CatalogController < ApplicationController
   include Umedia::Thumbnail
   include Umedia::Localizable
 
+  # All item level show fields grouped by type
+  UMEDIA_SHOW_FIELDS = {
+    default: %w[ object ],
+    primary: %w[ title description date_created creator notes ],
+    phys_desc: %w[ types format_name format dimensions ],
+    geo_loc: %w[ continent country state city region projection scale coordinates geonames ],
+    topic: %w[ subject language ],
+    coll_info: %w[ contact_information fiscal_sponsor fiscal_sponsor_ssi collection_name contributing organization parent_collection_name parent_id ],
+    identifiers: %w[ local_identifier barcode system_identifier dls_identifier persistent_url ],
+    use: %w[ local_rights rights_statement_uri additional_rights_information standardized_rights expected_public_domain_year ],
+  }
+
+  UMEDIA_LINK_TO_FACET_FIELDS = %w[
+    subject
+    creator
+    types
+    format_name
+    subject
+    language
+    continent
+    country
+    state
+    city
+    region
+    contributing_organization
+    collection_name
+  ]
+
   configure_blacklight do |config|
     config.show.oembed_field = :oembed_url_ssm
     config.show.partials.insert(1, :oembed)
@@ -76,7 +104,7 @@ class CatalogController < ApplicationController
     # Creator / creator
     config.add_facet_field 'creator_s', label: 'Creator', limit: 4, collapse: true
     # Contributing Organization / contributing_organization
-    config.add_facet_field 'contributing_organization_name_s', label: 'Contributing 0rganization', limit: 4, collapse: true
+    config.add_facet_field 'contributing_organization_name_s', label: 'Contributing Organization', limit: 4, collapse: true
     # Type / types
     config.add_facet_field 'types', label: 'Type', limit: 4, collapse: true
     # Special projects
@@ -101,53 +129,34 @@ class CatalogController < ApplicationController
     config.index.thumbnail_method = :thumbnail
 
     # ITEM PAGE VIEW FIELDS
-    config.add_show_field 'object', label: 'Thumbnail Source', itemprop: 'object'
-    # Description
-    config.add_show_field 'description', label: 'Description', itemprop: 'description', type: :primary
-    config.add_show_field 'es_description', label: 'Description (Spanish)', itemprop: 'es_description'
-    # Date Created
-    config.add_show_field 'date_created', label: 'Date Created', itemprop: 'date_created', type: :primary
-    # Creator
-    config.add_show_field 'creator', label: 'Creator', itemprop: 'creator', link_to_facet: true, type: :primary
-    ## Physical Description
-    # Item Type
-    config.add_show_field 'types', label: 'Type', itemprop: 'type', link_to_facet: true, type: :phys_desc
-    # Format
-    config.add_show_field 'format_name', label: 'Format', itemprop: 'format', link_to_facet: true, type: :phys_desc
-    config.add_show_field 'es_format_name', label: 'Format (Spanish)', itemprop: 'es_format_name', link_to_facet: false, type: :phys_desc
-    ## Topics
-    # Subjects
-    config.add_show_field 'subject', label: 'Subject', itemprop: 'subject', link_to_facet: true, type: :topic
-    config.add_show_field 'es_subject', label: 'Subject (Spanish)', itemprop: 'es_subject', link_to_facet: false, type: :topic
-    # Language
-    config.add_show_field 'language', label: 'Language', itemprop: 'language', link_to_facet: true, type: :topic
-    config.add_show_field 'es_language', label: 'Language (Spanish)', itemprop: 'es_language', link_to_facet: false, type: :topic
-    ## Geographic Location
-    # Country
-    config.add_show_field 'country', label: 'Country', itemprop: 'country', link_to_facet: true, type: :geo_loc
-    config.add_show_field 'es_country', label: 'Country (Spanish)', itemprop: 'es_country', link_to_facet: false, type: :geo_loc
-    config.add_show_field 'continent', label: 'Continent', itemprop: 'continent', link_to_facet: true, type: :geo_loc
-    config.add_show_field 'es_continent', label: 'Continent (Spanish)', itemprop: 'es_continent', link_to_facet: false, type: :geo_loc
-    ## Collection Information
-    # Parent Collection
-    config.add_show_field 'collection_name', label: 'Parent Collection', itemprop: 'parent_collection_name',
-                                                                         link_to_facet: true, type: :coll_info
-    # Contributing Organization
-    config.add_show_field 'contributing_organization', label: 'Contributing Organization', itemprop: 'contributing_organization',
-                                                                                           link_to_facet: true, type: :coll_info
-    # Contact Information
-    config.add_show_field 'contact_information', label: 'Contact Information', itemprop: 'contact_information', type: :coll_info
-    # Fiscal Sponsor
-    config.add_show_field 'fiscal_sponsor_ssi', label: 'Fiscal Sponsor', itemprop: 'fiscal_sponsor', type: :coll_info
-    ## Identifiers
-    # DLS Identifier
-    config.add_show_field 'local_identifier', label: 'DLS Identifier', itemprop: 'identifier', type: :identifiers
-    ## Can I Use It?
-    # Copyright Statement...
-    config.add_show_field 'local_rights', label: 'Copyright Statement', itemprop: 'copyright', type: :use
-    config.add_show_field 'es_local_rights', label: 'Copyright Statement (Spanish)', itemprop: 'es_copyright', type: :use
-    config.add_show_field 'rights_uri_ssi', label: 'Rights Statement URI', itemprop: 'rights_uri', type: :use
-    config.add_show_field 'es_rights_staatement_uri', label: 'Rights Statement URI (Spanish)', itemprop: 'es_rights_uri', type: :use
+    # Build out all item level show fields
+    UMEDIA_SHOW_FIELDS.each do |type, fieldlist|
+      fieldlist.each do |field|
+        # Label as the config/locales translation label
+        config.add_show_field(
+          field,
+          label: "item.fields.#{field}",
+          itemprop: field,
+          type: type,
+          component: Umedia::LocalizedMetadataFieldComponent,
+          link_to_facet: UMEDIA_LINK_TO_FACET_FIELDS.include?(field)
+        )
+        # If this metadata field is available to alt languages, add them now
+        if UMEDIA_LOCALIZED_SHOW_FIELDS[type].include?(field)
+          I18n.available_locales.reject{|l| l == I18n.default_locale}.each do |locale|
+            config.add_show_field(
+              "#{locale.to_s}_#{field}",
+              label: "item.fields.#{field}",
+              itempro: field,
+              type: type,
+              component: Umedia::LocalizedMetadataFieldComponent,
+              # Never facet the alt lang metadata field
+              link_to_facet: false
+            )
+          end
+        end
+      end
+    end
 
     # View Helpers
     config.add_show_tools_partial(:citation)

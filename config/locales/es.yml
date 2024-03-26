@@ -5,12 +5,14 @@ es:
     fields:
       title: "Título"
       title_alternative: "Título Alternativo"
+      creator: "Creador"
       creator_ss: "Creador"
       contributor: "Contribuidor"
       contributor_ss: "Contribuidor"
       publisher: "Editor"
       caption: "Subtítulos"
       description: "Descripción"
+      date_created: "Fecha de Creación"
       date_created_ss: "Fecha de Creación"
       historical_era: "Era Histórica"
       notes: "Notas"
@@ -31,6 +33,7 @@ es:
       scale: "Escala"
       coordinates: "Coordenadas"
       geonames: "GeoNames URI"
+      collection_name: "Colección"
       parent_collection_name: "Colección"
       contributing_organization_name_s: "Institución Contribuyente"
       contributing_organization_name: "Institución Contribuyente"
@@ -41,6 +44,7 @@ es:
       system_identifier: "Identificador del Sistema"
       dls_identifier: "Identificador DLS"
       persistent_url: "URL Persistente (PURL)"
+      local_rights: "¿Puedo usarlo?"
 
     field_sections:
       primary: ""
