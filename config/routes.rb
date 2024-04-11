@@ -56,7 +56,7 @@ Rails.application.routes.draw do
       get :search
       get :autocomplete
       
-      get :panel, action: 'panel'
+      get :manifest2, action: 'manifest2'
     end
   end
 

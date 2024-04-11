@@ -1,4 +1,4 @@
-class TestPanelService
+class IiifAvManifestService
   # attr_reader :id
 
   def initialize(id)
@@ -6,13 +6,13 @@ class TestPanelService
     @document = SolrDocument.find(id)
   end
 
-  def other_panel
-    other_panel_call
+  def manifest2
+    get_manifest_call
   end
 
   private
 
-  def other_panel_call
+  def get_manifest_call
     # calling the method to json
     manifest.to_json
   end

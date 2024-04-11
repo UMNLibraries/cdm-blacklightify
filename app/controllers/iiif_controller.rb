@@ -44,8 +44,8 @@ class IiifController < ApplicationController
     render json: response
   end
 
-  def panel
-    response = TestPanelService.new(params[:id]).other_panel
+  def manifest2
+    response = IiifAvManifestService.new(params[:id]).manifest2
     render json: response
   end
 end
