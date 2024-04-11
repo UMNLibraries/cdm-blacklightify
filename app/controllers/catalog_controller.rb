@@ -11,7 +11,7 @@ class CatalogController < ApplicationController
   # All item level show fields grouped by type
   UMEDIA_SHOW_FIELDS = {
     default: %w[ object ],
-    primary: %w[ title description date_created creator notes ],
+    primary: %w[ title description date_created creator contributor publisher caption notes ],
     phys_desc: %w[ types format_name format dimensions ],
     geo_loc: %w[ continent country state city region projection scale coordinates geonames ],
     topic: %w[ subject language ],
@@ -23,6 +23,7 @@ class CatalogController < ApplicationController
   UMEDIA_LINK_TO_FACET_FIELDS = %w[
     subject
     creator
+    publisher
     types
     format_name
     subject
