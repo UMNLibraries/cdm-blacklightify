@@ -43,4 +43,9 @@ class IiifController < ApplicationController
     response = IiifViewingHintService.new(params[:id]).call
     render json: response
   end
+
+  def panel
+    response = TestPanelService.new(params[:id]).other_panel
+    render json: response
+  end
 end
