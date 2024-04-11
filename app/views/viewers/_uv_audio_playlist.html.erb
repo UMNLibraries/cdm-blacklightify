@@ -1,22 +1,10 @@
-<%
+<% borealis_doc = Umedia::BorealisDocument.new(document: document) %>
 
-borealis_doc = Umedia::BorealisDocument.new(document: document)
-%>
-
-
-<div id="kaltura_player_playlist" style="height:600px;">
+<div class="embed-responsive embed-responsive-4by3">
+  <iframe id="kaltura_player" 
+    src="https://cdnapisec.kaltura.com/p/1369852/embedPlaykitJs/uiconf_id/54071352?iframeembed=true&playlist_id=<%= borealis_doc.document._source["kaltura_audio_playlist"] %>"
+    width="880" 
+    height="695" 
+    allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0">
+  </iframe>
 </div>
-
-<div id="kaltura_player" class="kaltura-audio-player" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
-<span itemprop="thumbnailUrl" content="https://cfvod.kaltura.com/p/1369852/sp/136985200/thumbnail/entry_id/0_dmthwh6r/version/0"></span>
-<span itemprop="width" content="560"></span>
-<span itemprop="height" content="125"></span>
-</div>
-
-<span id="kaltura-config" data-config="<%=
-  borealis_doc.to_viewer['kaltura_audio_playlist'].except("type").to_json
-%>">
-
-<script>
-  kWidget.embed($('#kaltura-config').data('config'));
-</script>
