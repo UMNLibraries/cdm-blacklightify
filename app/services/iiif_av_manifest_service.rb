@@ -1,5 +1,4 @@
 class IiifAvManifestService
-  # attr_reader :id
 
   def initialize(id)
     @id = id
@@ -7,15 +6,10 @@ class IiifAvManifestService
   end
 
   def manifest2
-    get_manifest_call
+    manifest
   end
 
   private
-
-  def get_manifest_call
-    # calling the method to json
-    manifest.to_json
-  end
 
   def manifest
     # hashing the data . . . video as the current example resource item
@@ -24,7 +18,7 @@ class IiifAvManifestService
       '@id' => @document[:object], 
       '@type' => 'sc:Manifest',
       'label' => @document[:title], 
-      'metadata' => metadata,
+      'metadata' => metadata.compact,
       'attribution' => attribution,
       'sequences' => [{
         '@id' => 'http://PLACEHOLDER.com/manifest/seq/',
@@ -54,90 +48,95 @@ class IiifAvManifestService
   end
 
   def metadata
-    [{
-      'label' => 'Parent Collection Name',
-      'value' => @document[:parent_collection]
+    # this just mimics what contentdm produces
+    meta = [{
+      :label => 'Parent Collection Name',
+      :value => @document[:parent_collection]
     },
     {
-      'label' => 'Additional Notes',
-      'value' => @document[:notes]
+      :label => 'Additional Notes',
+      :value => @document[:notes]
     },
     {
-      'label' => 'Contact Information',
-      'value' => @document[:contact_information]
+      :label => 'Contact Information',
+      :value => @document[:contact_information]
     },
     {
-      'label' => 'Continent',
-      'value' => @document[:Continent]
+      :label => 'Continent',
+      :value => @document[:Continent]
     },
     {
-      'label' => 'Contributing Organization',
-      'value' => @document[:contributing_organization]
+      :label => 'Contributing Organization',
+      :value => @document[:contributing_organization]
     },
     {
-      'label' => 'Contributor',
-      'value' => @document[:contributor]
+      :label => 'Contributor',
+      :value => @document[:contributor]
     },
     {
-      'label' => 'Country',
-      'value' => @document[:country]
+      :label => 'Country',
+      :value => @document[:country]
     },
     {
-      'label' => 'Date of Creation',
-      'value' => @document[:date_created]
+      :label => 'Date of Creation',
+      :value => @document[:date_created]
     },
     {
-      'label' => 'Description',
-      'value' => @document[:description]
+      :label => 'Description',
+      :value => @document[:description]
     },
     {
-      'label' => 'Dimensions',
-      'value' => @document[:dimensions]
+      :label => 'Dimensions',
+      :value => @document[:dimensions]
     },
     {
-      'label' => 'DLS Identifier',
-      'value' => @document[:description]
+      :label => 'DLS Identifier',
+      :value => @document[:description]
     },
     {
-      'label' => 'Fiscal Sponsor',
-      'value' => @document[:fiscal_sponsor]
+      :label => 'Fiscal Sponsor',
+      :value => @document[:fiscal_sponsor]
     },
     {
-      'label' => 'Item Physical Format',
-      'value' => @document[:format]
+      :label => 'Item Physical Format',
+      :value => @document[:format]
     },
     {
-      'label' => 'Historical Era/Period',
-      'value' => @document[:historical_era]
+      :label => 'Historical Era/Period',
+      :value => @document[:historical_era]
     },
     {
-      'label' => 'Language',
-      'value' => @document[:language]
+      :label => 'Language',
+      :value => @document[:language]
     },
     {
-      'label' => 'Local Rights Statement',
-      'value' => @document[:local_rights]
+      :label => 'Local Rights Statement',
+      :value => @document[:local_rights]
     },
     {
-      'label' => 'Persistent URL (PURL)',
-      'value' => @document[:persistent_url]
+      :label => 'Persistent URL (PURL)',
+      :value => @document[:persistent_url]
     },
     {
-      'label' => 'Publisher',
-      'value' => @document[:publisher]
+      :label => 'Publisher',
+      :value => @document[:publisher]
     },
     {
-      'label' => 'Locally Assigned Subject Headings',
-      'value' => @document[:subject]
+      :label => 'Locally Assigned Subject Headings',
+      :value => @document[:subject]
     },
     {
-      'label' => 'Title',
-      'value' => @document[:title]
+      :label => 'Title',
+      :value => @document[:title]
     },
     {
-      'label' => 'Item Type',
-      'value' => @document[:types]
+      :label => 'Item Type',
+      :value => @document[:types]
     }]
+
+    meta.map do |x|
+      x[:value].blank? ? nil : x
+   end
   end
 
   def attribution
