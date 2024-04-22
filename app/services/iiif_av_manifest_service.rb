@@ -37,7 +37,7 @@ class IiifAvManifestService
               'body' => {
                 'id' => type_selector,
                 'type' => 'Video',
-                'duration' => @document[:dimensions],
+                'duration' => duration_to_float,
                 'format' => 'video/mp4'
               }
             }]
@@ -87,7 +87,7 @@ class IiifAvManifestService
     },
     {
       :label => 'Dimensions',
-      :value => @document[:dimensions]
+      :value => duration_to_float
     },
     {
       :label => 'DLS Identifier',
@@ -148,6 +148,10 @@ class IiifAvManifestService
 
   def sequences
 
+  end
+
+  def duration_to_float
+    Time.parse(@document[:dimensions]).seconds_since_midnight
   end
 
   def type_selector
