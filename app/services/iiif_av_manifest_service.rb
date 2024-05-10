@@ -21,17 +21,17 @@ class IiifAvManifestService
       'metadata' => metadata.compact,
       'attribution' => attribution,
       'sequences' => [{
-        '@id' => 'http://PLACEHOLDER.com/manifest/seq/',
+        '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/sequence/s0',
         '@type': 'sc:Sequence',
         'canvases' => [{
-          '@id' => 'http://PLACEHOLDER.com/canvas',
+          '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/canvas/c0',
           '@type' => 'sc:Canvas' ,
           'label' => @document[:title],
           'items' => [{
-            'id' => 'https://iiif.io/api/PLACEHOLDER/canvas/page',
+            'id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/page/p0',
             'type' => 'AnnotationPage',
             'items' => [{
-              'id' => 'https://iiif.io/api/PLACEHOLDER/page/annotation',
+              'id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/annotation/a0',
               'type' => 'Annotation',
               'motivation' => 'painting',
               'body' => {
