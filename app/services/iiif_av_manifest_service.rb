@@ -23,26 +23,8 @@ class IiifAvManifestService
       'sequences' => [{
         '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/sequence/s0',
         '@type': 'sc:Sequence',
-        'canvases' => [{
-          '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/canvas/c0',
-          '@type' => 'sc:Canvas' ,
-          'label' => @document[:title],
-          'items' => [{
-            'id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/page/p0',
-            'type' => 'AnnotationPage',
-            'items' => [{
-              'id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/annotation/a0',
-              'type' => 'Annotation',
-              'motivation' => 'painting',
-              'body' => {
-                'id' => type_selector,
-                'type' => 'Video',
-                'duration' => duration_to_float,
-                'format' => 'video/mp4'
-              }
-            }]
-          }]
-        }]
+        # 'canvases' => canvases
+        'canvases' => field_selector.split(';').size == 1 ? single_canvas : canvases
       }]
     }
   end
@@ -154,6 +136,10 @@ class IiifAvManifestService
     Time.parse(@document[:dimensions]).seconds_since_midnight
   end
 
+  def field_selector
+    @document[:kaltura_audio] ? @document[:kaltura_audio] : @document[:kaltura_video]
+  end
+
   def type_selector
     @document[:kaltura_audio] ? 
       # audio
@@ -161,4 +147,60 @@ class IiifAvManifestService
       # video
       'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/' + @document[:kaltura_video] + '/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4'
   end
+
+  def single_canvas
+    [{
+      '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + "/canvas/c0",
+      '@type' => 'sc:Canvas' ,
+      'label' => @document[:title],
+      'items' => [{
+        'id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + "/page/p0",
+        'type' => 'AnnotationPage',
+        'items' => [{
+          'id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + "/annotation/a0",
+          'type' => 'Annotation',
+          'motivation' => 'painting',
+          'body' => {
+            'id' => type_selector,
+            # testing this . . .
+            'type' => @document[:kaltura_audio] ? 'Audio' : 'Video',
+            'format' => @document[:kaltura_audio] ? 'Audio/mp4' : 'Video/mp4',
+            'duration' => duration_to_float,
+            'T E S T I N G MANY' => @document[:kaltura_video].split(';').size
+          }
+        }]
+      }]
+    }]
+  end
+
+  # method which creates additional canvases based on number of ids in kaltura_audio field
+  def canvases
+    # require logic which determines what to do if assset field cannot/need not be split. remove the redundant single_canvas method
+    arr = @document[:kaltura_audio].split(';')
+
+    arr.map.with_index do |aud, index|
+      {
+        '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + "/canvas/c#{index}",
+        '@type' => 'sc:Canvas' ,
+        'label' => @document[:title],
+        'items' => [{
+          'id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + "/page/p#{index}",
+          'type' => 'AnnotationPage',
+          'items' => [{
+            'id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + "/annotation/a#{index}",
+            'type' => 'Annotation',
+            'motivation' => 'painting',
+            'body' => {
+              'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/' + aud.strip + '/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
+              # playlists of audio files will only function correctly if type and format is video. look into this . . .
+              'type' => 'video',
+              'format' => 'video/mp4',
+              'duration' => duration_to_float,
+            }
+          }]
+        }]
+      }
+    end
+  end
+
 end
