@@ -140,7 +140,7 @@ class IiifAvManifestService
   end
 
   def canvases
-    arr = @document[:kaltura_audio].split(';')
+    arr = field_selector.split(';')
 
     arr.map.with_index do |asset, index|
       {
