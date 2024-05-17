@@ -124,7 +124,7 @@ class IiifAvManifestService
   end
 
   def duration_to_float
-    Time.parse(@document[:dimensions]).seconds_since_midnight
+    @document[:dimensions] ? Time.parse(@document[:dimensions]).seconds_since_midnight : ''
   end
 
   def field_selector
