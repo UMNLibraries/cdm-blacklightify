@@ -13,7 +13,7 @@ class IiifAvManifestService
 
   def manifest
     {
-      'context': 'http://iiif.io/api/presentation/2/context.json',
+      'context' => 'http://iiif.io/api/presentation/2/context.json',
       '@id' => @document[:object], 
       '@type' => 'sc:Manifest',
       'label' => @document[:title], 
@@ -21,7 +21,7 @@ class IiifAvManifestService
       'attribution' => attribution,
       'sequences' => [{
         '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/sequence/s0',
-        '@type': 'sc:Sequence',
+        '@type' => 'sc:Sequence',
         'canvases' => canvases
       }]
     }
