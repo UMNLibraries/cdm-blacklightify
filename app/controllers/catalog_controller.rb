@@ -6,11 +6,12 @@ class CatalogController < ApplicationController
   include BlacklightRangeLimit::ControllerOverride
 
   include Umedia::Thumbnail
-  include Umedia::Localizable
+  include Umedia::LocalizableFields
 
   # All item level show fields grouped by type
   UMEDIA_SHOW_FIELDS = {
-    default: %w[ object ],
+    default: %w[ ],
+    #default: %w[ object ],
     primary: %w[ title description date_created creator contributor publisher caption notes ],
     phys_desc: %w[ types format_name format dimensions ],
     geo_loc: %w[ continent country state city region projection scale coordinates geonames ],
