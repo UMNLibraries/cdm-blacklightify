@@ -176,6 +176,11 @@ class CatalogController < ApplicationController
     # config.view.gallery.title_only_by_default = true
   end
 
+  # Returns an array of field types as symbols
+  def self.field_types
+    UMEDIA_SHOW_FIELDS.keys
+  end
+
   def bad_request_no_search
     head :bad_request
   end

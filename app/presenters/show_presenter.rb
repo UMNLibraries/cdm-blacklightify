@@ -3,7 +3,7 @@
 class ShowPresenter < Blacklight::ShowPresenter
   def config_type(locale = :en)
     h = {}
-    [:primary, :phys_desc, :topic, :geo_loc, :coll_info, :identifiers, :use].each do |sect|
+    CatalogController.field_types.each do |sect|
       h[sect] = I18n.t("item.field_sections.#{sect.to_s}", locale: locale)
     end
     h
