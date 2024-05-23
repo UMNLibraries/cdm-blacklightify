@@ -106,6 +106,7 @@ en:
       subject: "Subjects"
       expected_public_domain_year: "Expected Public Domain Year of Entry"
       local_rights: "Rights"
+      rights_statement_uri: ""
       additional_rights_information: "Additional Rights Information"
       transcription: "Transcription"
       translation: "Translation"

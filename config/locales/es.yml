@@ -45,6 +45,7 @@ es:
       dls_identifier: "Identificador DLS"
       persistent_url: "URL Persistente (PURL)"
       local_rights: "¿Puedo usarlo?"
+      rights_statement_uri: ""
 
     field_sections:
       primary: ""
