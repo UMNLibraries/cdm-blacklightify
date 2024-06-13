@@ -19,6 +19,13 @@
 <hr>
 
 <div id="item-details">
+  <% unless locale_choices.empty? %>
+  <ul id="alternate-languages">
+    <% locale_choices.each do |locale_link| %>
+      <li><%= locale_link.html_safe %></li>
+    <% end -%>
+  </ul>
+  <% end %>
   <% doc_presenter.config_type(current_locale).each do | type, heading | %>
     <% if doc_presenter.type_arr(type) %>
      <h3><%= heading %></h3>

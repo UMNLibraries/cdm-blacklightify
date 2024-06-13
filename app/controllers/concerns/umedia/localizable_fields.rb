@@ -45,5 +45,13 @@ module Umedia
       # Otherwise return the full input field name
       I18n.available_locales.include?(prefix.to_sym) && localizable_field_names.include?(field_unprefixed) ? field_unprefixed : field_name
     end
+
+    def field_name_localized(field_name, locale = I18n.default_locale)
+      if locale == I18n.default_locale
+        field_name.to_s
+      else
+        "#{locale.to_s}_#{field_name}"
+      end
+    end
   end
 end

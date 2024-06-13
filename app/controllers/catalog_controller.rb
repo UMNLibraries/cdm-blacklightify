@@ -8,6 +8,8 @@ class CatalogController < ApplicationController
   include Umedia::Thumbnail
   include Umedia::LocalizableFields
 
+  before_action :permit_language
+
   # All item level show fields grouped by type
   UMEDIA_SHOW_FIELDS = {
     default: %w[ ],
@@ -82,7 +84,7 @@ class CatalogController < ApplicationController
     end
 
     # Show Presenter Class ("registers" the show_presenter file/class)
-    config.show.document_presenter_class = ShowPresenter
+    config.show.document_presenter_class = Umedia::ShowPresenter
 
     config.add_sort_field 'relevance', sort: 'score desc', label: I18n.t('spotlight.search.fields.sort.relevance')
     config.add_sort_field 'date_created_sort desc, title_sort asc', label: 'Year (Newest first)'
@@ -184,5 +186,10 @@ class CatalogController < ApplicationController
 
   def bad_request_no_search
     head :bad_request
+  end
+
+  # Allow the language parameter in controller actions
+  def permit_language
+    params.permit(:language)
   end
 end
