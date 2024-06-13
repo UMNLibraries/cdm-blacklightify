@@ -43,4 +43,9 @@ class IiifController < ApplicationController
     response = IiifViewingHintService.new(params[:id]).call
     render json: response
   end
+
+  def manifest2
+    response = IiifAvManifestService.new(params[:id]).manifest2
+    render json: response
+  end
 end

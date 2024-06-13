@@ -1,9 +1,9 @@
-<%
-borealis_doc = Umedia::BorealisDocument.new(document: document)
-%>
+<% borealis_doc = Umedia::BorealisDocument.new(document: document) %>
 
 <div class="embed-responsive embed-responsive-4by3">
-  <iframe id="kaltura_player" 
-    src="https://cdnapisec.kaltura.com/p/1369852/embedPlaykitJs/uiconf_id/54071352?iframeembed=true&entry_id=<%= borealis_doc.document._source["kaltura_video"] %>" >
+  <iframe
+    id="kaltura_player"
+    src="https://cdnapisec.kaltura.com/p/1369852/embedPlaykitJs/uiconf_id/54071352?iframeembed=true&entry_id=<%= borealis_doc.document._source["kaltura_video"] %>"
+  >
   </iframe>
 </div>
