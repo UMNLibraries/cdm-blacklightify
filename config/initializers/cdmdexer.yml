@@ -517,6 +517,7 @@ field_mappings:
   - dest_path: es_language
     origin_path: splang
     formatters:
+      - CDMDEXER::SplitFormatter
       - CDMDEXER::StripFormatter
 
   - dest_path: es_local_rights
