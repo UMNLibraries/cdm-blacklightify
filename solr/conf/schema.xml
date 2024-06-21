@@ -318,6 +318,16 @@
         -->
   <field name="featured_collection_order" type="pint" indexed="false" stored="true" />
 
+  <!-- Spotlight fields -->
+  <field name="timestamp" type="date" indexed="true" stored="true" default="NOW" multiValued="false"/>
+
+  <field name="lat" type="tdouble" stored="true" indexed="true" multiValued="false"/>
+  <field name="lng" type="tdouble" stored="true" indexed="true" multiValued="false"/>
+
+  <!-- Autocomplete -->
+  <field name="full_title_ng" type="text_en_ng" stored="false" indexed="true" multiValued="true"/>
+  <field name="id_ng"         type="text_en_ng" stored="false" indexed="true" multiValued="false"/>
+
   <!-- SEARCH FIELDS - copyfields to enhance exact matches on certain fields -->
   <copyField source="object" dest="object_ssi"/>
   <copyField source="title" dest="title_s"/>
@@ -919,6 +929,29 @@
       <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
       <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" />
       <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+
+  <!-- A text field with defaults appropriate for English an NGrams -->
+  <!-- from Spotlight -->
+  <fieldType name="text_en_ng" class="solr.TextField" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.ICUTokenizerFactory"/>
+      <filter class="solr.ICUFoldingFilterFactory"/>  <!-- NFKC, case folding, diacritics removed -->
+      <filter class="solr.EnglishPossessiveFilterFactory"/>
+      <!-- EnglishMinimalStemFilterFactory is less aggressive than PorterStemFilterFactory: -->
+      <filter class="solr.EnglishMinimalStemFilterFactory"/>
+      <filter class="solr.TrimFilterFactory"/>
+      <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="15" />
+    </analyzer>
+
+    <analyzer type="query">
+      <tokenizer class="solr.ICUTokenizerFactory"/>
+      <filter class="solr.ICUFoldingFilterFactory"/>  <!-- NFKC, case folding, diacritics removed -->
+      <filter class="solr.EnglishPossessiveFilterFactory"/>
+      <!-- EnglishMinimalStemFilterFactory is less aggressive than PorterStemFilterFactory: -->
+      <filter class="solr.EnglishMinimalStemFilterFactory"/>
+      <filter class="solr.TrimFilterFactory"/>
     </analyzer>
   </fieldType>
 
