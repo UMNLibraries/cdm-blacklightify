@@ -11,7 +11,6 @@ gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 5.1'
-gem 'sd_notify', '>= 0.1.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -46,9 +45,10 @@ end
 
 group :publicdev, :production do
   # For puma with systemd integration
+  gem 'sd_notify', '>= 0.1.0'
 end
 
-group :development, :publicdev do
+group :development do
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'listen', '~> 3.3'
