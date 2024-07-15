@@ -4,7 +4,7 @@
   <% end %>
 
   <p class="index_title document-title-heading <%= document_actions.present? ? "col-sm-9 col-lg-10" : "col-md-12" %>">
-    <span class="document-type">
+    <span class="document-type <%= 'bi bi-files' if document[:page_count].to_i > 1 %>">
       <%= '[' + document[:types].join() + ']' %>
     </span>
     <%= link_to_document document %>
