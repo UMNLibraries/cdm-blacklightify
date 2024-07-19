@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   concern :searchable, Blacklight::Routes::Searchable.new
 
   # Compatibility with old UMedia JSON views, override what Rails/Blacklight want to do with JSON
-  get '/catalog/:id.json', controller: 'catalog', action: 'raw'
-  get '/item/:id.json', controller: 'catalog', action: 'raw'
+  get '/catalog/:id.json', controller: 'catalog', action: 'full_json'
+  get '/item/:id.json', controller: 'catalog', action: 'full_json'
   # Calling /item with no doc id is a fault
   get '/item', controller: 'catalog', action: 'bad_request_no_search'
 

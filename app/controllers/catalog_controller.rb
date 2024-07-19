@@ -7,6 +7,7 @@ class CatalogController < ApplicationController
 
   include Umedia::Thumbnail
   include Umedia::LocalizableFields
+  include Umedia::Catalog::JsonBehaviors
 
   before_action :permit_language
 
