@@ -118,6 +118,7 @@ field_mappings:
   - dest_path: publisher
     origin_path: publis
     formatters:
+      - CDMDEXER::SplitFormatter
       - CDMDEXER::StripFormatter
 
   - dest_path: publishing_agency
