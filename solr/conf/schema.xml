@@ -177,7 +177,7 @@
   <copyField source="creator" dest="creator_tesim" />
 
   <field name="contributor" type="text_en" indexed="true" stored="true" multiValued="true" />
-  <field name="publisher" type="text_en" indexed="true" stored="true" />
+  <field name="publisher" type="text_en" indexed="true" stored="true" multiValued="true" />
   <field name="caption" type="text_en" indexed="true" stored="true" />
   <field name="notes" type="text_en" indexed="true" stored="true" />
 
