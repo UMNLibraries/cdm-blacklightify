@@ -15,11 +15,11 @@ class CatalogController < ApplicationController
   UMEDIA_SHOW_FIELDS = {
     default: %w[ ],
     #default: %w[ object ],
-    primary: %w[ title description date_created creator contributor publisher caption notes ],
-    phys_desc: %w[ types format_name format dimensions ],
-    geo_loc: %w[ continent country state city region projection scale coordinates geonames ],
+    primary: %w[ title title_alternative description date_created creator contributor publisher historical_era caption notes ],
     topic: %w[ subject language ],
-    coll_info: %w[ contact_information fiscal_sponsor fiscal_sponsor_ssi collection_name contributing organization parent_collection_name parent_id ],
+    phys_desc: %w[ types format_name dimensions ],
+    geo_loc: %w[ city state country region continent projection scale coordinates geonames ],
+    coll_info: %w[ collection_name parent_collection_name contributing_organization contact_information fiscal_sponsor fiscal_sponsor_ssi ],
     identifiers: %w[ local_identifier barcode system_identifier dls_identifier persistent_url ],
     use: %w[ local_rights rights_statement_uri additional_rights_information standardized_rights expected_public_domain_year ],
   }

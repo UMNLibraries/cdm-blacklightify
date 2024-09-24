@@ -17,9 +17,9 @@ module Umedia
     UMEDIA_LOCALIZED_SHOW_FIELDS = {
       default: [],
       primary: %w[ title description notes ],
+      topic: %w[ subject language ],
       phys_desc: %w[ format format_name dimensions ],
       geo_loc: %w[ country continent ],
-      topic: %w[ subject language ],
       coll_info: [],
       identifiers: [],
       use: %w[ local_rights rights_statement_uri ]
