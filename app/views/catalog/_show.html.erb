@@ -18,24 +18,46 @@
 <% doc_presenter = document_presenter(document) %>
 <hr>
 
-<div id="item-details">
-  <% unless locale_choices.empty? %>
-  <ul id="alternate-languages">
-    <% locale_choices.each do |locale_link| %>
-      <li><%= locale_link.html_safe %></li>
-    <% end -%>
-  </ul>
-  <% end %>
-  <% doc_presenter.config_type(current_locale).each do | type, heading | %>
-    <% if doc_presenter.type_arr(type) %>
-     <h3><%= heading %></h3>
-    <% end %>
+<%= tabs do |c| %>
+  <% c.tab 'Tab 1' do %>
+    <div id="item-details">
+      <% unless locale_choices.empty? %>
+      <ul id="alternate-languages">
+        <% locale_choices.each do |locale_link| %>
+          <li><%= locale_link.html_safe %></li>
+        <% end -%>
+      </ul>
+      <% end %>
+      <% doc_presenter.config_type(current_locale).each do | type, heading | %>
+        <% if doc_presenter.type_arr(type) %>
+        <h3><%= heading %></h3>
+        <% end %>
 
-    <dl class="px-3">
-      <% doc_presenter.each_field( type ) do |field_name, field, field_presenter| %>
-        <% next if field_locale(field_name) != current_locale && localizable_field_name?(field_name) %>
-        <%= render "show_fields", document: document, field_name: field_name, field_presenter: field_presenter, field: field %>
-      <% end -%>
-    </dl>
+        <dl class="px-3">
+          <% doc_presenter.each_field( type ) do |field_name, field, field_presenter| %>
+            <% next if field_locale(field_name) != current_locale && localizable_field_name?(field_name) %>
+            <%= render "show_fields", document: document, field_name: field_name, field_presenter: field_presenter, field: field %>
+          <% end -%>
+        </dl>
+      <% end %>
+    </div>
+  <% end %>
+  <% c.tab 'Tab 2' do %>
+    <span>Tab content 2</span>
+    <div class="modal-body">
+  <%- # Sort title strings by the numbers within (Page 1, Page 2, etc.) %>
+  <%- @response.documents.sort_by { |x| x['title_ssi'][/\d+/].to_i }.each do |doc| %>
+    <% if doc['transcription_tesi'].present? %>
+      <div class="transcription">
+        <h3 class="title"><%= doc['title_ssi'] %></h3>
+        <p><%= doc['transcription_tesi'] %></p>
+      </div>
+    <% end %>
   <% end %>
 </div>
+  <% end %>
+<% end %>
+
+<hr>
+
+

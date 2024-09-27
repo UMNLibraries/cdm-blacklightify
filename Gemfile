@@ -138,3 +138,5 @@ gem 'capistrano-template', git: 'https://github.com/UMNLibraries/capistrano-temp
 gem 'capistrano-bundler'
 #gem 'capistrano-maintenance'
 gem 'capistrano-yarn'
+
+gem 'rails-bootstrap-tabs', '~> 0.3.2'
