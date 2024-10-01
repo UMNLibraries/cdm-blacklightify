@@ -1,0 +1,15 @@
+<div class="modal-body">
+
+  <div id="transcript_hello"></div>
+
+</div>
+
+<script>
+  $.ajax({
+      url: "/catalog/p16022coll613:8342/transcript",
+      cache: false,
+      success: function(html){
+        $("#transcript_hello").append(html);
+      }
+  });
+</script>
