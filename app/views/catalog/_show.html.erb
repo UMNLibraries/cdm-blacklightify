@@ -19,33 +19,31 @@
 <hr>
 
 <%= tabs do |c| %>
-  <% c.tab 'Tab 1' do %>
+  <% c.tab 'Details' do %>
     <div id="item-details">
-        <% unless locale_choices.empty? %>
-        <ul id="alternate-languages">
-          <% locale_choices.each do |locale_link| %>
-            <li><%= locale_link.html_safe %></li>
+      <% unless locale_choices.empty? %>
+      <ul id="alternate-languages">
+        <% locale_choices.each do |locale_link| %>
+          <li><%= locale_link.html_safe %></li>
+        <% end -%>
+      </ul>
+      <% end %>
+      <% doc_presenter.config_type(current_locale).each do | type, heading | %>
+        <% if doc_presenter.type_arr(type) %>
+        <h3><%= heading %></h3>
+        <% end %>
+
+        <dl class="px-3">
+          <% doc_presenter.each_field( type ) do |field_name, field, field_presenter| %>
+            <% next if field_locale(field_name) != current_locale && localizable_field_name?(field_name) %>
+            <%= render "show_fields", document: document, field_name: field_name, field_presenter: field_presenter, field: field %>
           <% end -%>
-        </ul>
-        <% end %>
-        <% doc_presenter.config_type(current_locale).each do | type, heading | %>
-          <% if doc_presenter.type_arr(type) %>
-          <h3><%= heading %></h3>
-          <% end %>
-
-          <dl class="px-3">
-            <% doc_presenter.each_field( type ) do |field_name, field, field_presenter| %>
-              <% next if field_locale(field_name) != current_locale && localizable_field_name?(field_name) %>
-              <%= render "show_fields", document: document, field_name: field_name, field_presenter: field_presenter, field: field %>
-            <% end -%>
-          </dl>
-        <% end %>
-      </div>
-    
+        </dl>
+      <% end %>
+    </div>
   <% end %>
-
-  <% c.tab 'Tab 2' do %>
-    <%= render template: "transcript/index" %>
+  <% c.tab 'Transcript', link_class: 'ml-3' do %>
+    <%= render template: "transcript/index" %> 
   <% end %>
 <% end %>
 <hr>
