@@ -6,7 +6,7 @@ class UvPresenter
   end
 
   def format_name
-    arr = ["Cookbooks", "Educational events", "Newspapers", "Posters", "Radio programs"]
+    arr = ["Educational events", "Newspapers", "Posters", "Radio programs"]
   end
 
   def paging_enabled
