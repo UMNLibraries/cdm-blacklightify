@@ -20,7 +20,10 @@
   uv.on("configure", function ({ config, cb }) {
     cb({
       options: {
-        <%= uvconfig.paging_enabled %>
+        <%= uvconfig.paging_enabled %>,
+
+        rightPanelEnabled: false,
+        useArrowKeysToNavigate: true,
       }
     });
   });
