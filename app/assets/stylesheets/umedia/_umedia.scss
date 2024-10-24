@@ -56,3 +56,27 @@ body {
 .attribution {
   visibility: hidden;
 }
+
+// hide image text next to imageSelectionBox
+.uv .headerPanel .centerOptions .mode label {
+  display: none;
+}
+// refine imageSelectionBox placement
+.uv .headerPanel .centerOptions .image-selectionbox {
+  max-width: 200px;
+  margin-top: 4px;
+  height: 30px;
+}
+
+// Main (center panel title)
+.uv .mainPanel .centerPanel .title {
+  font-size: 1.75em;
+}
+// Contents (left panel title)
+.uv .mainPanel {
+  font-size: 1.25em;
+}
+// Contents (left panel thumbnails text)
+.uv .mainPanel .leftPanel .main .tabsContent .views .thumbsView .thumbs span {
+  font-size: 1em;
+}
