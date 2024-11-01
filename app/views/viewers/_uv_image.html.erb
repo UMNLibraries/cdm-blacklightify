@@ -14,4 +14,13 @@
       config: "/uv/config.json",
     },
   );
+
+  uv.on("configure", function ({ config, cb }) {
+    cb({
+      options: {
+        rightPanelEnabled: false,
+        useArrowKeysToNavigate: true,
+      }
+    });
+  });
 </script>
