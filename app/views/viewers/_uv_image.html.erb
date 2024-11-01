@@ -1,10 +1,11 @@
 <% content_for(:head) do %>
   <%= javascript_include_tag "/uv/umd/UV.js" %>
   <%= stylesheet_link_tag "/uv/uv.css" %>
-  <style>#uv { width: 70vw; height: 75vh; margin-bottom: 1rem; }</style>
+  <%# <style>#uv { width: 70vw; height: 75vh; margin-bottom: 1rem; }</style> %>
 <% end %>
 
-<div id="uv" class="uv" style="width:auto;"></div>
+<div id="uv" class="uv" style="<%= params[:fullscreen]? 'width: 100vw; height: 100vh;' : 'width: 70vw; height: 75vh;' %>"></div>
+
 <script>
   var uv = UV.init(
     "uv",
