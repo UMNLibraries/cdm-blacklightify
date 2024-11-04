@@ -24,4 +24,8 @@ class ItemPageTranscriptTest < ActionDispatch::IntegrationTest
       assert_select 'div.modal-header', text: /.+/, count: 1
     end
   end
+
+  # test for transcript tab to Not display for single page objects (posters, posters, etc.)
+  test 'transcript tab !display if format type . . .' do
+  end
 end
