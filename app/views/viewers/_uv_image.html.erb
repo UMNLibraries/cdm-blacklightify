@@ -14,12 +14,20 @@
       config: "/uv/config.json",
     },
   );
-
+  // need to sort out uvconfig file and move these . . .
   uv.on("configure", function ({ config, cb }) {
     cb({
       options: {
+        fullscreenEnabled: false,
         rightPanelEnabled: false,
         useArrowKeysToNavigate: true,
+      },
+      modules: {
+        footerPanel: {
+          options: {
+            fullscreenEnabled: false,
+          }
+        }
       }
     });
   });

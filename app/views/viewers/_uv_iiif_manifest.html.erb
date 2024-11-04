@@ -16,17 +16,20 @@
       config: "/uv/uvconfig.json",
     },
   );
-
+  // need to sort out uvconfig file and move these . . .
   uv.on("configure", function ({ config, cb }) {
     cb({
       options: {
         <%= uvconfig.paging_enabled %>,
-
         rightPanelEnabled: false,
         useArrowKeysToNavigate: true,
       },
-      // testing
       modules: {
+        footerPanel: {
+          options: {
+            fullscreenEnabled: false,
+          }
+        },
         pagingHeaderPanel: {
           options: {
             autoCompleteBoxEnabled: false,
