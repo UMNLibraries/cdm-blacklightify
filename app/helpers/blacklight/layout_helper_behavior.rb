@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Methods added to this helper will be available to all templates in the hosting
 # application
 module Blacklight
@@ -29,7 +30,7 @@ module Blacklight
     # Classes used for sizing the main content of a Blacklight page
     # @return [String]
     def main_content_classes
-      'col-lg-9'
+      'col'
     end
 
     ##
