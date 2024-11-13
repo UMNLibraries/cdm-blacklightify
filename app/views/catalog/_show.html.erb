@@ -13,12 +13,13 @@
       <%= render partial: 'viewers/uv_iiif_manifest', locals: { document: document } %>
   <% end %>
 </div>
-
+<!-- presentation mode link -->
 <div class="d-flex justify-content-center mb-3">
   <%= link_to "Link to fullscreen", solr_document_path(:fullscreen=>true) %>
 </div>
-
-<div><b>Content notice:</b> Please note that some historical materials may contain harmful content and/or descriptions. <a href="">Learn how we’re addressing it</a>. 
+<!-- content notice-->
+<div id="content-notice">
+  <b>Content notice:</b> Please note that some historical materials may contain harmful content and/or descriptions. <a href="">Learn how we’re addressing it</a>. 
 </div>
 <!-- Metadata Fields -->
 <% doc_presenter = document_presenter(document) %>
@@ -28,28 +29,9 @@
   <div class="row">
     <div class="col-lg-9">
       <div class="nav nav-tabs">Details</div>
-        <div id="item-details">
-          <% unless locale_choices.empty? %>
-          <ul id="alternate-languages">
-            <% locale_choices.each do |locale_link| %>
-              <li><%= locale_link.html_safe %></li>
-            <% end -%>
-          </ul>
-          <% end %>
-          <% doc_presenter.config_type(current_locale).each do | type, heading | %>
-            <% if doc_presenter.type_arr(type) %>
-            <h3><%= heading %></h3>
-            <% end %>
-
-            <dl class="px-3">
-              <% doc_presenter.each_field( type ) do |field_name, field, field_presenter| %>
-                <% next if field_locale(field_name) != current_locale && localizable_field_name?(field_name) %>
-                <%= render "show_fields", document: document, field_name: field_name, field_presenter: field_presenter, field: field %>
-              <% end -%>
-            </dl>
-          <% end %>
-        </div>
+      <%= render partial: "item_details" %>
     </div>
+
     <div class="col-lg-3">
       <%= render 'show_tools' %>
     </div>
@@ -59,27 +41,7 @@
     <div class="col-lg-9">
       <%= tabs do |c| %>
         <% c.tab 'Details' do %>
-          <div id="item-details">
-            <% unless locale_choices.empty? %>
-            <ul id="alternate-languages">
-              <% locale_choices.each do |locale_link| %>
-                <li><%= locale_link.html_safe %></li>
-              <% end -%>
-            </ul>
-            <% end %>
-            <% doc_presenter.config_type(current_locale).each do | type, heading | %>
-              <% if doc_presenter.type_arr(type) %>
-              <h3><%= heading %></h3>
-              <% end %>
-
-              <dl class="px-3">
-                <% doc_presenter.each_field( type ) do |field_name, field, field_presenter| %>
-                  <% next if field_locale(field_name) != current_locale && localizable_field_name?(field_name) %>
-                  <%= render "show_fields", document: document, field_name: field_name, field_presenter: field_presenter, field: field %>
-                <% end -%>
-              </dl>
-            <% end %>
-          </div>
+          <%= render partial: "item_details" %>
         <% end %>
         <% c.tab 'Transcript', link_class: 'ml-3' do %>
           <%= render template: "transcript/index" %> 
