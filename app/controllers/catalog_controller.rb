@@ -13,15 +13,18 @@ class CatalogController < ApplicationController
 
   # All item level show fields grouped by type
   UMEDIA_SHOW_FIELDS = {
-    default: %w[ ],
-    #default: %w[ object ],
-    primary: %w[ title title_alternative description date_created creator contributor publisher historical_era caption notes ],
-    topic: %w[ subject language ],
-    phys_desc: %w[ types format_name dimensions ],
-    geo_loc: %w[ city state country region continent projection scale coordinates geonames ],
-    coll_info: %w[ collection_name parent_collection_name contributing_organization contact_information fiscal_sponsor fiscal_sponsor_ssi ],
-    identifiers: %w[ local_identifier barcode system_identifier dls_identifier persistent_url ],
-    use: %w[ local_rights rights_statement_uri additional_rights_information standardized_rights expected_public_domain_year ],
+    default: %w[],
+    # default: %w[ object ],
+    primary: %w[title title_alternative description date_created creator contributor publisher historical_era caption
+                notes],
+    topic: %w[subject language],
+    phys_desc: %w[types format_name dimensions],
+    geo_loc: %w[city state country region continent projection scale coordinates geonames],
+    coll_info: %w[collection_name parent_collection_name contributing_organization contact_information fiscal_sponsor
+                  fiscal_sponsor_ssi],
+    identifiers: %w[local_identifier barcode system_identifier dls_identifier persistent_url],
+    use: %w[local_rights rights_statement_uri additional_rights_information standardized_rights
+            expected_public_domain_year]
   }
 
   UMEDIA_LINK_TO_FACET_FIELDS = %w[
@@ -58,12 +61,12 @@ class CatalogController < ApplicationController
       rows: 10,
       fl: '*',
       fq: 'record_type:primary',
-      'hl': true,
+      hl: true,
       'hl.method': 'original',
       'hl.fl': 'collection_* format_* subject title ',
       'hl.preserveMulti': true,
       'hl.simple.pre': '<span style=\'background-color: #ffde7a\'>',
-      'hl.simple.post': '</span>',
+      'hl.simple.post': '</span>'
     }
 
     config.document_solr_path = 'select'
@@ -78,9 +81,9 @@ class CatalogController < ApplicationController
     config.add_search_field 'types', label: 'Type'
     config.add_search_field 'date_created', label: 'Date'
     config.add_search_field('subject') do |field|
-      field.query_parameters = { :'spellcheck.dictionary' => 'subject' }
+      field.query_parameters = { 'spellcheck.dictionary': 'subject' }
       field.query_local_parameters = {
-        :qf => 'subject_ssm'
+        qf: 'subject_ssm'
       }
     end
 
@@ -109,7 +112,8 @@ class CatalogController < ApplicationController
     # Creator / creator
     config.add_facet_field 'creator_s', label: 'Creator', limit: 4, collapse: true
     # Contributing Organization / contributing_organization
-    config.add_facet_field 'contributing_organization_name_s', label: 'Contributing Organization', limit: 4, collapse: true
+    config.add_facet_field 'contributing_organization_name_s', label: 'Contributing Organization', limit: 4,
+                                                               collapse: true
     # Type / types
     config.add_facet_field 'types', label: 'Type', limit: 4, collapse: true
     # Special projects
@@ -147,27 +151,27 @@ class CatalogController < ApplicationController
           link_to_facet: UMEDIA_LINK_TO_FACET_FIELDS.include?(field)
         )
         # If this metadata field is available to alt languages, add them now
-        if UMEDIA_LOCALIZED_SHOW_FIELDS[type].include?(field)
-          I18n.available_locales.reject{|l| l == I18n.default_locale}.each do |locale|
-            config.add_show_field(
-              "#{locale.to_s}_#{field}",
-              label: "item.fields.#{field}",
-              itempro: field,
-              type: type,
-              component: Umedia::LocalizedMetadataFieldComponent,
-              # Never facet the alt lang metadata field
-              link_to_facet: false
-            )
-          end
+        next unless UMEDIA_LOCALIZED_SHOW_FIELDS[type].include?(field)
+
+        I18n.available_locales.reject { |l| l == I18n.default_locale }.each do |locale|
+          config.add_show_field(
+            "#{locale}_#{field}",
+            label: "item.fields.#{field}",
+            itempro: field,
+            type: type,
+            component: Umedia::LocalizedMetadataFieldComponent,
+            # Never facet the alt lang metadata field
+            link_to_facet: false
+          )
         end
       end
     end
 
     # View Helpers
     config.add_show_tools_partial(:citation)
-    config.add_show_tools_partial(:transcript, if: proc { |_context, _config, options|
-                                                     options[:document].transcripts?
-                                                   })
+    # config.add_show_tools_partial(:transcript, if: proc { |_context, _config, options|
+    #                                                  options[:document].transcripts?
+    #                                                })
 
     # config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
     config.add_results_collection_tool(:sort_widget)
