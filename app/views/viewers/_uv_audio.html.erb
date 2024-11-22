@@ -1,5 +1,11 @@
 <% borealis_doc = Umedia::BorealisDocument.new(document: document) %>
 
+<% if fullscreen? %>
+  <div class="d-flex justify-content-center my-1">
+    <%= link_to "Back to item page", solr_document_path %>
+  </div>
+<% end %>
+
 <div class="embed-responsive <%= fullscreen? ? 'embed-responsive-4by3' : 'embed-responsive-16by9'%>">
   <iframe
     id="kaltura_player"

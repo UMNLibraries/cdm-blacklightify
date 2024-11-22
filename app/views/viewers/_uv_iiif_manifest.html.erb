@@ -4,6 +4,12 @@
   <%# <style>#uv { width: 70vw; height: 100vh; margin-bottom: 1rem; }</style> %>
 <% end %>
 
+<% if fullscreen? %>
+  <div class="d-flex justify-content-center my-1">
+    <%= link_to "Back to item page", solr_document_path %>
+  </div>
+<% end %>
+
 <div id="uv" class="uv" style="<%= params[:fullscreen]? 'width: 100vw; height: 100vh;' : 'height: 50vh;' %>"></div>
 
 <% uvconfig = UvPresenter.new(@document) %>
