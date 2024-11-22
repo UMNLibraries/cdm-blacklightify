@@ -54,5 +54,9 @@ module Blacklight
 
       arr.include?(@document[:types][0])
     end
+
+    def fullscreen?
+      params[:fullscreen] == 'true'
+    end
   end
 end

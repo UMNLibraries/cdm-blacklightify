@@ -1,6 +1,6 @@
 <% borealis_doc = Umedia::BorealisDocument.new(document: document) %>
 
-<div class="embed-responsive embed-responsive-4by3">
+<div class="embed-responsive <%= fullscreen? ? 'embed-responsive-4by3' : 'embed-responsive-16by9'%>">
   <iframe
     id="kaltura_player"
     src="https://cdnapisec.kaltura.com/p/<%= ENV.fetch('KALTURA_PARTNER_ID') %>/embedPlaykitJs/uiconf_id/54071352?iframeembed=true&entry_id=<%= borealis_doc.document._source["kaltura_audio"] %>"
