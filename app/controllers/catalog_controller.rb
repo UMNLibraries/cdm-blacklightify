@@ -148,7 +148,8 @@ class CatalogController < ApplicationController
           itemprop: field,
           type: type,
           component: Umedia::LocalizedMetadataFieldComponent,
-          link_to_facet: UMEDIA_LINK_TO_FACET_FIELDS.include?(field)
+          link_to_facet: UMEDIA_LINK_TO_FACET_FIELDS.include?(field),
+          separator_options: { two_words_connector: '; ', words_connector: '; ', last_word_connector: '; ' }
         )
         # If this metadata field is available to alt languages, add them now
         next unless UMEDIA_LOCALIZED_SHOW_FIELDS[type].include?(field)

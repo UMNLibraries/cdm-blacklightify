@@ -104,3 +104,11 @@ body {
 .uv .footerPanel .options .share::after {
   content: "Share";
 }
+
+// kaltura
+.playkit-pre-playback-play-button {
+  background-color: grey;
+}
+.playkit-audio-entry-description {
+  display: none;
+}
