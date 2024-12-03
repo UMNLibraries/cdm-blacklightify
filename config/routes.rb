@@ -57,6 +57,7 @@ Rails.application.routes.draw do
       get :autocomplete
       
       get :manifest2, action: 'manifest2'
+      get :manifesttest, action: 'manifesttest'
     end
   end
 

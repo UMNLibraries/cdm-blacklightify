@@ -17,7 +17,7 @@
     "uv",
     {
       manifest: "https://cdm16022.contentdm.oclc.org/iiif/2/<%= document.id %>/manifest.json",
-      config: "/uv/config.json",
+      config: "/uv/uvconfig.json",
     },
   );
   // need to sort out uvconfig file and move these . . .
@@ -27,6 +27,7 @@
         fullscreenEnabled: false,
         rightPanelEnabled: true,
         useArrowKeysToNavigate: true,
+        termsOfUseEnabled: true,
       },
       modules: {
         footerPanel: {
@@ -34,6 +35,17 @@
             fullscreenEnabled: false,
           }
         }
+      }, 
+      content: {
+        authCORSError: '',
+        authorisationFailedMessage: '',
+        canvasIndexOutOfRange: '',
+        fallbackDegradedLabel: '',
+        fallbackDegradedMessage: '',
+        forbiddenResourceMessage: '',
+        mediaViewer: '',
+        skipToDownload: '',
+        termsOfUse: ''
       }
     });
   });

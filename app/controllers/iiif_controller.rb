@@ -48,4 +48,9 @@ class IiifController < ApplicationController
     response = IiifAvManifestService.new(params[:id]).manifest2
     render json: response
   end
+
+  def manifesttest
+    response = IiifDownloadService.new(params[:id]).manifesttest
+    render json: response
+  end
 end
