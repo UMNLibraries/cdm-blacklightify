@@ -137,15 +137,10 @@ class IiifDownloadService
 
   def download_path
     @document[:types] == ["Text"] ? 
-    # reconcile the differences in behavior between these generic paths . . .
-
-    # compound objects (forces a download)
-    # https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll208/id/0/filename/print/page/download/fparams/forcedownload
-    "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{@id.split(':')[0]}/id/#{@id.split(':')[1]}/filename/print/page/download/fparams/forcedownload"
-    :
-    # singular image object (opens pdf in new tab)
-    # https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:0/full/full/0/default.jpg
-    "https://cdm16022.contentdm.oclc.org/iiif/2/#{@id}/full/full/0/default.jpg"
+    # compound objects
+    "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{@id.split(':')[0]}/id/#{@id.split(':')[1]}/filename/print/page/download/fparams/forcedownload" :
+    # singular image object
+    "https://cdm16022.contentdm.oclc.org/utils/ajaxhelper?CISOROOT=#{@id.split(':')[0]}&CISOPTR=#{@id.split(':')[1]}&action=2&DMSCALE=100&DMWIDTH=4052&DMHEIGHT=5040"
   end
 
   def rendering_format_type
