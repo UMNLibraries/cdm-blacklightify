@@ -34,18 +34,129 @@ class IiifDownloadService
         '@type' => 'sc:Sequence',
         'rendering' => rendering_property,
         'canvases' => get_canvas
+        # 'structures' => some_method_that_gets_the_structure
       }]
     }
   end
 
+  # def metadata
+  #   # this just mimics what contentdm produces
+  #   meta = [{
+  #     :label => 'Parent Collection Name',
+  #     :value => @document[:parent_collection]
+  #   },
+  #   {
+  #     :label => 'Additional Notes',
+  #     :value => @document[:notes]
+  #   },
+  #   {
+  #     :label => 'Contact Information',
+  #     :value => @document[:contact_information]
+  #   },
+  #   {
+  #     :label => 'Continent',
+  #     :value => @document[:Continent]
+  #   },
+  #   {
+  #     :label => 'Contributing Organization',
+  #     :value => @document[:contributing_organization]
+  #   },
+  #   {
+  #     :label => 'Contributor',
+  #     :value => @document[:contributor]
+  #   },
+  #   {
+  #     :label => 'Country',
+  #     :value => @document[:country]
+  #   },
+  #   {
+  #     :label => 'Date of Creation',
+  #     :value => @document[:date_created]
+  #   },
+  #   {
+  #     :label => 'Description',
+  #     :value => @document[:description]
+  #   },
+  #   {
+  #     :label => 'Dimensions',
+  #     :value => duration_to_float
+  #   },
+  #   {
+  #     :label => 'DLS Identifier',
+  #     :value => @document[:description]
+  #   },
+  #   {
+  #     :label => 'Fiscal Sponsor',
+  #     :value => @document[:fiscal_sponsor]
+  #   },
+  #   {
+  #     :label => 'Item Physical Format',
+  #     :value => @document[:format]
+  #   },
+  #   {
+  #     :label => 'Historical Era/Period',
+  #     :value => @document[:historical_era]
+  #   },
+  #   {
+  #     :label => 'Language',
+  #     :value => @document[:language]
+  #   },
+  #   {
+  #     :label => 'Local Rights Statement',
+  #     :value => @document[:local_rights]
+  #   },
+  #   {
+  #     :label => 'Persistent URL (PURL)',
+  #     :value => @document[:persistent_url]
+  #   },
+  #   {
+  #     :label => 'Publisher',
+  #     :value => @document[:publisher]
+  #   },
+  #   {
+  #     :label => 'Locally Assigned Subject Headings',
+  #     :value => @document[:subject]
+  #   },
+  #   {
+  #     :label => 'Title',
+  #     :value => @document[:title]
+  #   },
+  #   {
+  #     :label => 'Item Type',
+  #     :value => @document[:types]
+  #   }]
+
+  #   meta.map do |field|
+  #     field[:value].blank? ? nil : field
+  #  end
+  # end
+
+  # def attribution
+  #   [ '', @document[:local_rights] ]
+  # end
+
+  def download_path
+    @document[:types] == ["Text"] ? 
+    # reconcile the differences in behavior between these generic paths . . .
+
+    # compound objects (forces a download)
+    # https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll208/id/0/filename/print/page/download/fparams/forcedownload
+    "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{@id.split(':')[0]}/id/#{@id.split(':')[1]}/filename/print/page/download/fparams/forcedownload"
+    :
+    # singular image object (opens pdf in new tab)
+    # https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:0/full/full/0/default.jpg
+    "https://cdm16022.contentdm.oclc.org/iiif/2/#{@id}/full/full/0/default.jpg"
+  end
+
+  def rendering_format_type
+    # most likely just a ternary here . . .
+  end
+
   def rendering_property
     [{
-      '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/2/' + @id + '/full/full/0/default.jpg',
-      # https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll208/id/0/filename/print/page/download/fparams/forcedownload
-      # this path argubaly works for complex objects, need to confirm. does not work for individual image . . . does not open in new tab . . .
-      # https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll208:0/full/full/0/default.jpg
-      # this is an image path
+      '@id' => download_path,
       'label' => 'D O W N LOAD the original file',
+      # need appropirate format type selector  . . .
       'format' => 'image/tiff'
     }]
   end
