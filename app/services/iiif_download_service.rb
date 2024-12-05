@@ -133,10 +133,11 @@ class IiifDownloadService
 
   # def attribution
   #   [ '', @document[:local_rights] ]
+  #   # local_rights rights_statement_uri additional_rights_information standardized_rights expected_public_domain_year 
   # end
 
   def download_path
-    @document[:types] == ["Text"] ? 
+    @document[:viewer_type] == "COMPOUND_PARENT_NO_VIEWER" ? 
     # compound objects
     "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{@id.split(':')[0]}/id/#{@id.split(':')[1]}/filename/print/page/download/fparams/forcedownload" :
     # singular image object
