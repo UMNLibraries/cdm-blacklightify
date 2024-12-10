@@ -1,7 +1,6 @@
 <% content_for(:head) do %>
   <%= javascript_include_tag "/uv/umd/UV.js" %>
   <%= stylesheet_link_tag "/app/assets/stylesheets/umedia/_umedia.scss" %>
-  <%# <style>#uv { width: 70vw; height: 75vh; margin-bottom: 1rem; }</style> %>
 <% end %>
 
 <% if fullscreen? %>
@@ -16,7 +15,9 @@
   var uv = UV.init(
     "uv",
     {
-      manifest: "https://cdm16022.contentdm.oclc.org/iiif/2/<%= document.id %>/manifest.json",
+      // manifest: "https://cdm16022.contentdm.oclc.org/iiif/2/<%= document.id %>/manifest.json",
+      // wip: new manifest route
+      manifest: "/iiif/<%= document.id %>/manifesttest.json",
       config: "/uv/uvconfig.json",
     },
   );
@@ -27,26 +28,36 @@
         fullscreenEnabled: false,
         rightPanelEnabled: true,
         useArrowKeysToNavigate: true,
-        termsOfUseEnabled: true,
+        termsOfUseEnabled: false,
       },
       modules: {
+        downloadDialogue: {
+          options: {
+            selectionEnabled: false,
+            downloadWholeImageLowResEnabled: false,
+          },
+          content: {
+          }
+        },
         footerPanel: {
           options: {
             fullscreenEnabled: false,
           }
         }
-      }, 
-      content: {
-        authCORSError: '',
-        authorisationFailedMessage: '',
-        canvasIndexOutOfRange: '',
-        fallbackDegradedLabel: '',
-        fallbackDegradedMessage: '',
-        forbiddenResourceMessage: '',
-        mediaViewer: '',
-        skipToDownload: '',
-        termsOfUse: ''
       }
     });
   });
 </script>
+
+<style>
+  /* update download text */
+  .uv .download .middle .content h2:nth-child(4) {
+    color: transparent;
+  }
+
+  .uv .download .middle .content h2:nth-child(4):after {
+    content: "Original file";
+    color: black;
+    margin-left: -64px;
+  }
+</style>

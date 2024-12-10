@@ -136,7 +136,7 @@ class IiifDownloadService
   #   # local_rights rights_statement_uri additional_rights_information standardized_rights expected_public_domain_year 
   # end
 
-  def download_path
+  def rendering_download_path
     @document[:viewer_type] == "COMPOUND_PARENT_NO_VIEWER" ? 
     # compound objects
     "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{@id.split(':')[0]}/id/#{@id.split(':')[1]}/filename/print/page/download/fparams/forcedownload" :
@@ -144,16 +144,24 @@ class IiifDownloadService
     "https://cdm16022.contentdm.oclc.org/utils/ajaxhelper?CISOROOT=#{@id.split(':')[0]}&CISOPTR=#{@id.split(':')[1]}&action=2&DMSCALE=100&DMWIDTH=4052&DMHEIGHT=5040"
   end
 
+  def rendering_label
+    @document[:viewer_type] == "COMPOUND_PARENT_NO_VIEWER" ? 'Download all images (large PDF)' : 'Download full size image'
+  end
+
   def rendering_format_type
-    # most likely just a ternary here . . .
+    @document[:viewer_type] == "COMPOUND_PARENT_NO_VIEWER" ? 'application/pdf' : 'image/jpeg'
   end
 
   def rendering_property
-    [{
-      '@id' => download_path,
-      'label' => 'D O W N LOAD the original file',
-      # need appropirate format type selector  . . .
-      'format' => 'image/tiff'
-    }]
+    # render path logic if singular jpeg or compound. undecided for now . . .
+    # if @document[:viewer_type] == "COMPOUND_PARENT_NO_VIEWER"
+      [{
+          '@id' => rendering_download_path,
+          'label' => rendering_label,
+          'format' => rendering_format_type
+        }]
+    # else
+    #   ''
+    # end
   end
 end
