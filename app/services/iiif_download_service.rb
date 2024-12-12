@@ -17,7 +17,7 @@ class IiifDownloadService
     JSON.parse(parsed_response)
   end
 
-  def get_canvas
+  def canvases
     iiif_manifest['sequences'][0]['canvases']
   end
 
@@ -34,9 +34,9 @@ class IiifDownloadService
         '@type' => 'sc:Sequence',
         'label' => @document[:title],
         'rendering' => rendering_property,
-        'canvases' => get_canvas
+        'canvases' => canvases
       }],
-      'structures' => get_structures
+      'structures' => structures
     }
   end
 
@@ -133,8 +133,14 @@ class IiifDownloadService
   # end
 
   def attribution
-    [ '', @document[:local_rights] ]
-    # local_rights rights_statement_uri additional_rights_information standardized_rights expected_public_domain_year 
+    [ 
+      '', @document[:local_rights] ? @document[:local_rights] : rights_statement
+    ]
+    # to do: config for locales . . .
+  end
+
+  def rights_statement
+    "The University of Minnesota believes that this item is protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s). #{@document[:rights_statement_uri]}"
   end
 
   def rendering_download_path
@@ -161,7 +167,7 @@ class IiifDownloadService
       }]
   end
 
-  def get_structures
+  def structures
     iiif_manifest['structures']
   end
 end
