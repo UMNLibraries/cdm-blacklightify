@@ -28,14 +28,15 @@ class IiifDownloadService
       '@type' => 'sc:Manifest',
       'label' => @document[:title],
       # 'metadata' => metadata.compact,
-      # 'attribution' => attribution,
+      'attribution' => attribution,
       'sequences' => [{
         '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/sequence/s0',
         '@type' => 'sc:Sequence',
+        'label' => @document[:title],
         'rendering' => rendering_property,
         'canvases' => get_canvas
-        # 'structures' => some_method_that_gets_the_structure
-      }]
+      }],
+      'structures' => get_structures
     }
   end
 
@@ -131,10 +132,10 @@ class IiifDownloadService
   #  end
   # end
 
-  # def attribution
-  #   [ '', @document[:local_rights] ]
-  #   # local_rights rights_statement_uri additional_rights_information standardized_rights expected_public_domain_year 
-  # end
+  def attribution
+    [ '', @document[:local_rights] ]
+    # local_rights rights_statement_uri additional_rights_information standardized_rights expected_public_domain_year 
+  end
 
   def rendering_download_path
     @document[:viewer_type] == "COMPOUND_PARENT_NO_VIEWER" ? 
@@ -153,15 +154,14 @@ class IiifDownloadService
   end
 
   def rendering_property
-    # render path logic if singular jpeg or compound. undecided for now . . .
-    # if @document[:viewer_type] == "COMPOUND_PARENT_NO_VIEWER"
-      [{
-          '@id' => rendering_download_path,
-          'label' => rendering_label,
-          'format' => rendering_format_type
-        }]
-    # else
-    #   ''
-    # end
+    [{
+        '@id' => rendering_download_path,
+        'label' => rendering_label,
+        'format' => rendering_format_type
+      }]
+  end
+
+  def get_structures
+    iiif_manifest['structures']
   end
 end
