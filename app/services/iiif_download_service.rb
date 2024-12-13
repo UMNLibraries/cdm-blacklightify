@@ -136,7 +136,6 @@ class IiifDownloadService
     [ 
       '', @document[:local_rights] ? @document[:local_rights] : rights_statement
     ]
-    # to do: config for locales . . .
   end
 
   def rights_statement
@@ -148,6 +147,7 @@ class IiifDownloadService
     # compound objects
     "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{@id.split(':')[0]}/id/#{@id.split(':')[1]}/filename/print/page/download/fparams/forcedownload" :
     # singular image object
+    # to do: replace this path with forcedownload path ?
     "https://cdm16022.contentdm.oclc.org/utils/ajaxhelper?CISOROOT=#{@id.split(':')[0]}&CISOPTR=#{@id.split(':')[1]}&action=2&DMSCALE=100&DMWIDTH=4052&DMHEIGHT=5040"
   end
 

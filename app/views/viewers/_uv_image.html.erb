@@ -1,6 +1,6 @@
 <% content_for(:head) do %>
   <%= javascript_include_tag "/uv/umd/UV.js" %>
-  <%= stylesheet_link_tag "/app/assets/stylesheets/umedia/_umedia.scss" %>
+  <%= stylesheet_link_tag "/uv/uv.css" %>
 <% end %>
 
 <% if fullscreen? %>
@@ -25,18 +25,14 @@
   uv.on("configure", function ({ config, cb }) {
     cb({
       options: {
-        fullscreenEnabled: false,
         rightPanelEnabled: true,
         useArrowKeysToNavigate: true,
-        termsOfUseEnabled: false,
+        termsOfUseEnabled: false
       },
       modules: {
         downloadDialogue: {
           options: {
-            selectionEnabled: false,
-            downloadWholeImageLowResEnabled: false,
-          },
-          content: {
+            optionsExplanatoryTextEnabled: true,
           }
         },
         footerPanel: {
@@ -50,14 +46,55 @@
 </script>
 
 <style>
-  /* update download text */
+  /* update download first heading text */
+  .uv .download .middle .content h2:nth-child(2) {
+    color: transparent;
+  }
+  .uv .download .middle .content h2:nth-child(2):before {
+    content: "Individual Page";
+    color: black;
+  }
+  /* individual page options 2 and 3 */
+  .uv .download .middle .content .options li:nth-child(2) {
+    /* background-color: pink; */
+    display: none;
+  }
+    .uv .download .middle .content .options li:nth-child(3) {
+    /* background-color: olive; */
+    display: none;
+  }
+  /* individual page download option text */
+  .uv .download .middle .content ol.options:nth-child(3) .single button {
+    color: transparent;
+  }
+  .uv .download .middle .content ol.options:nth-child(3) .single button:before {
+    content: "Current view in window (jpg)";
+    color: #10819A;
+  }
+  /* original file download option text */
+  .uv .download .middle .content ol.options:nth-child(5) li button {
+    color: transparent;
+    height: 1rem;
+  }
+  .uv .download .middle .content ol.options:nth-child(5) li button:before {
+    content: "Full size image (jpg)";
+    color: #10819A;
+  }
+  /* line height of list elements */
+  .uv .download .middle .content ol.options li {
+    padding: 0px;
+    margin: 0 auto;
+    height: 1.25rem;
+    line-height: 1.25rem;
+  }
+
+  /* update download second heading text */
   .uv .download .middle .content h2:nth-child(4) {
     color: transparent;
   }
 
-  .uv .download .middle .content h2:nth-child(4):after {
+  .uv .download .middle .content h2:nth-child(4):before {
     content: "Original File";
     color: black;
-    margin-left: -64px;
   }
 </style>

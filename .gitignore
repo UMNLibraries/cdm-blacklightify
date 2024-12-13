@@ -100,3 +100,5 @@ public/uv/*
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/*.code-snippets
+
+.github
