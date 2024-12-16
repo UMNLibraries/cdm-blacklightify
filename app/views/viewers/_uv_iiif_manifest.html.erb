@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<div id="uv" class="uv" style="<%= params[:fullscreen]? 'width: 100vw; height: 100vh;' : 'height: 50vh;' %>"></div>
+<div id="uv" class="uv uvCompound" style="<%= params[:fullscreen]? 'width: 100vw; height: 100vh;' : 'height: 50vh;' %>"></div>
 
 <% uvconfig = UvPresenter.new(@document) %>
 
@@ -47,57 +47,3 @@
     });
   });
 </script>
-
-<style>
-  /* update download first heading text */
-  .uv .download .middle .content h2:nth-child(2) {
-    color: transparent;
-  }
-  .uv .download .middle .content h2:nth-child(2):before {
-    content: "Individual Page";
-    color: black;
-  }
-  /* hide option 3, lo-res image download */
-  .uv .download .middle .content .options li:nth-child(3) {
-    display: none;
-  }
-  /* current view download option text */
-  .uv .download .middle .content ol.options:nth-child(3) .single:first-child button {
-    color: transparent;
-  }
-  .uv .download .middle .content ol.options:nth-child(3) .single:first-child button:before {
-    content: "Current view in window (jpg)";
-  }
-  /* full size image download option text */
-  .uv .download .middle .content ol.options:nth-child(3) .single:nth-child(2) button {
-    color: transparent;
-  }
-  .uv .download .middle .content ol.options:nth-child(3) .single:nth-child(2) button:before {
-    content: "Full size image (jpg)";
-  }
-  /* all pages second heading text */
-  .uv .download .middle .content h2:nth-child(4) {
-    color: transparent;
-  }
-  .uv .download .middle .content h2:nth-child(4):before {
-    content: "All Pages";
-    color: black;
-  }
-  /* all pages download option text */
-  .uv .download .middle .content ol.options:nth-child(5) li button {
-    color: transparent;
-  }
-  .uv .download .middle .content ol.options:nth-child(5) li button:before {
-    content: "Complete object (pdf)";
-  }
-  /* line height of list elements */
-  .uv .download .middle .content ol.options li {
-    padding: 0px;
-    margin: 0 auto;
-    height: 1.5rem;
-  }
-  /* link color */
-  .uv .download .middle .content ol.options li button:before {
-    color: #10819A;
-  }
-</style>
