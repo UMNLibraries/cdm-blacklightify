@@ -54,13 +54,11 @@
     content: "Individual Page";
     color: black;
   }
-  /* individual page options 2 and 3 */
+  /* hide individual page options 2 (hi-res) and 3 (lo-res) */
   .uv .download .middle .content .options li:nth-child(2) {
-    /* background-color: pink; */
     display: none;
   }
-    .uv .download .middle .content .options li:nth-child(3) {
-    /* background-color: olive; */
+  .uv .download .middle .content .options li:nth-child(3) {
     display: none;
   }
   /* individual page download option text */
@@ -69,32 +67,30 @@
   }
   .uv .download .middle .content ol.options:nth-child(3) .single button:before {
     content: "Current view in window (jpg)";
-    color: #10819A;
+  }
+  /* original file second heading text */
+  .uv .download .middle .content h2:nth-child(4) {
+    color: transparent;
+  }
+  .uv .download .middle .content h2:nth-child(4):before {
+    content: "Original File";
+    color: black;
   }
   /* original file download option text */
   .uv .download .middle .content ol.options:nth-child(5) li button {
     color: transparent;
-    height: 1rem;
   }
   .uv .download .middle .content ol.options:nth-child(5) li button:before {
     content: "Full size image (jpg)";
-    color: #10819A;
   }
   /* line height of list elements */
   .uv .download .middle .content ol.options li {
     padding: 0px;
     margin: 0 auto;
-    height: 1.25rem;
-    line-height: 1.25rem;
+    height: 1.5rem;
   }
-
-  /* update download second heading text */
-  .uv .download .middle .content h2:nth-child(4) {
-    color: transparent;
-  }
-
-  .uv .download .middle .content h2:nth-child(4):before {
-    content: "Original File";
-    color: black;
+  /* link color */
+  .uv .download .middle .content ol.options li button:before {
+    color: #10819A;
   }
 </style>
