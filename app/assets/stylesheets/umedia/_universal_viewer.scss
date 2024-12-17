@@ -33,6 +33,11 @@
   cursor: grab;
 }
 
+// hide attribution blank key
+.uv .rightPanel .main .iiif-metadata-component .groups .group .items .item._attribution .value br {
+  display: none;
+}
+
 // Insert icon text in footerPanel
 .uv .footerPanel .options .btn {
   font-size: 1.25em !important;
@@ -133,6 +138,7 @@
 .uvCompound .download .middle .content ol.options:nth-child(5) li button:before {
   content: "Complete object (pdf)";
 }
+
 
 // kaltura ?
 .playkit-pre-playback-play-button {

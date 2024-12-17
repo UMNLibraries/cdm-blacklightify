@@ -27,7 +27,7 @@ class IiifDownloadService
       '@id' => @document[:object],
       '@type' => 'sc:Manifest',
       'label' => @document[:title],
-      # 'metadata' => metadata.compact,
+      'metadata' => metadata.compact,
       'attribution' => attribution,
       'sequences' => [{
         '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/sequence/s0',
@@ -37,100 +37,160 @@ class IiifDownloadService
         'canvases' => canvases
       }],
       'structures' => structures
+      # 'viewingHint' => viewingHints needs to be "paged". default out of contentdm is "top"
     }
   end
 
-  # def metadata
-  #   # this just mimics what contentdm produces
-  #   meta = [{
-  #     :label => 'Parent Collection Name',
-  #     :value => @document[:parent_collection]
-  #   },
-  #   {
-  #     :label => 'Additional Notes',
-  #     :value => @document[:notes]
-  #   },
-  #   {
-  #     :label => 'Contact Information',
-  #     :value => @document[:contact_information]
-  #   },
-  #   {
-  #     :label => 'Continent',
-  #     :value => @document[:Continent]
-  #   },
-  #   {
-  #     :label => 'Contributing Organization',
-  #     :value => @document[:contributing_organization]
-  #   },
-  #   {
-  #     :label => 'Contributor',
-  #     :value => @document[:contributor]
-  #   },
-  #   {
-  #     :label => 'Country',
-  #     :value => @document[:country]
-  #   },
-  #   {
-  #     :label => 'Date of Creation',
-  #     :value => @document[:date_created]
-  #   },
-  #   {
-  #     :label => 'Description',
-  #     :value => @document[:description]
-  #   },
-  #   {
-  #     :label => 'Dimensions',
-  #     :value => duration_to_float
-  #   },
-  #   {
-  #     :label => 'DLS Identifier',
-  #     :value => @document[:description]
-  #   },
-  #   {
-  #     :label => 'Fiscal Sponsor',
-  #     :value => @document[:fiscal_sponsor]
-  #   },
-  #   {
-  #     :label => 'Item Physical Format',
-  #     :value => @document[:format]
-  #   },
-  #   {
-  #     :label => 'Historical Era/Period',
-  #     :value => @document[:historical_era]
-  #   },
-  #   {
-  #     :label => 'Language',
-  #     :value => @document[:language]
-  #   },
-  #   {
-  #     :label => 'Local Rights Statement',
-  #     :value => @document[:local_rights]
-  #   },
-  #   {
-  #     :label => 'Persistent URL (PURL)',
-  #     :value => @document[:persistent_url]
-  #   },
-  #   {
-  #     :label => 'Publisher',
-  #     :value => @document[:publisher]
-  #   },
-  #   {
-  #     :label => 'Locally Assigned Subject Headings',
-  #     :value => @document[:subject]
-  #   },
-  #   {
-  #     :label => 'Title',
-  #     :value => @document[:title]
-  #   },
-  #   {
-  #     :label => 'Item Type',
-  #     :value => @document[:types]
-  #   }]
+  def metadata
+    meta = [{
+      :label => 'Title', # About This Item
+      :value => @document[:title]
+    },
+    {
+      :label => 'Alternative Title',
+      :value => @document[:title_alternative]
+    },
+    {
+      :label => 'Description',
+      :value => @document[:description]
+    },
+    {
+      :label => 'Date Created',
+      :value => @document[:date_created]
+    },
+    {
+      :label => 'Creator',
+      :value => @document[:creator]
+    },
+    {
+      :label => 'Contributor',
+      :value => @document[:contributor]
+    },
+    {
+      :label => 'Publisher',
+      :value => @document[:publisher]
+    },
+    {
+      :label => 'Historical Era/Period',
+      :value => @document[:historical_era]
+    },
+    {
+      :label => 'Transcription',
+      :value => @document[:caption]
+    },
+    {
+      :label => 'Additional Notes',
+      :value => @document[:notes]
+    },
+    {
+      :label => 'Subjects', # Topics
+      :value => @document[:subject]
+    },
+    {
+      :label => 'Language',
+      :value => @document[:language]
+    },
+    {
+      :label => 'Item Type', # Physical Description
+      :value => @document[:types]
+    },
+    {
+      :label => 'Format',
+      :value => @document[:format_name]
+    },
+    {
+      :label => 'Dimensions',
+      :value => @document[:dimensions]
+    },
+    {
+      :label => 'City/Township', # Geographic Location
+      :value => @document[:city]
+    },
+    {
+      :label => 'State/Province',
+      :value => @document[:state]
+    },
+    {
+      :label => 'Country',
+      :value => @document[:country]
+    },
+    {
+      :label => 'Region/Area',
+      :value => @document[:region]
+    },
+    {
+      :label => 'Continent',
+      :value => @document[:Continent]
+    },
+    {
+      :label => 'Projections',
+      :value => @document[:projection]
+    },
+    {
+      :label => 'Scale',
+      :value => @document[:scale]
+    },
+    {
+      :label => 'Coordinates',
+      :value => @document[:coordinates]
+    },
+    {
+      :label => 'GeoNames',
+      :value => @document[:geonames]
+    },
+    {
+      :label => 'Digital Collection', # Collection Information
+      :value => @document[:collection_name]
+    },
+    {
+      :label => 'Parent Collection',
+      :value => @document[:parent_collection]
+    },
+    {
+      :label => 'Contributing Organization',
+      :value => @document[:contributing_organization]
+    },
+    {
+      :label => 'Contact Information',
+      :value => @document[:contact_information]
+    },
+    {
+      :label => 'Fiscal Sponsor',
+      :value => @document[:fiscal_sponsor]
+    },
+    {
+      :label => 'Fiscal Sponsor',
+      :value => @document[:fiscal_sponsor_ssi]
+    },
+    {
+      :label => 'Local Identifier', # Identifiers
+      :value => @document[:local_identifier]
+    },
+    {
+      :label => 'Barcode Identifier',
+      :value => @document[:barcode]
+    },
+    {
+      :label => 'System Identifier',
+      :value => @document[:system_identifier]
+    },
+    {
+      :label => 'DLS Identifier',
+      :value => @document[:dls_identifier]
+    },
+    {
+      :label => 'Persistent URL (PURL)',
+      :value => @document[:persistent_url]
+    },
+    {
+      :label => 'Local Rights Statement', # Can I Use It?
+      :value => @document[:local_rights] ? @document[:local_rights] : rights_statement
+    }]
 
-  #   meta.map do |field|
-  #     field[:value].blank? ? nil : field
-  #  end
-  # end
+    meta.map do |field|
+      field[:value].blank? ? nil : field
+   end
+  end
 
   def attribution
     [ 
