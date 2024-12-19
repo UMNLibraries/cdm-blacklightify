@@ -1,10 +1,10 @@
-class IiifDownloadService
+class IiifTextManifestService
   def initialize(id)
     @id = id
     @document = SolrDocument.find(id)
   end
 
-  def manifesttest
+  def text_manifest
     manifest
   end
 

@@ -44,13 +44,13 @@ class IiifController < ApplicationController
     render json: response
   end
 
-  def manifest2
-    response = IiifAvManifestService.new(params[:id]).manifest2
+  def av_manifest
+    response = IiifAvManifestService.new(params[:id]).av_manifest
     render json: response
   end
 
-  def manifesttest
-    response = IiifDownloadService.new(params[:id]).manifesttest
+  def text_manifesttest
+    response = IiifTextManifestService.new(params[:id]).text_manifest
     render json: response
   end
 end

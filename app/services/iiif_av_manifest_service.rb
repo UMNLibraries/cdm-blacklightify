@@ -1,11 +1,10 @@
 class IiifAvManifestService
-
   def initialize(id)
     @id = id
     @document = SolrDocument.find(id)
   end
 
-  def manifest2
+  def av_manifest
     manifest
   end
 
