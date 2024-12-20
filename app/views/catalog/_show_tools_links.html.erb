@@ -1,0 +1,18 @@
+<ul class="list-group list-group-flush" style="border-top: none;">
+  <li class="list-group-item citation">
+    <%# may be redundant. url is in Cite modal %>
+    <a id="citationLink" class="nav-link" data-turbo="false" href="/catalog/<%= @document.id %>">URL</a>
+  </li>
+  <li class="list-group-item citation">
+    <a id="citationLink" class="nav-link" data-turbo="false" href="/catalog/<%= @document.id %>.json">JSON</a>
+  </li>
+  <li class="list-group-item citation">
+    <%# temporary routing based on item type (repurposing transcript helper). will refactor av/text routes into single manifest.json route . . . %>
+    <% if transcript_tab %>
+      <a id="citationLink" class="nav-link" data-turbo="false" href="/iiif/<%= @document.id %>/av/manifest.json">IIIF Manifest</a>
+    <% else %>
+      <a id="citationLink" class="nav-link" data-turbo="false" href="/iiif/<%= @document.id %>/text/manifest.json">IIIF Manifest</a>
+    <% end %>
+    <a id="citationLink" class="nav-link" data-turbo="false" href="https://iiif.io/community/faq/">What is IIIF?</a>
+  </li>
+</ul>
