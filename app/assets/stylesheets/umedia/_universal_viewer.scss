@@ -89,11 +89,7 @@
 }
 // original file second heading text
 .uvImage .download .middle .content h2:nth-child(4) {
-  color: transparent;
-}
-.uvImage .download .middle .content h2:nth-child(4):before {
-  content: "Original File";
-  color: black;
+  display: none;
 }
 // original file download option text
 .uvImage .download .middle .content ol.options:nth-child(5) li button:before {
