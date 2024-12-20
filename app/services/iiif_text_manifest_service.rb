@@ -202,12 +202,16 @@ class IiifTextManifestService
     "The University of Minnesota believes that this item is protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s). #{@document[:rights_statement_uri]}"
   end
 
+  def rendering_download_path_image_dimensions
+    width, height = iiif_manifest['sequences'][0]['canvases'][0]['width'], iiif_manifest['sequences'][0]['canvases'][0]['height']
+  end
+
   def rendering_download_path
     @document[:viewer_type] == "COMPOUND_PARENT_NO_VIEWER" ? 
     # compound objects
     "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{@id.split(':')[0]}/id/#{@id.split(':')[1]}/filename/print/page/download/fparams/forcedownload" :
     # singular image object
-    "https://cdm16022.contentdm.oclc.org/utils/ajaxhelper?CISOROOT=#{@id.split(':')[0]}&CISOPTR=#{@id.split(':')[1]}&action=2&DMSCALE=100&DMWIDTH=4052&DMHEIGHT=5040"
+    "https://cdm16022.contentdm.oclc.org/utils/ajaxhelper?CISOROOT=#{@id.split(':')[0]}&CISOPTR=#{@id.split(':')[1]}&action=2&DMSCALE=100&DMWIDTH=#{rendering_download_path_image_dimensions[0]}&DMHEIGHT=#{rendering_download_path_image_dimensions[1]}"
   end
 
   def rendering_label
