@@ -55,6 +55,11 @@ module Blacklight
       arr.include?(@document[:types][0])
     end
 
+    def tools_iiif_manifest_link
+      arr = ['Sound', 'Moving Image']
+      arr.include?(@document[:types][0])
+    end
+
     def fullscreen?
       params[:fullscreen] == 'true'
     end

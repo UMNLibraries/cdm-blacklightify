@@ -17,10 +17,6 @@ class IiifTextManifestService
     JSON.parse(parsed_response)
   end
 
-  def canvases
-    iiif_manifest['sequences'][0]['canvases']
-  end
-
   def manifest
     {
       'context' => 'http://iiif.io/api/presentation/2/context.json',
@@ -36,8 +32,15 @@ class IiifTextManifestService
         'rendering' => rendering_property,
         'canvases' => canvases
       }],
-      'structures' => structures
-      # 'viewingHint' => viewingHints needs to be "paged". default out of contentdm is "top"
+      'structures' => [{
+        '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/range/r0',
+        '@type' => 'sc:Range',
+        'label' => @document[:title],
+        'ranges' => iiif_manifest['structures'][0]['ranges'],
+        'canvases' => iiif_manifest['structures'][0]['canvases'],
+      }],
+      # needs to be outside structures to work appropriately . . .
+      'viewingHint' => 'paged'
     }
   end
 
@@ -230,6 +233,10 @@ class IiifTextManifestService
       }]
   end
 
+  def canvases
+    iiif_manifest['sequences'][0]['canvases']
+  end
+  
   def structures
     iiif_manifest['structures']
   end

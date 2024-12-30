@@ -7,8 +7,8 @@
     <a id="citationLink" class="nav-link" data-turbo="false" href="/catalog/<%= @document.id %>.json">JSON</a>
   </li>
   <li class="list-group-item citation">
-    <%# temporary routing based on item type (repurposing transcript helper). will refactor av/text routes into single manifest.json route . . . %>
-    <% if transcript_tab %>
+    <%# temporary routing based on item type. will refactor av/text routes into single manifest.json route . . . %>
+    <% if tools_iiif_manifest_link %>
       <a id="citationLink" class="nav-link" data-turbo="false" href="/iiif/<%= @document.id %>/av/manifest.json">IIIF Manifest</a>
     <% else %>
       <a id="citationLink" class="nav-link" data-turbo="false" href="/iiif/<%= @document.id %>/text/manifest.json">IIIF Manifest</a>
