@@ -30,7 +30,7 @@ module Umedia
             { name: 'date_created_te_split', prefix: ' ', suffix: '.',
               formatters: [Umedia::Citation::Formatters::CommaJoinFormatter] },
             { name: 'contributing_organization_ssi', prefix: ' ', suffix: ', ', formatters: [] },
-            { name: 'id', prefix: '', suffix: '', formatters: [MlaUrlFormatter] },
+            { name: 'id', prefix: ' ', suffix: '', formatters: [MlaUrlFormatter] },
             { name: 'id', prefix: ' Accessed ', suffix: '.', formatters: [MlaDateFormatter] }
           ]
         end
