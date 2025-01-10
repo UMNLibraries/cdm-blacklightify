@@ -14,7 +14,10 @@ module Umedia
           # range
           elsif _value.to_s.scan(/(?=-)/).count == 1
             'ca. ' + _value[0].to_s
-            # iso8601 ?
+          # year only
+          elsif _value[0].to_s.length == 4
+            _value[0].to_s
+          # iso8601 ?
           else
             "#{Date.parse(_value[0]).strftime('%Y, %B %d')}"
           end
