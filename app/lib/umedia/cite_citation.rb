@@ -26,7 +26,7 @@ module Umedia
           {
             creator: solr_doc['creator_ssim'],
             ref_name: 'University of Minnesota',
-            creation_date: solr_doc['dat_ssi'],
+            creation_date: solr_doc['date_created_ssim'],
             title: solr_doc['title_ssi'],
             type: solr_doc['type_ssi'],
             description: solr_doc['description_ts'],
