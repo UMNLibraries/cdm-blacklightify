@@ -28,5 +28,7 @@
     <p class="citation-wikipedia-format">
       <%= Umedia::Citation::Cite.new(mappings: Umedia::Citation::Styles::Wikipedia.mappings, doc: item).to_s %>
     </p>
+    <hr>
+    <p><b>Note:</b> <%= t("blacklight.citation_note")%></p>
   </div>
 <%- end %>

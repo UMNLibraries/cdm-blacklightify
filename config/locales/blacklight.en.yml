@@ -2,6 +2,7 @@ en:
   blacklight:
     application_name: 'Blacklight'
     citation: 'Citation'
+    citation_note: 'These citations are programmatically generated and may be incomplete.'
     transcript: 'Transcript'
     search:
       form:

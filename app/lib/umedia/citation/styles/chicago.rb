@@ -6,11 +6,11 @@ module Umedia
   module Citation
     module Styles
       # ChicagoDateFormatter
-      class ChicagoDateFormatter
-        def self.format(_value)
-          Time.zone.now.strftime('%B %d, %Y')
-        end
-      end
+      # class ChicagoDateFormatter
+      #   def self.format(_value)
+      #     Time.zone.now.strftime('%B %d, %Y')
+      #   end
+      # end
 
       # Chicago
       class Chicago

@@ -5,19 +5,19 @@ require_dependency Rails.root.join('app/lib/umedia/citation/formatters.rb')
 module Umedia
   module Citation
     module Styles
-      # MlaUrlFormatter
-      class MlaUrlFormatter
-        def self.format(value)
-          "umedia.lib.umn.edu/item/#{value}"
-        end
-      end
+      # # MlaUrlFormatter
+      # class MlaUrlFormatter
+      #   def self.format(value)
+      #     "umedia.lib.umn.edu/item/#{value}"
+      #   end
+      # end
 
-      # MlaDateFormatter
-      class MlaDateFormatter
-        def self.format(_value)
-          Time.zone.now.strftime('%d %b %Y')
-        end
-      end
+      # # MlaDateFormatter
+      # class MlaDateFormatter
+      #   def self.format(_value)
+      #     Time.zone.now.strftime('%d %b %Y')
+      #   end
+      # end
 
       # Mla
       class Mla
