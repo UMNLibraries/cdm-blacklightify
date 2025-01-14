@@ -24,13 +24,6 @@ module Umedia
         end
       end
 
-      # ApaAccessedDateFormatter
-      class ApaAccessDateFormatter
-        def self.format(_value)
-          Time.zone.now.strftime('%Y-%m-%d')
-        end
-      end
-
       # APA
       class Apa
         def self.mappings
@@ -39,12 +32,12 @@ module Umedia
               formatters: [Umedia::Citation::Formatters::CommaJoinFormatter] },
             { name: 'date_created_ssim', prefix: ' (', suffix: ').',
               formatters: [ApaDateFormatter] },
-            { name: 'title_ssi', prefix: ' ', suffix: '.',
-              formatters: [Umedia::Citation::Formatters::ItalicizeFormatter] },
-            # { name: 'contributing_organization_ssi', prefix: ' ', suffix: ', ', formatters: [] },
-            { name: 'id', prefix: ' Accessed: ', suffix: '',
-              formatters: [ApaAccessDateFormatter] },
-            { name: 'id', prefix: ', from ', suffix: '',
+            { name: 'title_ssi', prefix: ' ', suffix: '.', formatters: [] },
+            { name: 'parent_collection_name', prefix: ' ', suffix: '. ', formatters: [] },
+            { name: 'contributing_organization', prefix: ' ', suffix: ' ', formatters: [] },
+            { name: 'id', prefix: ' Accessed ', suffix: '',
+              formatters: [Umedia::Citation::Formatters::AccessDateFormatter] },
+            { name: 'id', prefix: ', ', suffix: '',
               formatters: [Umedia::Citation::Formatters::UrlFormatter] }
           ]
         end

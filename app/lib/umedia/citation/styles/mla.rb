@@ -25,13 +25,16 @@ module Umedia
           [
             { name: 'creator_ssim', prefix: '', suffix: '.',
               formatters: [Umedia::Citation::Formatters::CommaJoinFormatter] },
-            { name: 'title_ssi', prefix: ' ', suffix: '.',
+            { name: 'title_ssi', prefix: ' ', suffix: '.', 
               formatters: [Umedia::Citation::Formatters::ItalicizeFormatter] },
-            { name: 'date_created_te_split', prefix: ' ', suffix: '.',
-              formatters: [Umedia::Citation::Formatters::CommaJoinFormatter] },
-            { name: 'contributing_organization_ssi', prefix: ' ', suffix: ', ', formatters: [] },
-            { name: 'id', prefix: ' ', suffix: '', formatters: [MlaUrlFormatter] },
-            { name: 'id', prefix: ' Accessed ', suffix: '.', formatters: [MlaDateFormatter] }
+            { name: 'date_created_ssim', prefix: ' ', suffix: '.',
+              formatters: [Umedia::Citation::Formatters::CreatedDateFormatter] },
+            { name: 'parent_collection_name', prefix: ' ', suffix: '. ', formatters: [] },
+            { name: 'contributing_organization', prefix: ' ', suffix: ' ', formatters: [] },
+            { name: 'id', prefix: ' Accessed ', suffix: '',
+              formatters: [Umedia::Citation::Formatters::AccessDateFormatter] },
+            { name: 'id', prefix: ', ', suffix: '',
+              formatters: [Umedia::Citation::Formatters::UrlFormatter] }
           ]
         end
       end
