@@ -21,10 +21,12 @@
 <div id="content-notice">
   <b>Content notice:</b> Please note that some historical materials may contain harmful content and/or descriptions. <a href="">Learn how we’re addressing it</a>. 
 </div>
+<hr>
+<!-- More Like This Component -->
+<%= render(Umedia::Document::MoreLikeThisComponent.new(document: document)) %>
+<hr>
 <!-- Metadata Fields -->
 <% doc_presenter = document_presenter(document) %>
-<hr>
-
 <% if transcript_tab %>
   <div class="row">
     <div class="col-lg-9">
@@ -52,4 +54,3 @@
     </div>
   </div>
 <% end %>
-<hr>
