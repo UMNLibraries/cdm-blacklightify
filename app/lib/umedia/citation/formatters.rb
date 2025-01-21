@@ -31,7 +31,7 @@ module Umedia
       # UrlFormatter
       class UrlFormatter
         def self.format(value)
-          "https://umedia.lib.umn.edu/item/#{value}"
+          "https://umedia.lib.umn.edu/catalog/#{value}"
         end
       end
 

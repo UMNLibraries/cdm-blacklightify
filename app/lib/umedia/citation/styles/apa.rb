@@ -37,7 +37,7 @@ module Umedia
             { name: 'contributing_organization', prefix: ' ', suffix: ' ', formatters: [] },
             # { name: 'id', prefix: ' Accessed ', suffix: '',
             #   formatters: [Umedia::Citation::Formatters::AccessDateFormatter] },
-            { name: 'id', prefix: ' Retrieved from Umedia, ', suffix: '',
+            { name: 'id', prefix: ' Retrieved from Umedia, ', suffix: '.',
               formatters: [Umedia::Citation::Formatters::UrlFormatter] }
           ]
         end
