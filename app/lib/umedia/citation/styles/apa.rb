@@ -35,9 +35,9 @@ module Umedia
             { name: 'title_ssi', prefix: ' ', suffix: '.', formatters: [] },
             { name: 'parent_collection_name', prefix: ' ', suffix: '. ', formatters: [] },
             { name: 'contributing_organization', prefix: ' ', suffix: ' ', formatters: [] },
-            { name: 'id', prefix: ' Accessed ', suffix: '',
-              formatters: [Umedia::Citation::Formatters::AccessDateFormatter] },
-            { name: 'id', prefix: ', ', suffix: '',
+            # { name: 'id', prefix: ' Accessed ', suffix: '',
+            #   formatters: [Umedia::Citation::Formatters::AccessDateFormatter] },
+            { name: 'id', prefix: ' Retrieved from Umedia, ', suffix: '',
               formatters: [Umedia::Citation::Formatters::UrlFormatter] }
           ]
         end
