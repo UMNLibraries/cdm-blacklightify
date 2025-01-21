@@ -24,10 +24,6 @@
     <p class="citation-chicago-format">
       <%= raw Umedia::Citation::Cite.new(mappings: Umedia::Citation::Styles::Chicago.mappings, doc: item).to_s %>
     </p>
-    <h3>Wikipedia Format</h3>
-    <p class="citation-wikipedia-format">
-      <%= Umedia::Citation::Cite.new(mappings: Umedia::Citation::Styles::Wikipedia.mappings, doc: item).to_s %>
-    </p>
     <hr>
     <p><b>Note:</b> <%= t("blacklight.citation_note")%></p>
   </div>
