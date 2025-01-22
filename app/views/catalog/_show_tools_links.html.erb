@@ -1,14 +1,19 @@
 <ul class="list-group list-group-flush" style="border-top: none;">
-  <li class="list-group-item citation">
-    <a id="citationLink" class="nav-link" data-turbo="false" href="/catalog/<%= @document.id %>.json">JSON</a>
+  <li class="list-group-item">
+    <a class="nav-link" data-turbo="false" href="/catalog/<%= @document.id %>.json">JSON</a>
   </li>
-  <li class="list-group-item citation">
+  
+  <li class="list-group-item">
     <%# temporary routing based on item type. will refactor av/text routes into single manifest.json route . . . %>
     <% if tools_iiif_manifest_link %>
-      <a id="citationLink" class="nav-link" data-turbo="false" href="/iiif/<%= @document.id %>/av/manifest.json">IIIF Manifest</a>
+      <a class="nav-link" data-turbo="false" href="/iiif/<%= @document.id %>/av/manifest.json">IIIF Manifest</a>
     <% else %>
-      <a id="citationLink" class="nav-link" data-turbo="false" href="/iiif/<%= @document.id %>/text/manifest.json">IIIF Manifest</a>
+      <a class="nav-link" data-turbo="false" href="/iiif/<%= @document.id %>/text/manifest.json">IIIF Manifest</a>
     <% end %>
-    <a id="citationLink" class="nav-link" data-turbo="false" href="https://iiif.io/community/faq/">What is IIIF?</a>
+    <a class="nav-link" data-turbo="false" href="https://iiif.io/community/faq/">What is IIIF?</a>
+  </li>
+
+  <li class="list-group-item">
+    <a class="nav-link" data-turbo="false" href="/pages/contact">Contact</a>
   </li>
 </ul>

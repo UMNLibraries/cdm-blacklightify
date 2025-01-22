@@ -101,4 +101,5 @@ public/uv/*
 !.vscode/extensions.json
 !.vscode/*.code-snippets
 
-.github
+.github/*
+.ruby-lsp/*
