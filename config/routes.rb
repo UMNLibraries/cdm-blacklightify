@@ -61,6 +61,10 @@ Rails.application.routes.draw do
     end
   end
 
+  # static pages
+  get 'pages/about'
+  get 'pages/contact'
+
   # Sidekiq Web
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
