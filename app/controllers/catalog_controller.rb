@@ -102,7 +102,8 @@ class CatalogController < ApplicationController
     # Format / format_name
     config.add_facet_field 'format_name', label: 'Format', limit: 4, collapse: false
     # Subject / subject
-    config.add_facet_field 'subject_fast_ss', label: 'Subject', limit: 4, collapse: false
+    # config.add_facet_field 'subject_fast_ss', label: 'Subject', limit: 4, collapse: false
+    config.add_facet_field 'subject_ssm', label: 'Subject', limit: 4, collapse: false
     # Created / date_created
     config.add_facet_field 'date_created', label: 'Date created', limit: 4, collapse: false
     # Collection / collection_name
@@ -132,7 +133,7 @@ class CatalogController < ApplicationController
     # Format / format_name
     config.add_index_field 'format_name', label: 'Format', highlight: true
     # Subject / subject
-    config.add_index_field 'subject', label: 'Subjects', link_to_facet: true, highlight: true,
+    config.add_index_field 'subject_ssm', label: 'Subjects', link_to_facet: true, highlight: true,
                                       separator_options: { two_words_connector: '; ', words_connector: '; ', last_word_connector: '; ' }
 
     # Thumbnails - A helper method that looks for attached image from solr_document_sidecar
