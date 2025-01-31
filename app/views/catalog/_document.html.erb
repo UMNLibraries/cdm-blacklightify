@@ -5,3 +5,9 @@
     <%= render_document_partials document, view_config.partials, component: component, document_counter: document_counter %>
   <% end %>
 <% end %>
+
+<% @document = document %>
+
+<div class="d-flex justify-content-end" style="background-color: #edede9">
+  <a href="<%= download_path %>">download item</a>
+</div>
