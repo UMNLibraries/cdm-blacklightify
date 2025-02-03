@@ -11,5 +11,7 @@
 <div class="d-flex justify-content-end" style="background-color: #edede9">
   <% if !tools_iiif_manifest_link %>
     <a href="<%= download_path %>">download item</a>
+  <% elsif %>
+    <a href="<%= type_selector %>">download item</a>
   <% end %>
 </div>
