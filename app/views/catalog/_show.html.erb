@@ -30,8 +30,19 @@
 <% if transcript_tab %>
   <div class="row">
     <div class="col-lg-9">
-      <div class="nav nav-tabs">Details</div>
-      <%= render partial: "item_details" %>
+      <%= tabs do |c| %>
+        <% c.tab 'Details' do %>
+          <%= render partial: "item_details" %>
+        <% end %>
+        <!-- contionally render "pdf transcript" tab -->
+        <% if @document[:attachment] != nil && @document[:attachment].split(".")[1] == "url" %>
+          <!-- if attachemnt field present AND it ends with a "url", do not render tab and pdf viewer -->
+        <% elsif @document[:attachment] != nil %>
+          <% c.tab 'Transcript', link_class: 'ml-3' do %>
+            <embed src="https://cdm16022.contentdm.oclc.org/utils/getfile/collection/<%= @document[:id].split(":")[0] %>/id/<%= @document[:id].split(":")[1] %>/filename/3716.pdf" width="800" height="750" type="application/pdf">
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
     <div class="col-lg-3">
       <%= render 'show_tools' %>
@@ -39,6 +50,7 @@
   </div>
 <% else %>
   <div class="row">
+
     <div class="col-lg-9">
       <%= tabs do |c| %>
         <% c.tab 'Details' do %>
