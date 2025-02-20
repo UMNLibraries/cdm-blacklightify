@@ -35,8 +35,8 @@
           <%= render partial: "item_details" %>
         <% end %>
         <!-- contionally render "pdf transcript" tab -->
-        <% if @document[:attachment] != nil && @document[:attachment].split(".")[1] == "url" %>
-          <!-- if attachemnt field present AND it ends with a "url", do not render tab and pdf viewer -->
+        <% if attachment_tab %>
+          <!-- if attachment field is present AND it ends with "url" or "jp2", do not render tab and pdf viewer -->
         <% elsif @document[:attachment] != nil %>
           <% c.tab 'PDF Transcript', link_class: 'ml-3' do %>
             <embed src="https://cdm16022.contentdm.oclc.org/utils/getfile/collection/<%= @document[:id].split(":")[0] %>/id/<%= @document[:id].split(":")[1] %>/filename/3716.pdf" width="800" height="750" type="application/pdf">

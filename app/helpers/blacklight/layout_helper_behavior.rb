@@ -55,6 +55,11 @@ module Blacklight
       arr.include?(@document[:types][0])
     end
 
+    def attachment_tab
+      arr = ['url', 'jp2']
+      @document[:attachment] != nil && arr.include?(@document[:attachment].split(".")[1])
+    end
+
     def tools_iiif_manifest_link
       arr = ['Sound', 'Moving Image']
       arr.include?(@document[:types][0])
