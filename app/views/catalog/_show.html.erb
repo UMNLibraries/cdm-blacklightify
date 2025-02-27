@@ -37,7 +37,14 @@
         <!-- contionally render "pdf transcript" tab -->
         <% if attachment_tab %>
           <!-- if attachment field is present AND it ends with "url" or "jp2", do not render tab and pdf viewer -->
+          <!-- based on the logic here and with transcrip_tab, only "sound" types will have this tab ? . . -->
+        <% elsif @document[:attachment_format] == "iiif" %>
+          <% c.tab 'Attachment', link_class: 'ml-3' do %>
+            <%= render partial: 'viewers/uv_image', locals: { document: document } %>
+            <div class="mb-3"></div>
+          <% end %>
         <% elsif @document[:attachment] != nil %>
+        <%# issue, this is being displayed for image items such as posters %>
           <% c.tab 'PDF Transcript', link_class: 'ml-3' do %>
             <embed src="https://cdm16022.contentdm.oclc.org/utils/getfile/collection/<%= @document[:id].split(":")[0] %>/id/<%= @document[:id].split(":")[1] %>/filename/3716.pdf" width="800" height="750" type="application/pdf">
           <% end %>
@@ -50,7 +57,6 @@
   </div>
 <% else %>
   <div class="row">
-
     <div class="col-lg-9">
       <%= tabs do |c| %>
         <% c.tab 'Details' do %>
