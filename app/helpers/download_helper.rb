@@ -6,7 +6,8 @@ module DownloadHelper
     # compound objects
     "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{@document[:id].split(':')[0]}/id/#{@document[:id].split(':')[1]}/filename/print/page/download/fparams/forcedownload" :
     # image
-    "https://cdm16022.contentdm.oclc.org/utils/getstream/collection/#{@document[:id].split(':')[0]}/id/#{@document[:id].split(':')[1]}"
+    # "https://cdm16022.contentdm.oclc.org/utils/getstream/collection/#{@document[:id].split(':')[0]}/id/#{@document[:id].split(':')[1]}"
+    "https://cdm16022.contentdm.oclc.org/iiif/2/#{@document[:id]}/full/!3200,3200/0/default.jpg"
   end
 
   def type_selector
