@@ -5,3 +5,15 @@
     <%= render_document_partials document, view_config.partials, component: component, document_counter: document_counter %>
   <% end %>
 <% end %>
+
+<% @document = document %>
+
+<div class="d-flex justify-content-end" style="background-color: #edede9">
+  <% if !tools_iiif_manifest_link %>
+    <a href="<%= download_path %>" target="_blank">download item</a>
+  <% elsif playlist %>
+    <a href="<%= single_embed %>" target="_blank"> "download" playlist</a>
+  <% elsif %>
+    <a href="<%= type_selector %>" target="_blank">download item</a>
+  <% end %>
+</div>

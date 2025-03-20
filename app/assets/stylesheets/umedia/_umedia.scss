@@ -1,3 +1,5 @@
+@import "bootstrap-icons/font/bootstrap-icons";
+
 html,
 body {
 	font-family: Tahoma, Verdana, sans-serif;
@@ -18,6 +20,12 @@ body {
 
 .show-document > .constraints-container{
 	padding-left: 0;
+}
+#main-search {
+  // padding: 0 0 0 2rem;
+}
+.show-document {
+  padding: 0 3rem;
 }
 
 #umedia {
@@ -43,4 +51,9 @@ body {
 
 #main-container {
 	padding: 0;
+}
+@font-face {
+	font-family: "bootstrap-icons";
+	src: font-url("bootstrap-icons/font/fonts/bootstrap-icons.woff2") format("woff2"),
+		font-url("bootstrap-icons/font/fonts/bootstrap-icons.woff") format("woff");
 }

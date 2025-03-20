@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   concern :searchable, Blacklight::Routes::Searchable.new
 
   # Compatibility with old UMedia JSON views, override what Rails/Blacklight want to do with JSON
-  get '/catalog/:id.json', controller: 'catalog', action: 'raw'
-  get '/item/:id.json', controller: 'catalog', action: 'raw'
+  get '/catalog/:id.json', controller: 'catalog', action: 'full_json'
+  get '/item/:id.json', controller: 'catalog', action: 'full_json'
   # Calling /item with no doc id is a fault
   get '/item', controller: 'catalog', action: 'bad_request_no_search'
 
@@ -52,13 +52,18 @@ Rails.application.routes.draw do
 
   resources :iiif, only: [] do
     member do
-      get :manifest, action: 'show'
+      get :manifest
       get :search
       get :autocomplete
       
-      get :manifest2, action: 'manifest2'
+      get 'av/:manifest', action: 'av_manifest'
+      get 'text/:manifest', action: 'text_manifesttest'
     end
   end
+
+  # static pages
+  get '/about', to: 'pages#about'
+  get '/contact', to: 'pages#contact'
 
   # Sidekiq Web
   require 'sidekiq/web'

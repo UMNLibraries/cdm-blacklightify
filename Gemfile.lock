@@ -323,6 +323,7 @@ GEM
     faraday_middleware (1.2.0)
       faraday (~> 1.0)
     ffi (1.17.0)
+    ffi (1.17.0-arm64-darwin)
     ffi-compiler (1.3.2)
       ffi (>= 1.15.5)
       rake
@@ -503,6 +504,8 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.7.8)
       sprockets-rails (>= 2.0.0)
+    rails-bootstrap-tabs (0.3.4)
+      rails (>= 3.2.11)
     rails-controller-testing (1.0.5)
       actionpack (>= 5.0.1.rc1)
       actionview (>= 5.0.1.rc1)
@@ -753,6 +756,7 @@ DEPENDENCIES
   rack-cors
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.6, >= 6.1.6.1)
+  rails-bootstrap-tabs (~> 0.3.2)
   rails-controller-testing
   rinku
   rsolr (>= 1.0, < 3)

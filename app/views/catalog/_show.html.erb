@@ -13,29 +13,62 @@
       <%= render partial: 'viewers/uv_iiif_manifest', locals: { document: document } %>
   <% end %>
 </div>
-
+<!-- presentation mode link -->
+<div class="d-flex justify-content-center mb-3">
+  <%= link_to "Link to fullscreen", solr_document_path(:fullscreen=>true) %>
+</div>
+<!-- content notice-->
+<div id="content-notice">
+  <b>Content notice:</b> Please note that some historical materials may contain harmful content and/or descriptions. <a href="">Learn how we’re addressing it</a>. 
+</div>
+<hr>
+<!-- More Like This Component -->
+<%= render(Umedia::Document::MoreLikeThisComponent.new(document: document)) %>
+<hr>
 <!-- Metadata Fields -->
 <% doc_presenter = document_presenter(document) %>
-<hr>
-
-<div id="item-details">
-  <% unless locale_choices.empty? %>
-  <ul id="alternate-languages">
-    <% locale_choices.each do |locale_link| %>
-      <li><%= locale_link.html_safe %></li>
-    <% end -%>
-  </ul>
-  <% end %>
-  <% doc_presenter.config_type(current_locale).each do | type, heading | %>
-    <% if doc_presenter.type_arr(type) %>
-     <h3><%= heading %></h3>
-    <% end %>
-
-    <dl class="px-3">
-      <% doc_presenter.each_field( type ) do |field_name, field, field_presenter| %>
-        <% next if field_locale(field_name) != current_locale && localizable_field_name?(field_name) %>
-        <%= render "show_fields", document: document, field_name: field_name, field_presenter: field_presenter, field: field %>
-      <% end -%>
-    </dl>
-  <% end %>
-</div>
+<% if transcript_tab %>
+  <div class="row">
+    <div class="col-lg-9">
+      <%= tabs do |c| %>
+        <% c.tab 'Details' do %>
+          <%= render partial: "item_details" %>
+        <% end %>
+        <!-- contionally render "pdf transcript" tab -->
+        <% if attachment_tab %>
+          <!-- if attachment field is present AND it ends with "url" or "jp2", do not render tab and pdf viewer -->
+          <!-- based on the logic here and with transcrip_tab, only "sound" types will have this tab ? . . -->
+        <% elsif @document[:attachment_format] == "iiif" %>
+          <% c.tab 'Attachment', link_class: 'ml-3' do %>
+            <%= render partial: 'viewers/uv_image', locals: { document: document } %>
+            <div class="mb-3"></div>
+          <% end %>
+        <% elsif @document[:attachment] != nil %>
+        <%# issue, this is being displayed for image items such as posters %>
+          <% c.tab 'PDF Transcript', link_class: 'ml-3' do %>
+            <embed src="https://cdm16022.contentdm.oclc.org/utils/getfile/collection/<%= @document[:id].split(":")[0] %>/id/<%= @document[:id].split(":")[1] %>/filename/3716.pdf" width="800" height="750" type="application/pdf">
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-lg-3">
+      <%= render 'show_tools' %>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-lg-9">
+      <%= tabs do |c| %>
+        <% c.tab 'Details' do %>
+          <%= render partial: "item_details" %>
+        <% end %>
+        <% c.tab 'Transcript', link_class: 'ml-3' do %>
+          <%= render template: "transcript/index" %> 
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-lg-3">
+      <%= render 'show_tools' %>
+    </div>
+  </div>
+<% end %>

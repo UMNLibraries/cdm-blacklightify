@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Methods added to this helper will be available to all templates in the hosting
 # application
 module Blacklight
@@ -29,7 +30,7 @@ module Blacklight
     # Classes used for sizing the main content of a Blacklight page
     # @return [String]
     def main_content_classes
-      'col-lg-9'
+      'col'
     end
 
     ##
@@ -45,6 +46,30 @@ module Blacklight
     # @return [String]
     def container_classes
       'container-fluid'
+    end
+
+    def transcript_tab
+      # if "types" in array, do not display transcript tab . . .
+      # should update this to just display based on presence of 'transcription' field presence instead of being based on item type . . .
+      arr = ['Still Image', 'Sound', 'Moving Image']
+
+      arr.include?(@document[:types][0])
+    end
+
+    def attachment_tab
+      # if attachment type is in array, do not display tab; however, not all jp2 types fall intot this catalogr (holocaust oral history collection)
+      # arr = ['url', 'jp2', 'cpd']
+      arr = ['url', 'cpd']
+      @document[:attachment] != nil && arr.include?(@document[:attachment].split(".")[1])
+    end
+
+    def tools_iiif_manifest_link
+      arr = ['Sound', 'Moving Image']
+      arr.include?(@document[:types][0])
+    end
+
+    def fullscreen?
+      params[:fullscreen] == 'true'
     end
   end
 end
