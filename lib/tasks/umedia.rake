@@ -40,14 +40,24 @@ namespace :umedia do
     task harvest_dev: :environment do
       # mpls          => MDL collection
       # p16022coll548 => MDL Khmer Oral History Project
+
       # p16022coll262 => UMedia video collection
       # p16022coll208 => UMedia WWII poster collection
       # p16022coll171 => UMedia audio collection
       # p16022coll282 => UMedia compound objects (ex. p16022coll282:6571)
       # p16022coll613 => Spanish Lanugage La Prensa
 
+      # p16022coll348 => Department of Botany Records
+      # p16022coll501 => College of Agriculture Records
+
+      # p16022coll397 => Department of African and African American Studies Records
+      # p16022coll215 => Portraying Memories - Portraits & Conversations Survivors of the Shoah
+
+      # example_sets = %w[
+      #   p16022coll262 p16022coll208 p16022coll171 p16022coll282 p16022coll613 p16022coll348 p16022coll501
+      # ]
       example_sets = %w[
-        p16022coll262 p16022coll208 p16022coll171 p16022coll282 p16022coll613
+        p16022coll397 p16022coll215
       ]
       run_etl!(example_sets)
     end
