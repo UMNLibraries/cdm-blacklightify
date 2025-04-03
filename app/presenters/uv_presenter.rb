@@ -10,7 +10,7 @@ class UvPresenter
   end
 
   def paging_enabled
-    format = document[:format_name][0]
+    format = document[:format_name][0] rescue ''
     format.in?(format_name) ? 'pagingEnabled: false' : 'pagingEnabled: true'
   end
 end
