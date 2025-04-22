@@ -2,7 +2,7 @@
 
 require 'cdmbl'
 require 'Umedia/transformer'
-require 'Umedia/job_auditing'
+# require 'Umedia/job_auditing'
 
 module Umedia
   ###

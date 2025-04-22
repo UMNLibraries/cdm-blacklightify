@@ -71,5 +71,11 @@ namespace :umedia do
       system("gunzip -c '#{importfile}' | #{Rails.root.join('tmp/solr/bin/post').to_s} -url '#{ENV.fetch('SOLR_URL')}/update' -commit yes -type application/json -d")
     end
     # rubocop:enable Rails/FilePath
+
+    # t e s t ing index from single collection
+    desc 'Index Transcripts from a Single Collection'
+    task :collection_transcript, [:set_spec] => :environment do |_t, args|
+      TranscriptsIndexerWorker.perform_async(1, args[:set_spec])
+    end
   end
 end
