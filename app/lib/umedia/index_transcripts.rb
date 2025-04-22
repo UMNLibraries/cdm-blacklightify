@@ -15,7 +15,7 @@ module Umedia
     def initialize(set_spec: false,
                    page: 1,
                    rows: 1000,
-                   solr_client: SolrClient,
+                   solr_client: blacklight_solr,
                    full_transcript: FullTranscript,
                    after_date: false)
       @set_spec = set_spec
@@ -92,6 +92,10 @@ module Umedia
         fl: '*',
         fq: ['record_type:primary', '!page_count:0']
       }).fetch('response', {})
+    end
+
+    def blacklight_solr
+      Blacklight.default_index.connection
     end
   end
 end
