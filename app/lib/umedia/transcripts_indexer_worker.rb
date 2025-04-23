@@ -7,15 +7,6 @@ module Umedia
 
     attr_writer :indexer_klass
     attr_reader :page, :set_spec, :after_date
-
-    def initialize(set_spec: false,
-                   page: 1,
-                   after_date: false)
-      @set_spec = set_spec
-      @page = page
-      @after_date = after_date
-    end
-
     def perform(page = 1, set_spec = false, after_date = false)
       @page = page
       @set_spec = set_spec
