@@ -21,7 +21,7 @@ module Umedia
       @set_spec = set_spec
       @page = page
       @rows = rows
-      @solr_client = solr_client.new
+      @solr_client = solr_client
       @full_transcript = full_transcript
       @after_date = after_date
     end

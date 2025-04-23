@@ -75,7 +75,7 @@ namespace :umedia do
     # test/index from single collection
     desc 'Index Transcripts from a Single Collection'
     task :collection_transcript, [:set_spec] => :environment do |_t, args|
-      TranscriptsIndexerWorker.perform_async(1, args[:set_spec])
+      Umedia::TranscriptsIndexerWorker.perform_async(1, args[:set_spec])      
     end
   end
 end
