@@ -7,9 +7,11 @@ module Umedia
   # Item as well
   class FullTranscript
     attr_reader :item, :search_config, :child_search_klass
-    def initialize(item: :MISSING_ITEM,
+    def initialize(
+                  # item: :MISSING_ITEM,
+                   item: 'p16022coll613:992',
                    item_klass: Parhelion::Item,
-                   search_config: Parhelion::SearchConfig,
+                   search_config: Umedia::SearchConfig,
                    child_search_klass: ChildSearch)
       @item          = item
       @search_config = search_config
@@ -17,13 +19,16 @@ module Umedia
     end
 
     def to_s
+      # if transcript field of parent is already populated, convert to string. else leave it empty and get the child transcripts  . .  ?
+  
       (transcript ? transcript.to_s : '') + child_transcripts
     end
 
-    private
+    # private
 
     def transcript
-      item.field_transcription.value
+      # item.field_transcription.value
+      item
     end
 
     def child_transcripts
@@ -33,9 +38,10 @@ module Umedia
               .join(' ')
     end
 
+    # the actual child searching part
     def children
       @child_search ||=
-        child_search_klass.new(parent_id: item.index_id,
+        child_search_klass.new(parent_id: item,
                                search_config: transcript_config).items
     end
 
