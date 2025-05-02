@@ -12,7 +12,9 @@ module Umedia
   # nested children
   class IndexTranscripts
     attr_reader :set_spec, :page, :rows, :solr_client, :full_transcript, :after_date
-    def initialize(set_spec: 'p16022coll613',
+    def initialize(
+                  #  set_spec: false,
+                   set_spec: 'p16022coll613',
                    page: 1,
                    rows: 1000,
                    solr_client: blacklight_solr,
@@ -39,9 +41,15 @@ module Umedia
       docs_with_transcripts.length <= 0
     end
 
-    # rewrite this so the logger works correctly ?
     def ids
       docs_with_transcripts.map { |doc| doc['id'] }.join(' ')
+    end
+
+    # for each item(parent), map . . .
+    def docs_with_transcripts
+      items.map do |item|
+        full_transcript.new.child_response(item)
+      end.compact
     end
 
     # def docs_with_transcripts
@@ -54,24 +62,26 @@ module Umedia
       sanitize(doc.merge('transcription' => transcript)) if transcript != ''
     end
 
-    def child_transcripts(item)
-      child_response(item)['docs'].map { |child| child['transcription'] }
-                                  .uniq
-                                  .reject(&:blank?)
-                                  .join(' ')
-    end
+    # concatenates child doc transcription fields from child_response
+    # def child_transcripts(item)
+    #   child_response(item)['docs'].map { |child| child['transcription'] }
+    #                               .uniq
+    #                               .reject(&:blank?)
+    #                               .join(' ')
+    # end
 
+    # may not need this? currently targeting the 'transcription' field very specifically
     def sanitize(doc)
       doc.delete_if { |key, value| key =~ (/_(s|ss|t|)($|_$)/) }
     end
 
-    # def items
-    #   docs.map { |doc| to_item(doc['id']) }
-    # end 
+    def items
+      docs.map { |doc| doc['id'] }
+    end 
 
-    # def docs
-    #   response.fetch('docs', [])
-    # end
+    def docs
+      response.fetch('docs', [])
+    end
 
     # def to_item(id)
     #   Rails.cache.fetch("item/#{id}") do
@@ -80,7 +90,6 @@ module Umedia
     # end
 
     def q
-      # if set_spec; otherwise, return everything w/o matching (faster than *)
       set_spec ? "set_spec:#{set_spec}" : '*:*'
     end
 
@@ -101,17 +110,16 @@ module Umedia
     end
 
     # children getter
-    def child_response(item)
-      @response ||= solr_client.paginate(page, rows, 'select', params: {
-        q: 'parent_id:' + item.to_s,
-        rows: '50000',
-        hl: 'on',
-        sort: 'child_index asc',
-        'hl.method': 'original',
-        fl: 'transcription'
-        # fq: ['id:p16022coll613\:984'],
-      }).fetch('response', {})
-    end
+    # def child_response(item)
+    #   @response ||= solr_client.paginate(page, rows, 'select', params: {
+    #     q: 'parent_id:' + item.to_s,
+    #     rows: '50000',
+    #     hl: 'on',
+    #     sort: 'child_index asc',
+    #     'hl.method': 'original',
+    #     fl: 'transcription'
+    #   }).fetch('response', {})
+    # end
 
     def blacklight_solr
       Blacklight.default_index.connection
