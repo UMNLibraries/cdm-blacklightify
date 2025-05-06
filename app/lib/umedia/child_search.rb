@@ -9,26 +9,18 @@ module Umedia
 
     attr_reader :search_config, :parent_id, :client, :item_list_klass, :include_attachments
 
-    def initialize(
-                  #  parent_id: :MISSING_PARENT_ID,
-                   parent_id: 'p16022coll613:992',
-                   page: 1,
-                   rows: 1000,
-                   search_config: Umedia::SearchConfig,
-                   
-                  #  client: SolrClient,
-                  solr_client: blacklight_solr,
-                  #  item_list_klass: Parhelion::ItemList,
+    def initialize(parent_id: :MISSING_PARENT_ID,
+                   search_config: Parhelion::SearchConfig,
+                   client: SolrClient,
+                   item_list_klass: Parhelion::ItemList,
                    include_attachments: true)
 
       raise_missing(parent_id, :MISSING_PARENT_ID)
-      
+
       @search_config = search_config
       @parent_id = parent_id
-      @page = page
-      @rows = rows
       @include_attachments = include_attachments
-      @solr_client = solr_client
+      @client = client
       @item_list_klass = item_list_klass
     end
 
@@ -36,13 +28,12 @@ module Umedia
       raise ArgumentError.new("Required Argument: #{arg}") if arg == cond
     end
 
-    # this and num_found kind of dont matter
     def empty?
       num_found == 0
     end
+
     def num_found
-      # response['response']['numFound']
-      response['numFound']
+      response['response']['numFound']
     end
 
     def items
@@ -53,28 +44,10 @@ module Umedia
       response['highlighting']
     end
 
-    # private
+    private
 
     def response
-      # @response ||= client.new.solr.paginate page, rows, 'child_search', params: params
-      @response ||= blacklight_solr.paginate(page, rows, 'select', params: {
-        # q: q + date_query,
-        q: 'p16022coll613:992',
-        # sort: 'id desc',
-        # fl: '*',
-        # fq: ['record_type:primary', '!page_count:0']
-        hl: 'on',
-        sort: 'child_index asc',
-        'hl.method': 'original',
-        fq: []
-      }).fetch('response', {})
-
-      # @response ||= solr_client.paginate(page, rows, 'select', params: {
-      #   q: q + date_query,
-      #   sort: 'id desc',
-      #   fl: '*',
-      #   fq: ['record_type:primary', '!page_count:0']
-      # }).fetch('response', {})
+      @response ||= client.new.solr.paginate page, rows, 'child_search', params: params
     end
 
     def default_fq
@@ -93,10 +66,5 @@ module Umedia
         fq: search_config.fq + default_fq
       )
     end
-
-    def blacklight_solr
-      Blacklight.default_index.connection
-    end
-    
   end
 end

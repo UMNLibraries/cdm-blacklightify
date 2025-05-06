@@ -13,8 +13,8 @@ module Umedia
   class IndexTranscripts
     attr_reader :set_spec, :page, :rows, :solr_client, :full_transcript, :after_date
     def initialize(
-                  #  set_spec: false,
-                   set_spec: 'p16022coll613',
+                   set_spec: false,
+                  #  set_spec: 'p16022coll613',
                    page: 1,
                    rows: 1000,
                    solr_client: blacklight_solr,
@@ -33,9 +33,9 @@ module Umedia
       Rails.logger.info "Enriched transcripts for items: #{ids}" unless empty?
     end
 
-    # def next_page
-    #   page + 1
-    # end
+    def next_page
+      page + 1
+    end
 
     def empty?
       docs_with_transcripts.length <= 0
@@ -48,7 +48,8 @@ module Umedia
     # for each item(parent), map . . .
     def docs_with_transcripts
       items.map do |item|
-        full_transcript.new.child_response(item)
+        full_transcript.new.child_transcripts(item)
+        # item.hash.merge(full_transcript.new.child_transcripts(item))
       end.compact
     end
 
@@ -58,16 +59,8 @@ module Umedia
     #   end.compact
     # end
 
-    def with_transcript(doc, transcript)
-      sanitize(doc.merge('transcription' => transcript)) if transcript != ''
-    end
-
-    # concatenates child doc transcription fields from child_response
-    # def child_transcripts(item)
-    #   child_response(item)['docs'].map { |child| child['transcription'] }
-    #                               .uniq
-    #                               .reject(&:blank?)
-    #                               .join(' ')
+    # def with_transcript(doc, transcript)
+    #   sanitize(doc.merge('transcription' => transcript)) if transcript != ''
     # end
 
     # may not need this? currently targeting the 'transcription' field very specifically
@@ -108,18 +101,6 @@ module Umedia
         fq: ['record_type:primary', '!page_count:0']
       }).fetch('response', {})
     end
-
-    # children getter
-    # def child_response(item)
-    #   @response ||= solr_client.paginate(page, rows, 'select', params: {
-    #     q: 'parent_id:' + item.to_s,
-    #     rows: '50000',
-    #     hl: 'on',
-    #     sort: 'child_index asc',
-    #     'hl.method': 'original',
-    #     fl: 'transcription'
-    #   }).fetch('response', {})
-    # end
 
     def blacklight_solr
       Blacklight.default_index.connection
