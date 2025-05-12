@@ -3,7 +3,6 @@ module Umedia
     attr_reader :item, :page, :rows, :solr_client
     def initialize(
                    item: :MISSING_ITEM,
-                  #  item: 'p16022coll613:7616',
                    page: 1,
                    rows: 1000,
                    solr_client: blacklight_solr)

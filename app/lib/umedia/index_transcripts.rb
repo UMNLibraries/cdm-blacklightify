@@ -14,7 +14,6 @@ module Umedia
     attr_reader :set_spec, :page, :rows, :solr_client, :full_transcript, :after_date
     def initialize(
                    set_spec: false,
-                  #  set_spec: 'p16022coll613',
                    page: 1,
                    rows: 1000,
                    solr_client: blacklight_solr,
@@ -29,8 +28,10 @@ module Umedia
     end
 
     def index!
-      solr_client.add(docs_with_transcripts)
-      Rails.logger.info "Enriched transcripts for items: #{ids}" unless empty?
+      unless empty?
+        solr_client.add(docs_with_transcripts)
+        Rails.logger.info "Enriched transcripts for items: #{ids}"
+      end
     end
 
     def next_page
@@ -45,23 +46,11 @@ module Umedia
       docs_with_transcripts.map { |doc| doc['id'] }.join(' ')
     end
 
-    # for each item(parent), map . . .
     def docs_with_transcripts
       items.map do |item|
         full_transcript.new.child_transcripts(item)
-        # item.hash.merge(full_transcript.new.child_transcripts(item))
       end.compact
     end
-
-    # def docs_with_transcripts
-    #   @docs_with_transcripts ||= items.map do |item|
-    #     with_transcript(item.doc_hash, full_transcript.new(item: item).to_s)
-    #   end.compact
-    # end
-
-    # def with_transcript(doc, transcript)
-    #   sanitize(doc.merge('transcription' => transcript)) if transcript != ''
-    # end
 
     # may not need this? currently targeting the 'transcription' field very specifically
     def sanitize(doc)
@@ -75,12 +64,6 @@ module Umedia
     def docs
       response.fetch('docs', [])
     end
-
-    # def to_item(id)
-    #   Rails.cache.fetch("item/#{id}") do
-    #     Umedia::ItemSearch.new(id: id).item
-    #   end
-    # end
 
     def q
       set_spec ? "set_spec:#{set_spec}" : '*:*'
