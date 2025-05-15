@@ -48,7 +48,7 @@ module Umedia
 
     def docs_with_transcripts
       items.map do |item|
-        full_transcript.new.child_transcripts(item)
+        full_transcript.new.child_transcripts
       end.compact
     end
 
