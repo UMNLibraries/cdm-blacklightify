@@ -15,8 +15,10 @@
 </div>
 
 <script>
+  let transcriptPath = "/" + location.href.split('/').slice(-2).join('/') + "/transcript";
+
   $.ajax({
-    url: location.href + "/transcript",
+    url: transcriptPath,
     cache: false,
     success: function(html){
       $("#transcript_hello").append(html);
