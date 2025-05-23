@@ -33,10 +33,10 @@ class TranscriptController < ApplicationController
   # get transcript results from the solr index
   def index
     super
-    respond_to do |format|
-      format.html do
-        return render layout: false if request.xhr?
-      end
-    end
+    # respond_to do |format|
+    #   format.html do
+    #     return render layout: false if request.xhr?
+    #   end
+    # end
   end
 end

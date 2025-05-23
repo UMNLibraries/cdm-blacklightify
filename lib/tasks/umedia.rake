@@ -38,9 +38,6 @@ namespace :umedia do
 
     desc 'Harvest a sample set of collections into Solr for development purposes'
     task harvest_dev: :environment do
-      # mpls          => MDL collection
-      # p16022coll548 => MDL Khmer Oral History Project
-
       # p16022coll262 => UMedia video collection
       # p16022coll208 => UMedia WWII poster collection
       # p16022coll171 => UMedia audio collection
@@ -49,7 +46,6 @@ namespace :umedia do
 
       # p16022coll348 => Department of Botany Records
       # p16022coll501 => College of Agriculture Records
-
       # p16022coll397 => Department of African and African American Studies Records
       # p16022coll215 => Portraying Memories - Portraits & Conversations Survivors of the Shoah
 
@@ -57,8 +53,9 @@ namespace :umedia do
       #   p16022coll262 p16022coll208 p16022coll171 p16022coll282 p16022coll613 p16022coll348 p16022coll501
       # ]
       example_sets = %w[
-        p16022coll397 p16022coll215
+        p16022coll262 p16022coll208 p16022coll171 p16022coll282 p16022coll613
       ]
+
       run_etl!(example_sets)
     end
 

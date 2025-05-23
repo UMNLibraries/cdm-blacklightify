@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-#
+
 require 'fileutils'
 
 namespace :umedia do
@@ -71,5 +71,27 @@ namespace :umedia do
       system("gunzip -c '#{importfile}' | #{Rails.root.join('tmp/solr/bin/post').to_s} -url '#{ENV.fetch('SOLR_URL')}/update' -commit yes -type application/json -d")
     end
     # rubocop:enable Rails/FilePath
+
+    # concatenate transcripts from single collection
+    desc 'Index Transcripts from a Single Collection'
+    task :collection_transcripts, [:set_spec] => :environment do |_t, args|
+      Umedia::TranscriptsIndexerWorker.perform_async(1, args[:set_spec])      
+    end
+
+    # concatenate transcripts from all collections . . .
+    desc 'Index Transcripts from Example Sets'
+    task collection_transcripts_dev: :environment do
+      # p16022coll208 => UMedia WWII poster collection
+      # p16022coll282 => UMedia compound objects (ex. p16022coll282:6571)
+      # p16022coll613 => Spanish Lanugage La Prensa
+
+      example_sets = %w[
+         p16022coll208 p16022coll282 p16022coll613 
+      ]
+
+      example_sets.each do 
+        |set_spec| Umedia::TranscriptsIndexerWorker.perform_async(1, set_spec)
+      end
+    end
   end
 end
