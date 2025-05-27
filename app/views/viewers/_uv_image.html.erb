@@ -1,5 +1,5 @@
 <% content_for(:head) do %>
-  <%= javascript_include_tag "/uv/UV.js" %>
+  <%= javascript_include_tag "/uv/UV.js" %> 
   <%= stylesheet_link_tag "/uv/uv.css" %>
 <% end %>
 
@@ -9,7 +9,7 @@
   </div>
 <% end %>
 
-<div id="uv" class="uv uvImage" style="<%= params[:fullscreen]? 'width: 100vw; height: 100vh;' : 'height: 50vh;' %>"></div>
+<div id="uv" class="uv uvImage" style="<%= params[:fullscreen]? 'width: 99.25vw; height: 100vh;' : 'height: 50vh;' %>"></div>
 
 <script>
   var uv = UV.init(
