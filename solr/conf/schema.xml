@@ -196,13 +196,13 @@
   <field name="city" type="text_en" indexed="true" stored="true" multiValued="true" />
   <copyField source="city" dest="city_ssim" />
   <field name="state" type="text_en" indexed="true" stored="true" multiValued="true" />
-  <copyField source="state" dest="state_tesim" />
+  <copyField source="state" dest="state_ssim" />
   <field name="country" type="text_en" indexed="true" stored="true" multiValued="true" />
-  <copyField source="country" dest="country_tesim" />
+  <copyField source="country" dest="country_ssim" />
   <field name="region" type="text_en" indexed="true" stored="true" multiValued="true" />
-  <copyField source="region" dest="region_tesim" />
+  <copyField source="region" dest="region_ssim" />
   <field name="continent" type="text_en" indexed="true" stored="true" multiValued="true" />
-  <copyField source="continent" dest="continent_tesim" />
+  <copyField source="continent" dest="continent_ssim" />
   <field name="geonames" type="string" indexed="true" stored="true" multiValued="true" />
   <copyField source="geonames" dest="geonam_ssim" />
   <field name="projection" type="string" indexed="true" stored="true" />
