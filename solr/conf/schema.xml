@@ -175,8 +175,8 @@
   <field name="creator_sort" type="text_gen_sort" indexed="true" stored="true" multiValued="false" />
   <copyField source="creator" dest="creator_ssim" />
   <copyField source="creator" dest="creator_tesim" />
-
   <field name="contributor" type="text_en" indexed="true" stored="true" multiValued="true" />
+  <copyField source="contributor" dest="contributor_ssim" />
   <field name="publisher" type="text_en" indexed="true" stored="true" multiValued="true" />
   <field name="caption" type="text_en" indexed="true" stored="true" />
   <field name="notes" type="text_en" indexed="true" stored="true" />
@@ -338,7 +338,6 @@
   <copyField source="title_alternative" dest="title_alternative_t"/>
   <copyField source="publisher" dest="publisher_s"/>
   <copyField source="publisher" dest="publisher_t"/>
-  <copyField source="contributor" dest="contributor_ssm"/>
   <copyField source="subject" dest="subject_ssm"/>
   <copyField source="subject_fast" dest="subject_fast_ss"/>
   <copyField source="collection_name" dest="collection_name_s"/>

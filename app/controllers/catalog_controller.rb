@@ -15,7 +15,7 @@ class CatalogController < ApplicationController
   UMEDIA_SHOW_FIELDS = {
     default: %w[],
     # default: %w[ object ],
-    primary: %w[title title_alternative description date_created creator contributor publisher_s historical_era caption
+    primary: %w[title title_alternative description date_created creator contributor_ssim publisher_s historical_era caption
                 notes],
     topic: %w[subject_ssm language],
     phys_desc: %w[types format_name dimensions],
@@ -28,6 +28,7 @@ class CatalogController < ApplicationController
 
   UMEDIA_LINK_TO_FACET_FIELDS = %w[
     creator
+    contributor_ssim
     publisher_s
     subject_ssm
     language
@@ -120,14 +121,14 @@ class CatalogController < ApplicationController
     # Publisher / publisher
     config.add_facet_field 'publisher_s', label: 'Publisher', limit: 4, collapse: true
     # Contributor / contributor
-    config.add_facet_field 'contributor', label: 'Contributor', limit: 4, collapse: true
+    config.add_facet_field 'contributor_ssim', label: 'Contributor', limit: 4, collapse: true
     # Geographic Fields
     # config.add_facet_field 'city', show: false
-    config.add_facet_field 'city_ssim', label: 'city', collapse: true
-    config.add_facet_field 'state_ssim', label: 'state', collapse: true
-    config.add_facet_field 'country_ssim', label: 'country', collapse: true
-    config.add_facet_field 'region_ssim', label: 'region', collapse: true
-    config.add_facet_field 'continent_ssim', label: 'continent', collapse: true
+    config.add_facet_field 'city_ssim', label: 'City', collapse: true
+    config.add_facet_field 'state_ssim', label: 'State', collapse: true
+    config.add_facet_field 'country_ssim', label: 'Country', collapse: true
+    config.add_facet_field 'region_ssim', label: 'Region', collapse: true
+    config.add_facet_field 'continent_ssim', label: 'Continent', collapse: true
 
     # SEARCH RESULTS FIELDS
     config.add_index_field 'title', label: 'Title', highlight: true
