@@ -15,33 +15,32 @@ class CatalogController < ApplicationController
   UMEDIA_SHOW_FIELDS = {
     default: %w[],
     # default: %w[ object ],
-    primary: %w[title title_alternative description date_created creator contributor publisher historical_era caption
+    primary: %w[title title_alternative description date_created creator contributor_ssim publisher_s historical_era caption
                 notes],
-    topic: %w[subject language],
+    topic: %w[subject_ssm language],
     phys_desc: %w[types format_name dimensions],
-    geo_loc: %w[city state country region continent projection scale coordinates geonames],
-    coll_info: %w[collection_name parent_collection_name contributing_organization contact_information fiscal_sponsor
-                  fiscal_sponsor_ssi],
+    geo_loc: %w[city_ssim state_ssim country_ssim region_ssim continent_ssim projection scale coordinates geonames],
+    coll_info: %w[collection_name_s parent_collection_name contributing_organization_name_s contact_information fiscal_sponsor],
     identifiers: %w[local_identifier barcode system_identifier dls_identifier persistent_url],
     use: %w[local_rights rights_statement_uri additional_rights_information standardized_rights
             expected_public_domain_year]
   }
 
   UMEDIA_LINK_TO_FACET_FIELDS = %w[
-    subject
     creator
-    publisher
+    contributor_ssim
+    publisher_s
+    subject_ssm
+    language
     types
     format_name
-    subject
-    language
-    continent
-    country
-    state
-    city
-    region
-    contributing_organization
-    collection_name
+    city_ssim
+    state_ssim
+    country_ssim
+    region_ssim
+    continent_ssim
+    collection_name_s
+    contributing_organization_name_s
   ]
 
   configure_blacklight do |config|
@@ -122,7 +121,14 @@ class CatalogController < ApplicationController
     # Publisher / publisher
     config.add_facet_field 'publisher_s', label: 'Publisher', limit: 4, collapse: true
     # Contributor / contributor
-    config.add_facet_field 'contributor', label: 'Contributor', limit: 4, collapse: true
+    config.add_facet_field 'contributor_ssim', label: 'Contributor', limit: 4, collapse: true
+    # Geographic Fields
+    # config.add_facet_field 'city', show: false
+    config.add_facet_field 'city_ssim', label: 'City', collapse: true
+    config.add_facet_field 'state_ssim', label: 'State', collapse: true
+    config.add_facet_field 'country_ssim', label: 'Country', collapse: true
+    config.add_facet_field 'region_ssim', label: 'Region', collapse: true
+    config.add_facet_field 'continent_ssim', label: 'Continent', collapse: true
 
     # SEARCH RESULTS FIELDS
     config.add_index_field 'title', label: 'Title', highlight: true

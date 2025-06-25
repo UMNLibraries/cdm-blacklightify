@@ -175,8 +175,8 @@
   <field name="creator_sort" type="text_gen_sort" indexed="true" stored="true" multiValued="false" />
   <copyField source="creator" dest="creator_ssim" />
   <copyField source="creator" dest="creator_tesim" />
-
   <field name="contributor" type="text_en" indexed="true" stored="true" multiValued="true" />
+  <copyField source="contributor" dest="contributor_ssim" />
   <field name="publisher" type="text_en" indexed="true" stored="true" multiValued="true" />
   <field name="caption" type="text_en" indexed="true" stored="true" />
   <field name="notes" type="text_en" indexed="true" stored="true" />
@@ -196,13 +196,13 @@
   <field name="city" type="text_en" indexed="true" stored="true" multiValued="true" />
   <copyField source="city" dest="city_ssim" />
   <field name="state" type="text_en" indexed="true" stored="true" multiValued="true" />
-  <copyField source="state" dest="state_tesim" />
+  <copyField source="state" dest="state_ssim" />
   <field name="country" type="text_en" indexed="true" stored="true" multiValued="true" />
-  <copyField source="country" dest="country_tesim" />
+  <copyField source="country" dest="country_ssim" />
   <field name="region" type="text_en" indexed="true" stored="true" multiValued="true" />
-  <copyField source="region" dest="region_tesim" />
+  <copyField source="region" dest="region_ssim" />
   <field name="continent" type="text_en" indexed="true" stored="true" multiValued="true" />
-  <copyField source="continent" dest="continent_tesim" />
+  <copyField source="continent" dest="continent_ssim" />
   <field name="geonames" type="string" indexed="true" stored="true" multiValued="true" />
   <copyField source="geonames" dest="geonam_ssim" />
   <field name="projection" type="string" indexed="true" stored="true" />
@@ -338,7 +338,6 @@
   <copyField source="title_alternative" dest="title_alternative_t"/>
   <copyField source="publisher" dest="publisher_s"/>
   <copyField source="publisher" dest="publisher_t"/>
-  <copyField source="contributor" dest="contributor_ssm"/>
   <copyField source="subject" dest="subject_ssm"/>
   <copyField source="subject_fast" dest="subject_fast_ss"/>
   <copyField source="collection_name" dest="collection_name_s"/>
