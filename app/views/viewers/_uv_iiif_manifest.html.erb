@@ -11,6 +11,19 @@
 
 <div id="uv" class="uv uvCompound" style="<%= params[:fullscreen]? 'width: 99.25vw; height: 100vh;' : 'height: 50vh;' %>"></div>
 
+
+<script>
+  var uv = UV.init(
+    "uv",
+    {
+      manifest: "https://cdm16022.contentdm.oclc.org/iiif/2/<%= document.id %>/manifest.json",
+      config: "/uv/config.json",
+    },
+  );
+</script>
+
+<!--
+
 <% uvconfig = UvPresenter.new(@document) %>
 
 <script>
@@ -46,3 +59,5 @@
     });
   });
 </script>
+
+-->
