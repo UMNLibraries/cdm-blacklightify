@@ -11,17 +11,6 @@
 
 <div id="uv" class="uv uvCompound" style="<%= params[:fullscreen]? 'width: 99.25vw; height: 100vh;' : 'height: 50vh;' %>"></div>
 
-<script>
-  var uv = UV.init(
-    "uv",
-    {
-      manifest: "https://cdm16022.contentdm.oclc.org/iiif/2/<%= document.id %>/manifest.json",
-      config: "/uv/config.json",
-    },
-  );
-</script>
-
-<!--
 <% uvconfig = UvPresenter.new(@document) %>
 
 <script>
@@ -35,18 +24,7 @@
   // need to sort out uvconfig file and move these . . .
   uv.on("configure", function ({ config, cb }) {
     cb({
-      options: {
-        <%= uvconfig.paging_enabled %>,
-        rightPanelEnabled: true,
-        useArrowKeysToNavigate: true,
-        termsOfUseEnabled: false
-      },
       modules: {
-        footerPanel: {
-          options: {
-            fullscreenEnabled: false,
-          }
-        },
         pagingHeaderPanel: {
           options: {
             autoCompleteBoxEnabled: false,
@@ -56,5 +34,16 @@
       }
     });
   });
+</script>
+
+<!--
+<script>
+  var uv = UV.init(
+    "uv",
+    {
+      manifest: "https://cdm16022.contentdm.oclc.org/iiif/2/<%= document.id %>/manifest.json",
+      config: "/uv/config.json",
+    },
+  );
 </script>
 -->
