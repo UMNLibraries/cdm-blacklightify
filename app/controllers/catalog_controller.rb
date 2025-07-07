@@ -17,7 +17,7 @@ class CatalogController < ApplicationController
     # default: %w[ object ],
     primary: %w[title title_alternative description date_created creator contributor_ssim publisher_s historical_era caption
                 notes],
-    topic: %w[subject_ssm language],
+    topic: %w[subject_ssm subject_fast_ssim language],
     phys_desc: %w[types format_name dimensions],
     geo_loc: %w[city_ssim state_ssim country_ssim region_ssim continent_ssim projection scale coordinates geonames],
     coll_info: %w[collection_name_s parent_collection_name contributing_organization_name_s contact_information fiscal_sponsor],
@@ -31,6 +31,7 @@ class CatalogController < ApplicationController
     contributor_ssim
     publisher_s
     subject_ssm
+    subject_fast_ssim
     language
     types
     format_name

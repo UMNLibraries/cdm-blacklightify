@@ -339,7 +339,7 @@
   <copyField source="publisher" dest="publisher_s"/>
   <copyField source="publisher" dest="publisher_t"/>
   <copyField source="subject" dest="subject_ssm"/>
-  <copyField source="subject_fast" dest="subject_fast_ss"/>
+  <copyField source="subject_fast" dest="subject_fast_ssim"/>
   <copyField source="collection_name" dest="collection_name_s"/>
   <copyField source="super_collection_names" dest="super_collection_names_ssm"/>
   <copyField source="contributing_organization_name" dest="contributing_organization_name_s"/>
