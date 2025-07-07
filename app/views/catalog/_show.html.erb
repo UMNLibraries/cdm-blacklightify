@@ -72,3 +72,19 @@
     </div>
   </div>
 <% end %>
+
+<script>
+  const manifest = uv.options.data.iiifManifestId;
+
+  const btn = document.querySelector(".ml-3");
+
+  btn.addEventListener("click", () => {
+    var uv = UV.init(
+      "uv",
+      {
+        manifest: manifest,
+        config: "/uv/config.json",
+      },
+    );
+  });
+</script>
