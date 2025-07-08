@@ -3,14 +3,17 @@
   <div class="card-body">
     <ul class="list-group list-group-horizontal justify-content-center">
       <% @document.more_like_this.each do |document| %>
+
         <li class="list-group-item">
-          <%= link_to solr_document_path(document) do %>
-            <!-- new spotligh exhibit friendly link: requires styling . . . -->
-            <%= link_to_document(document, image_tag(document.cdm_thumbnail, { alt: document.fetch(:title_ssi), class: 'rounded mx-auto d-block mt-1' }), counter: nil) %>
-            <h5 class="mlt-title mb-0 mt-3" style="font-size: 1rem"><%= link_to_document @document %></h5>
-          <% end %>
+          <%= link_to_document(document, image_tag(document.cdm_thumbnail), counter: nil, class: "d-flex justify-content-center") %>
+          <%= document.fetch(:title_ssi).truncate(30) %>
         </li>
+
       <% end %>
     </ul>
   </div>
 </div>
+
+<style>
+
+</style>
