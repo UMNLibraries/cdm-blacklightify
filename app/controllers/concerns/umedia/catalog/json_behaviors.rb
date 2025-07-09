@@ -19,8 +19,20 @@ module Umedia
 
       def children_append
         {
-          'children' => get_children['response']['docs']
+          'children' => child_chunk
         }
+      end
+
+      def child_chunk
+        dynamic_field_suffixes = %w[_s _t _ss _ssi _ssi _ssim _tesi _tesim _tesimv _ts _txt_en_ascii]
+
+        arr = get_children['response']['docs']
+        
+        arr.map.each do |obj|
+          obj.to_h.deep_dup.reject do |k,v|
+            %w[_version_ timestamp].include?(k) || k.end_with?(*dynamic_field_suffixes) 
+          end
+        end
       end
 
       def get_children
@@ -40,6 +52,7 @@ module Umedia
       def blacklight_solr
         Blacklight.default_index.connection
       end
+
     end
   end
 end
