@@ -57,7 +57,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'storage', 'tmp/pids', 'tm
 set :tmp_dir, "/tmp/#{fetch(:deploy_user)}"
 
 # Put requested ruby version into PATH
-set :default_env, { path: "/opt/ruby-versions/#{fetch(:ruby_version)}/bin:$PATH" }
+set :default_env, { path: "/opt/ruby-versions/#{fetch(:ruby_version)}/bin:$PATH", NODE_OPTIONS: '--openssl-legacy-provider' }
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
