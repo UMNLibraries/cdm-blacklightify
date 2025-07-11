@@ -12,6 +12,16 @@
   text-decoration: underline;
 }
 
+// text truncation
+.mlt-lgi {
+  a {  
+    display: inline-block;
+    overflow: hidden;
+    width: 90%;
+    white-space: nowrap;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .mlt-lgi {
     width: 100%;

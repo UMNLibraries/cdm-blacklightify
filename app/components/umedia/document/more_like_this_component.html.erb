@@ -5,7 +5,7 @@
       <% @document.more_like_this.each do |document| %>
         <li class="mlt-lgi list-group-item">
           <%= link_to_document(document, image_tag(document.cdm_thumbnail), counter: nil, class: "mlt-thumb d-flex justify-content-center") %>
-          <%= link_to_document(document, document[:title], counter: nil, class: "d-flex justify-content-center truncate") %>
+          <%= link_to_document(document, document[:title], counter: nil, class: "text-center text-truncate") %>
         </li>
       <% end %>
     </ul>
