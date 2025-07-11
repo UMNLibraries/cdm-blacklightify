@@ -3,17 +3,11 @@
   <div class="card-body">
     <ul class="list-group list-group-horizontal justify-content-center">
       <% @document.more_like_this.each do |document| %>
-
         <li class="list-group-item">
           <%= link_to_document(document, image_tag(document.cdm_thumbnail), counter: nil, class: "d-flex justify-content-center") %>
-          <%= document.fetch(:title_ssi).truncate(30) %>
+          <%= link_to_document(document, document[:title], counter: nil, class: "d-flex justify-content-center truncate") %>
         </li>
-
       <% end %>
     </ul>
   </div>
 </div>
-
-<style>
-
-</style>
