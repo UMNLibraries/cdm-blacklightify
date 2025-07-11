@@ -1,19 +1,13 @@
 <div class="card my-3">
   <div class="card-header mb-0 h6">More Like This</div>
   <div class="card-body">
-    <ul class="list-group list-group-horizontal justify-content-center">
+    <ul class="list-group list-group-horizontal-md justify-content-center">
       <% @document.more_like_this.each do |document| %>
-
-        <li class="list-group-item">
-          <%= link_to_document(document, image_tag(document.cdm_thumbnail), counter: nil, class: "d-flex justify-content-center") %>
-          <%= document.fetch(:title_ssi).truncate(30) %>
+        <li class="mlt-lgi list-group-item">
+          <%= link_to_document(document, image_tag(document.cdm_thumbnail), counter: nil, class: "mlt-thumb d-flex justify-content-center") %>
+          <%= link_to_document(document, document[:title], counter: nil, class: "text-center text-truncate") %>
         </li>
-
       <% end %>
     </ul>
   </div>
 </div>
-
-<style>
-
-</style>

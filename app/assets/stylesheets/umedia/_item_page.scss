@@ -1,12 +1,36 @@
-.list-group-item {
+.mlt-lgi {
   color: #007bff;
+  width: 20%;
 }
 
-.list-group-item:hover {
+.mlt-lgi:hover {
   color: #555;
   text-decoration: none;
   background-color: #f5f5f5;
   cursor: pointer;
   color: #007bff;
   text-decoration: underline;
+}
+
+// text truncation
+.mlt-lgi {
+  a {  
+    display: inline-block;
+    overflow: hidden;
+    width: 90%;
+    white-space: nowrap;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .mlt-lgi {
+    width: 100%;
+  }
+
+  .mlt-thumb {
+    img {
+      background-color: yellow;
+      display: none;
+    }
+  }
 }
