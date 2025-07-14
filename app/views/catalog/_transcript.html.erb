@@ -9,7 +9,7 @@
         <p><%= doc['transcription_tesi'] %></p>
       </div>
     <% else %>
-      <div id="transcript_hello"></div>
+      <div id="transcript_content"></div>
     <% end %>
   <% end %>
 </div>
@@ -21,7 +21,12 @@
     url: transcriptPath,
     cache: false,
     success: function(html){
-      $("#transcript_hello").append(html);
+      let parser = new DOMParser();
+      doc = parser.parseFromString(html, "text/html");
+
+      let transcriptBody = doc.querySelector('.modal-body')
+
+      $("#transcript_content").append(transcriptBody);
     }
   });
 </script>
