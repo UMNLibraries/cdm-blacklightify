@@ -17,7 +17,7 @@ class ItemPageTranscriptTest < ActionDispatch::IntegrationTest
        assert_select 'li', 2
     end
     assert_select 'div.tab-content div.modal-body' do
-      assert_select 'div#transcript_hello'
+      assert_select 'div#transcript_content'
     end
   end
 
