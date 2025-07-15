@@ -27,6 +27,7 @@ class SolrDocument
   def more_like_this
     mlt_response = Blacklight.default_index.connection.get 'mlt', params: {
       q: "id:#{RSolr.solr_escape(id)}",
+      fq: 'record_type:primary',
       rows: 5
     }
 
