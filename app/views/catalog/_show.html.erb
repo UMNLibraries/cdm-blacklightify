@@ -43,8 +43,7 @@
             <%= render partial: 'viewers/uv_image', locals: { document: document } %>
             <div class="mb-3"></div>
           <% end %>
-        <% elsif @document[:attachment] != nil %>
-        <%# issue, this is being displayed for image items such as posters %>
+        <% elsif @document[:attachment] != nil && @document[:attachment].end_with?(".pdf") %>
           <% c.tab 'PDF Transcript', link_class: 'ml-3' do %>
             <embed src="https://cdm16022.contentdm.oclc.org/utils/getfile/collection/<%= @document[:id].split(":")[0] %>/id/<%= @document[:id].split(":")[1] %>/filename/3716.pdf" width="800" height="750" type="application/pdf">
           <% end %>
