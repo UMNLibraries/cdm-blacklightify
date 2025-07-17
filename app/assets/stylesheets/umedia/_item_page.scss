@@ -22,6 +22,29 @@
   }
 }
 
+// pdf loading spinner
+.loader {
+  margin-top: 150px;
+  width: 120px;
+  height: 120px;
+  border: 16px solid #f0efee; /* Lighter Gray */
+  border-top: 16px solid #7a0019; /* Maroon */
+  border-radius: 50%;
+  position: absolute;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+embed {
+  z-index: 9;
+}
+
+
+
 @media only screen and (max-width: 768px) {
   .mlt-lgi {
     width: 100%;
