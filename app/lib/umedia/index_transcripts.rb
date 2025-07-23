@@ -13,7 +13,7 @@ module Umedia
   class IndexTranscripts
     attr_reader :set_spec, :page, :rows, :solr_client, :full_transcript, :after_date
     def initialize(
-                   set_spec: "p16022coll613",
+                   set_spec: false,
                    page: 1,
                    rows: 1000,
                    solr_client: blacklight_solr,
