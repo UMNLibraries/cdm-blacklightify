@@ -8,7 +8,7 @@ module Umedia
 
     attr_writer :indexer_klass
     attr_reader :page, :set_spec, :after_date
-    def perform_async(page = 1, set_spec = false, after_date = false)
+    def perform(page = 1, set_spec = false, after_date = false)
       @page = page
       @set_spec = set_spec
       @after_date = after_date
