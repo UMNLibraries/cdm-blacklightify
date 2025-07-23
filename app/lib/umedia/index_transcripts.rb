@@ -13,7 +13,7 @@ module Umedia
   class IndexTranscripts
     attr_reader :set_spec, :page, :rows, :solr_client, :full_transcript, :after_date
     def initialize(
-                   set_spec: false,
+                   set_spec: "p16022coll613",
                    page: 1,
                    rows: 1000,
                    solr_client: blacklight_solr,
@@ -48,7 +48,7 @@ module Umedia
 
     def docs_with_transcripts
       items.map do |item|
-        full_transcript.new.child_transcripts
+        full_transcript.new.child_transcripts(item)
       end.compact
     end
 
