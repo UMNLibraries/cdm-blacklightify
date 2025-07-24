@@ -1,0 +1,15 @@
+<div class="col-lg-9">
+  <%= tabs do |c| %>
+    <% c.tab 'Details' do %>
+      <%= render partial: "item_details" %>
+    <% end %>
+    <% if @document[:transcription_tesi].present? %>
+      <% c.tab 'Transcript', link_class: 'ml-3' do %>
+        <%= render template: "transcript/index" %> 
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+<div class="col-lg-3">
+  <%= render 'show_tools' %>
+</div>

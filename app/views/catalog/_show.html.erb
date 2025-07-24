@@ -27,52 +27,14 @@
 <hr>
 <!-- Metadata Fields -->
 <% doc_presenter = document_presenter(document) %>
-<% if transcript_tab %>
+
+<% if tab_group %>
   <div class="row">
-    <div class="col-lg-9">
-      <%= tabs do |c| %>
-        <% c.tab 'Details' do %>
-          <%= render partial: "item_details" %>
-        <% end %>
-        <% if @document[:attachment_format] == "iiif" && @document[:attachment].end_with?(".jp2") %>
-          <% c.tab 'Attachment', link_class: 'ml-3' do %>
-            <%= render partial: 'viewers/uv_image', locals: { document: document } %>
-          <% end %>
-        <% elsif @document[:attachment].end_with?(".pdf") %>
-          <% c.tab 'PDF Transcript', link_class: 'ml-3' do %>
-            <%= render partial: 'pdf_viewer', locals: { document: document } %>
-          <% end %>
-        <% elsif @document[:transcription_tesi].present? %>
-          <% c.tab 'Transcript', link_class: 'ml-3' do %>
-            <div class="p-3">
-              <h3 class><%= @document[:title] %></h3>
-              <p><%= @document[:transcription_tesi] %></p>
-            </div>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="col-lg-3">
-      <%= render 'show_tools' %>
-    </div>
+    <%= render partial: "tab_group_a" %>
   </div>
 <% else %>
   <div class="row">
-    <div class="col-lg-9">
-      <%= tabs do |c| %>
-        <% c.tab 'Details' do %>
-          <%= render partial: "item_details" %>
-        <% end %>
-        <% if @document[:transcription_tesi].present? %>
-          <% c.tab 'Transcript', link_class: 'ml-3' do %>
-            <%= render template: "transcript/index" %> 
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="col-lg-3">
-      <%= render 'show_tools' %>
-    </div>
+    <%= render partial: "tab_group_b" %>
   </div>
 <% end %>
 

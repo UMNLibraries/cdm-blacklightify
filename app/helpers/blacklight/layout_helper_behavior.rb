@@ -48,7 +48,7 @@ module Blacklight
       'container-fluid'
     end
 
-    def transcript_tab
+    def tab_group
       # if "types" in array, do not display transcript tab . . .
       arr = ['Sound', 'Moving Image']
       @document[:types].present? ? arr.include?(@document[:types][0]) : ""
