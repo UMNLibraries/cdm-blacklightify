@@ -1,9 +1,8 @@
-<div class="modal-body">
+<%# partial which renders in tab %>
+
+<div>
   <%- @response.documents.sort_by { |x| x['title_ssi'][/\d+/].to_i }.each do |doc| %>
-    <% if doc['transcription_tesi'].present? %>
-      <div class="modal-header">
-        <h1 class="modal-title"><%= t("blacklight.transcript")%></h1>
-      </div>
+    <% if !doc['transcription_tesi'].present? %>
       <div class="transcription m-3">
         <h3 class="title"><%= doc['title_ssi'] %></h3>
         <p><%= doc['transcription_tesi'] %></p>

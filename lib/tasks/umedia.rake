@@ -53,7 +53,7 @@ namespace :umedia do
       #   p16022coll262 p16022coll208 p16022coll171 p16022coll282 p16022coll613 p16022coll348 p16022coll501
       # ]
       example_sets = %w[
-        p16022coll262 p16022coll208 p16022coll171 p16022coll282 p16022coll613
+        p16022coll262 p16022coll208 p16022coll171 p16022coll282
       ]
 
       run_etl!(example_sets)
