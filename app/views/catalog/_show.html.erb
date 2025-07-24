@@ -43,7 +43,7 @@
             <%= render partial: 'pdf_viewer', locals: { document: document } %>
           <% end %>
         <% elsif @document[:transcription_tesi].present? %>
-          <% c.tab 'single page Transcript', link_class: 'ml-3' do %>
+          <% c.tab 'Transcript', link_class: 'ml-3' do %>
             <div class="modal-body">
               <h3 class><%= @document[:title] %></h3>
               <p><%= @document[:transcription_tesi] %></p>

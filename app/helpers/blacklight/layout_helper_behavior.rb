@@ -50,7 +50,6 @@ module Blacklight
 
     def transcript_tab
       # if "types" in array, do not display transcript tab . . .
-      # arr = ['Still Image', 'Sound', 'Moving Image']
       arr = ['Sound', 'Moving Image']
       @document[:types].present? ? arr.include?(@document[:types][0]) : ""
     end
