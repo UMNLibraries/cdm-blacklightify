@@ -1,4 +1,4 @@
-<%# partial which renders in tab %>
+<%# partial which renders in item page tab %>
 
 <div>
   <%- @response.documents.sort_by { |x| x['title_ssi'][/\d+/].to_i }.each do |doc| %>
