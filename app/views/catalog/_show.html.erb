@@ -27,14 +27,13 @@
 <hr>
 <!-- Metadata Fields -->
 <% doc_presenter = document_presenter(document) %>
-
 <% if tab_group %>
   <div class="row">
-    <%= render partial: "tab_group_a" %>
+    <%= render partial: "tab_group_simple" %>
   </div>
 <% else %>
   <div class="row">
-    <%= render partial: "tab_group_b" %>
+    <%= render partial: "tab_group_compound" %>
   </div>
 <% end %>
 

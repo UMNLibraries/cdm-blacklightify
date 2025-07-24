@@ -5,7 +5,7 @@
     <% end %>
     <% if @document[:attachment_format] == "iiif" && @document[:attachment].end_with?(".jp2") %>
       <% c.tab 'Attachment', link_class: 'ml-3' do %>
-        <%= render partial: 'viewers/uv_image', locals: { document:@document } %>
+        <%= render partial: 'viewers/uv_image', locals: { document: @document } %>
       <% end %>
     <% elsif @document[:attachment].end_with?(".pdf") %>
       <% c.tab 'PDF Transcript', link_class: 'ml-3' do %>
@@ -14,7 +14,7 @@
     <% elsif @document[:transcription_tesi].present? %>
       <% c.tab 'Transcript', link_class: 'ml-3' do %>
         <div class="p-3">
-          <h3 class><%= @document[:title] %></h3>
+          <h3><%= @document[:title] %></h3>
           <p><%= @document[:transcription_tesi] %></p>
         </div>
       <% end %>

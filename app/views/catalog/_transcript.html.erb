@@ -1,17 +1,4 @@
-<%# partial which renders in item page tab %>
-
-<div>
-  <%- @response.documents.sort_by { |x| x['title_ssi'][/\d+/].to_i }.each do |doc| %>
-    <% if !doc['transcription_tesi'].present? %>
-      <div class="transcription m-3">
-        <h3 class="title"><%= doc['title_ssi'] %></h3>
-        <p><%= doc['transcription_tesi'] %></p>
-      </div>
-    <% else %>
-      <div id="transcript_content"></div>
-    <% end %>
-  <% end %>
-</div>
+<div id="transcript_content"></div>
 
 <script>
   let transcriptPath = "/" + location.href.split('/').slice(-2).join('/') + "/transcript";
