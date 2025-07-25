@@ -13,10 +13,14 @@
       <% end %>
     <% elsif @document[:transcription_tesi].present? %>
       <% c.tab 'Transcript', link_class: 'ml-3' do %>
-        <div class="p-3">
-          <h3><%= @document[:title] %></h3>
-          <p><%= @document[:transcription_tesi] %></p>
-        </div>
+        <% if transcript_selector %>
+          <div class="p-3">
+            <h3><%= @document[:title] %></h3>
+            <p><%= @document[:transcription_tesi] %></p>
+          </div>
+        <% else %>
+          <%= render template: "transcript/index" %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
