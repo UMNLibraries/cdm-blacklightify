@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UvConfigTest < ActionDispatch::IntegrationTest
   test 'universal viewer configure options' do
-    get root_path + '/catalog' + '/p16022coll282:166'
+    get root_path + '/catalog' + '/p16022coll613:1441'
 
     assert_response :success
 

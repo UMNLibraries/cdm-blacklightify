@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ItemPageTranscriptTest < ActionDispatch::IntegrationTest
+class ItemPageAttachmentTest < ActionDispatch::IntegrationTest
   test 'test transcript#index' do
     get root_path + '/catalog' + '/p16022coll613:15' + '/transcript'
 
@@ -16,7 +16,7 @@ class ItemPageTranscriptTest < ActionDispatch::IntegrationTest
     assert_select 'ul.nav' do
        assert_select 'li', 2
     end
-    assert_select 'div.tab-content div.modal-body' do
+    assert_select 'div.tab-content' do
       assert_select 'div#transcript_content'
     end
   end
@@ -36,8 +36,20 @@ class ItemPageTranscriptTest < ActionDispatch::IntegrationTest
     get root_path + '/catalog' + '/p16022coll208:5292'
 
     assert_response :success
-    assert_select 'div.nav' do
-      assert_select 'li', false
+    assert_select 'ul.nav' do
+      assert_select 'li', 1
     end
+  end
+
+  test 'attachment tab display a/v item with image attachment' do
+    get root_path + '/catalog' + '/p16022coll215:4'
+  
+  end
+
+  test 'attachment tab display a/v item with pdf attachment' do
+    get root_path + '/catalog' + '/p16022coll171:3699'
+
+    # assert on loading spinner . . .
+
   end
 end
