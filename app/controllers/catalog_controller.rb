@@ -143,7 +143,7 @@ class CatalogController < ApplicationController
     # Subject / subject
     config.add_index_field 'subject_ssm', label: 'Subjects', link_to_facet: true, highlight: true,
                                       separator_options: { two_words_connector: '; ', words_connector: '; ', last_word_connector: '; ' }
-    config.add_index_field 'subject_fast_ssim', label: 'FAST Subject Headings', link_to_facet: true, highlight: true,
+    config.add_index_field 'subject_fast_ssim', label: 'FAST Subject Headingsgi', link_to_facet: true, highlight: true,
                                       separator_options: { two_words_connector: '; ', words_connector: '; ', last_word_connector: '; ' }
     # Thumbnails - A helper method that looks for attached image from solr_document_sidecar
     config.index.thumbnail_method = :thumbnail
