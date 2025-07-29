@@ -15,6 +15,14 @@ class UvFullscreen < ActionDispatch::IntegrationTest
   test 'fullscreen width & height 100vh' do
     get root_path + '/catalog' + '/p16022coll208:5361' + '?fullscreen=true'
     assert_response :success
-    assert_select 'div#uv[style="width: 100vw; height: 100vh;"]'
+    assert_select 'div#uv[style="width: 99.25vw; height: 100vh;"]'
+  end
+
+  test 'back to item page' do
+    get root_path + '/catalog' + '/p16022coll208:5361' + '?fullscreen=true'
+    assert_response :success
+    assert_select 'div.d-flex' do
+      assert_select 'a'
+    end
   end
 end
