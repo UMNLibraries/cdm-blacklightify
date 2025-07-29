@@ -84,7 +84,7 @@ en:
       subject_ss: "Subjects"
       subject_ssm: "Subjects"
       subject_fast: "FAST Subject Headings"
-      subject_fast_ssim: "Subjects"
+      subject_fast_ssim: "FAST Subject Headings"
       language: "Language"
       city: "City/Township"
       city_ssim: "City/Township"
