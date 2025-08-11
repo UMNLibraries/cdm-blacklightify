@@ -43,6 +43,23 @@ embed {
   z-index: 9;
 }
 
+.butt {
+  border-radius: 50%;
+  box-sizing: content-box;
+  display: inline-block;
+  text-align: center;
+  line-height: 14px;
+  height: 14px;
+  width: 14px;
+  margin: 0 0.3em;
+  
+  color: #333;
+  background: #d5d6d2;
+  border: 2px solid #d5d6d2;
+  font-size: 12px;
+  font-weight: bold;
+}
+
 
 
 @media only screen and (max-width: 768px) {
