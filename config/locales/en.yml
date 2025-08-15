@@ -122,6 +122,12 @@ en:
       translation: "Translation"
       page_count: "Page Count"
 
+    field_tooltips:
+      title: "this is the tooltip for the title field . . ."
+      description: "this is the english tooltip for the description field"
+      date_created: "date created, en"
+      collection_name_s: "tooltip for collection name (digital collection) example"
+
     field_sections:
       primary: ""
       topic: "Topics"

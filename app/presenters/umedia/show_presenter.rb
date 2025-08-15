@@ -5,10 +5,12 @@ module Umedia
     include Umedia::Localizable
     include Umedia::LocalizableFields
 
+    # section heading level
     def config_type(locale = :en)
       h = {}
       CatalogController.field_types.each do |sect|
         h[sect] = I18n.t("item.field_sections.#{sect.to_s}", locale: locale)
+        # h[sect] = I18n.t("item.tooltips.#{sect.to_s}", locale: locale)
       end
       h
     end

@@ -54,6 +54,11 @@ es:
       local_rights: "¿Puedo usarlo?"
       rights_statement_uri: ""
 
+    field_tooltips:
+      title: "spanish title tooltip . . . title"
+      collection_name_s: "spanish tooltip . . . coll."
+      primary: "spanish tooltip, 'primary' field"
+
     field_sections:
       primary: ""
       phys_desc: "Descripción Física"

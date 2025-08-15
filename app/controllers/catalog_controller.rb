@@ -156,6 +156,7 @@ class CatalogController < ApplicationController
         config.add_show_field(
           field,
           label: "item.fields.#{field}",
+          field_tooltips: "item.field_tooltips.#{field}",
           itemprop: field,
           type: type,
           component: Umedia::LocalizedMetadataFieldComponent,
@@ -169,6 +170,7 @@ class CatalogController < ApplicationController
           config.add_show_field(
             "#{locale}_#{field}",
             label: "item.fields.#{field}",
+            field_tooltips: "item.field_tooltips.#{field}",
             itempro: field,
             type: type,
             component: Umedia::LocalizedMetadataFieldComponent,

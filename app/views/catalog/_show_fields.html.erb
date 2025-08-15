@@ -1,11 +1,15 @@
 <dt class="d-flex align-items-start show-page-label blacklight-<%= field_name.parameterize %>" >
   <%= Umedia::LocalizedMetadataFieldComponent.new(field: field, show: true).label(locale: current_locale) %>
-  <div
-    data-toggle="tooltip" 
-    title="<%= Umedia::LocalizedMetadataFieldComponent.new(field: field, show: true).label(locale: current_locale) %>"
-  >
-    <span class="butt rounded-circle">?</span>
-  </div>
+
+  <% if Umedia::LocalizedMetadataFieldComponent.new(field: field, show: true).tooltip_icon(locale: current_locale).to_s == "true" %>
+  <% else %>
+    <div
+      data-toggle="tooltip" 
+      title="<%= Umedia::LocalizedMetadataFieldComponent.new(field: field, show: true).title_attribute(locale: current_locale) %>"
+    >
+      <span class="tool-tip rounded-circle">?</span>
+    </div>
+  <% end %>
 </dt>
 
 <% rendered = Array.wrap(field_presenter.render).reject { |value| value.blank? }.map { |rendered| field_presenter.field_config[:raw] ? raw(rendered) : rendered } %>

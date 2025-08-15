@@ -5,5 +5,14 @@ module Umedia
     def label(locale:)
       I18n.translate(@field.label, locale: (locale || I18n.default_locale))
     end
+
+    def title_attribute(locale:)
+      I18n.translate(@field.field_tooltips, locale: (locale || I18n.default_locale))
+    end
+
+    def tooltip_icon(locale:)
+      arg = I18n.translate(@field.field_tooltips, locale: (locale || I18n.default_locale))
+      arg.include? "Translation missing:"
+    end
   end
 end
