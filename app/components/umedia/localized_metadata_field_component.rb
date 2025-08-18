@@ -11,8 +11,7 @@ module Umedia
     end
 
     def tooltip_icon(locale:)
-      arg = I18n.translate(@field.field_tooltips, locale: (locale || I18n.default_locale))
-      arg.include? "Translation missing:"
+      title_attribute(locale:).include? "Translation missing:"
     end
   end
 end

@@ -127,6 +127,7 @@ en:
       description: "this is the english tooltip for the description field"
       date_created: "date created, en"
       collection_name_s: "tooltip for collection name (digital collection) example"
+      subject_fast_ssim: "FAST (Faceted Application of Subject Terminology) is derived from the Library of Congress Subject Headings (LCSH)"
 
     field_sections:
       primary: ""
