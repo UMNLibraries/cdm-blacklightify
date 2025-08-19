@@ -45,6 +45,7 @@ embed {
 
 // span of tooltip icon
 .tool-tip {
+  cursor: help;
   border-radius: 50%;
   box-sizing: content-box;
   display: inline-block;
@@ -60,7 +61,6 @@ embed {
   font-size: 12px;
   font-weight: bold;
 }
-
 
 @media only screen and (max-width: 768px) {
   .mlt-lgi {
