@@ -7,8 +7,8 @@
     <ul class="list-group list-group-horizontal-md justify-content-center">
       <% @document.more_like_this.each do |document| %>
         <li class="mlt-lgi list-group-item">
-          <%= link_to_document(document, image_tag(document.cdm_thumbnail), counter: nil, class: "mlt-thumb d-flex justify-content-center", tabindex:"-1") %>
-          <%= link_to_document(document, document[:title], counter: nil, class: "text-center text-truncate") %>
+          <%= link_to_document(document, image_tag(document.cdm_thumbnail), counter: nil, class: "mlt-thumb d-flex justify-content-center") %>
+          <%= link_to_document(document, document[:title], counter: nil, class: "mlt-thumb-title text-center text-truncate", tabindex:"-1") %>
         </li>
       <% end %>
     </ul>

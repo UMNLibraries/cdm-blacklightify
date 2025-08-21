@@ -22,6 +22,16 @@
   }
 }
 
+// focus ring on parent li while maintainig a link
+.mlt-lgi:focus-within {
+  outline: auto 5px -webkit-focus-ring-color;
+  z-index: 1;
+}
+
+.mlt-thumb:focus {
+  outline: 0;
+}
+
 // pdf loading spinner
 .loader {
   margin-top: 150px;
@@ -61,6 +71,8 @@ embed {
   font-size: 12px;
   font-weight: bold;
 }
+
+
 
 @media only screen and (max-width: 768px) {
   .mlt-lgi {
