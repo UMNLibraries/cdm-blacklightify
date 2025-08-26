@@ -14,8 +14,18 @@
 
 <% rendered = Array.wrap(field_presenter.render).reject { |value| value.blank? }.map { |rendered| field_presenter.field_config[:raw] ? raw(rendered) : rendered } %>
   <% if rendered.length == 1 %>
-    <dd class="blacklight-<%= field_name.parameterize %> ">
-      <%= safe_join(Array.wrap(rendered)) %>
+    <dd class="d-flex align-items-start show-page-label blacklight-<%= field_name.parameterize %> ">
+      <% if field_name == 'format_name' %>
+        <%= safe_join(Array.wrap(rendered)) %>
+        <div
+          data-toggle="tooltip"
+          title="<%= field_name == 'format_name'? GettyJsonService.new(id_getter).data['subject_of'][0]['content'] : '' %>"
+        >
+          <span tabindex="0" class="tool-tip rounded-circle" role="tooltip">?</span>
+        </div>
+      <% else %>
+        <%= safe_join(Array.wrap(rendered)) %>
+      <% end %>
     </dd>
   <% elsif rendered.length > 1 %>
     <dd class="blacklight-<%= field_name.parameterize %> ">
@@ -25,6 +35,7 @@
     </dd>
 <% end -%>
 
+<!-- move this out of this looped view . . . -->
 <script>
   $('[data-toggle="tooltip"]').tooltip({ placement: 'top' });
 
