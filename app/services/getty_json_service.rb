@@ -11,4 +11,5 @@ class GettyJsonService
     parsed_response = res.body
     JSON.parse(parsed_response)
   end
+  
 end

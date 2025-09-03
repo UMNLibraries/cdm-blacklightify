@@ -16,13 +16,17 @@
   <% if rendered.length == 1 %>
     <dd class="d-flex align-items-start show-page-label blacklight-<%= field_name.parameterize %> ">
       <% if field_name == 'format_name' %>
-        <%= safe_join(Array.wrap(rendered)) %>
-        <div
-          data-toggle="tooltip"
-          title="<%= field_name == 'format_name'? GettyJsonService.new(id_getter).data['subject_of'][0]['content'] : '' %>"
-        >
-          <span tabindex="0" class="tool-tip rounded-circle" role="tooltip">?</span>
-        </div>
+          <% zipped_arr.each do |x| %>
+            <span itemprop"types" >
+              <a href="" class="d-flex align-items-start show-page-label"><%= x[0] %></a>
+            </span>
+            <div
+              data-toggle="tooltip"
+              title="<%= GettyJsonService.new(x[1]).data['subject_of'][0]['content'] %>"
+            >
+            <span tabindex="0" class="tool-tip rounded-circle" role="tooltip">?</span>
+            </div>
+          <% end %>
       <% else %>
         <%= safe_join(Array.wrap(rendered)) %>
       <% end %>
