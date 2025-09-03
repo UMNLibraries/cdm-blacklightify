@@ -60,7 +60,19 @@ embed {
   border: 2px solid #d5d6d2;
   font-size: 12px;
   font-weight: bold;
+  margin-right: -.25rem;
 }
+
+// tooltip delimiter
+.getty-format-name {
+  div::after {
+    content: ";\00a0";
+  }
+  div:last-child:after {
+    content: "";
+  }
+}
+
 
 @media only screen and (max-width: 768px) {
   .mlt-lgi {

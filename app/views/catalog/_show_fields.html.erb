@@ -14,11 +14,11 @@
 
 <% rendered = Array.wrap(field_presenter.render).reject { |value| value.blank? }.map { |rendered| field_presenter.field_config[:raw] ? raw(rendered) : rendered } %>
   <% if rendered.length == 1 %>
-    <dd class="d-flex align-items-start show-page-label blacklight-<%= field_name.parameterize %> ">
+    <dd class="d-flex align-items-start show-page-label blacklight-<%= field_name.parameterize %> getty-format-name">
       <% if field_name == 'format_name' %>
           <% zipped_arr.each do |x| %>
             <span itemprop"types" >
-              <a href="" class="d-flex align-items-start show-page-label"><%= x[0] %></a>
+              <a href='/catalog?q="<%= x[0] %>"&facet.field=format_name' class="d-flex align-items-start show-page-label"><%= x[0] %></a>
             </span>
             <div
               data-toggle="tooltip"
