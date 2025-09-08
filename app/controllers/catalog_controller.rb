@@ -175,7 +175,7 @@ class CatalogController < ApplicationController
             type: type,
             component: Umedia::LocalizedMetadataFieldComponent,
             # Never facet the alt lang metadata field
-            link_to_facet: false
+            link_to_facet: false,
           )
         end
       end
