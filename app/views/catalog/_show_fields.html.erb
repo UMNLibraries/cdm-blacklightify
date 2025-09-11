@@ -25,16 +25,7 @@
               title="<%= GettyJsonService.new(x[1]).att_definition %>"
             >
             <span tabindex="0" class="tool-tip rounded-circle" role="tooltip">?</span>
-            </div>
-            
-            <div style="background-color:yellow;">
-              <%= GettyJsonService.new(x[1]).aat_data %>
-            </div>
-              <%= GettyJsonService.new(x[1]).att_def_id %>
-            <div style="background-color:green;">
-              <%= GettyJsonService.new(x[1]).att_definition %>
-            </div>
-            
+            </div>            
           <% end %>
       <% else %>
         <%= safe_join(Array.wrap(rendered)) %>
