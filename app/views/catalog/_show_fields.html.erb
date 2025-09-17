@@ -18,7 +18,10 @@
       <% if field_name == 'format_name' %>
           <% zipped_arr.each do |x| %>
             <span itemprop"types" >
-              <a href='/catalog?q="<%= x[0] %>"&facet.field=format_name' class="d-flex align-items-start show-page-label"><%= x[0] %></a>
+              <a href='/catalog?q="<%= x[0] %>"&facet.field=format_name' class="d-flex align-items-start show-page-label">
+                <%# if getty att name is nil, use the name from cdm. could be cleaned up . . . %>
+                <%= GettyJsonService.new(x[1]).att_name.nil? ? x[0].titleize : GettyJsonService.new(x[1]).att_name.titleize %>
+              </a>     
             </span>
             <div
               data-toggle="tooltip"

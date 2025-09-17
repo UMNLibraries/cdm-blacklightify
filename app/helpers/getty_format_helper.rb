@@ -5,7 +5,7 @@ module GettyFormatHelper
     @document[:format][0].split(';')
   end
 
-  # returns the getty aat definition id numbers
+  # returns the getty aat definition id numbers (dc:identifier)
   def id_loop
     array = id_split
     array.map { |x| x.match('aat\/(.*)')&.captures[0] }

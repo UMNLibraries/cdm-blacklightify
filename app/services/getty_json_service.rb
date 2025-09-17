@@ -12,12 +12,16 @@ class GettyJsonService
 
   # get the format id, use that key for caching
   def att_def_id
-    aat_data['id'].match('aat\/(.*)')&.captures[0] 
+    aat_data.dig('id').match('aat\/(.*)')&.captures[0] 
   end
 
   def att_definition
     Rails.cache.fetch(att_def_id) do
-      aat_data['subject_of'][0]['content']
+      aat_data.dig('subject_of', 0, 'content')
     end 
+  end
+
+  def att_name
+    aat_data.dig('identified_by', 0, 'alternative', 0, 'content')
   end
 end
