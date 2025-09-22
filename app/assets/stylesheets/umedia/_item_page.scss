@@ -78,10 +78,20 @@ embed {
   div::after {
     content: ";\00a0";
   }
-  div:last-child:after {
+  div:last-child::after {
     content: "";
   }
 }
+
+// test subject fast tooltip delimiter. currently don't need as above selectors work, but need to refactor the entire <dd> thing . . .
+// .getty-format-name {
+//   div::after {
+//     content: ";\00a0";
+//   }
+//   div:last-child::after {
+//     content: "";
+//   }
+// }
 
 
 @media only screen and (max-width: 768px) {

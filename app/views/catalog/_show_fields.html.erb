@@ -15,8 +15,17 @@
 <% rendered = Array.wrap(field_presenter.render).reject { |value| value.blank? }.map { |rendered| field_presenter.field_config[:raw] ? raw(rendered) : rendered } %>
   <% if rendered.length == 1 %>
     <dd class="d-flex align-items-start show-page-label blacklight-<%= field_name.parameterize %> getty-format-name">
-      <% if field_name == 'format_name' %>
-          <% zipped_arr.each do |x| %>
+      <% if field_name == 'subject_fast_ssim' %>
+        <% subject_zipped_arr.each do |x| %>
+          <span itemprop"types"> 
+            <a href='/catalog?q="<%= x[0] %>"&facet.field=subject_fast' class="d-flex align-items-start show-page-label">
+              <%= x[1][0] %>
+            </a>
+          </span>
+          <div></div>
+        <% end %>
+      <% elsif field_name == 'format_name' %>
+          <% zipped_arr.each do |x| %>          
             <span itemprop"types" >
               <a href='/catalog?q="<%= x[0] %>"&facet.field=format_name' class="d-flex align-items-start show-page-label">
                 <%# if getty att name is nil, use the name from cdm. could be cleaned up . . . %>
@@ -34,6 +43,9 @@
         <%= safe_join(Array.wrap(rendered)) %>
       <% end %>
     </dd>
+
+  
+
   <% elsif rendered.length > 1 %>
     <dd class="blacklight-<%= field_name.parameterize %> ">
       <% rendered.each do |value| %>
