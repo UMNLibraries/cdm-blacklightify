@@ -73,8 +73,8 @@ embed {
   margin-right: -.25rem;
 }
 
-// tooltip delimiter
-.getty-format-name {
+// tooltip delimiter for getty format name AND subject FAST fields
+.blacklight-format_name, .blacklight-subject_fast_ssim {
   div::after {
     content: ";\00a0";
   }
@@ -83,15 +83,6 @@ embed {
   }
 }
 
-// test subject fast tooltip delimiter. currently don't need as above selectors work, but need to refactor the entire <dd> thing . . .
-// .getty-format-name {
-//   div::after {
-//     content: ";\00a0";
-//   }
-//   div:last-child::after {
-//     content: "";
-//   }
-// }
 
 
 @media only screen and (max-width: 768px) {

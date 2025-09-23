@@ -1,6 +1,5 @@
 <dt class="d-flex align-items-start show-page-label blacklight-<%= field_name.parameterize %>" >
   <%= Umedia::LocalizedMetadataFieldComponent.new(field: field, show: true).label(locale: current_locale) %>
-
   <% if Umedia::LocalizedMetadataFieldComponent.new(field: field, show: true).tooltip_icon(locale: current_locale).to_s == "true" %>
   <% else %>
     <div
@@ -14,14 +13,17 @@
 
 <% rendered = Array.wrap(field_presenter.render).reject { |value| value.blank? }.map { |rendered| field_presenter.field_config[:raw] ? raw(rendered) : rendered } %>
   <% if rendered.length == 1 %>
-    <dd class="d-flex align-items-start show-page-label blacklight-<%= field_name.parameterize %> getty-format-name">
+    <dd class="d-flex align-items-start show-page-label blacklight-<%= field_name.parameterize %>">
       <% if field_name == 'subject_fast_ssim' %>
+       <%= subject_zipped_arr %>
         <% subject_zipped_arr.each do |x| %>
           <span itemprop"types"> 
             <a href='/catalog?q="<%= x[0] %>"&facet.field=subject_fast' class="d-flex align-items-start show-page-label">
-              <%= x[1][0] %>
+              <%# if subject_fast uri is nil. can get rid of later . . . %>
+              <%= x[1].nil? ? x[0] : x[1][0] %>
             </a>
           </span>
+          <%# simplifies pseudo semicolon delimiter %>
           <div></div>
         <% end %>
       <% elsif field_name == 'format_name' %>
@@ -44,10 +46,8 @@
       <% end %>
     </dd>
 
-  
-
   <% elsif rendered.length > 1 %>
-    <dd class="blacklight-<%= field_name.parameterize %> ">
+    <dd class="blacklight-<%= field_name.parameterize %> " style="background-color: red;">
       <% rendered.each do |value| %>
         <%= value %>,
       <% end %>

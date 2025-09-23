@@ -1,15 +1,10 @@
 module OclcFastFormatHelper
   include Umedia
 
-  # get the oclc uri and name. regex has two capture groups
+  # get the oclc uri and name. returns two capture groups
   def subject_loop
     array = @document[:subject_fast]
     array.map { |x| x.match('^(.*?)\|?\|(.*)')&.captures }
-
-    # capture group 1, suject name. removes trailing space
-    # array.map { |x| x.match('^(.*?)\|?\|(.*)')&.captures[0].chop }
-    # capture group 2, uri. removes leading space
-    # array.map { |x| x.match('^(.*?)\|?\|(.*)')&.captures[1].trim }
   end
 
   def subject_name
