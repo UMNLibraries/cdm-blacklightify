@@ -15,7 +15,6 @@
   <% if rendered.length == 1 %>
     <dd class="d-flex align-items-start show-page-label blacklight-<%= field_name.parameterize %>">
       <% if field_name == 'subject_fast_ssim' %>
-       <%= subject_zipped_arr %>
         <% subject_zipped_arr.each do |x| %>
           <span itemprop"types"> 
             <a href='/catalog?q="<%= x[0] %>"&facet.field=subject_fast' class="d-flex align-items-start show-page-label">
