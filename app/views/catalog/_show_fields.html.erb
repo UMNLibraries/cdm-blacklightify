@@ -16,7 +16,7 @@
     <dd class="d-flex align-items-start show-page-label blacklight-<%= field_name.parameterize %>">
       <% if field_name == 'subject_fast_ssim' %>
         <% subject_zipped_arr.each do |x| %>
-          <span itemprop"types"> 
+          <span itemprop='<%= field_name %>'> 
             <a href='/catalog?q="<%= x[0] %>"&facet.field=subject_fast' class="d-flex align-items-start show-page-label">
               <%# if subject_fast uri is nil. can get rid of later . . . %>
               <%= x[1].nil? ? x[0] : x[1][0] %>
@@ -27,7 +27,7 @@
         <% end %>
       <% elsif field_name == 'format_name' %>
           <% zipped_arr.each do |x| %>
-            <span itemprop"types" >
+            <span itemprop='<%= field_name %>'>
               <a href='/catalog?q="<%= x[0] %>"&facet.field=format_name' class="d-flex align-items-start show-page-label">
                 <%# if getty att name is nil, use the name from cdm. could be cleaned up . . . %>
                 <%= GettyJsonService.new(x[1]).att_name.nil? ? x[0].titleize : GettyJsonService.new(x[1]).att_name.titleize %>
@@ -46,7 +46,7 @@
     </dd>
 
   <% elsif rendered.length > 1 %>
-    <dd class="blacklight-<%= field_name.parameterize %> " style="background-color: red;">
+    <dd class="blacklight-<%= field_name.parameterize %>">
       <% rendered.each do |value| %>
         <%= value %>,
       <% end %>
