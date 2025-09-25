@@ -75,6 +75,9 @@ embed {
 
 // tooltip delimiter for getty format name AND subject FAST fields
 .blacklight-format_name, .blacklight-subject_fast_ssim {
+  display: flex;
+  flex-wrap: wrap;
+  
   div::after {
     content: ";\00a0";
   }

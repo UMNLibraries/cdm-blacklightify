@@ -1,4 +1,4 @@
-<dt class="d-flex align-items-start show-page-label blacklight-<%= field_name.parameterize %>" >
+<dt class="d-flex show-page-label blacklight-<%= field_name.parameterize %>" >
   <%= Umedia::LocalizedMetadataFieldComponent.new(field: field, show: true).label(locale: current_locale) %>
   <% if Umedia::LocalizedMetadataFieldComponent.new(field: field, show: true).tooltip_icon(locale: current_locale).to_s == "true" %>
   <% else %>
@@ -13,11 +13,11 @@
 
 <% rendered = Array.wrap(field_presenter.render).reject { |value| value.blank? }.map { |rendered| field_presenter.field_config[:raw] ? raw(rendered) : rendered } %>
   <% if rendered.length == 1 %>
-    <dd class="d-flex align-items-start show-page-label blacklight-<%= field_name.parameterize %>">
+    <dd class="show-page-label blacklight-<%= field_name.parameterize %>">
       <% if field_name == 'subject_fast_ssim' %>
         <% subject_zipped_arr.each do |x| %>
           <span itemprop='<%= field_name %>'> 
-            <a href='/catalog?q="<%= x[0] %>"&facet.field=subject_fast' class="d-flex align-items-start show-page-label">
+            <a href='/catalog?q="<%= x[0] %>"&facet.field=subject_fast' class="show-page-label">
               <%# if subject_fast uri is nil. can get rid of later . . . %>
               <%= x[1].nil? ? x[0] : x[1][0] %>
             </a>
@@ -28,7 +28,7 @@
       <% elsif field_name == 'format_name' %>
           <% zipped_arr.each do |x| %>
             <span itemprop='<%= field_name %>'>
-              <a href='/catalog?q="<%= x[0] %>"&facet.field=format_name' class="d-flex align-items-start show-page-label">
+              <a href='/catalog?q="<%= x[0] %>"&facet.field=format_name' class="show-page-label">
                 <%# if getty att name is nil, use the name from cdm. could be cleaned up . . . %>
                 <%= GettyJsonService.new(x[1]).att_name.nil? ? x[0].titleize : GettyJsonService.new(x[1]).att_name.titleize %>
               </a>     
