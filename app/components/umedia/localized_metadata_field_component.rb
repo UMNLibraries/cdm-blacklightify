@@ -11,7 +11,7 @@ module Umedia
     end
 
     def tooltip_icon(locale:)
-      title_attribute(locale || I18n.default_locale).include? "Translation missing:"
+      title_attribute(locale: (locale || I18n.default_locale)).include? "Translation missing:"
     end
   end
 end
