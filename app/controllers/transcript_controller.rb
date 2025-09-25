@@ -27,8 +27,7 @@ class TranscriptController < ApplicationController
     config.add_index_field 'transcription', label: ''
     config.add_index_field 'parent_id', label: ''
 
-# Might be in conflict with CatalogController....
-#    config.add_search_field 'all_fields', label: I18n.t('spotlight.search.fields.search.all_fields')
+    config.add_search_field 'all_fields', label: I18n.t('spotlight.search.fields.search.all_fields')
   end
 
   # get transcript results from the solr index
