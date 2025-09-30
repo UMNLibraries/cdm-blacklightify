@@ -73,15 +73,19 @@ embed {
   margin-right: -.25rem;
 }
 
-// tooltip delimiter
-.getty-format-name {
+// tooltip delimiter for getty format name AND subject FAST fields
+.blacklight-format_name, .blacklight-subject_fast_ssim {
+  display: flex;
+  flex-wrap: wrap;
+  
   div::after {
     content: ";\00a0";
   }
-  div:last-child:after {
+  div:last-child::after {
     content: "";
   }
 }
+
 
 
 @media only screen and (max-width: 768px) {
