@@ -18,11 +18,7 @@
         <% subject_name.each do |x| %>
           <span itemprop='<%= field_name %>'> 
             <a href='/catalog?q="<%= x %>"&facet.field=subject_fast' class="show-page-label">
-              <%# if subject_fast uri is nil. can get rid of later . . . %>
-              <%= x %>
-              <!--
-              <%= x[1].nil? ? x[0] : x[1][0] %>
-              -->
+              <%= OclcSubjectFastService.new(x).fast_data %>
             </a>
           </span>
           <%# simplifies pseudo semicolon delimiter %>
