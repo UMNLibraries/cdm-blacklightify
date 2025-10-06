@@ -15,11 +15,10 @@
   <% if rendered.length == 1 %>
     <dd class="show-page-label blacklight-<%= field_name.parameterize %>">
       <% if field_name == 'subject_fast_ssim' %>
-        <% subject_zipped_arr.each do |x| %>
+        <% subject_name.each do |x| %>
           <span itemprop='<%= field_name %>'> 
-            <a href='/catalog?q="<%= x[0] %>"&facet.field=subject_fast' class="show-page-label">
-              <%# if subject_fast uri is nil. can get rid of later . . . %>
-              <%= x[1].nil? ? x[0] : x[1][0] %>
+            <a href='/catalog?q="<%= x %>"&facet.field=subject_fast' class="show-page-label">
+              <%= OclcSubjectFastService.new(x).uri_check ? OclcSubjectFastService.new(x).fast_data : x %>
             </a>
           </span>
           <%# simplifies pseudo semicolon delimiter %>
