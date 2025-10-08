@@ -14,20 +14,20 @@
 <% rendered = Array.wrap(field_presenter.render).reject { |value| value.blank? }.map { |rendered| field_presenter.field_config[:raw] ? raw(rendered) : rendered } %>
   <% if rendered.length == 1 %>
     <dd class="show-page-label blacklight-<%= field_name.parameterize %>">
-      <% if field_name == 'subject_fast_ssim' %>
+      <% if field_name == "subject_fast_ssim" %>
         <% subject_name.each do |x| %>
-          <span itemprop='<%= field_name %>'> 
-            <a href='/catalog?q="<%= x %>"&facet.field=subject_fast' class="show-page-label">
+          <span itemprop="<%= field_name %>"> 
+            <a href="/catalog?f%5B<%= field_name %>%5D%5B%5D=<%= x %>" class="show-page-label">
               <%= OclcSubjectFastService.new(x).uri_check ? OclcSubjectFastService.new(x).fast_data : x %>
             </a>
           </span>
           <%# simplifies pseudo semicolon delimiter %>
           <div></div>
         <% end %>
-      <% elsif field_name == 'format_name' %>
+      <% elsif field_name == "format_name" %>
           <% zipped_arr.each do |x| %>
-            <span itemprop='<%= field_name %>'>
-              <a href='/catalog?q="<%= x[0] %>"&facet.field=format_name' class="show-page-label">
+            <span itemprop="<%= field_name %>">
+              <a href="/catalog?f%5B<%= field_name %>%5D%5B%5D=<%= x[0] %>" class="show-page-label">
                 <%# if getty att name is nil, use the name from cdm. could be cleaned up . . . %>
                 <%= GettyJsonService.new(x[1]).att_name.nil? ? x[0].titleize : GettyJsonService.new(x[1]).att_name.titleize %>
               </a>     
