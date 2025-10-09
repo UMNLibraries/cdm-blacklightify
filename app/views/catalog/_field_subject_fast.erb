@@ -1,0 +1,9 @@
+<% subject_name.each do |x| %>
+  <span itemprop="<%= field_name %>"> 
+    <a href="/catalog?f%5B<%= field_name %>%5D%5B%5D=<%= x %>" class="show-page-label">
+      <%= OclcSubjectFastService.new(x).uri_check ? OclcSubjectFastService.new(x).fast_data : x %>
+    </a>
+  </span>
+  <%# simplifies pseudo semicolon delimiter %>
+  <div></div>
+<% end %>
