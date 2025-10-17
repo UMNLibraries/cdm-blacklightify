@@ -12,6 +12,7 @@
   <% doc_presenter.config_type(current_locale).each do | type, heading | %>
     <% if doc_presenter.type_arr(type) %>
       <h3><%= heading %></h3>
+      <hr>
     <% end %>
 
     <dl class="px-3">

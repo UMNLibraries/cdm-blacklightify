@@ -1,3 +1,8 @@
+// more like this (mlt)
+.mlt-c {
+  border-color: #333;
+}
+
 .mlt-lgi {
   color: #007bff;
   width: 20%;
@@ -10,6 +15,30 @@
   cursor: pointer;
   color: #007bff;
   text-decoration: underline;
+}
+
+hr {
+  border-color: #333;
+  margin-top: 8px;
+}
+
+// main metadata area (row)
+.item-meta {
+  background-color: white;
+  padding-top: 1rem;
+}
+
+// show tools side bar
+.show-tools {
+  .card-header {
+    background-color: #ffde7a;
+  }
+  .list-group-item {
+    border-color: #333;
+  }
+  border-color: #333;
+  margin: 2.5rem 0 !important;
+
 }
 
 // text truncation
