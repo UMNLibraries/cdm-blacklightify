@@ -177,7 +177,6 @@ field_mappings:
   - dest_path: subject_fast
     origin_path: fast
     formatters:
-      - CDMDEXER::Titlieze
       - CDMDEXER::SplitFormatter
       - Umedia::Formatters::SubjectFormatter
       - CDMDEXER::StripFormatter
