@@ -130,7 +130,7 @@ en:
       subject_fast_ssim: "FAST (Faceted Application of Subject Terminology) is derived from the Library of Congress Subject Headings (LCSH)"
 
     field_sections:
-      primary: ""
+      primary: "Details"
       topic: "Topics"
       phys_desc: "Physical Description"
       geo_loc: "Geographic Location"

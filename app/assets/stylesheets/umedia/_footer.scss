@@ -1,12 +1,12 @@
 footer {
     flex-shrink: 0;
-    background-color: #333;
-    color: #fafafa;
+    background-color: #f0efee;
+    // color: #fafafa;
     padding-top: .6rem;
     padding-left: 5rem;
     padding-right: 5rem;
     .card {
-        background-color: #333;
+        background-color: #f0efee;
     }
     .hr {
         background-color: #fafafa;
@@ -24,13 +24,13 @@ footer {
         }
         a {
             display: block;
-            color: #ffde7a;
+            color: #333;
             text-decoration: underline;
         }
         a:hover,
         a:focus {
             background-color: #ffde7a;
-            color: #333;
+            color: #f0efee;
             outline: none;
             text-decoration: none;
         }
@@ -54,7 +54,7 @@ footer {
                 display: inline-block;
             }
             li:first-child:hover {
-                background-color: #333;
+                background-color: #d5d6d2;
                 text-decoration: none;
             }
         }
