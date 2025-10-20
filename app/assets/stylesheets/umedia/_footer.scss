@@ -1,6 +1,7 @@
 footer {
     flex-shrink: 0;
     background-color: #f0efee;
+    border-top: 1px solid #d5d6d2;
     // color: #fafafa;
     padding-top: .6rem;
     padding-left: 5rem;
@@ -58,6 +59,9 @@ footer {
                 text-decoration: none;
             }
         }
+        .card-body-as-link {
+          background-color: white;
+        }
         .card-body-as-link:hover, // check for redundancy
         .card-body-as-link:focus-within {
             outline: 3px solid #ffde7a;
@@ -67,6 +71,9 @@ footer {
                 color: #333;
                 text-decoration: none;
             }
+        }
+        #related-services {
+          background-color: white;
         }
         #copyright {
             a {
