@@ -12,9 +12,10 @@
   <% doc_presenter.config_type(current_locale).each do | type, heading | %>
     <% if doc_presenter.type_arr(type) %>
       <h3><%= heading %></h3>
+      <hr>
     <% end %>
 
-    <dl class="px-3">
+    <dl class="">
       <% doc_presenter.each_field( type ) do |field_name, field, field_presenter| %>
         <% next if field_locale(field_name) != current_locale && localizable_field_name?(field_name) %>
         <%= render "show_fields", document: @document, field_name: field_name, field_presenter: field_presenter, field: field %>
