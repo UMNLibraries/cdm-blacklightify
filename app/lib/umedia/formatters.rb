@@ -153,6 +153,40 @@ module Umedia
       end
     end
 
+    # ArchivalCollectionFormatter from dls_identifier when -boxXXX-fdrXXX present
+    class ArchivalCollectionFormatter
+      def self.format(value)
+        matches = value.match /^([A-Za-z0-9_-]+)-box\d+/
+        matches[1].strip rescue nil
+      end
+    end
+
+    # ArchivalBoxFormatter from dls_identifier boxXXX
+    class ArchivalBoxFormatter
+      def self.format(value)
+        matches = value.match /^[A-Za-z0-9_-]+-box(\d+)/
+        matches[1].to_i rescue nil
+      end
+    end
+
+    # ArchivalFolderFormatter from dls_identifier fdrXXX
+    class ArchivalFolderFormatter
+      def self.format(value)
+        matches = value.match /^[A-Za-z0-9_-]+-box\d+-fdr(\d+)/
+        matches[1].to_i rescue nil
+      end
+    end
+
+    # ArchivalFolderSequenceFormatter from dls_identifier fdrXXX-abcdXXX
+    # The last item could be anything - notebooks like nbk, directories like dir, etc
+    # We just take the number if it is there
+    class ArchivalFolderSequenceFormatter
+      def self.format(value)
+        matches = value.match /^[A-Za-z0-9_-]+-box\d+-fdr\d+-[A-Za-z]+(\d+)/
+        matches[1].to_i rescue nil
+      end
+    end
+
     # FeaturedCollectionOrderFormatter
     class FeaturedCollectionOrderFormatter
       def self.format(doc)

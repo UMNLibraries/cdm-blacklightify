@@ -239,6 +239,12 @@
   <field name="persistent_url" type="string" indexed="true" stored="true" />
   <copyField source="persistent_url" dest="persistent_url_ssi" />
 
+  <!-- Archival box and folder -->
+  <field name="archival_collection" type="string" indexed="true" stored="true" multiValued="false" />
+  <field name="archival_box" type="int" indexed="true" stored="true" multiValued="false" />
+  <field name="archival_folder" type="int" indexed="true" stored="true" multiValued="false" />
+  <field name="archival_folder_sequence" type="int" indexed="true" stored="true" multiValued="false" />
+
   <!-- Rights -->
   <field name="local_rights" type="text_en" indexed="true" stored="true" />
   <field name="standardized_rights" type="text_en" indexed="true" stored="true" />
@@ -336,8 +342,8 @@
   <copyField source="title" dest="title_search"/>
   <copyField source="title_alternative" dest="title_alternative_s"/>
   <copyField source="title_alternative" dest="title_alternative_t"/>
-  <copyField source="publisher" dest="publisher_s"/>
-  <copyField source="publisher" dest="publisher_t"/>
+  <copyField source="publisher" dest="publisher_tim"/>
+  <copyField source="publisher" dest="publisher_tim"/>
   <copyField source="subject" dest="subject_ssm"/>
   <copyField source="subject_fast" dest="subject_fast_ssim"/>
   <copyField source="collection_name" dest="collection_name_s"/>

@@ -15,7 +15,7 @@ class CatalogController < ApplicationController
   UMEDIA_SHOW_FIELDS = {
     default: %w[],
     # default: %w[ object ],
-    primary: %w[title title_alternative description date_created creator contributor_ssim publisher_s historical_era caption
+    primary: %w[title title_alternative description date_created creator contributor_ssim publisher_sim historical_era caption
                 notes],
     topic: %w[subject_ssm subject_fast_ssim language],
     phys_desc: %w[types format_name dimensions],
@@ -29,7 +29,7 @@ class CatalogController < ApplicationController
   UMEDIA_LINK_TO_FACET_FIELDS = %w[
     creator
     contributor_ssim
-    publisher_s
+    publisher_sim
     subject_ssm
     subject_fast_ssim
     language
@@ -121,7 +121,7 @@ class CatalogController < ApplicationController
     # Special projects
     config.add_facet_field 'super_collection_name_ss', label: 'Special Projects', limit: 4, collapse: true
     # Publisher / publisher
-    config.add_facet_field 'publisher_s', label: 'Publisher', limit: 4, collapse: true
+    config.add_facet_field 'publisher_sim', label: 'Publisher', limit: 4, collapse: true
     # Contributor / contributor
     config.add_facet_field 'contributor_ssim', label: 'Contributor', limit: 4, collapse: true
     # Geographic Fields
