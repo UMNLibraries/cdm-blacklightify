@@ -10,7 +10,7 @@ es:
       contributor: "Contribuidor"
       contributor_ssim: "Contribuidor"
       publisher: "Editor"
-      publisher_s: "Editor"
+      publisher_sim: "Editor"
       caption: "Subtítulos"
       description: "Descripción"
       date_created: "Fecha de Creación"

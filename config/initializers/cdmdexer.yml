@@ -309,6 +309,30 @@ field_mappings:
       - CDMDEXER::SplitFormatter
       - CDMDEXER::StripFormatter
 
+  - dest_path: archival_collection
+    origin_path: dls
+    formatters:
+      - CDMDEXER::StripFormatter
+      - Umedia::Formatters::ArchivalCollectionFormatter
+
+  - dest_path: archival_box
+    origin_path: dls
+    formatters:
+      - CDMDEXER::StripFormatter
+      - Umedia::Formatters::ArchivalBoxFormatter
+
+  - dest_path: archival_folder
+    origin_path: dls
+    formatters:
+      - CDMDEXER::StripFormatter
+      - Umedia::Formatters::ArchivalFolderFormatter
+
+  - dest_path: archival_folder_sequence
+    origin_path: dls
+    formatters:
+      - CDMDEXER::StripFormatter
+      - Umedia::Formatters::ArchivalFolderSequenceFormatter
+
   - dest_path: persistent_url
     origin_path: persis
     formatters:
