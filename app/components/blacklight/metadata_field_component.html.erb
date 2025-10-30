@@ -1,0 +1,13 @@
+<%= render(@layout.new(field: @field)) do |component| %>
+  <% component.with_label do %>
+    <%= label %>
+  <% end %>
+
+  <% component.with_value do %>
+    <% if label != "FAST Subject Headings:" %>
+      <%= @field.render %>
+    <% elsif label == "FAST Subject Headings:"%>
+      <%= render partial: 'metadata_field_component_sf_one', locals: { field: @field } %>
+    <% end %>
+  <% end %>
+<% end %>
