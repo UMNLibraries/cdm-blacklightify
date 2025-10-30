@@ -7,22 +7,7 @@
     <% if label != "FAST Subject Headings:" %>
       <%= @field.render %>
     <% elsif label == "FAST Subject Headings:"%>
-      <%# <%= render partial: 'metadata_field_component_sf', locals: { field: @field } %>
-      <div style="background-color:yellow;">
-        <%= render partial: 'metadata_field_component_sf_one', locals: { field: @field } %>
-      </div>
-
-    <!--
-      <% @field.document[:subject_fast].each do |x| %>
-        <span itemprop="<%= label %>"> 
-          <a href="/catalog?f%5Bsubject_fast_ssim%5D%5B%5D=<%= x %>" class="show-page-label">
-            <%= OclcSubjectFastService.new(x).fast_data %>
-          </a>
-        </span>
-        <%# simplifies pseudo semicolon delimiter %>
-        <div></div>
-      <% end %>
-    -->
+      <%= render partial: 'metadata_field_component_sf_one', locals: { field: @field } %>
     <% end %>
   <% end %>
 <% end %>

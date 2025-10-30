@@ -1,8 +1,8 @@
 
 <% field.document[:subject_fast].each do |url| %>
-  <span itemprop="" style="background-color: #dad7cd;"> 
+  <span itemprop=""> 
     <a href="/catalog?f%5Bsubject_fast_ssim%5D%5B%5D=<%= url %>" class="show-page-label">
-      <%= render_async subject_path, url: url %>
+      <%= render_async subject_path url:url %>
     </a>
   </span>
   <%# simplifies pseudo semicolon delimiter %>

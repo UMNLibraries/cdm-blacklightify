@@ -1,11 +1,8 @@
 class SubjectController < ApplicationController
-  include Blacklight::Controller
-  include Spotlight::Controller
-  include Umedia::Localizable
-
   def subject
     @url = params[:url]
+    @term = OclcSubjectFastService.new(@url).fast_data
 
-    render partial: 'metadata_field_component_sf_two', locals: { url: @url }
+    render partial: 'metadata_field_component_sf_two', locals: { url: @url, term: @term }
   end
 end
