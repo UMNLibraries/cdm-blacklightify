@@ -13,10 +13,6 @@ module Blacklight
       @show = show
     end
 
-    def alt_labe
-      'rendering shit'
-    end
-
     # @private
     def label
       Deprecation.silence(Blacklight::BlacklightHelperBehavior) do
