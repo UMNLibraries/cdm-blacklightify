@@ -24,7 +24,7 @@ Rails.application.configure do
 
     # TEST 2025-09-08
     # config.cache_store = :memory_store
-    config.cache_store = :redis_cache_store, { url: ENV.fetch('REDIS_URL') { 'redis://localhost:6379/0' } }
+    config.cache_store = :redis_cache_store, { url: ENV.fetch('REDIS_URL') { 'redis://localhost:63780/0' } }
 
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
