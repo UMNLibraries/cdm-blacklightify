@@ -1,11 +1,9 @@
+<%
+  RenderAsync.configure do |config|
+    config.jquery = true # This will render jQuery code, and skip Vanilla JS code. The default value is false.
+  end 
+%> 
 
 <% field.document[:subject_fast].each do |url| %>
-  <span itemprop=""> 
-    <a href="/catalog?f%5Bsubject_fast_ssim%5D%5B%5D=<%= url %>" class="show-page-label">
-      <%= render_async subject_path url:url %>
-    </a>
-  </span>
-  <%# simplifies pseudo semicolon delimiter %>
-  <div></div>
+  <%= render_async subject_path url:url %>
 <% end %>
-
