@@ -65,9 +65,12 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#about'
   get '/contact', to: 'pages#contact'
 
-  # TEST render_async
+  # subject_fast field render_async
   get :subject, :controller => :subject
 
+  # format (getty) field render_async
+  get :getty, :controller => :getty
+ 
   # Sidekiq Web
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'

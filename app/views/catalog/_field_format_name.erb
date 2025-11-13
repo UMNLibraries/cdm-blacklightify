@@ -1,10 +1,16 @@
 <% zipped_arr.each do |x| %>
+
+  <!--
   <span itemprop="<%= field_name %>">
     <a href="/catalog?f%5B<%= field_name %>%5D%5B%5D=<%= x[0] %>" class="show-page-label">
       <%# if getty att name is nil, use the name from cdm. could be cleaned up . . . %>
       <%= GettyJsonService.new(x[1]).att_name.nil? ? x[0].titleize : GettyJsonService.new(x[1]).att_name.titleize %>
     </a>     
   </span>
+  -->
+
+  <%= render_async getty_path x:x, field_name:field_name %>
+  
   <div
     data-toggle="tooltip"
     title="<%= GettyJsonService.new(x[1]).att_definition %>"
