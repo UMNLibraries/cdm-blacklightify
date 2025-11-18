@@ -1,14 +1,3 @@
 <% subject_name.each do |url| %>
-  <!--
-  <span itemprop="<%= field_name %>" style="background-color: yellow;"> 
-    <a href="/catalog?f%5B<%= field_name %>%5D%5B%5D=<%= url %>" class="show-page-label">
-      <%= OclcSubjectFastService.new(url).uri_check ? OclcSubjectFastService.new(url).fast_data : url %>
-    </a>
-  </span>
-  -->
-
   <%= render_async subject_path url:url %>
-
-  <%# simplifies pseudo semicolon delimiter %>
-  <div></div>
 <% end %>
