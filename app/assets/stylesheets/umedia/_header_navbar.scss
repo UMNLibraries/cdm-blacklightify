@@ -90,7 +90,6 @@ nav[aria-label="Libraries"] {
 
 // primary nav class
 .umn-nav {
-	// color: #fff;
 	#main-nav {
 		background-color: #f0efee;
 		display: flex;
@@ -130,7 +129,8 @@ nav[aria-label="Libraries"] {
 			margin: 0 auto;
 			padding: .5rem 0;
 			#search_field {
-				background-color: #f0efee;
+				background-color: #ffde7a;
+        border: none;
 				height: 3.125rem;
 				&:hover {
 					box-shadow: none;
@@ -142,11 +142,12 @@ nav[aria-label="Libraries"] {
 				max-height: 3.125rem;
 			}
 			#search {
-				background-color: #7a0019;
+				background-color: #ffde7a;
 				border: 1px solid transparent;
-				border-color: #333;
-				padding-right: 1rem;
-				padding-top: .5rem;
+				border-color: transparent;
+        color: #333;
+				// padding-right: 1rem;
+				// padding-top: .5rem;
 				&:hover,
 				&:focus {
 					box-shadow: none;
@@ -154,9 +155,13 @@ nav[aria-label="Libraries"] {
 					outline-offset: 2px;
 				}
 			}
+      #search-field {
+        background-color: #ffde7a;
+      }
 		}
 		form>div>#q {
-			border-color: #333;
+			// border-color: #333;
+			border-color: rgba(0, 0, 0, .16);
 			height: 3.125rem;
 		}
 		form>div>#q:hover,
@@ -178,26 +183,33 @@ nav[aria-label="Libraries"] {
 	background-size: cover;
 	#main-nav {
 		background-color: #f0efee;
-		position: absolute;
-		width: 100%;
-		display: flex;
-		align-items: center;
+		// position: absolute;
+		// width: 100%;
+		// display: flex;
+		// align-items: center;
 	}
 	#main-search {
-		position: absolute;
+		// position: absolute;
+
 		top: 35%;
 		width: 80%;
 		left: 10%;
 		form {
-			padding: 1rem 1rem;
+			// padding: 1rem 1rem;
+      backdrop-filter: blur(3px); 
+      padding: 2rem 1rem;
 		}
 	}
 	#main-image-attribute {
-		position: absolute;
+		// position: absolute;
 		background-color: #ffde7a;
 		bottom: 0;
+    color: #333;
 		padding: .8rem;
-		width: 100%;
+		// width: 100%;
+    a {
+      color: #7a0019;
+    }
 		p {
 			margin-bottom: 0;
 			a {
