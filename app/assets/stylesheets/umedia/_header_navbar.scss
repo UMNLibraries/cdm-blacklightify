@@ -191,13 +191,15 @@ nav[aria-label="Libraries"] {
 	#main-search {
 		// position: absolute;
 
+    // 2025-11-20: update this . . . positioning not requied b/c getting rid of position absolute? everytbing should just auto center .  .
 		top: 35%;
 		width: 80%;
 		left: 10%;
+
 		form {
 			// padding: 1rem 1rem;
       backdrop-filter: blur(3px); 
-      padding: 2rem 1rem;
+      padding: 1.5rem 1rem;
 		}
 	}
 	#main-image-attribute {
