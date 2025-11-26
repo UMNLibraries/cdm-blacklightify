@@ -1,6 +1,6 @@
 // placholders
 #spotlight {
-  // background-color: pink;
+  background-color: #f9f7f6;
   padding: 1.5rem;
   .card-body {
     border: none;
@@ -28,7 +28,12 @@
   .empty-page-block {
       padding: 1.5rem
   }
-
+  #content {
+    background-color: #fff;
+    padding: 2rem;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, .16), 0 0 0 2px rgba(0, 0, 0, .08);
+    
+  }
   #published {
     .exhibit-card {
       .card-img {
