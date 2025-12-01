@@ -230,6 +230,25 @@ nav[aria-label="Libraries"] {
 	}
 }
 
+#main-content-notice {
+  background-color: #7a0019;
+  .site-title {
+    color: #fff;
+  }
+  p {
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+  }
+  .site-title-wrapper {
+    padding-bottom: .5rem;
+  }
+}
+
 @media (max-width: 768px) {
 	nav[aria-label="University"] {
 		a {
