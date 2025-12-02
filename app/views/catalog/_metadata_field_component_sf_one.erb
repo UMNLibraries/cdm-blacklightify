@@ -1,9 +1,0 @@
-<%
-  RenderAsync.configure do |config|
-    config.jquery = true # This will render jQuery code, and skip Vanilla JS code. The default value is false.
-  end 
-%> 
-
-<% field.document[:subject_fast].each do |url| %>
-  <%= render_async subject_path url:url %>
-<% end %>

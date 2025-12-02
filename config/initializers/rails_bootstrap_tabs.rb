@@ -1,0 +1,1 @@
+RailsBootstrapTabs.nav_markup = false

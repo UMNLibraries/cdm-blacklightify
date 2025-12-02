@@ -7,7 +7,7 @@
     <% if label != "FAST Subject Headings:" %>
       <%= @field.render %>
     <% elsif label == "FAST Subject Headings:"%>
-      <%= render partial: 'metadata_field_component_sf_one', locals: { field: @field } %>
+      <%= render partial: 'metadata_field_component_sf', locals: { field: @field } %>
     <% end %>
   <% end %>
 <% end %>

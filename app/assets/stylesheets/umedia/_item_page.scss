@@ -1,3 +1,9 @@
+.blacklight-catalog {
+  #main-container {
+    background-color: #f0efee;
+  }
+}
+
 dl {
   dd {
     margin-bottom: 1rem;
@@ -10,7 +16,7 @@ dl {
 }
 
 .mlt-lgi {
-  color: #007bff;
+  color: #7a0019;
   width: 20%;
 }
 
@@ -19,7 +25,7 @@ dl {
   text-decoration: none;
   background-color: #f5f5f5;
   cursor: pointer;
-  color: #007bff;
+  color: #7a0019;
   text-decoration: underline;
 }
 
@@ -29,9 +35,33 @@ hr {
 }
 
 // main metadata area (row)
-.item-meta {
+#item-meta {
   background-color: white;
   padding-top: 1rem;
+  padding-bottom: 1rem;
+  .nav-tabs {
+    border-bottom: 0;
+  }
+  .nav-tabs li {
+    background-color: #0053b0;
+    border-bottom: 0;
+    margin-right: 0.3rem;
+    // padding:1px solid #fafafa; 
+    padding: 0.5rem 0.8rem; 
+    a {
+      color: #fafafa;
+    }
+  }
+  .nav-tabs li:has(> a.active) {
+    background-color: white; 
+    border-bottom: 0;
+    margin-right: 0.3rem; 
+    // padding:1px solid #fafafa; 
+    padding: 0.5rem 0.8rem; 
+    a {
+      color: #0053b0;
+    }
+  }
 }
 
 // show tools side bar
@@ -43,7 +73,7 @@ hr {
     border-color: #333;
   }
   border-color: #333;
-  margin: 2.5rem 0 !important;
+  // margin: 2.5rem 0 !important;
 
 }
 
