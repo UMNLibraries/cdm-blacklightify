@@ -2,28 +2,40 @@
 #spotlight {
   background-color: #f9f7f6;
   padding: 1.5rem;
+  .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(18rem,1fr));
+    grid-template-rows: auto;
+    grid-gap: 2rem 3rem;
+    border: 0;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0;
+    position: relative;
+    width: auto;
+    max-width: 66ch;
+  }
   .card-body {
     border: none;
     .description {
       font-size: 1.05rem;
     }
-    h2 a {
+    .h3 a {
       color: #7a0019;
       text-decoration: underline;
       span {
         line-height: 1.3em;
       }
     }
-    h2 {
+    .h3 {
       a:hover {
         background-color: #7a0019;
         color: white !important;
       }
     }
-
-  }
-  .exhibit-card {
-    padding-bottom: none;
   }
   .empty-page-block {
       padding: 1.5rem
@@ -39,8 +51,7 @@
       .card-img {
         object-fit: cover;
         --div-width: 450px;
-        // width: var(--div-width);
-        height: calc(var(--div-width) * 1 / 2);
+        height: calc(var(--div-width) * 5 / 12);
       }
     }
   }
