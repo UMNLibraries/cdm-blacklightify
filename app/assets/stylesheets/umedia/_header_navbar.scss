@@ -232,6 +232,11 @@ nav[aria-label="Libraries"] {
 
 #main-content-notice {
   background-color: #7a0019;
+  .container {
+    margin: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
   .site-title {
     color: #fff;
   }
@@ -246,6 +251,7 @@ nav[aria-label="Libraries"] {
   }
   .site-title-wrapper {
     padding-bottom: .5rem;
+    padding-left: 3rem;
   }
 }
 
@@ -293,4 +299,9 @@ nav[aria-label="Libraries"] {
 			width: 100%;
 		}
 	}
+  #main-content-notice {
+    .site-title-wrapper {
+      padding-left: 1.25rem;
+    }
+  }
 }
