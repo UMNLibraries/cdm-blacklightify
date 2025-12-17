@@ -25,13 +25,9 @@ class IiifTextManifestService
       'label' => @document[:title],
       'metadata' => metadata.compact,
       'attribution' => attribution,
-      'sequences' => [{
-        '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/sequence/s0',
-        '@type' => 'sc:Sequence',
-        'label' => @document[:title],
-        'rendering' => rendering_property,
-        'canvases' => canvases
-      }],
+      # add mediaSequences (may be a deprecated) for .pdf support
+      # 'mediaSequences' => is_pdf,
+      'sequences' => is_pdf,
       'structures' => [{
         '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/range/r0',
         '@type' => 'sc:Range',
@@ -231,6 +227,45 @@ class IiifTextManifestService
         'label' => rendering_label,
         'format' => rendering_format_type
       }]
+  end
+
+  # pdf support . . .
+  def mediaSequences
+    [{
+      # MediaSequence may be deprecated . . .
+      "@type": "ixif:MediaSequence",
+      "label": "Contents",
+      "elements": [
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{@id.split(':')[0]}/id/#{@id.split(':')[1]}",
+          "format": "application/pdf",
+          "@type": "foaf:Document",
+          "label" => @document[:title],
+          "rendering": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{@id.split(':')[0]}/id/#{@id.split(':')[1]}",
+              "format": "application/pdf",
+            }
+          ],
+          "thumbnail": "https://digital.library.villanova.edu/themes/vudiglib/images/vudl/pdf.png"
+        }
+      ]
+    }]
+  end
+
+  def sequences
+    [{
+      '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/sequence/s0',
+      '@type' => 'sc:Sequence',
+      'label' => @document[:title],
+      'rendering' => rendering_property,
+      'canvases' => canvases
+    }]
+  end
+
+  def is_pdf
+    # determine if pdf ("viewer_type": "pdf") . . .
+    @document[:first_viewer_type] == "pdf" ? mediaSequences : sequences
   end
 
   def canvases
