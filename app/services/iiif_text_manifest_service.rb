@@ -25,15 +25,9 @@ class IiifTextManifestService
       'label' => @document[:title],
       'metadata' => metadata.compact,
       'attribution' => attribution,
-      # add mediaSequences for .pdf support
-      'mediaSequences' => is_pdf,
-      # 'sequences' => [{
-      #   '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/sequence/s0',
-      #   '@type' => 'sc:Sequence',
-      #   'label' => @document[:title],
-      #   'rendering' => rendering_property,
-      #   'canvases' => canvases
-      # }],
+      # add mediaSequences (may be a deprecated) for .pdf support
+      # 'mediaSequences' => is_pdf,
+      'sequences' => is_pdf,
       'structures' => [{
         '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/range/r0',
         '@type' => 'sc:Range',
@@ -238,6 +232,7 @@ class IiifTextManifestService
   # pdf support . . .
   def mediaSequences
     [{
+      # MediaSequence may be deprecated . . .
       "@type": "ixif:MediaSequence",
       "label": "Contents",
       "elements": [
@@ -258,10 +253,19 @@ class IiifTextManifestService
     }]
   end
 
+  def sequences
+    [{
+      '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/sequence/s0',
+      '@type' => 'sc:Sequence',
+      'label' => @document[:title],
+      'rendering' => rendering_property,
+      'canvases' => canvases
+    }]
+  end
+
   def is_pdf
-    # determine if pdf . . .
-    @document[:first_viewer_type] == "pdf" ? mediaSequences : ''
-    # "viewer_type": "pdf"
+    # determine if pdf ("viewer_type": "pdf") . . .
+    @document[:first_viewer_type] == "pdf" ? mediaSequences : sequences
   end
 
   def canvases
