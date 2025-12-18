@@ -247,7 +247,7 @@ class IiifTextManifestService
               "format": "application/pdf",
             }
           ],
-          "thumbnail": "https://digital.library.villanova.edu/themes/vudiglib/images/vudl/pdf.png"
+          "thumbnail": "https://dkp5i0hinw9br.cloudfront.net/9a6fea9f410145f09d66e87e08dcef64e993ac49.png"
         }
       ]
     }]
