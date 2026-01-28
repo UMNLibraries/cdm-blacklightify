@@ -35,6 +35,7 @@ class IiifTextManifestService
         'ranges' => iiif_manifest['structures'][0]['ranges'],
         'canvases' => iiif_manifest['structures'][0]['canvases'],
       }],
+      'service' => searcher,
       # needs to be outside structures to work appropriately . . .
       'viewingHint' => 'paged'
     }
@@ -274,5 +275,19 @@ class IiifTextManifestService
   
   def structures
     iiif_manifest['structures']
+  end
+
+  def searcher
+    {
+      '@content' => "http://iiif.io/api/search/0/context.json",
+      '@id' => query_constructor,
+      'profile' => "http://iiif.io/api/search/0/search",
+      'label' => "Search within this item"
+    }
+  end
+
+  def query_constructor
+    # "http://localhost:3000/catalog/#{@document[:id]}/iiif_search  parent_id:#{@document[:id]}"
+    "http://localhost:3000/catalog/#{@document[:id]}/iiif_search"
   end
 end

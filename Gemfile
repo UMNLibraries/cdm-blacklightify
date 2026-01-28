@@ -141,3 +141,5 @@ gem 'capistrano-yarn'
 
 gem 'rails-bootstrap-tabs', '~> 0.3.2'
 gem 'render_async'
+
+gem 'blacklight_iiif_search'

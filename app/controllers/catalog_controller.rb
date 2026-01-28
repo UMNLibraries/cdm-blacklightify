@@ -44,7 +44,20 @@ class CatalogController < ApplicationController
     contributing_organization_name_s
   ]
 
+  # CatalogController-scope behavior and configuration for BlacklightIiifSearch
+  include BlacklightIiifSearch::Controller
+
   configure_blacklight do |config|
+
+    # configuration for Blacklight IIIF Content Search
+    config.iiif_search = {
+      full_text_field: 'transcription_tesi',
+      object_relation_field: 'parent_id',
+      supported_params: %w[q page],
+      autocomplete_handler: 'iiif_suggest',
+      suggester_name: 'iiifSuggester'
+    }
+
     config.show.oembed_field = :oembed_url_ssm
     config.show.partials.insert(1, :oembed)
     config.raw_endpoint.enabled = true
@@ -57,16 +70,16 @@ class CatalogController < ApplicationController
     config.show.partials.insert(1, :openseadragon)
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
-      qt: 'search',
+      # qt: 'search',
       rows: 10,
       fl: '*',
-      fq: 'record_type:primary',
+      # fq: 'record_type:primary',
       hl: true,
-      'hl.method': 'original',
-      'hl.fl': 'collection_* format_* subject title ',
-      'hl.preserveMulti': true,
-      'hl.simple.pre': '<span style=\'background-color: #ffde7a\'>',
-      'hl.simple.post': '</span>'
+      # 'hl.method': 'original',
+      # 'hl.fl': 'collection_* format_* subject title ',
+      # 'hl.preserveMulti': true,
+      # 'hl.simple.pre': '<span style=\'background-color: #ffde7a\'>',
+      # 'hl.simple.post': '</span>'
     }
 
     config.document_solr_path = 'select'
@@ -97,6 +110,9 @@ class CatalogController < ApplicationController
     config.add_sort_field 'title_sort desc', label: 'Title (Z-A)'
     config.add_sort_field 'creator_sort asc', label: 'Creator (A-Z)'
     config.add_sort_field 'creator_sort desc', label: 'Creator (Z-A)'
+
+    # add facet field to allow Blacklight to pass the intended search parameters to Solr. field matches config.iiif_search object_relation_field above
+    config.add_facet_field 'parent_id', include_in_request: false
 
     # SERP / RESULTS PAGE
     # Format / format_name

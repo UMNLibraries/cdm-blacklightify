@@ -1067,4 +1067,8 @@
      </similarity>
     -->
 
+  <!-- BEGIN Blacklight IIIF Search autocomplete config -->
+  <copyField source="all_text_timv" dest="iiif_suggest"/>
+  <!-- END Blacklight IIIF Search autocomplete config -->
+
 </schema>

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
+  concern :iiif_search, BlacklightIiifSearch::Routes.new
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   mount Blacklight::Oembed::Engine, at: 'oembed'
   mount Riiif::Engine => '/images', as: 'riiif'
@@ -33,6 +35,7 @@ Rails.application.routes.draw do
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :exportable
+    concerns :iiif_search
 
     member do
       get 'transcript' => 'transcript#index'
