@@ -1,4 +1,10 @@
+<% document = @document if local_assigns[:document].nil? %>
+
 <ul class="list-group list-group-flush" style="border-top: none;">
+  <li class="list-group-item">
+    <%= render(Blacklight::Document::ActionsComponent.new(document: document, actions: document_actions(document), url_opts: Blacklight::Parameters.sanitize(params.to_unsafe_h))) %>
+  </li>
+
   <li class="list-group-item">
     <a class="nav-link" data-turbo="false" href="/catalog/<%= @document.id %>.json">JSON</a>
   </li>
@@ -10,9 +16,11 @@
     <% else %>
       <a class="nav-link" data-turbo="false" href="/iiif/<%= @document.id %>/text/manifest.json">IIIF Manifest</a>
     <% end %>
-    <a class="nav-link" data-turbo="false" href="https://iiif.io/community/faq/">What is IIIF?</a>
   </li>
 
+  <li class="list-group-item">
+    <a class="nav-link" data-turbo="false" href="https://iiif.io/community/faq/">What is IIIF?</a>
+  </li>
   <li class="list-group-item">
     <a class="nav-link" data-turbo="false" href="/contact">Contact</a>
   </li>

@@ -12,7 +12,13 @@ dl {
 
 // more like this (mlt)
 .mlt-c {
-  border-color: #333;
+  // border-color: #333;
+  .card-body {
+    padding: 0;
+  }
+  .list-group-item {
+    border: none;
+  }
 }
 
 .mlt-lgi {
@@ -23,7 +29,7 @@ dl {
 .mlt-lgi:hover {
   color: #555;
   text-decoration: none;
-  background-color: #f5f5f5;
+  // background-color: #f5f5f5;
   cursor: pointer;
   color: #7a0019;
   text-decoration: underline;
@@ -66,26 +72,29 @@ hr {
 
 // show tools side bar
 .show-tools {
-  .card-header {
-    background-color: #ffde7a;
-  }
-  .list-group-item {
-    border-color: #333;
-  }
-  border-color: #333;
+  // .card-header {
+  //   background-color: #ffde7a;
+  // }
+  // .list-group-item {
+  //   border-color: #333;
+  // }
+  // border-color: #333;
   // margin: 2.5rem 0 !important;
-
+  .list-group-item {
+    border: none;
+  }
 }
 
 // text truncation
-.mlt-lgi {
-  a {  
-    display: inline-block;
-    overflow: hidden;
-    width: 90%;
-    white-space: nowrap;
-  }
-}
+// 2026-01-30 this causes an offset padding/margin. may need to look into other way to truncate or different styling formula
+// .mlt-lgi {
+//   a {  
+//     display: inline-block;
+//     overflow: hidden;
+//     width: 90%;
+//     white-space: nowrap;
+//   }
+// }
 
 // focus ring on parent li while maintainig a link
 .mlt-lgi:focus-within {
