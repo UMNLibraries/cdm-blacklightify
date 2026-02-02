@@ -1,5 +1,8 @@
 <% document = @document if local_assigns[:document].nil? %>
 
+<div class="h2 pb-3 mb-0">
+  Tools
+</div>
 <ul class="list-group list-group-flush" style="border-top: none;">
   <li class="list-group-item">
     <%= render(Blacklight::Document::ActionsComponent.new(document: document, actions: document_actions(document), url_opts: Blacklight::Parameters.sanitize(params.to_unsafe_h))) %>
