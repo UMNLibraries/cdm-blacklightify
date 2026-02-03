@@ -35,7 +35,9 @@
       <%= render partial: 'shared/content_notice' if current_page?(root_path) %>
     </header>
 
-      <%= render partial: 'shared/masthead' if !current_page?(root_path)%>
+      <%# <%= render partial: 'shared/masthead' if !current_page?(root_path)%> 
+      <%= render partial: 'shared/masthead' %>
+
       <%# <%= content_for?(:header_content) ? yield(:header_content) : "" %>
 
     <main id="main-container" class="" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">

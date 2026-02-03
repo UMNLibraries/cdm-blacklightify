@@ -3,9 +3,9 @@
     background-color: #f0efee;
   }
   #document {
-    a {
-      color: #7a0019;
-    }
+    // a {
+    //   color: #7a0019;
+    // }
     .h2 {
       font-family: Georgia, “Lucida Bright”, serif;
       font-size: 1.7em;
@@ -16,8 +16,22 @@
   }
 }
 
+#fullscreen-link {
+  a {
+    color: #7a0019;
+  }
+}
+
+#content-notice {
+  a {
+    color: #7a0019;
+  }
+}
 // more like this (mlt) card
 .mlt-c {
+  a {
+    color: #7a0019;
+  }
   .card-body {
     padding: 0;
     width: 100%;
@@ -41,6 +55,9 @@ hr {
 // item details/metadata
 #item-meta {
   background-color: transparent;
+  a {
+    color: #7a0019;
+  }
   ul {
     border-bottom: 0;
     margin-bottom: 0 !important;
@@ -79,6 +96,9 @@ dl {
 
 // show tools side bar
 .show-tools {
+  a {
+    color: #7a0019;
+  }
   .list-group-item {
     border: none;
   }
