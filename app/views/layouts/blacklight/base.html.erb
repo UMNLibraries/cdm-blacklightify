@@ -38,11 +38,9 @@
       <main id="main-container" class="<%= container_classes %>" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
         <%= content_for(:container_header) %>
         <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
-        <section class="col-12" id="">
-          <div class="row">
-            <%= content_for?(:content) ? yield(:content) : yield %>
-          </div>
-        </section>
+        <div class="row px-3">
+          <%= content_for?(:content) ? yield(:content) : yield %>
+        </div>
       </main>
 
       <%= render partial: 'shared/footer' %>
