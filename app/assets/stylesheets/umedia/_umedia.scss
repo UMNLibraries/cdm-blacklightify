@@ -26,9 +26,11 @@ body {
 .show-document > .constraints-container{
 	padding-left: 0;
 }
-#main-search {
-  // padding: 0 0 0 2rem;
-}
+
+// #main-search {
+//   padding: 0 0 0 2rem;
+// }
+
 .show-document {
   padding: 0 1rem;
 }
@@ -52,6 +54,24 @@ body {
 		outline: none;
 		text-decoration: none;
 	}
+}
+
+.btn-primary {
+  background-color: #7a0019;
+  border-color: #7a0019;
+}
+.btn-primary:hover {
+  background-color: #5b0013;
+  border-color: #5b0013;
+  outline: .2rem solid #5b0013;
+  outline-offset: .1rem;
+}
+.btn-outline-secondary:hover {
+  background-color: #f0efee !important;
+  border-color: #5b0013;
+  color: #6c757d;
+  outline: .2rem solid #5b0013;
+  outline-offset: .1rem;
 }
 
 #main-container {

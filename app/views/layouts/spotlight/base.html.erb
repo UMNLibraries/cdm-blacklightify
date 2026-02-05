@@ -30,20 +30,22 @@
         <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
         <%= content_for(:skip_links) %>
       </div>
-      <%= render partial: 'shared/header_navbar' %>
+      <%# renders on main page only %>
+      <%= render partial: 'shared/header_navbar' if current_page?(root_path) %>
       <%= render partial: 'shared/about' if current_page?(root_path) %>
       <%= render partial: 'shared/content_notice' if current_page?(root_path) %>
     </header>
 
-      <%= render partial: 'shared/masthead' if !current_page?(root_path)%>
-      <%# <%= content_for?(:header_content) ? yield(:header_content) : "" %>
+    <%# <%= render partial: 'shared/masthead' if !current_page?(root_path)%> 
+    <%= render partial: 'shared/masthead' %>
 
-    <main id="main-container" class="" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
+    <%# <%= content_for?(:header_content) ? yield(:header_content) : "" %>
+    <main id="main-container" class="container-fluid" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
       <%# <%= content_for(:container_header) %>
-      <%# <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
-      <section class="row m-0 p-md-0 p-lg-5" id="spotlight">
+      <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
+      <div class="row px-3" id="spotlight">
         <%= content_for?(:content) ? yield(:content) : yield %>
-      </section>
+      </div>
     </main>
 
     <%= render partial: 'shared/footer' %>

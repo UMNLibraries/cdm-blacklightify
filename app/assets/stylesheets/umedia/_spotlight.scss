@@ -1,51 +1,23 @@
-// placholders
+.masthead {
+  border-bottom: 0;
+  // .container {
+  //   margin: 0;
+  // }
+}
+
+.breadcrumb {
+  background-color: white;
+  margin-bottom: 0;
+  a {
+    color: #7a0019;
+  }
+}
+
 #spotlight {
-  background-color: #f9f7f6;
-  padding: 1.5rem;
-  .row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(18rem,1fr));
-    grid-template-rows: auto;
-    grid-gap: 2rem 3rem;
-    border: 0;
-  }
-  .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 0;
-    position: relative;
-    width: auto;
-    max-width: 66ch;
-  }
-  .card-body {
-    border: none;
-    .description {
-      font-size: 1.05rem;
-    }
-    .h3 a {
-      color: #7a0019;
-      text-decoration: underline;
-      span {
-        line-height: 1.3em;
-      }
-    }
-    .h3 {
-      a:hover {
-        background-color: #7a0019;
-        color: white !important;
-      }
-    }
-  }
   .empty-page-block {
       padding: 1.5rem
   }
-  #content {
-    background-color: #fff;
-    padding: 2rem;
-    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, .16), 0 0 0 2px rgba(0, 0, 0, .08);
-    
-  }
+
   #published {
     .exhibit-card {
       .card-img {
@@ -55,4 +27,51 @@
       }
     }
   }
+
+  // also controls homepage exhibit styling
+  //   .row {
+  //   display: grid;
+  //   grid-template-columns: repeat(auto-fit,minmax(18rem,1fr));
+  //   grid-template-rows: auto;
+  //   grid-gap: 2rem 3rem;
+  //   border: 0;
+  // }
+  // .card {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: flex-start;
+  //   padding: 0;
+  //   position: relative;
+  //   width: auto;
+  //   max-width: 66ch;
+  // }
+  // .card-body {
+  //   border: none;
+  //   .description {
+  //     font-size: 1.05rem;
+  //   }
+  //   .h3 a {
+  //     color: #7a0019;
+  //     text-decoration: underline;
+  //     span {
+  //       line-height: 1.3em;
+  //     }
+  //   }
+  //   .h3 {
+  //     a:hover {
+  //       background-color: #7a0019;
+  //       color: white !important;
+  //     }
+  //   }
+  // }
+  // .empty-page-block {
+  //     padding: 1.5rem
+  // }
+  // #content {
+  //   background-color: #fff;
+  //   padding: 2rem;
+  //   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, .16), 0 0 0 2px rgba(0, 0, 0, .08);
+    
+  // }
+
 }
