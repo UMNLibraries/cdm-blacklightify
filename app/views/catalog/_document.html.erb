@@ -8,7 +8,7 @@
 
 <% @document = document %>
 
-<div class="d-flex justify-content-end" style="background-color: #edede9">
+<div class="d-flex justify-content-end" id="dl-link" style="background-color: #edede9">
   <% if !tools_iiif_manifest_link %>
     <a href="<%= download_path %>" target="_blank">download item</a>
   <% end %>
