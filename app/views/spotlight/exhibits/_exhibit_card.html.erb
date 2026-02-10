@@ -1,24 +1,26 @@
-<div class="card exhibit-card border-0">
-  <%= link_to exhibit, aria: { hidden: true  }, tabindex: '-1' do %>
-    <% if exhibit.thumbnail.present? && exhibit.thumbnail.iiif_url %>
-      <%= image_tag(exhibit.thumbnail.iiif_url, class: 'card-img',  alt: '', role: 'presentation', skip_pipeline: true) %>
-    <% else %>
-      <%= image_tag 'spotlight/default_thumbnail.jpg', class: 'card-img default-thumbnail',  alt: '', role: 'presentation' %>
-    <% end %>
-  <% end %>
-  
-  <div class="card-body">
-    <%= content_tag :h4, class: 'card-title h3 text-center', aria: { describedby: "exhibit-description-#{exhibit.to_param}" } do %>
-      <%= link_to exhibit, class: 'stretched-link' do %>
-        <span><%= exhibit.title %></span>
+<div class="col mb-4">
+  <div class="card exhibit-card border-0">
+    <%= link_to exhibit, aria: { hidden: true  }, tabindex: '-1' do %>
+      <% if exhibit.thumbnail.present? && exhibit.thumbnail.iiif_url %>
+        <%= image_tag(exhibit.thumbnail.iiif_url, class: 'card-img',  alt: '', role: 'presentation', skip_pipeline: true) %>
+      <% else %>
+        <%= image_tag 'spotlight/default_thumbnail.jpg', class: 'card-img default-thumbnail',  alt: '', role: 'presentation' %>
       <% end %>
     <% end %>
-    <%= content_tag :div, id: "exhibit-description-#{exhibit.to_param}", class: '' do %>
-      <% if exhibit.description %>
-        <p class="description">
-          <%= exhibit.description %>
-        </p>
+    
+    <div class="card-body">
+      <%= content_tag :h4, class: 'card-title h3 text-center', aria: { describedby: "exhibit-description-#{exhibit.to_param}" } do %>
+        <%= link_to exhibit, class: 'stretched-link' do %>
+          <span><%= exhibit.title %></span>
+        <% end %>
       <% end %>
-    <% end %>
+      <%= content_tag :div, id: "exhibit-description-#{exhibit.to_param}", class: '' do %>
+        <% if exhibit.description %>
+          <p class="description">
+            <%= exhibit.description %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

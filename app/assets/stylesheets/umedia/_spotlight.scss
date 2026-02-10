@@ -10,30 +10,19 @@
   }
 }
 
-// #spotlight {
-//   .empty-page-block {
-//       padding: 1.5rem
-//   }
-
-//   #published {
-//     .exhibit-card {
-//       .card-img {
-//         object-fit: cover;
-//         --div-width: 450px;
-//         height: calc(var(--div-width) * 5 / 12);
-//       }
-//     }
-//   }
-// }
-
 // placholders
 #spotlight {
-  // background-color: #f9f7f6;
-  // background-color: #e9c46a;
-  // padding: 1.5rem;
 
+  .content {
+    // padding: 0 !important;
+    background-color: pink;
+  }
   // e x h i b i t card of main page
   .tab-content {
+    background-color: white;
+    padding: 3rem;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
+    
     .row {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(18rem,1fr));
@@ -44,42 +33,42 @@
   }
 
   // result download link
-  // #dl-link {
-  //   background-color: pink !important;
-  // }
+  #dl-link {
+    background-color: pink !important;
+  }
 
-  .exhibit-card {
-    // background-color: #ccd5ae;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 0;
-    position: relative;
-    width: auto;
-    max-width: 66ch;
-  }
-  .card-body {
-    border: none;
-    .description {
-      font-size: 1.05rem;
-    }
-    .h3 a {
-      color: #7a0019;
-      text-decoration: underline;
-      span {
-        line-height: 1.3em;
-      }
-    }
-    .h3 {
-      a:hover {
-        background-color: #7a0019;
-        color: white !important;
-      }
-    }
-  }
-  .empty-page-block {
-      padding: 1.5rem
-  }
+  // .exhibit-card {
+  //   background-color: #ccd5ae;
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: flex-start;
+  //   padding: 0;
+  //   position: relative;
+  //   width: auto;
+  //   max-width: 66ch;
+  // }
+  // .card-body {
+  //   border: none;
+  //   .description {
+  //     font-size: 1.05rem;
+  //   }
+  //   .h3 a {
+  //     color: #7a0019;
+  //     text-decoration: underline;
+  //     span {
+  //       line-height: 1.3em;
+  //     }
+  //   }
+  //   .h3 {
+  //     a:hover {
+  //       background-color: #7a0019;
+  //       color: white !important;
+  //     }
+  //   }
+  // }
+  // .empty-page-block {
+  //     padding: 1.5rem
+  // }
 
   // backgound of serp cards . . .
 
