@@ -1,5 +1,5 @@
 <div class="col mb-4">
-  <div class="card exhibit-card border-0">
+  <div class="card border-0">
     <%= link_to exhibit, aria: { hidden: true  }, tabindex: '-1' do %>
       <% if exhibit.thumbnail.present? && exhibit.thumbnail.iiif_url %>
         <%= image_tag(exhibit.thumbnail.iiif_url, class: 'card-img',  alt: '', role: 'presentation', skip_pipeline: true) %>
