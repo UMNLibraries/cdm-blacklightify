@@ -35,6 +35,19 @@ body {
   padding: 0 1rem;
 }
 
+// SERP
+#documents {
+  a {
+    color: #7a0019;
+    text-decoration: underline;
+  }
+  a:hover {
+    color: #fafafa;
+    background-color: #7a0019;
+    text-decoration: none;
+  }
+}
+
 #umedia {
 	padding: 1.5rem;
 	.empty-page-block {

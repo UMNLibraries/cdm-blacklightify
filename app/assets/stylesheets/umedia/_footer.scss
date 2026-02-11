@@ -1,103 +1,93 @@
 footer {
-    flex-shrink: 0;
-    background-color: #f0efee;
-    border-top: 1px solid #d5d6d2;
-    // color: #fafafa;
-    padding-top: .6rem;
-    padding-left: 5rem;
-    padding-right: 5rem;
-    .card {
-        background-color: #f0efee;
+  flex-shrink: 0;
+  background-color: #f0efee;
+  border-top: 1px solid #d5d6d2;
+  padding-top: 1rem;
+  .card {
+      background-color: #f0efee;
+  }
+  .hr {
+      background-color: #fafafa;
+  }
+  #content {
+    font-family: Tahoma, Verdana, sans-serif;
+    padding-bottom: 2rem;
+    ul {
+      list-style-type: none;
+      padding: 0;
     }
-    .hr {
-        background-color: #fafafa;
+    li {
+      padding: .8rem;
     }
-    #content {
-        font-family: Tahoma, Verdana, sans-serif;
-        padding: 0;
-        padding-bottom: 2rem;
-        margin-top: 1rem;
-        margin-left: 0;
-        margin-right: 0;
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        a {
-            display: block;
-            color: #333;
-            text-decoration: underline;
-        }
-        a:hover,
-        a:focus {
-            background-color: #ffde7a;
-            color: #f0efee;
-            outline: none;
-            text-decoration: none;
-        }
-        li {
-            padding: .8rem;
-        }
-        li:hover {
-            a {
-                color: #333;
-                text-decoration: none;
-            }
-            background-color: #ffde7a;
-            padding: .8rem;
-            text-decoration: none;
-        }
-        #contact {
-            ul {
-                list-style-type: none;
-            }
-            li {
-                display: inline-block;
-            }
-            li:first-child:hover {
-                background-color: #d5d6d2;
-                text-decoration: none;
-            }
-        }
-        .card-body-as-link {
-          background-color: white;
-        }
-        .card-body-as-link:hover, // check for redundancy
-        .card-body-as-link:focus-within {
-            outline: 3px solid #ffde7a;
-            outline-offset: 4px;
-            a {
-                background-color: #ffde7a;
-                color: #333;
-                text-decoration: none;
-            }
-        }
-        #related-services {
-          background-color: white;
-        }
-        #copyright {
-            a {
-                display: inline-block;
-                text-decoration: underline;
-            }
-            a:hover,
-            a:focus {
-                background-color: #ffde7a;
-                color: #333;
-                text-decoration: none;
-            }
-        }
-        hr {
-            background-color: #fafafa;
-            margin-top: 3rem;
-            margin-bottom: 2rem;
-        }
+    a {
+      display: block;
+      color: #333;
+      text-decoration: underline;
     }
+    #contact {
+      ul {
+        list-style-type: none;
+      }
+      li {
+        display: inline-block;
+      }
+      li:not(:first-child):hover,
+      li:not(:first-child):focus-within {
+        background-color: #d5d6d2;
+        text-decoration: none;
+        a{
+          text-decoration: none;
+        }
+      }
+    }
+    #related-services {
+      background-color: white;
+      li:hover,
+      li:focus-within {
+        background-color: #d5d6d2;
+        text-decoration: none;
+        a{
+          text-decoration: none;
+        }
+      }
+    }
+    #copyright {
+      a {
+        display: inline-block;
+        text-decoration: underline;
+      }
+      a:hover,
+      a:focus {
+        background-color: #ffde7a;
+        color: #333;
+        text-decoration: none;
+      }
+    }
+
+    .card-body-as-link {
+      background-color: white;
+    }
+    .card-body-as-link:hover, // check for redundancy
+    .card-body-as-link:focus-within {
+      outline: 3px solid #ffde7a;
+      outline-offset: 4px;
+      a {
+        background-color: #ffde7a;
+        color: #333;
+        text-decoration: none;
+      }
+    }
+    hr {
+      background-color: #fafafa;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+    }
+  }
 }
 
 @media (max-width: 768px) {
-    footer {
-        padding-left: 0;
-        padding-right: 0;
-    }
+  footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
