@@ -7,20 +7,7 @@
 }
 
 #spotlight {
-  #content {
-    // padding: 0 !important;
-    // background-color: pink;
-    a {
-      color: #7a0019;
-      text-decoration: underline;
-    }
-    a:hover {
-      color: #fafafa;
-      background-color: #7a0019;
-      text-decoration: none;
-    }
-  }
-  // e x h i b i t card of main page
+  // exhibit cards on main page
   .tab-content {
     background-color: white;
     padding: 3rem;
@@ -33,25 +20,6 @@
       border: 0;
     }
   }
-
-  // t e s t ing serp download link
-  // .documents-list {
-  //   #dl-link {
-  //     background-color: #656d4a !important;
-  //   }
-  // }
-  // .documents-gallery {
-  //   #dl-link {
-  //     background-color: #9a8c98!important;
-  //   }
-  // }
-  // .documents-masonry {
-  //   #dl-link {
-  //     background-color: yellow !important;
-  //     visibility: hidden;
-  //   }
-  // }
-
   .document-metadata {
     grid-gap: 0;
   }
@@ -61,6 +29,15 @@
         object-fit: cover;
         --div-width: 450px;
         height: calc(var(--div-width) * 5 / 12);
+      }
+      a {
+        color: #7a0019;
+        text-decoration: underline;
+      }
+      a:hover {
+        color: #fafafa;
+        background-color: #7a0019;
+        text-decoration: none;
       }
     }
   }

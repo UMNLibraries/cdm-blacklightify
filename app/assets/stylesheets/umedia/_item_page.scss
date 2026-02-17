@@ -3,15 +3,20 @@
     background-color: #f0efee;
   }
   #document {
-    // a {
-    //   color: #7a0019;
-    // }
     .h2 {
       font-family: Georgia, “Lucida Bright”, serif;
       font-size: 1.7em;
     }
-    .list-group-item:hover {
+  }
+  #item-content {
+    a {
+      color: #7a0019;
       text-decoration: underline;
+    }
+    a:hover {
+      color: #fafafa;
+      background-color: #7a0019;
+      text-decoration: none;
     }
   }
 }
@@ -84,6 +89,7 @@ hr {
   .tab-content {
     background-color: white;
     padding: 1rem 1rem;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
   }
 }
 
@@ -98,6 +104,9 @@ dl {
 .show-tools {
   a {
     color: #7a0019;
+  }
+  .list-group {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
   }
   .list-group-item {
     border: none;
