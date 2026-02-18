@@ -38,6 +38,7 @@
     color: #7a0019;
   }
 }
+
 // more like this (mlt) card
 .mlt-c {
   a {
@@ -56,6 +57,13 @@
   width: 20%;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+.mlt-lgi:hover {
+  background-color: #7a0019;
+  a {
+    color: #fafafa !important;
+    text-decoration: none !important;
+  }
 }
 
 hr {
