@@ -14,7 +14,7 @@
   <% end %>
 <% end %>
 
-<header class="masthead <%= 'image-masthead' if current_masthead %> <%= 'resource-masthead' if resource_masthead? %> m-0" role="banner">
+<header class="masthead <%= 'image-masthead' if current_masthead %> <%= 'resource-masthead' if resource_masthead? %>" role="banner">
   <% if current_masthead %>
     <span class='background-container' style="background-image: url('<%= current_masthead.iiif_url %>')"></span>
     <span class='background-container-gradient'></span>
@@ -26,11 +26,11 @@
     <div class="site-title-wrapper">
       
       <% if content_for? :masthead %>
-        <h1 class="site-title h2">
+        <h1 class="site-title h2 text-wrap">
           <%= content_for :masthead %>
         </h1>
       <% else %>
-        <h1 class="site-title h2">
+        <h1 class="site-title h2 text-wrap">
           <%= masthead_heading_content %>
         </h1>
         <% if masthead_subheading_content %>

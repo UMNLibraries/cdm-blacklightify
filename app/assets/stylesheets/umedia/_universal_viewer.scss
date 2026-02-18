@@ -135,7 +135,13 @@
   content: "Complete object (pdf)";
 }
 
-
+// rightPanel in Attachment tab
+.rightPanel {
+  a {
+    color: #fff !important;
+    text-decoration: none !important;
+  }
+}
 // kaltura ?
 .playkit-pre-playback-play-button {
   background-color: grey;

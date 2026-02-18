@@ -3,15 +3,26 @@
     background-color: #f0efee;
   }
   #document {
-    // a {
-    //   color: #7a0019;
-    // }
     .h2 {
       font-family: Georgia, “Lucida Bright”, serif;
       font-size: 1.7em;
     }
-    .list-group-item:hover {
+  }
+  #item-content {
+    a {
+      color: #7a0019;
       text-decoration: underline;
+    }
+    a:hover {
+      color: #fafafa !important;
+      background-color: #7a0019;
+      text-decoration: none;
+    }
+    // attachment/transcript tab
+    .ml-0:hover {
+      color: #7a0019!important;
+      background-color: #fafafa;
+      text-decoration: none;
     }
   }
 }
@@ -27,6 +38,7 @@
     color: #7a0019;
   }
 }
+
 // more like this (mlt) card
 .mlt-c {
   a {
@@ -45,6 +57,13 @@
   width: 20%;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+.mlt-lgi:hover {
+  background-color: #7a0019;
+  a {
+    color: #fafafa !important;
+    text-decoration: none !important;
+  }
 }
 
 hr {
@@ -84,6 +103,7 @@ hr {
   .tab-content {
     background-color: white;
     padding: 1rem 1rem;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
   }
 }
 
@@ -98,6 +118,9 @@ dl {
 .show-tools {
   a {
     color: #7a0019;
+  }
+  .list-group {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
   }
   .list-group-item {
     border: none;
@@ -136,12 +159,10 @@ dl {
   position: absolute;
   animation: spin 3s linear infinite;
 }
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
 embed {
   z-index: 9;
 }
@@ -153,9 +174,9 @@ embed {
   box-sizing: content-box;
   display: inline-block;
   text-align: center;
-  line-height: 14px;
-  height: 14px;
-  width: 14px;
+  line-height: 15px;
+  height: 15px;
+  width: 15px;
   margin: 0 0.3em;
   
   color: #333;
@@ -164,6 +185,13 @@ embed {
   font-size: 12px;
   font-weight: bold;
   margin-right: -.25rem;
+}
+.tool-tip:hover {
+  background: #7a0019;
+  color: #fafafa;
+  border: 2px solid #fafafa;
+  outline: 2px solid #7a0019;
+  border-radius: 100%;
 }
 
 // tooltip delimiter for getty format name AND subject FAST fields

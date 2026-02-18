@@ -20,16 +20,8 @@ body {
 }
 
 .constraints-container {
-	padding: 1rem 1rem 0 1rem;
+	padding-top: 1rem;
 }
-
-.show-document > .constraints-container{
-	padding-left: 0;
-}
-
-// #main-search {
-//   padding: 0 0 0 2rem;
-// }
 
 .show-document {
   padding: 0 1rem;
@@ -56,17 +48,17 @@ body {
 }
 
 #blacklight-modal {
-	a {
-		color: #0053b0;
-		text-decoration: underline;
-	} 
-	a:hover,
-	a:focus {
-		background-color: #0053b0;
-		color: #fafafa;
-		outline: none;
-		text-decoration: none;
-	}
+	// a {
+	// 	color: #0053b0;
+	// 	text-decoration: underline;
+	// } 
+	// a:hover,
+	// a:focus {
+	// 	background-color: #0053b0;
+	// 	color: #fafafa;
+	// 	outline: none;
+	// 	text-decoration: none;
+	// }
 }
 
 .btn-primary {
@@ -88,8 +80,7 @@ body {
 }
 
 #main-container {
-  // background-color: #f0efee99;
-	padding: 0;
+	padding: 1;
 }
 @font-face {
 	font-family: "bootstrap-icons";
