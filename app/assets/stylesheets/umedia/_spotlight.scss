@@ -1,57 +1,45 @@
-// placholders
+.breadcrumb {
+  background-color: white;
+  margin-bottom: 0;
+  a {
+    color: #7a0019;
+  }
+}
+
 #spotlight {
-  background-color: #f9f7f6;
-  padding: 1.5rem;
-  .row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(18rem,1fr));
-    grid-template-rows: auto;
-    grid-gap: 2rem 3rem;
-    border: 0;
+  // exhibit cards on main page
+  .page-sidebar {
+    margin-bottom: 0;
   }
-  .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 0;
-    position: relative;
-    width: auto;
-    max-width: 66ch;
-  }
-  .card-body {
-    border: none;
-    .description {
-      font-size: 1.05rem;
-    }
-    .h3 a {
-      color: #7a0019;
-      text-decoration: underline;
-      span {
-        line-height: 1.3em;
-      }
-    }
-    .h3 {
-      a:hover {
-        background-color: #7a0019;
-        color: white !important;
-      }
+  .tab-content {
+    background-color: white;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
+    .row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(18rem,1fr));
+      grid-template-rows: auto;
+      grid-gap: 2rem 3rem;
+      border: 0;
     }
   }
-  .empty-page-block {
-      padding: 1.5rem
-  }
-  #content {
-    background-color: #fff;
-    padding: 2rem;
-    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, .16), 0 0 0 2px rgba(0, 0, 0, .08);
-    
+  .document-metadata {
+    grid-gap: 0;
   }
   #published {
-    .exhibit-card {
+    .card {
       .card-img {
         object-fit: cover;
         --div-width: 450px;
         height: calc(var(--div-width) * 5 / 12);
+      }
+      a {
+        color: #7a0019;
+        text-decoration: underline;
+      }
+      a:hover {
+        color: #fafafa;
+        background-color: #7a0019;
+        text-decoration: none;
       }
     }
   }

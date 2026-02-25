@@ -13,22 +13,25 @@
       <%= render partial: 'viewers/uv_iiif_manifest', locals: { document: document } %>
   <% end %>
 </div>
-<!-- presentation mode link -->
-<div class="d-flex justify-content-center mb-3 mt-2">
-  <%= link_to "Link to fullscreen", solr_document_path(:fullscreen=>true) %>
-</div>
-<!-- content notice-->
-<div class="my-5" id="content-notice">
-  <b>Content notice:</b> Please note that some historical materials may contain harmful content and/or descriptions. <a href="">Learn how we’re addressing it</a>. 
-</div>
 
-<!-- More Like This Component -->
-<%= render(Umedia::Document::MoreLikeThisComponent.new(document: document)) %>
+<div id="item-content">
+  <!-- presentation mode link -->
+  <div class="d-flex justify-content-center mb-3 mt-2" id="fullscreen-link">
+    <%= link_to "Link to fullscreen", solr_document_path(:fullscreen=>true) %>
+  </div>
+  <!-- content notice-->
+  <div class="my-5" id="content-notice">
+    <b>Content notice:</b> Please note that some historical materials may contain harmful content and/or descriptions. <a href="">Learn how we’re addressing it</a>. 
+  </div>
 
-<!-- Metadata Fields -->
-<% doc_presenter = document_presenter(document) %>
-<div class="row my-5">
-  <%= render partial: "tabs" %>
+  <!-- More Like This Component -->
+  <%= render(Umedia::Document::MoreLikeThisComponent.new(document: document)) %>
+
+  <!-- Metadata Fields -->
+  <% doc_presenter = document_presenter(document) %>
+  <div class="row my-5">
+    <%= render partial: "tabs" %>
+  </div>
 </div>
 
 <script>

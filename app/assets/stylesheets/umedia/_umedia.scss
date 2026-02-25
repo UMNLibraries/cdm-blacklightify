@@ -20,17 +20,24 @@ body {
 }
 
 .constraints-container {
-	padding: 1rem 1rem 0 1rem;
+	padding-top: 1rem;
 }
 
-.show-document > .constraints-container{
-	padding-left: 0;
-}
-#main-search {
-  // padding: 0 0 0 2rem;
-}
 .show-document {
   padding: 0 1rem;
+}
+
+// SERP
+#documents {
+  a {
+    color: #7a0019;
+    text-decoration: underline;
+  }
+  a:hover {
+    color: #fafafa;
+    background-color: #7a0019;
+    text-decoration: none;
+  }
 }
 
 #umedia {
@@ -41,22 +48,39 @@ body {
 }
 
 #blacklight-modal {
-	a {
-		color: #0053b0;
-		text-decoration: underline;
-	} 
-	a:hover,
-	a:focus {
-		background-color: #0053b0;
-		color: #fafafa;
-		outline: none;
-		text-decoration: none;
-	}
+	// a {
+	// 	color: #0053b0;
+	// 	text-decoration: underline;
+	// } 
+	// a:hover,
+	// a:focus {
+	// 	background-color: #0053b0;
+	// 	color: #fafafa;
+	// 	outline: none;
+	// 	text-decoration: none;
+	// }
+}
+
+.btn-primary {
+  background-color: #7a0019;
+  border-color: #7a0019;
+}
+.btn-primary:hover {
+  background-color: #5b0013;
+  border-color: #5b0013;
+  outline: .2rem solid #5b0013;
+  outline-offset: .1rem;
+}
+.btn-outline-secondary:hover {
+  background-color: #f0efee !important;
+  border-color: #5b0013;
+  color: #6c757d;
+  outline: .2rem solid #5b0013;
+  outline-offset: .1rem;
 }
 
 #main-container {
-  // background-color: #f0efee99;
-	padding: 0;
+	padding: 1;
 }
 @font-face {
 	font-family: "bootstrap-icons";

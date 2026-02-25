@@ -1,12 +1,13 @@
 section[aria-label="search results"],
-section[aria-label="limit your search"] {
+section[aria-label="limit your search"],
+div[aria-label="Results navigation"] {
   a {
-    color: #0053b0;
+    color: #7a0019;
     text-decoration: underline;
   } 
   a:hover,
   a:focus {
-    background-color: #0053b0;
+    background-color: #7a0019;
     color: #fafafa;
     outline: none;
     text-decoration: none;
@@ -16,6 +17,34 @@ section[aria-label="limit your search"] {
   }
   .document-type {
     font-weight: 700;
+  }
+  // facet border (active)
+  .border-success, .facet-limit-active {
+    border-color: #7a0019 !important;
+  }
+  .facet-limit-active .card-header {
+    background-color: #7a0019 !important;
+    button {
+      color: #fafafa;
+    }
+  }
+  .text-success, .facet-values li .selected {
+    color: #7a0019 !important;
+  }
+  // facet value remove icon (X)
+  .remove .remove-icon {
+    color: #7a0019;
+    text-decoration: underline;
+  }
+  .remove:hover {
+    background-color: white;
+    color: #fafafa;
+    outline: none;
+    text-decoration: none;
+  }
+  .remove-icon:hover {
+    background-color: #7a0019;
+    color: #fafafa;
   }
   // gallery view
   .thumbnail-container {
