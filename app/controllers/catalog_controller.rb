@@ -75,7 +75,7 @@ class CatalogController < ApplicationController
       fl: '*',
       # fq: 'record_type:primary',
       hl: true,
-      # 'hl.method': 'original',
+      'hl.method': 'original',
       # 'hl.fl': 'collection_* format_* subject title ',
       # 'hl.preserveMulti': true,
       # 'hl.simple.pre': '<span style=\'background-color: #ffde7a\'>',
@@ -88,7 +88,11 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = 'title'
 
-    config.add_search_field 'all_fields', label: I18n.t('spotlight.search.fields.search.all_fields')
+    config.add_search_field 'all_fields', label: I18n.t('spotlight.search.fields.search.all_fields') do |field|
+      field.solr_parameters = {
+        fq: 'record_type:primary'
+      }
+    end
 
     # additional targeted search query field.
     config.add_search_field 'types', label: 'Type'
@@ -97,6 +101,9 @@ class CatalogController < ApplicationController
       field.query_parameters = { 'spellcheck.dictionary': 'subject' }
       field.query_local_parameters = {
         qf: 'subject_ssm'
+      },
+      field.solr_parameters = {
+        fq: 'record_type:primary'
       }
     end
 
