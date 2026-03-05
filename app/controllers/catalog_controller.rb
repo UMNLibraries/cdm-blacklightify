@@ -75,7 +75,7 @@ class CatalogController < ApplicationController
       hl: true,
       'hl.method': 'original',
       'hl.fl': 'collection_* format_* subject title ',
-      'hl.preserveMulti': true,
+      'hl.preserveMulti': false,
       'hl.simple.pre': '<span style=\'background-color: #ffde7a\'>',
       'hl.simple.post': '</span>'
     }
@@ -161,6 +161,8 @@ class CatalogController < ApplicationController
     config.add_index_field 'date_created', label: 'Date'
     # Format / format_name
     config.add_index_field 'format_name', label: 'Format', highlight: true
+    # Description
+    config.add_index_field 'description', label: 'Description', highlight: true
     # Subject / subject
     config.add_index_field 'subject_ssm', label: 'Subjects', link_to_facet: true, highlight: true,
                                       separator_options: { two_words_connector: '; ', words_connector: '; ', last_word_connector: '; ' }
