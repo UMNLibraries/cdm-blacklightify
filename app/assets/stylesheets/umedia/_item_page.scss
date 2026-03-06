@@ -127,16 +127,20 @@ dl {
   }
 }
 
-// text truncation
-// 2026-01-30 this causes an offset padding/margin. may need to look into other way to truncate or different styling formula
-// .mlt-lgi {
-//   a {  
-//     display: inline-block;
-//     overflow: hidden;
-//     width: 90%;
-//     white-space: nowrap;
-//   }
-// }
+// more like this title text truncation
+.mlt-lgi .mlt-thumb-title {
+  overflow: hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+// serp description, subject text truncation. does not affect item page
+.document-metadata .blacklight-description, .blacklight-subject_ssm {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
 
 // focus ring on parent li while maintainig a link
 .mlt-lgi:focus-within {
