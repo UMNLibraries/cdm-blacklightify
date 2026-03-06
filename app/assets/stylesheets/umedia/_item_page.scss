@@ -194,8 +194,8 @@ embed {
   border-radius: 100%;
 }
 
-// tooltip delimiter for getty format name AND subject FAST fields
-.blacklight-format_name, .blacklight-subject_fast_ssim {
+// tooltip delimiter for getty format name field
+.blacklight-format_name {
   display: flex;
   flex-wrap: wrap;
   
@@ -206,7 +206,16 @@ embed {
     content: "";
   }
 }
-
+// subject fast delimiter
+.blacklight-subject_fast_ssim {
+  // defaults to display: inline
+  span::after {
+    content: "; ";
+  }
+  span:last-child::after {
+    content: "";
+  }
+}
 
 
 @media only screen and (max-width: 768px) {
