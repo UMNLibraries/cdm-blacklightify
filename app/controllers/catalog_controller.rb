@@ -70,6 +70,7 @@ class CatalogController < ApplicationController
     config.show.partials.insert(1, :openseadragon)
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
+      qt: 'search',
       rows: 10,
       fl: '*',
       hl: true,
