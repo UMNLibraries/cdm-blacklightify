@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <%= render partial: 'shared/analytics' %>
+    
     <title><%= h(@page_title || application_name.to_s) %></title>
     <link href="<%= current_exhibit ? spotlight.opensearch_exhibit_catalog_url(current_exhibit, format: 'xml') : main_app.opensearch_catalog_url(format: 'xml') %>" title="<%= h(@page_title || application_name.to_str) %>" type="application/opensearchdescription+xml" rel="search"/>
     <%= favicon_link_tag 'favicon.ico' %>
@@ -13,13 +15,15 @@
     <% else %>
       <%= stylesheet_link_tag "application" %>
     <% end %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
     <%= content_for(:head) %>
+    <%= javascript_include_tag "application" %>
+
     <%= description %>
     <%= twitter_card %>
     <%= opengraph %>
-    <%= javascript_tag '$.fx.off = true;' if Rails.env.test? %>
+    <%= javascript_tag '$.fx.off = true;' if Rails.env.test? %> 
+
+    <%= csrf_meta_tags %>
   </head>
   <body class="<%= render_body_class %>">
     <header>
