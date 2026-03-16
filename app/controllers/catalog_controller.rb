@@ -15,7 +15,7 @@ class CatalogController < ApplicationController
   UMEDIA_SHOW_FIELDS = {
     default: %w[],
     # default: %w[ object ],
-    primary: %w[title title_alternative description date_created creator contributor_ssim publisher_sim historical_era caption
+    primary: %w[title_s title_alternative description_ts date_created_ssim creator contributor_ssim publisher historical_era caption
                 notes],
     topic: %w[subject_ssm subject_fast_ssim language],
     phys_desc: %w[types format_name dimensions],
@@ -29,7 +29,7 @@ class CatalogController < ApplicationController
   UMEDIA_LINK_TO_FACET_FIELDS = %w[
     creator
     contributor_ssim
-    publisher_sim
+    publisher
     subject_ssm
     subject_fast_ssim
     language

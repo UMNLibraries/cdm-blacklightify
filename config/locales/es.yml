@@ -3,7 +3,7 @@ es:
     change_lang_to: "Cambiar a Español"
   item:
     fields:
-      title: "Título"
+      title_s: "Título"
       title_alternative: "Título Alternativo"
       creator: "Creador"
       creator_ss: "Creador"
@@ -12,9 +12,8 @@ es:
       publisher: "Editor"
       publisher_sim: "Editor"
       caption: "Subtítulos"
-      description: "Descripción"
-      date_created: "Fecha de Creación"
-      date_created_ss: "Fecha de Creación"
+      description_ts: "Descripción"
+      date_created_ssim: "Fecha de Creación"
       historical_era: "Era Histórica"
       notes: "Notas"
       types: "Tipo"
@@ -55,7 +54,7 @@ es:
       rights_statement_uri: ""
 
     field_tooltips:
-      title: "spanish title tooltip . . . title"
+      title_s: "spanish title tooltip . . . title"
       collection_name_s: "spanish tooltip . . . coll."
       primary: "spanish tooltip, 'primary' field"
 

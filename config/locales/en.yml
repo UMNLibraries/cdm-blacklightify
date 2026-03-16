@@ -63,11 +63,10 @@ en:
       page_count: "Page Count"
   item:
     fields:
-      title: "Title"
+      title_s: "Title"
       title_alternative: "Alternative Title"
-      description: "Description"
-      date_created: "Date Created"
-      date_created_ss: "Date Created"
+      description_ts: "Description"
+      date_created_ssim: "Date Created"
       object:  "Thumbnail source"
       historical_era: "Historical Era"
       creator: "Creator"
@@ -125,9 +124,9 @@ en:
       page_count: "Page Count"
 
     field_tooltips:
-      title: "this is the tooltip for the title field . . ."
-      description: "this is the english tooltip for the description field"
-      date_created: "date created, en"
+      title_s: "this is the tooltip for the title field . . ."
+      description_ts: "this is the english tooltip for the description field"
+      date_created_ssim: "date created, en"
       collection_name_s: "tooltip for collection name (digital collection) example"
       subject_fast_ssim: "FAST (Faceted Application of Subject Terminology) is derived from the Library of Congress Subject Headings (LCSH)"
 
