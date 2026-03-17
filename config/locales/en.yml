@@ -83,7 +83,7 @@ en:
       format_name: "Format"
       dimensions: "Dimensions"
       subject_ss: "Subjects"
-      subject_ssm: "Subjects"
+      subject_ssim: "Subjects"
       subject_fast: "FAST Subject Headings"
       subject_fast_ssim: "FAST Subject Headings"
       language: "Language"

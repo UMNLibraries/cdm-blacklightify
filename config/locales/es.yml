@@ -22,7 +22,7 @@ es:
       physical_format: "Formato"
       dimensions: "Dimensiones"
       subject: "Temas"
-      subject_ssm: "Temas"
+      subject_ssim: "Temas"
       language: "Idioma"
       continent: "Continente"
       continent_ssim: "Continente"

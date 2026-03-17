@@ -272,6 +272,8 @@
   <field name="es_notes" type="text_general_single" indexed="true" stored="true" multiValued="false" />
   <field name="es_format" type="string" indexed="true" stored="true" multiValued="true" />
   <field name="es_format_name" type="string" indexed="true" stored="true" multiValued="true" termVectors="true" />
+  <copyField source="es_format_name" dest="es_format_name_ssim" />
+
   <field name="es_types" type="string" indexed="true" stored="true" multiValued="true" />
   <field name="es_dimensions" type="string" indexed="true" stored="true" />
   <field name="es_subject" type="text_general" indexed="true" stored="true" multiValued="true" termVectors="true" />
@@ -344,7 +346,7 @@
   <copyField source="title_alternative" dest="title_alternative_t"/>
   <copyField source="publisher" dest="publisher_tim"/>
   <copyField source="publisher" dest="publisher_tim"/>
-  <copyField source="subject" dest="subject_ssm"/>
+  <copyField source="subject" dest="subject_ssim"/>
   <copyField source="subject_fast" dest="subject_fast_ssim"/>
   <copyField source="collection_name" dest="collection_name_s"/>
   <copyField source="super_collection_names" dest="super_collection_names_ssm"/>

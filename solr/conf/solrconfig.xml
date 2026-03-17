@@ -321,7 +321,7 @@
   <searchComponent name="iiif_suggest" class="solr.SuggestComponent">
     <lst name="suggester">
       <str name="name">iiifSuggester</str>
-      <str name="lookupImpl">edu.stanford.dlss.search.suggest.analyzing.TokenizingLookupFactory</str>
+      <!-- <str name="lookupImpl">edu.stanford.dlss.search.suggest.analyzing.TokenizingLookupFactory</str> -->
       <str name="dictionaryImpl">DocumentDictionaryFactory</str>
       <str name="suggestAnalyzerFieldType">textSuggest</str>
       <str name="suggestTokenizingAnalyzerFieldType">textSuggestTokenizer</str>
