@@ -79,6 +79,21 @@ body {
   outline-offset: .1rem;
 }
 
+// pagination
+.page-item {
+  a {
+    color: #5b0013 !important;
+  }
+  a:hover {
+    background-color: #f0efee !important;
+  }
+}
+.page-item.active .page-link {
+  background-color: #5b0013;
+  border-color: #5b0013;
+  color: #f0efee;
+}
+
 #main-container {
 	padding: 1;
 }
