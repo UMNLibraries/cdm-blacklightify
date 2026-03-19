@@ -39,6 +39,9 @@ body {
     text-decoration: none;
   }
 }
+.documents-list .document {
+  border-bottom: none !important;
+}
 
 #umedia {
 	padding: 1.5rem;
@@ -77,6 +80,17 @@ body {
   color: #6c757d;
   outline: .2rem solid #5b0013;
   outline-offset: .1rem;
+}
+
+// faceted list
+.facet-extended-list {
+  a {
+    color: #7a0019;
+    text-decoration: underline;
+  }
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 // pagination
