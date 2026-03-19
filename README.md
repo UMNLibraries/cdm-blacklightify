@@ -20,27 +20,14 @@ $ git clone git@github.com:UMNLibraries/cdm-blacklightify.git cdm-blacklightify
 $ cd cdm-blacklightify
 ```
 
-2. Setup git-flow
-```shell
-$ git flow init
-```
 
-Choose branches (accept defaults):
-- Release branch: `main`
-- Next release development branch: `develop`
-- Feature branch prefix: `feature/`
-- Hotfix prefix: `hotfix/`
-- Release prefix: `release/`
-- Support prefix: `support/`
-- Version tag prefix: (leave blank)
-
-3. bundle dependencies
+2. bundle dependencies
 
 ```shell
 $ bundle install
 ```
 
-4. Configure DotEnv files
+3. Configure DotEnv files
 
 ```shell
 $ cp .env.example .env
@@ -48,7 +35,7 @@ $ cp .env.example .env
 
 Fill in missing env var values (@TODO: share via LastPass?)
 
-5. Prepare development database
+4. Prepare development database
 
 Build the project database tables and load our test fixtures for development use.
 
@@ -57,7 +44,7 @@ $ bundle exec rails db:migrate
 $ bundle exec rails db:fixtures:load
 ```
 
-6. Start development services via `foreman`. This will result in Redis being downloaded, compiled, and started up in `tmp/`, Solr being download and/or started via `solr_wrapper` using the config at `.solr_wrapper.yml`, Sidekiq queuing service starting, and finally, the Rails development web server.
+5. Start development services via `foreman`. This will result in Redis being downloaded, compiled, and started up in `tmp/`, Solr being download and/or started via `solr_wrapper` using the config at `.solr_wrapper.yml`, Sidekiq queuing service starting, and finally, the Rails development web server.
 
 ```shell
 $ bundle exec foreman start
@@ -77,7 +64,7 @@ $ bundle exec rails server -b 127.0.0.1 -p 3000
 Visit [http://localhost:3000](http://localhost:3000) in your browser to see your locally running instance
 
 #### Load the Development Index
-7. For development, a test record set can be quickly loaded from a stored JSON
+6. For development, a test record set can be quickly loaded from a stored JSON
    fixture. This will load `test/fixtures/dev_solr_harvest.json.gz` directly
    into Solr. **NOTE** This will erase your current index.
 
@@ -87,12 +74,12 @@ $ bundle exec rake umedia:solr:index_dev
 
 #### Harvest More Documents
 
-8. Assuming Redis and Sidekiq are running (started with `foreman`), run Harvest rake task
+7. Assuming Redis and Sidekiq are running (started with `foreman`), run Harvest rake task
 
 ```shell
 $ bundle exec rake umedia:index:harvest_dev
 ```
-9. (Optional) Commit to Solr
+8. (Optional) Commit to Solr
 
 As your harvest is running, you can occasionally sent a `commit` to Solr to see what documents you have harvested.
 ```shell
