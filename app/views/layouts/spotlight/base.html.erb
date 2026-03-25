@@ -44,10 +44,10 @@
     <%= render partial: 'shared/masthead' %>
 
     <%# <%= content_for?(:header_content) ? yield(:header_content) : "" %>
-    <main id="main-container" class="container-fluid" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
+    <main id="main-container" class="p-lg-5" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
       <%# <%= content_for(:container_header) %>
       <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
-      <div class="row px-3 px-lg-3" id="spotlight">
+      <div class="row" id="spotlight">
         <%= content_for?(:content) ? yield(:content) : yield %>
       </div>
     </main>
