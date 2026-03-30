@@ -64,6 +64,9 @@ gem 'blacklight_range_limit', '~> 7.0'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+group :development, :test do
+  gem 'foreman', '~> 0.80'
+end
 group :development, :test, :publicdev do
   gem 'solr_wrapper', '~> 4.0'
 end
@@ -105,7 +108,6 @@ end
 gem 'config'
 gem 'contentdm_api', github: 'UMNLibraries/contentdm_api'
 gem 'cdmdexer', github: 'UMNLibraries/cdmdexer', branch: 'develop'
-gem 'foreman', '~> 0.80'
 # We cannot move to Sidekiq 7 as long as the ETLWorker and TransformWorker
 # pass complex objects (including multiple FieldMapping classes) to Sidekiq worker perform() methods
 gem 'sidekiq', '~> 6.0'
