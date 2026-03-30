@@ -64,9 +64,6 @@ gem 'blacklight_range_limit', '~> 7.0'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-group :development, :test do
-  gem 'foreman', '~> 0.80'
-end
 group :development, :test, :publicdev do
   gem 'solr_wrapper', '~> 4.0'
 end

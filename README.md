@@ -24,6 +24,10 @@ $ cd cdm-blacklightify
 2. bundle dependencies
 
 ```shell
+# Foreman is not part of the gem bundle, install it independently
+$ gem install foreman
+
+# Install bundled rubygems
 $ bundle install
 ```
 
@@ -48,7 +52,7 @@ $ bundle exec rails db:fixtures:load
 
 ```shell
 # Start all services
-$ bundle exec foreman start
+$ foreman start
 ```
 
 OPTIONAL: Starting some services independently is possible if a fast startup is
@@ -57,13 +61,13 @@ foreman options at https://ddollar.github.io/foreman/
 
 ```shell
 # Start solr only (via foreman because other startup shell actions are defined too)
-$ bundle exec foreman start solr
+$ foreman start solr
 
 # Start everything except sidekiq
-$ bundle exec foreman start -m   all=1,sidekiq=0
+$ foreman start -m   all=1,sidekiq=0
 
 # Start only sidekiq, which also needs redis
-$ bundle exec foreman start -m redis=1,sidekiq=1
+$ foreman start -m redis=1,sidekiq=1
 
 # Start Rails/Puma without the whole foreman suite
 # (port 3000, limited to only the local network interface)
