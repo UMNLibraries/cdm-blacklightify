@@ -22,26 +22,32 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="<%= render_body_class %>">
-    <header>
-      <nav id="skip-link" role="navigation" aria-label="<%= t('blacklight.skip_links.label') %>">
-        <%= link_to t('blacklight.skip_links.search_field'), '#search_field', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
-        <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
-        <%= content_for(:skip_links) %>
-      </nav>
-      <%= render partial: 'shared/header_navbar_catalog' %>
-    </header>
-
-    <main id="main-container" class="<%= container_classes %>" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
-      <%= content_for(:container_header) %>
-      <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
-      <section class="col-12" id="">
-        <div class="row">
+    <% if params[:fullscreen] == "true" %>
+      <%= render 'fullscreen' %>
+    <% else %>
+      <header>
+        <nav id="skip-link" role="navigation" aria-label="<%= t('blacklight.skip_links.label') %>">
+          <%= link_to t('blacklight.skip_links.search_field'), '#search_field', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
+          <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
+          <%= content_for(:skip_links) %>
+        </nav>
+        
+        <%= render partial: 'shared/header_navbar_catalog' %>
+      </header>
+      
+      <main id="main-container" class="<%= container_classes %>" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
+        <%= content_for(:container_header) %>
+        <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
+        <div class="row px-3">
           <%= content_for?(:content) ? yield(:content) : yield %>
         </div>
-      </section>
-    </main>
+      </main>
 
-    <%= render partial: 'shared/footer' %>
-    <%= render partial: 'shared/modal' %>
+      <%= render partial: 'shared/footer' %>
+      <%= render partial: 'shared/modal' %>
+
+      <%= content_for :render_async %>
+      
+    <% end %>
   </body>
 <% end %>

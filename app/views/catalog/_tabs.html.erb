@@ -1,0 +1,33 @@
+<div class="col-lg-9 mb-5 mb-lg-0">
+  <%# <div class="p-3" id="item-meta"> %>
+  <div class="" id="item-meta">
+  <%= tabs do |c| %>
+    <% c.tab 'Details', link_class: 'active' do %>
+      <%= render partial: "item_details" %>
+    <% end %>
+    <% if @document[:attachment_format] == "iiif" && @document[:attachment].end_with?(".jp2") %>
+      <% c.tab 'Attachment', link_class: 'ml-0' do %>
+        <%= render partial: 'viewers/uv_image', locals: { document: @document } %>
+      <% end %>
+    <% elsif @document[:attachment].end_with?(".pdf") %>
+      <% c.tab 'PDF Transcript', link_class: 'ml-0' do %>
+        <%= render partial: 'pdf_viewer', locals: { document: @document } %>
+      <% end %>
+    <% elsif @document[:transcription_tesi].present? %>
+      <% c.tab 'Transcript', link_class: 'ml-0' do %>
+        <% if transcript_selector %>
+          <div class="p-3">
+            <h3><%= @document[:title] %></h3>
+            <p><%= @document[:transcription_tesi] %></p>
+          </div>
+        <% else %>
+          <%= render template: "transcript/index" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+  </div>
+</div>
+<div class="col-lg-3">
+  <%= render 'show_tools' %>
+</div>

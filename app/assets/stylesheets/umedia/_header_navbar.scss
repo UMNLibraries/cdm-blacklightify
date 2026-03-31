@@ -1,5 +1,5 @@
 nav[aria-label="University"] {
-	background-color: #ffde7a;
+	background-color: #fafafa;
 	a {
 		display: flex;
 		align-items: center;
@@ -43,7 +43,7 @@ nav[aria-label="University"] {
 	}
 	#give {
 		padding: 0 1.25rem;
-		border: 6px solid #ffde7a;
+		border: 6px solid #fafafa;
 		box-shadow: 0px 0px 0px 2px #333 inset;
 		&>a:hover,
 		&>a:focus {
@@ -56,7 +56,7 @@ nav[aria-label="University"] {
 }
 
 nav[aria-label="Libraries"] {
-	background-color: #333;
+	background-color: #fafafa;
 	#logo {
 		padding: 0 0.5rem;
 		min-width: 170px;
@@ -81,7 +81,7 @@ nav[aria-label="Libraries"] {
 		}
 	}
 	svg .libraries-fill {
-		fill: #fafafa;
+		fill: #333;
 	}
 	svg .maroon-fill {
 		fill: #ffcc33;
@@ -90,13 +90,12 @@ nav[aria-label="Libraries"] {
 
 // primary nav class
 .umn-nav {
-	color: #fff;
 	#main-nav {
-		background-color: #000000cc;
+		background-color: #f0efee;
 		display: flex;
 		align-items: center;
 		a {
-			color: #fafafa;
+			color: #333;
 			float: left;
 			padding: 1rem;
 			padding: .875rem 1rem;
@@ -130,11 +129,12 @@ nav[aria-label="Libraries"] {
 			margin: 0 auto;
 			padding: .5rem 0;
 			#search_field {
-				background-color: #f0efee;
+				background-color: #ffde7a;
+        border: none;
 				height: 3.125rem;
 				&:hover {
 					box-shadow: none;
-					outline: 3px solid #0053b0;
+					outline: 3px solid #5b0013;;
 					outline-offset: 2px;
 				}
 			}
@@ -142,27 +142,32 @@ nav[aria-label="Libraries"] {
 				max-height: 3.125rem;
 			}
 			#search {
-				background-color: #7a0019;
+				background-color: #ffde7a;
 				border: 1px solid transparent;
-				border-color: #333;
-				padding-right: 1rem;
-				padding-top: .5rem;
+				border-color: transparent;
+        color: #333;
+				// padding-right: 1rem;
+				// padding-top: .5rem;
 				&:hover,
 				&:focus {
 					box-shadow: none;
-					outline: 3px solid #0053b0;
+					outline: 3px solid #5b0013;;
 					outline-offset: 2px;
 				}
 			}
+      #search-field {
+        background-color: #ffde7a;
+      }
 		}
 		form>div>#q {
-			border-color: #333;
+			// border-color: #333;
+			border-color: rgba(0, 0, 0, .16);
 			height: 3.125rem;
 		}
 		form>div>#q:hover,
 		form>div>#q:focus {
 			box-shadow: none;
-			outline: 3px solid #0053b0;
+			outline: 3px solid #5b0013;;
 			outline-offset: 2px;
 		}
 	}
@@ -177,31 +182,40 @@ nav[aria-label="Libraries"] {
 	background-repeat: no-repeat;
 	background-size: cover;
 	#main-nav {
-		background-color: #000000cc;
-		position: absolute;
-		width: 100%;
-		display: flex;
-		align-items: center;
+		background-color: #f0efee;
+		// position: absolute;
+		// width: 100%;
+		// display: flex;
+		// align-items: center;
 	}
 	#main-search {
-		position: absolute;
+		// position: absolute;
+
+    // 2025-11-20: update this . . . positioning not requied b/c getting rid of position absolute? everytbing should just auto center .  .
 		top: 35%;
 		width: 80%;
 		left: 10%;
+
 		form {
-			padding: 1rem 1rem;
+			// padding: 1rem 1rem;
+      backdrop-filter: blur(3px); 
+      padding: 1.5rem 1rem;
 		}
 	}
 	#main-image-attribute {
-		position: absolute;
-		background-color: #000000cc;
+		// position: absolute;
+		background-color: #ffde7a;
 		bottom: 0;
+    color: #333;
 		padding: .8rem;
-		width: 100%;
+		// width: 100%;
+    a {
+      color: #7a0019;
+    }
 		p {
 			margin-bottom: 0;
 			a {
-				color: #ffcc33;
+				color: #7a0019;
 				text-decoration: underline;
 				border-bottom: 3px solid transparent;
 			}
@@ -214,6 +228,31 @@ nav[aria-label="Libraries"] {
 			}
 		}
 	}
+}
+
+#main-content-notice {
+  background-color: #7a0019;
+  .container {
+    margin: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .site-title {
+    color: #fff;
+  }
+  p {
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+  }
+  .site-title-wrapper {
+    padding-bottom: .5rem;
+    padding-left: 3rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -260,4 +299,9 @@ nav[aria-label="Libraries"] {
 			width: 100%;
 		}
 	}
+  #main-content-notice {
+    .site-title-wrapper {
+      padding-left: 1.25rem;
+    }
+  }
 }

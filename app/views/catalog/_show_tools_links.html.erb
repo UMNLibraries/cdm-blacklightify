@@ -1,0 +1,30 @@
+<% document = @document if local_assigns[:document].nil? %>
+
+<div class="h2 pb-3 mb-0">
+  Tools
+</div>
+<ul class="list-group list-group-flush" style="border-top: none;">
+  <li class="list-group-item">
+    <%= render(Blacklight::Document::ActionsComponent.new(document: document, actions: document_actions(document), url_opts: Blacklight::Parameters.sanitize(params.to_unsafe_h))) %>
+  </li>
+
+  <li class="list-group-item">
+    <a class="nav-link" data-turbo="false" href="/catalog/<%= @document.id %>.json">JSON</a>
+  </li>
+  
+  <li class="list-group-item">
+    <%# temporary routing based on item type. will refactor av/text routes into single manifest.json route . . . %>
+    <% if tools_iiif_manifest_link %>
+      <a class="nav-link" data-turbo="false" href="/iiif/<%= @document.id %>/av/manifest.json">IIIF Manifest</a>
+    <% else %>
+      <a class="nav-link" data-turbo="false" href="/iiif/<%= @document.id %>/text/manifest.json">IIIF Manifest</a>
+    <% end %>
+  </li>
+
+  <li class="list-group-item">
+    <a class="nav-link" data-turbo="false" href="https://iiif.io/community/faq/">What is IIIF?</a>
+  </li>
+  <li class="list-group-item">
+    <a class="nav-link" data-turbo="false" href="/contact">Contact</a>
+  </li>
+</ul>

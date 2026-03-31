@@ -31,7 +31,33 @@ module Umedia
       # UrlFormatter
       class UrlFormatter
         def self.format(value)
-          "https://umedia.lib.umn.edu/item/#{value}"
+          "https://umedia.lib.umn.edu/catalog/#{value}"
+        end
+      end
+
+      # CreatedDateFormatter
+      class CreatedDateFormatter
+        def self.format(_value)
+          # approximate/best guest
+          if _value.to_s.include? '?'
+            _value[0].to_s.gsub('?', '')
+          # range
+          elsif _value.to_s.scan(/(?=-)/).count == 1
+            _value[0].to_s
+          # year only
+          elsif _value[0].to_s.length == 4
+            _value[0].to_s
+          # iso8601 ?
+          else
+            "#{Date.parse(_value[0]).strftime('%d %B %Y')}"
+          end
+        end
+      end
+
+      # AccessDateFormatter
+      class AccessDateFormatter
+        def self.format(_value)
+          Time.zone.now.strftime('%b %d, %Y')
         end
       end
 

@@ -14,28 +14,63 @@
   <% end %>
 </div>
 
-<!-- Metadata Fields -->
-<% doc_presenter = document_presenter(document) %>
-<hr>
+<div id="item-content">
+  <!-- presentation mode link -->
+  <div class="d-flex justify-content-center mb-3 mt-2" id="fullscreen-link">
+    <%= link_to "Link to fullscreen", solr_document_path(:fullscreen=>true) %>
+  </div>
+  <!-- content notice-->
+  <div class="my-5" id="content-notice">
+    <b>Content notice:</b> Please note that some historical materials may contain harmful content and/or descriptions. <a href="">Learn how we’re addressing it</a>. 
+  </div>
 
-<div id="item-details">
-  <% unless locale_choices.empty? %>
-  <ul id="alternate-languages">
-    <% locale_choices.each do |locale_link| %>
-      <li><%= locale_link.html_safe %></li>
-    <% end -%>
-  </ul>
-  <% end %>
-  <% doc_presenter.config_type(current_locale).each do | type, heading | %>
-    <% if doc_presenter.type_arr(type) %>
-     <h3><%= heading %></h3>
-    <% end %>
+  <!-- More Like This Component -->
+  <%= render(Umedia::Document::MoreLikeThisComponent.new(document: document)) %>
 
-    <dl class="px-3">
-      <% doc_presenter.each_field( type ) do |field_name, field, field_presenter| %>
-        <% next if field_locale(field_name) != current_locale && localizable_field_name?(field_name) %>
-        <%= render "show_fields", document: document, field_name: field_name, field_presenter: field_presenter, field: field %>
-      <% end -%>
-    </dl>
-  <% end %>
+  <!-- Metadata Fields -->
+  <% doc_presenter = document_presenter(document) %>
+  <div class="row my-5">
+    <%= render partial: "tabs" %>
+  </div>
 </div>
+
+<script>
+  const manifest = uv.options.data.iiifManifestId;
+  const btn = document.querySelector(".ml-0");
+
+  btn.addEventListener("click", () => {
+    var uv = UV.init(
+      "uv",
+      {
+        manifest: manifest,
+        config: "/uv/config.json",
+      },
+    );
+  });
+</script>
+
+<script>
+  $('[data-toggle="tooltip"]').tooltip({ placement: 'top' });
+
+  // escape bootstrap tooltip and popover with ESC key
+  $.fn.listenEscKeyToCloseOverlays = function () {
+    return this.each(function () {
+      if (("undefined" !== typeof $.fn.tooltip) || ("undefined" !== typeof $.fn.popover)) {
+        document.addEventListener('keydown', function(e) {
+          if ('Escape' === e.key) {
+            const $openTooltips = $('.tooltip');
+            const $openPopovers = $('.popover');
+
+            if ($openPopovers.length || $openTooltips.length) {
+              e.stopPropagation();
+              $openTooltips.tooltip('hide');
+              $openPopovers.popover('hide');
+            }
+          }
+        }, true);
+      }
+    });
+  };
+
+  $(document).listenEscKeyToCloseOverlays();
+</script>

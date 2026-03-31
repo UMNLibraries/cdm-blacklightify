@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Methods added to this helper will be available to all templates in the hosting
 # application
 module Blacklight
@@ -29,7 +30,7 @@ module Blacklight
     # Classes used for sizing the main content of a Blacklight page
     # @return [String]
     def main_content_classes
-      'col-lg-9'
+      'col'
     end
 
     ##
@@ -45,6 +46,20 @@ module Blacklight
     # @return [String]
     def container_classes
       'container-fluid'
+    end
+
+    def transcript_selector
+      # determines where to get transcript data from (if [:transcription_tesi].present?)
+      @document[:viewer_type] == 'image'
+    end
+
+    def tools_iiif_manifest_link
+      arr = ['Sound', 'Moving Image']
+      @document[:types].present? ? arr.include?(@document[:types][0]) : ""
+    end
+
+    def fullscreen?
+      params[:fullscreen] == 'true'
     end
   end
 end

@@ -1,7 +1,49 @@
-// placholders
+.breadcrumb {
+  background-color: white;
+  margin-bottom: 0;
+  a {
+    color: #7a0019;
+  }
+}
+
 #spotlight {
-    padding: 1.5rem;
-    .empty-page-block {
-        padding: 1.5rem
+  // exhibit cards on main page
+  .page-sidebar {
+    margin-bottom: 0;
+  }
+  .tab-content {
+    background-color: white;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
+    .row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(18rem,1fr));
+      grid-template-rows: auto;
+      border: 0;
+      padding: 1.5rem;
     }
+  }
+  .document-metadata {
+    grid-gap: 0;
+    .col-md-3 {
+      padding: 0;
+    }
+  }
+  #published {
+    .card {
+      .card-img {
+        object-fit: cover;
+        --div-width: 450px;
+        height: calc(var(--div-width) * 5 / 12);
+      }
+      a {
+        color: #7a0019;
+        text-decoration: underline;
+      }
+      a:hover {
+        color: #fafafa;
+        background-color: #7a0019;
+        text-decoration: none;
+      }
+    }
+  }
 }

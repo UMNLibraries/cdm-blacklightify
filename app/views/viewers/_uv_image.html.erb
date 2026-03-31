@@ -1,10 +1,16 @@
 <% content_for(:head) do %>
   <%= javascript_include_tag "/uv/umd/UV.js" %>
   <%= stylesheet_link_tag "/uv/uv.css" %>
-  <style>#uv { width: 70vw; height: 75vh; margin-bottom: 1rem; }</style>
 <% end %>
 
-<div id="uv" class="uv" style="width:auto;"></div>
+<% if fullscreen? %>
+  <div class="d-flex justify-content-center my-1" id="fullscreen-link">
+    <%= link_to "Back to item page", solr_document_path %>
+  </div>
+<% end %>
+
+<div id="uv" class="uv uvImage" style="<%= params[:fullscreen]? 'width: 99.25vw; height: 100vh;' : 'height: 65vh;' %>"></div>
+
 <script>
   var uv = UV.init(
     "uv",

@@ -47,9 +47,42 @@ Spotlight::Page_3:
   title: Exhibits
   type: Spotlight::HomePage
   slug: exhibits
-  content: '{"data":[{"type":"browse","data":{"display-item-counts":"true","item":{"item_0":{"id":"world-war-i","full_title":"World
-    War I","weight":"0","display":"true"},"item_1":{"id":"world-war-ii","full_title":"World
-    War II","weight":"1","display":"true"},"item_2":{"id":"propaganda","full_title":"Propaganda","weight":"2","display":"true"}}}}]}'
+  content: '{
+   "data":[
+      {
+         "type":"browse",
+         "data":{
+            "display-item-counts":"true",
+            "item":{
+               "item_0":{
+                  "id":"world-war-i",
+                  "full_title":"World War I",
+                  "weight":"0",
+                  "display":"true"
+               },
+               "item_1":{
+                  "id":"world-war-ii",
+                  "full_title":"World War II",
+                  "weight":"1",
+                  "display":"true"
+               },
+               "item_2":{
+                  "id":"propaganda",
+                  "full_title":"Propaganda",
+                  "weight":"2",
+                  "display":"true"
+               },
+               "item_3":{
+                  "id":"prostitution",
+                  "full_title":"Prostitution",
+                  "weight":"4",
+                  "display":"true"
+               }
+            }
+         }
+      }
+   ]
+}'
   weight: 1000
   published: true
   exhibit_id: 2

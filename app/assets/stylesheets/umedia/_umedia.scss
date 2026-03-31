@@ -2,12 +2,17 @@
 
 html,
 body {
+  h1, h2, h3, h4 {
+    font-family: Georgia, Times, "Times New Roman", serif;
+  }
+
 	font-family: Tahoma, Verdana, sans-serif;
 	line-height: 1.6;
 	height: 100%;
 	padding: 0;
 	margin: 0;
 	overflow-x: hidden; 
+  border-top: 6px solid #fc3;
 }
 
 * {
@@ -15,11 +20,27 @@ body {
 }
 
 .constraints-container {
-	padding: 1rem 1rem 0 1rem;
+	padding-top: 1rem;
 }
 
-.show-document > .constraints-container{
-	padding-left: 0;
+.show-document {
+  padding: 0 1rem;
+}
+
+// SERP
+#documents {
+  a {
+    color: #7a0019;
+    text-decoration: underline;
+  }
+  a:hover {
+    color: #fafafa;
+    background-color: #7a0019;
+    text-decoration: none;
+  }
+}
+.documents-list .document {
+  border-bottom: none !important;
 }
 
 #umedia {
@@ -30,21 +51,65 @@ body {
 }
 
 #blacklight-modal {
-	a {
-		color: #0053b0;
-		text-decoration: underline;
-	} 
-	a:hover,
-	a:focus {
-		background-color: #0053b0;
-		color: #fafafa;
-		outline: none;
-		text-decoration: none;
-	}
+	// a {
+	// 	color: #0053b0;
+	// 	text-decoration: underline;
+	// } 
+	// a:hover,
+	// a:focus {
+	// 	background-color: #0053b0;
+	// 	color: #fafafa;
+	// 	outline: none;
+	// 	text-decoration: none;
+	// }
+}
+
+.btn-primary {
+  background-color: #7a0019;
+  border-color: #7a0019;
+}
+.btn-primary:hover {
+  background-color: #5b0013;
+  border-color: #5b0013;
+  outline: .2rem solid #5b0013;
+  outline-offset: .1rem;
+}
+.btn-outline-secondary:hover {
+  background-color: #f0efee !important;
+  border-color: #5b0013;
+  color: #6c757d;
+  outline: .2rem solid #5b0013;
+  outline-offset: .1rem;
+}
+
+// faceted list
+.facet-extended-list {
+  a {
+    color: #7a0019;
+    text-decoration: underline;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+// pagination
+.page-item {
+  a {
+    color: #5b0013 !important;
+  }
+  a:hover {
+    background-color: #f0efee !important;
+  }
+}
+.page-item.active .page-link {
+  background-color: #5b0013;
+  border-color: #5b0013;
+  color: #f0efee;
 }
 
 #main-container {
-	padding: 0;
+	padding: 1;
 }
 @font-face {
 	font-family: "bootstrap-icons";

@@ -2,6 +2,7 @@ url: https://archive.apache.org/dist/solr/solr/9.2.1/solr-9.2.1.tgz
 validate: false
 instance_dir: tmp/solr
 download_dir: tmp/solr
+managed: false
 collection:
   dir: solr/conf/
   name: blacklight-core

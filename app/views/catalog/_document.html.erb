@@ -1,3 +1,5 @@
+<% @document = document %>
+
 <!-- container for a single doc (index view) -->
 <% view_config = local_assigns[:view_config] || blacklight_config.view_config(document_index_view_type) %>
 <%= render (view_config.document_component || Blacklight::DocumentComponent).new(presenter: document_presenter(document), counter: document_counter_with_offset(document_counter)) do |component| %>
@@ -5,3 +7,9 @@
     <%= render_document_partials document, view_config.partials, component: component, document_counter: document_counter %>
   <% end %>
 <% end %>
+
+<div class="d-flex justify-content-end" id="dl-link">
+  <% if !tools_iiif_manifest_link %>
+    <a href="<%= download_path %>" target="_blank">download item</a>
+  <% end %>
+</div>

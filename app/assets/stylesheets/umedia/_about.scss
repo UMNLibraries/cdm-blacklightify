@@ -1,13 +1,10 @@
 #section-about {
-  background-color: #333;
+  background-color: #f9f7f6;
   #about-primary {
-    padding-top: 2.25rem;
-    padding-bottom: 2.5rem;
+    padding: 0;
     .card-action-button {
-      position: absolute;
-      bottom: -1.5rem;
-      right: 0.5rem;
-      z-index: 10;
+      bottom: 1rem;
+      left: 1rem;      
       background-color: #7a0019;
       border: none;
       padding: 1rem;
@@ -21,9 +18,11 @@
       outline-offset: 2px;
       text-decoration: none;
     }
+    .card {
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
+    }
     #about-stats {
       padding: 0;
-      margin-bottom: 1.25rem;
       p {
         padding: 0;
         margin: 0;
@@ -31,10 +30,10 @@
     }
   }
   #about-image {
-    padding-top: 2.25rem;
-    padding-bottom: 2.5rem;
+    padding-right: 0;
+    padding-left: 2rem;
     img {
-						max-height: 30rem;
+			max-height: 30rem;
       width: 100%;
       height: 100%;
       object-fit: none;
@@ -50,17 +49,20 @@
       p {
         margin-bottom: 0;
         a {
-          color: #0053b0;
+          color: #7a0019;
           text-decoration: underline;
         }
         a:hover,
         a:focus {
-          background-color: #0053b0;
+          background-color: #7a0019;
           color: #fafafa;
           outline: none;
           text-decoration: none;
         }
       }
+    }
+    .card {
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
     }
   }
 }

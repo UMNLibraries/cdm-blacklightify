@@ -1,10 +1,15 @@
 <% content_for(:head) do %>
   <%= javascript_include_tag "/uv/umd/UV.js" %>
   <%= stylesheet_link_tag "/uv/uv.css" %>
-  <style>#uv { width: 70vw; height: 75vh; margin-bottom: 1rem; }</style>
 <% end %>
 
-<div id="uv" class="uv" style="width:auto;"></div>
+<% if fullscreen? %>
+  <div class="d-flex justify-content-center my-1" id="fullscreen-link">
+    <%= link_to "Back to item page", solr_document_path %>
+  </div>
+<% end %>
+
+<div id="uv" class="uv uvCompound" style="<%= params[:fullscreen]? 'width: 99.25vw; height: 100vh;' : 'height: 65vh;' %>"></div>
 
 <% uvconfig = UvPresenter.new(@document) %>
 
@@ -12,16 +17,42 @@
   var uv = UV.init(
     "uv",
     {
-      manifest: "/iiif/<%= document.id %>/manifest.json",
+      manifest: "/iiif/<%= document.id %>/text/manifest.json",
       config: "/uv/uvconfig.json",
     },
   );
-
+  // need to sort out uvconfig file and move these . . .
   uv.on("configure", function ({ config, cb }) {
     cb({
-      options: {
-        <%= uvconfig.paging_enabled %>
+      modules: {
+        pagingHeaderPanel: {
+          options: {
+            autoCompleteBoxEnabled: false,
+            imageSelectionBoxEnabled: true,
+          }
+        },
+        pdfCenterPanel: {
+          options: {
+            titleEnabled: false,
+            subtitleEnabled: true,
+            mostSpecificRequiredStatement: true,
+            requiredStatementEnabled: true,
+            usePdfJs: false,
+          }
+        }
       }
     });
   });
 </script>
+
+<!--
+<script>
+  var uv = UV.init(
+    "uv",
+    {
+      manifest: "https://cdm16022.contentdm.oclc.org/iiif/2/<%= document.id %>/manifest.json",
+      config: "/uv/config.json",
+    },
+  );
+</script>
+-->

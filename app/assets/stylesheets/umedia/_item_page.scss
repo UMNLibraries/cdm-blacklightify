@@ -1,0 +1,236 @@
+.blacklight-catalog {
+  #main-container {
+    background-color: #f0efee;
+  }
+  #document {
+    .h2 {
+      font-family: Georgia, “Lucida Bright”, serif;
+      font-size: 1.7em;
+    }
+  }
+  #item-content {
+    a {
+      color: #7a0019;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #fafafa !important;
+      background-color: #7a0019;
+      text-decoration: none;
+    }
+    // attachment/transcript tab
+    .ml-0:hover {
+      color: #7a0019!important;
+      background-color: #fafafa;
+      text-decoration: none;
+    }
+  }
+}
+
+#fullscreen-link {
+  a {
+    color: #7a0019;
+  }
+}
+
+#content-notice {
+  a {
+    color: #7a0019;
+  }
+}
+
+// more like this (mlt) card
+.mlt-c {
+  a {
+    color: #7a0019;
+  }
+  .card-body {
+    padding: 0;
+    width: 100%;
+  }
+  .list-group-item {
+    border: none;
+  }
+}
+// more like this (mlt) list-group-item
+.mlt-lgi {
+  width: 20%;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.mlt-lgi:hover {
+  background-color: #7a0019;
+  a {
+    color: #fafafa !important;
+    text-decoration: none !important;
+  }
+}
+
+hr {
+  border-color: #333;
+  margin-top: 8px;
+}
+
+// item details/metadata
+#item-meta {
+  background-color: transparent;
+  a {
+    color: #7a0019;
+  }
+  ul {
+    border-bottom: 0;
+    margin-bottom: 0 !important;
+  }
+  .nav-tabs li {
+    background-color: #7a0019;
+    border-bottom: 0;
+    font-size: 1.7em; font-family: Georgia, “Lucida Bright”, serif;
+    margin-right: 0.3rem;
+    padding: 0.2rem 0.8rem; 
+    a {
+      color: #fafafa;
+    }
+  }
+  .nav-tabs li:has(> a.active) {
+    background-color: white; 
+    border-bottom: 0;
+    margin-right: 0.3rem; 
+    padding: 0.2rem 0.8rem; 
+    a {
+      color: #7a0019;
+    }
+  }
+  .tab-content {
+    background-color: white;
+    padding: 1rem 1rem;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
+  }
+}
+
+// Details section (description list, description detail elements)
+dl {
+  dd {
+    margin-bottom: 1rem;
+  }
+}
+
+// show tools side bar
+.show-tools {
+  a {
+    color: #7a0019;
+  }
+  .list-group {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
+  }
+  .list-group-item {
+    border: none;
+  }
+}
+
+// more like this title text truncation
+.mlt-lgi .mlt-thumb-title {
+  overflow: hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+// serp description, subject text truncation. does not affect item page
+.document-metadata .blacklight-description, .blacklight-subject_ssm {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+// focus ring on parent li while maintainig a link
+.mlt-lgi:focus-within {
+  outline: auto 5px -webkit-focus-ring-color;
+  z-index: 1;
+}
+
+.mlt-thumb:focus {
+  outline: 0;
+}
+
+// pdf loading spinner
+.loader {
+  margin-top: 150px;
+  width: 120px;
+  height: 120px;
+  border: 16px solid #f0efee; /* Lighter Gray */
+  border-top: 16px solid #7a0019; /* Maroon */
+  border-radius: 50%;
+  position: absolute;
+  animation: spin 3s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+embed {
+  z-index: 9;
+}
+
+// span of tooltip icon
+.tool-tip {
+  cursor: help;
+  border-radius: 50%;
+  box-sizing: content-box;
+  display: inline-block;
+  text-align: center;
+  line-height: 15px;
+  height: 15px;
+  width: 15px;
+  margin: 0 0.3em;
+  
+  color: #333;
+  background: #d5d6d2;
+  border: 2px solid #d5d6d2;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: -.25rem;
+}
+.tool-tip:hover {
+  background: #7a0019;
+  color: #fafafa;
+  border: 2px solid #fafafa;
+  outline: 2px solid #7a0019;
+  border-radius: 100%;
+}
+
+// tooltip delimiter for getty format name field
+.blacklight-format_name {
+  display: flex;
+  flex-wrap: wrap;
+  
+  div::after {
+    content: ";\00a0";
+  }
+  div:last-child::after {
+    content: "";
+  }
+}
+// subject fast delimiter
+.blacklight-subject_fast_ssim {
+  // defaults to display: inline
+  span::after {
+    content: "; ";
+  }
+  span:last-child::after {
+    content: "";
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .mlt-lgi {
+    width: 100%;
+  }
+
+  .mlt-thumb {
+    img {
+      background-color: yellow;
+      display: none;
+    }
+  }
+}

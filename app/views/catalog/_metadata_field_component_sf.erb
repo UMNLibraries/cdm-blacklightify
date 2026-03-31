@@ -1,0 +1,5 @@
+<% RenderAsync.configure do |config| config.jquery = true end %>
+
+<% field.document[:subject_fast].each do |url| %>
+  <%= render_async subject_path url:url %>
+<% end %>

@@ -1,11 +1,10 @@
 class IiifAvManifestService
-
   def initialize(id)
     @id = id
     @document = SolrDocument.find(id)
   end
 
-  def manifest2
+  def av_manifest
     manifest
   end
 
@@ -120,7 +119,13 @@ class IiifAvManifestService
   end
 
   def attribution
-    [ '', @document[:local_rights] ]
+    [ 
+      '', @document[:local_rights] ? @document[:local_rights] : rights_statement
+    ]
+  end
+
+  def rights_statement
+    "The University of Minnesota believes that this item is protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s). #{@document[:rights_statement_uri]}"
   end
 
   def duration_to_float

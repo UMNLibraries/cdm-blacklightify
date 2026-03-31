@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
+  concern :iiif_search, BlacklightIiifSearch::Routes.new
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   mount Blacklight::Oembed::Engine, at: 'oembed'
   mount Riiif::Engine => '/images', as: 'riiif'
@@ -33,6 +35,7 @@ Rails.application.routes.draw do
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :exportable
+    concerns :iiif_search
 
     member do
       get 'transcript' => 'transcript#index'
@@ -52,14 +55,25 @@ Rails.application.routes.draw do
 
   resources :iiif, only: [] do
     member do
-      get :manifest, action: 'show'
+      get :manifest
       get :search
       get :autocomplete
       
-      get :manifest2, action: 'manifest2'
+      get 'av/:manifest', action: 'av_manifest'
+      get 'text/:manifest', action: 'text_manifesttest'
     end
   end
 
+  # static pages
+  get '/about', to: 'pages#about'
+  get '/contact', to: 'pages#contact'
+
+  # subject_fast field render_async
+  get :subject, :controller => :subject
+
+  # format (getty) field render_async
+  get :getty, :controller => :getty
+ 
   # Sidekiq Web
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'

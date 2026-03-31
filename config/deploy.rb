@@ -57,7 +57,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'storage', 'tmp/pids', 'tm
 set :tmp_dir, "/tmp/#{fetch(:deploy_user)}"
 
 # Put requested ruby version into PATH
-set :default_env, { path: "/opt/ruby-versions/#{fetch(:ruby_version)}/bin:$PATH" }
+set :default_env, { path: "/opt/ruby-versions/#{fetch(:ruby_version)}/bin:$PATH", NODE_OPTIONS: '--openssl-legacy-provider' }
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
@@ -107,8 +107,8 @@ namespace :deploy do
   task :prepare_cache_dir do
     on roles(:app) do
       execute :mkdir, '-p', "#{shared_path}/tmp/cache/downloads"
-      execute :sudo, "chown -R #{fetch(:deploy_user)}:#{fetch(:app_user)}", "#{shared_path}/tmp/cache"
-      execute :sudo, "chmod -R g+w #{shared_path}/tmp/cache"
+      execute :sudo, "chown -R #{fetch(:app_user)}:#{fetch(:deploy_user)}", "#{shared_path}/tmp/cache"
+      execute :sudo, "chmod -R g+wX #{shared_path}/tmp/cache"
     end
   end
 
@@ -124,10 +124,10 @@ namespace :deploy do
 
   after 'deploy:symlink:release', :clear_cache do
     on roles(:app) do
-      # Here we can do anything such as:
       within release_path do
+        execute :sudo, "chown -R #{fetch(:app_user)}:#{fetch(:deploy_user)}", "#{shared_path}/tmp/cache"
+        execute :sudo, "chmod -R g+wX #{shared_path}/tmp/cache"
         # Restart the puma services, rolling worker restart
-        #execute :sudo, 'systemctl reload puma-geoportal'
         # Revert to full restart. Sometimes some code doesn't fully reload on the soft
         # worker restarts. More downtime but more reliable code.
         execute :sudo, 'systemctl restart puma-umedia'

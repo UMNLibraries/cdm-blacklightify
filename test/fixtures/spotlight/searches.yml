@@ -81,3 +81,46 @@ Spotlight::Search_4:
     zone: *1
     time: 2022-04-28 20:13:42.606346000 Z
   thumbnail_id: 12
+
+Spotlight::Search_5:
+  id: 5
+  title: Prostitution
+  slug: prostitution
+  query_params: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    search_field: all_fields
+    q: Prostitution
+  weight: 4
+  published: true
+  exhibit_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:10:10.469788000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:10:10.469788000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:17:58.227332000 Z
+    zone: *1
+    time: 2022-04-28 20:17:58.227332000 Z
+  thumbnail_id: 19
+
+Spotlight::Search_9:
+  id: 9
+  title: Patriotism
+  slug: patriotism
+  query_params: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    f: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      subject_ssim:
+      - Patriotism
+  weight: 5
+  published: true
+  exhibit_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:10:10.469788000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2022-04-28 20:10:10.469788000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-04-28 20:17:58.227332000 Z
+    zone: *1
+    time: 2022-04-28 20:17:58.227332000 Z
+  thumbnail_id: 19

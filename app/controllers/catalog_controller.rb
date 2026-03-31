@@ -13,35 +13,51 @@ class CatalogController < ApplicationController
 
   # All item level show fields grouped by type
   UMEDIA_SHOW_FIELDS = {
-    default: %w[ ],
-    #default: %w[ object ],
-    primary: %w[ title description date_created creator contributor publisher caption notes ],
-    phys_desc: %w[ types format_name format dimensions ],
-    geo_loc: %w[ continent country state city region projection scale coordinates geonames ],
-    topic: %w[ subject language ],
-    coll_info: %w[ contact_information fiscal_sponsor fiscal_sponsor_ssi collection_name contributing organization parent_collection_name parent_id ],
-    identifiers: %w[ local_identifier barcode system_identifier dls_identifier persistent_url ],
-    use: %w[ local_rights rights_statement_uri additional_rights_information standardized_rights expected_public_domain_year ],
+    default: %w[],
+    # default: %w[ object ],
+    primary: %w[title_s title_alternative description_ts date_created_ssim creator contributor_ssim publisher historical_era caption
+                notes],
+    topic: %w[subject_ssim subject_fast_ssim language],
+    phys_desc: %w[types format_name dimensions],
+    geo_loc: %w[city_ssim state_ssim country_ssim region_ssim continent_ssim projection scale coordinates geonames],
+    coll_info: %w[collection_name_s parent_collection_name contributing_organization_name_s contact_information fiscal_sponsor],
+    identifiers: %w[local_identifier barcode system_identifier dls_identifier persistent_url],
+    use: %w[local_rights rights_statement_uri additional_rights_information standardized_rights
+            expected_public_domain_year]
   }
 
   UMEDIA_LINK_TO_FACET_FIELDS = %w[
-    subject
     creator
+    contributor_ssim
     publisher
+    subject_ssim
+    subject_fast_ssim
+    language
     types
     format_name
-    subject
-    language
-    continent
-    country
-    state
-    city
-    region
-    contributing_organization
-    collection_name
+    city_ssim
+    state_ssim
+    country_ssim
+    region_ssim
+    continent_ssim
+    collection_name_s
+    contributing_organization_name_s
   ]
 
+  # CatalogController-scope behavior and configuration for BlacklightIiifSearch
+  include BlacklightIiifSearch::Controller
+
   configure_blacklight do |config|
+
+    # configuration for Blacklight IIIF Content Search
+    config.iiif_search = {
+      full_text_field: 'transcription_tesi',
+      object_relation_field: 'parent_id',
+      supported_params: %w[q page],
+      autocomplete_handler: 'iiif_suggest',
+      suggester_name: 'iiifSuggester'
+    }
+
     config.show.oembed_field = :oembed_url_ssm
     config.show.partials.insert(1, :oembed)
     config.raw_endpoint.enabled = true
@@ -57,13 +73,12 @@ class CatalogController < ApplicationController
       qt: 'search',
       rows: 10,
       fl: '*',
-      fq: 'record_type:primary',
-      'hl': true,
+      hl: true,
       'hl.method': 'original',
       'hl.fl': 'collection_* format_* subject title ',
-      'hl.preserveMulti': true,
+      'hl.preserveMulti': false,
       'hl.simple.pre': '<span style=\'background-color: #ffde7a\'>',
-      'hl.simple.post': '</span>',
+      'hl.simple.post': '</span>'
     }
 
     config.document_solr_path = 'select'
@@ -72,15 +87,22 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = 'title'
 
-    config.add_search_field 'all_fields', label: I18n.t('spotlight.search.fields.search.all_fields')
+    config.add_search_field 'all_fields', label: I18n.t('spotlight.search.fields.search.all_fields') do |field|
+      field.solr_parameters = {
+        fq: 'record_type:primary'
+      }
+    end
 
     # additional targeted search query field.
     config.add_search_field 'types', label: 'Type'
     config.add_search_field 'date_created', label: 'Date'
     config.add_search_field('subject') do |field|
-      field.query_parameters = { :'spellcheck.dictionary' => 'subject' }
+      field.query_parameters = { 'spellcheck.dictionary': 'subject' }
       field.query_local_parameters = {
-        :qf => 'subject_ssm'
+        qf: 'subject_ssm'
+      },
+      field.solr_parameters = {
+        fq: 'record_type:primary'
       }
     end
 
@@ -95,11 +117,16 @@ class CatalogController < ApplicationController
     config.add_sort_field 'creator_sort asc', label: 'Creator (A-Z)'
     config.add_sort_field 'creator_sort desc', label: 'Creator (Z-A)'
 
+    # add facet field to allow Blacklight to pass the intended search parameters to Solr. field matches config.iiif_search object_relation_field above
+    config.add_facet_field 'parent_id', include_in_request: false
+
     # SERP / RESULTS PAGE
     # Format / format_name
     config.add_facet_field 'format_name', label: 'Format', limit: 4, collapse: false
     # Subject / subject
-    config.add_facet_field 'subject_fast_ss', label: 'Subject', limit: 4, collapse: false
+    config.add_facet_field 'subject_ssm', label: 'Subject', limit: 4, collapse: false
+    config.add_facet_field 'subject_fast_ssim', label: 'FAST Subject Headings', limit: 4, collapse: false
+
     # Created / date_created
     config.add_facet_field 'date_created', label: 'Date created', limit: 4, collapse: false
     # Collection / collection_name
@@ -109,15 +136,23 @@ class CatalogController < ApplicationController
     # Creator / creator
     config.add_facet_field 'creator_s', label: 'Creator', limit: 4, collapse: true
     # Contributing Organization / contributing_organization
-    config.add_facet_field 'contributing_organization_name_s', label: 'Contributing Organization', limit: 4, collapse: true
+    config.add_facet_field 'contributing_organization_name_s', label: 'Contributing Organization', limit: 4,
+                                                               collapse: true
     # Type / types
     config.add_facet_field 'types', label: 'Type', limit: 4, collapse: true
     # Special projects
     config.add_facet_field 'super_collection_name_ss', label: 'Special Projects', limit: 4, collapse: true
     # Publisher / publisher
-    config.add_facet_field 'publisher_s', label: 'Publisher', limit: 4, collapse: true
+    config.add_facet_field 'publisher_sim', label: 'Publisher', limit: 4, collapse: true
     # Contributor / contributor
-    config.add_facet_field 'contributor', label: 'Contributor', limit: 4, collapse: true
+    config.add_facet_field 'contributor_ssim', label: 'Contributor', limit: 4, collapse: true
+    # Geographic Fields
+    # config.add_facet_field 'city', show: false
+    config.add_facet_field 'city_ssim', label: 'City', collapse: true
+    config.add_facet_field 'state_ssim', label: 'State', collapse: true
+    config.add_facet_field 'country_ssim', label: 'Country', collapse: true
+    config.add_facet_field 'region_ssim', label: 'Region', collapse: true
+    config.add_facet_field 'continent_ssim', label: 'Continent', collapse: true
 
     # SEARCH RESULTS FIELDS
     config.add_index_field 'title', label: 'Title', highlight: true
@@ -127,9 +162,13 @@ class CatalogController < ApplicationController
     config.add_index_field 'date_created', label: 'Date'
     # Format / format_name
     config.add_index_field 'format_name', label: 'Format', highlight: true
+    # Description
+    config.add_index_field 'description', label: 'Description', highlight: true
     # Subject / subject
-    config.add_index_field 'subject', label: 'Subjects', link_to_facet: true, highlight: true
-
+    config.add_index_field 'subject_ssm', label: 'Subjects', link_to_facet: true, highlight: true,
+                                      separator_options: { two_words_connector: '; ', words_connector: '; ', last_word_connector: '; ' }
+    config.add_index_field 'subject_fast_ssim', label: 'FAST Subject Headings', link_to_facet: true, highlight: true,
+                                      separator_options: { two_words_connector: '; ', words_connector: '; ', last_word_connector: '; ' }
     # Thumbnails - A helper method that looks for attached image from solr_document_sidecar
     config.index.thumbnail_method = :thumbnail
 
@@ -141,33 +180,36 @@ class CatalogController < ApplicationController
         config.add_show_field(
           field,
           label: "item.fields.#{field}",
+          field_tooltips: "item.field_tooltips.#{field}",
           itemprop: field,
           type: type,
           component: Umedia::LocalizedMetadataFieldComponent,
-          link_to_facet: UMEDIA_LINK_TO_FACET_FIELDS.include?(field)
+          link_to_facet: UMEDIA_LINK_TO_FACET_FIELDS.include?(field),
+          separator_options: { two_words_connector: '; ', words_connector: '; ', last_word_connector: '; ' }
         )
         # If this metadata field is available to alt languages, add them now
-        if UMEDIA_LOCALIZED_SHOW_FIELDS[type].include?(field)
-          I18n.available_locales.reject{|l| l == I18n.default_locale}.each do |locale|
-            config.add_show_field(
-              "#{locale.to_s}_#{field}",
-              label: "item.fields.#{field}",
-              itempro: field,
-              type: type,
-              component: Umedia::LocalizedMetadataFieldComponent,
-              # Never facet the alt lang metadata field
-              link_to_facet: false
-            )
-          end
+        next unless UMEDIA_LOCALIZED_SHOW_FIELDS[type].include?(field)
+
+        I18n.available_locales.reject { |l| l == I18n.default_locale }.each do |locale|
+          config.add_show_field(
+            "#{locale}_#{field}",
+            label: "item.fields.#{field}",
+            field_tooltips: "item.field_tooltips.#{field}",
+            itempro: field,
+            type: type,
+            component: Umedia::LocalizedMetadataFieldComponent,
+            # Never facet the alt lang metadata field
+            link_to_facet: false,
+          )
         end
       end
     end
 
     # View Helpers
     config.add_show_tools_partial(:citation)
-    config.add_show_tools_partial(:transcript, if: proc { |_context, _config, options|
-                                                     options[:document].transcripts?
-                                                   })
+    # config.add_show_tools_partial(:transcript, if: proc { |_context, _config, options|
+    #                                                  options[:document].transcripts?
+    #                                                })
 
     # config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
     config.add_results_collection_tool(:sort_widget)

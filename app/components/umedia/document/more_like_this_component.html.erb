@@ -1,13 +1,14 @@
-<div class="card">
-  <div class="card-header">More Like This</div>
-  <div class="card-body">
-    <ul class="list-group">
+<div class="my-5 mlt-c">
+  <div class="h2 pb-3 mb-0" href="#item-details">More Like This
+    <a class="p-2 sr-only sr-only-focusable" href="#item-details">Skip to item details</a>
+  </div>
+  
+  <div class="card-body" style="background-color: yellow;">
+    <ul class="list-group list-group-horizontal-md" style="background-color: pink;">
       <% @document.more_like_this.each do |document| %>
-        <li class="more_like_this_document list-group-item">
-          <%= link_to solr_document_path(document) do %>
-            <%= image_tag(document.cdm_thumbnail, { alt: document.fetch(:title_ssi), class: 'rounded mx-auto d-block' }) %>
-            <h5 class="mlt-title"><%= document.fetch(:title_ssi).truncate(30) %></h5>
-          <% end %>
+        <li class="mlt-lgi list-group-item">
+          <%= link_to_document(document, image_tag(document.cdm_thumbnail), counter: nil, class: "mlt-thumb d-flex justify-content-center") %>
+          <%= link_to_document(document, document[:title], counter: nil, class: "mlt-thumb-title d-flex justify-content-center text-center", tabindex:"-1") %>
         </li>
       <% end %>
     </ul>

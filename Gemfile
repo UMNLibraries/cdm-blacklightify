@@ -105,7 +105,6 @@ end
 gem 'config'
 gem 'contentdm_api', github: 'UMNLibraries/contentdm_api'
 gem 'cdmdexer', github: 'UMNLibraries/cdmdexer', branch: 'develop'
-gem 'foreman', '~> 0.80'
 # We cannot move to Sidekiq 7 as long as the ETLWorker and TransformWorker
 # pass complex objects (including multiple FieldMapping classes) to Sidekiq worker perform() methods
 gem 'sidekiq', '~> 6.0'
@@ -138,3 +137,8 @@ gem 'capistrano-template', git: 'https://github.com/UMNLibraries/capistrano-temp
 gem 'capistrano-bundler'
 #gem 'capistrano-maintenance'
 gem 'capistrano-yarn'
+
+gem 'rails-bootstrap-tabs', '~> 0.3.2'
+gem 'render_async'
+
+gem 'blacklight_iiif_search'
