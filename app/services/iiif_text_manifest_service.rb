@@ -287,7 +287,6 @@ class IiifTextManifestService
   end
 
   def query_constructor
-    # "http://localhost:3000/catalog/#{@document[:id]}/iiif_search  parent_id:#{@document[:id]}"
-    "http://localhost:3000/catalog/#{@document[:id]}/iiif_search"
+    "#{ENV['RAILS_BASE_URL']}/catalog/#{@document[:id]}/iiif_search"
   end
 end
