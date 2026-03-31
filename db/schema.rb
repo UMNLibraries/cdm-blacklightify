@@ -185,7 +185,7 @@ ActiveRecord::Schema.define(version: 2022_03_27_195604) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["exhibit_id"], name: "index_spotlight_events_on_exhibit_id"
-    t.index ["resource_type", "resource_id"], name: "index_spotlight_events_on_resource"
+    t.index ["resource_type", "resource_id"], name: "index_spotlight_events_on_resource_type_and_resource_id"
   end
 
   create_table "spotlight_exhibits", force: :cascade do |t|
@@ -254,7 +254,7 @@ ActiveRecord::Schema.define(version: 2022_03_27_195604) do
     t.string "member_type"
     t.integer "member_id"
     t.index ["group_id"], name: "index_spotlight_groups_members_on_group_id"
-    t.index ["member_type", "member_id"], name: "index_spotlight_groups_members_on_member"
+    t.index ["member_type", "member_id"], name: "index_spotlight_groups_members_on_member_type_and_member_id"
   end
 
   create_table "spotlight_job_trackers", force: :cascade do |t|
@@ -273,8 +273,8 @@ ActiveRecord::Schema.define(version: 2022_03_27_195604) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["job_id"], name: "index_spotlight_job_trackers_on_job_id"
-    t.index ["on_type", "on_id"], name: "index_spotlight_job_trackers_on_on"
-    t.index ["resource_type", "resource_id"], name: "index_spotlight_job_trackers_on_resource"
+    t.index ["on_type", "on_id"], name: "index_spotlight_job_trackers_on_on_type_and_on_id"
+    t.index ["resource_type", "resource_id"], name: "index_spotlight_job_trackers_on_resource_type_and_resource_id"
     t.index ["user_id"], name: "index_spotlight_job_trackers_on_user_id"
   end
 

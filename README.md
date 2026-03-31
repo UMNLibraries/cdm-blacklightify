@@ -51,7 +51,16 @@ $ bundle exec rails db:fixtures:load
 5. Start development services via `foreman`. This will result in Redis being downloaded, compiled, and started up in `tmp/`, Solr being download and/or started via `solr_wrapper` using the config at `.solr_wrapper.yml`, Sidekiq queuing service starting, and finally, the Rails development web server.
 
 ```shell
-# Start all services
+# Warm up redis first time, which usually avoids compile errors
+$ foreman start redis
+# Ctrl-c once redis is compiled and running
+
+# Warm up Solr too before first full run so download does not interfere
+$ foreman start solr
+# Ctrl-c when solr is downloaded and started
+
+# After redis & solr are prepped, proceed with everything
+# Start all services (should work after redis & solr are prepped)
 $ foreman start
 ```
 
