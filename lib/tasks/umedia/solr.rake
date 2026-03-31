@@ -16,7 +16,7 @@ namespace :umedia do
       exportfile = (ENV.fetch('EXPORT_FILENAME') || Rails.root.join('umedia-solr-dump.json.gz').to_s).chomp
 
       # Use a raw HTTP call into JQ instead of SolrDocument because it is WAY faster
-      jsondata = URI.open("#{ENV.fetch('SOLR_URL')}/select?q=*:*&fl=*&rows=999999&wt=json").read
+      jsondata = URI.open("#{ENV.fetch('SOLR_URL')}/select?q=*:*&fl=*&rows=99999999&wt=json").read
 
       # Parse the JSON and write the results (without solr response metadata or doc versioning)
       # back to an export file
