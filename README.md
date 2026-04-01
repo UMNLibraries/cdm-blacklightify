@@ -29,6 +29,9 @@ $ gem install foreman
 
 # Install bundled rubygems
 $ bundle install
+
+# Install JS dependencies
+$ yarn install
 ```
 
 3. Configure DotEnv files
