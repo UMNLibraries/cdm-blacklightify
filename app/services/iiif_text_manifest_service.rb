@@ -25,8 +25,6 @@ class IiifTextManifestService
       'label' => @document[:title],
       'metadata' => metadata.compact,
       'attribution' => attribution,
-      # add mediaSequences (may be a deprecated) for .pdf support
-      # 'mediaSequences' => is_pdf,
       'sequences' => is_pdf,
       'structures' => [{
         '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/range/r0',
@@ -233,7 +231,6 @@ class IiifTextManifestService
   # pdf support . . .
   def mediaSequences
     [{
-      # MediaSequence may be deprecated . . .
       "@type": "ixif:MediaSequence",
       "label": "Contents",
       "elements": [

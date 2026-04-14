@@ -50,6 +50,7 @@ module Blacklight
 
     def transcript_selector
       # determines where to get transcript data from (if [:transcription_tesi].present?)
+      # [2026-04-01] currently this has been replaced with an array inclusion method in the erb template and may be unnecessary . . .
       @document[:viewer_type] == 'image'
     end
 
