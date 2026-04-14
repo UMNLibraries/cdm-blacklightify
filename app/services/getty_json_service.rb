@@ -5,9 +5,8 @@ class GettyJsonService
 
   def aat_data
     url = 'https://vocab.getty.edu/aat/' + @id + '.json'
-    res = Net::HTTP.get_response(URI(url))
-    parsed_response = res.body
-    JSON.parse(parsed_response)
+    @data ||= Net::HTTP.get_response(URI(url)).body
+    JSON.parse(@data)
   end  
 
   # get the format id, use that key for caching
