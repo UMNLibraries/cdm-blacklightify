@@ -61,5 +61,14 @@ module Blacklight
     def fullscreen?
       params[:fullscreen] == 'true'
     end
+
+    def translation_tab
+      doc = Umedia::FullTranscript.new.child_response("#{@document[:id]}")
+
+      if doc['numFound'] > 0
+        doc['docs'][0].has_key?('translation')
+      end
+    end
+    
   end
 end

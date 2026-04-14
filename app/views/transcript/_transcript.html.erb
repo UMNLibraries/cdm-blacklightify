@@ -4,12 +4,25 @@
 
 <div class="modal-body">
   <%- # Sort title strings by the numbers within (Page 1, Page 2, etc.) %>
-  <%- @response.documents.sort_by { |x| x['title_ssi'][/\d+/].to_i }.each do |doc| %>
-    <% if doc['transcription_tesi'].present? %>
-      <div class="transcription">
-        <h3 class="title"><%= doc['title_ssi'] %></h3>
-        <p><%= doc['transcription_tesi'] %></p>
-      </div>
+  <div class="transcriptions">
+    <%- @response.documents.sort_by { |x| x['title_ssi'][/\d+/].to_i }.each do |doc| %>
+      <% if doc['transcription_tesi'].present? %>
+        <div class="transcription">
+          <h3 class="title"><%= doc['title_ssi'] %></h3>
+          <p><%= doc['transcription_tesi'] %></p>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+
+  <div class="translations">
+    <%- @response.documents.sort_by { |x| x['title_ssi'][/\d+/].to_i }.each do |doc| %>
+      <% if doc['transcription_tesi'].present? %>
+        <div class="transcription">          
+          <h3 class="title"><%= doc['title_ssi'] %></h3>
+          <p><%= doc['translation'] %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>

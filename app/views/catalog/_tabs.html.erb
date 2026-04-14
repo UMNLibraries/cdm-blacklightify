@@ -25,14 +25,15 @@
         <% end %>
       <% end %>
     <% end %>
-    <%# t e s t ing translation tab %>
-    <% c.tab 'testtab', link_class: 'ml-0' do %>
-      <%= render partial: "testtab" %>
+    <% if translation_tab %>
+      <% c.tab 'Translation', link_class: 'ml-0' do %>
+        <%= render partial: "translation_tab" %>
+      <% end %>
     <% end %>
   <% end %>
-  
   </div>
 </div>
+
 <div class="col-lg-3">
   <%= render 'show_tools' %>
 </div>
