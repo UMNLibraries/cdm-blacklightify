@@ -38,7 +38,7 @@ module Umedia
         hl: 'on',
         sort: 'child_index asc',
         'hl.method': 'original',
-        fl: 'transcription parent_id'
+        fl: 'transcription translation parent_id'
       }).fetch('response', {})
     end
 

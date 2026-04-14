@@ -6,16 +6,17 @@
       <%= render partial: "item_details" %>
     <% end %>
     <% if @document[:attachment_format] == "iiif" && @document[:attachment].end_with?(".jp2") %>
-      <% c.tab 'Attachment', link_class: 'ml-0' do %>
+      <% c.tab 'Attachment', link_class: 'ml-0 uv-attachment' do %>
         <%= render partial: 'viewers/uv_image', locals: { document: @document } %>
       <% end %>
-    <% elsif @document[:attachment].end_with?(".pdf") %>
+    <% elsif @document[:attachment].end_with?(".pdf") && @document[:viewer_type] == "kaltura_audio_playlist" %>
       <% c.tab 'PDF Transcript', link_class: 'ml-0' do %>
         <%= render partial: 'pdf_viewer', locals: { document: @document } %>
       <% end %>
     <% elsif @document[:transcription_tesi].present? %>
       <% c.tab 'Transcript', link_class: 'ml-0' do %>
-        <% if transcript_selector %>
+        <%# <% if transcript_selector %>
+        <% if ['image', 'pdf'].include?(@document[:viewer_type]) %>
           <div class="p-3">
             <h3><%= @document[:title] %></h3>
             <p><%= @document[:transcription_tesi] %></p>
@@ -25,9 +26,15 @@
         <% end %>
       <% end %>
     <% end %>
+    <% if translation_tab %>
+      <% c.tab 'Translation', link_class: 'ml-0' do %>
+        <%= render partial: "translation_tab" %>
+      <% end %>
+    <% end %>
   <% end %>
   </div>
 </div>
+
 <div class="col-lg-3">
   <%= render 'show_tools' %>
 </div>

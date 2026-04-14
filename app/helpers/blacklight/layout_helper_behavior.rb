@@ -50,6 +50,7 @@ module Blacklight
 
     def transcript_selector
       # determines where to get transcript data from (if [:transcription_tesi].present?)
+      # [2026-04-01] currently this has been replaced with an array inclusion method in the erb template and may be unnecessary . . .
       @document[:viewer_type] == 'image'
     end
 
@@ -61,5 +62,14 @@ module Blacklight
     def fullscreen?
       params[:fullscreen] == 'true'
     end
+
+    def translation_tab
+      doc = Umedia::FullTranscript.new.child_response("#{@document[:id]}")
+
+      if doc['numFound'] > 0
+        doc['docs'][0].has_key?('translation')
+      end
+    end
+    
   end
 end
