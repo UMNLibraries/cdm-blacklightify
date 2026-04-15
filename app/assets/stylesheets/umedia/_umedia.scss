@@ -82,6 +82,11 @@ body {
   outline-offset: .1rem;
 }
 
+// serp view type
+.view-type-slideshow {
+  display: none;
+}
+
 // faceted list
 .facet-extended-list {
   a {
