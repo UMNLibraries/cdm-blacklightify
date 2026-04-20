@@ -50,7 +50,7 @@ fi:
       system_identifier: "Järjestelmän tunniste"
       dls_identifier: "DLS-tunniste"
       persistent_url: "PURL"
-      local_rights: "FINNISH LOCAL RIGHTS?"
+      local_rights: ""
       rights_statement_uri: ""
 
     field_tooltips:
