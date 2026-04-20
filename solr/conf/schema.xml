@@ -285,6 +285,26 @@
 
   <copyField source="es_subject" dest="es_subject_ssim"/>
 
+  <!-- Finnish language enhancement fields -->
+  <field name="fi_title" type="text_general_single" indexed="true" stored="true" termVectors="true" />
+  <field name="fi_title_alternative" type="text_general_single" indexed="true" stored="true" />
+  <field name="fi_description" type="text_general_single" indexed="true" stored="true" multiValued="false" />
+  <field name="fi_notes" type="text_general_single" indexed="true" stored="true" multiValued="false" />
+  <field name="fi_format" type="string" indexed="true" stored="true" multiValued="true" />
+  <field name="fi_format_name" type="string" indexed="true" stored="true" multiValued="true" termVectors="true" />
+  <copyField source="fi_format_name" dest="fi_format_name_ssim" />
+
+  <field name="fi_types" type="string" indexed="true" stored="true" multiValued="true" />
+  <field name="fi_dimensions" type="string" indexed="true" stored="true" />
+  <field name="fi_subject" type="text_general" indexed="true" stored="true" multiValued="true" termVectors="true" />
+  <field name="fi_country" type="text_general" indexed="true" stored="true" multiValued="true" />
+  <field name="fi_continent" type="text_general" indexed="true" stored="true" multiValued="true" />
+  <field name="fi_language" type="string" indexed="true" stored="true" multiValued="true" />
+  <field name="fi_local_rights" type="text_general_single" indexed="true" stored="true" multiValued="false" />
+  <field name="fi_rights_statement_uri" type="string" indexed="true" stored="true" multiValued="false" />
+
+  <copyField source="fi_subject" dest="fi_subject_ssim"/>
+
   <!-- NON-DISPLAY FIELDS -->
   <field name="kaltura_audio" type="string" indexed="true" stored="true" />
   <copyField source="kaltura_audio" dest="kaltura_audio_ssi" />
