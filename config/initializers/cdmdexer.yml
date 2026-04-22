@@ -169,7 +169,6 @@ field_mappings:
   - dest_path: subject
     origin_path: subjec
     formatters:
-      - CDMDEXER::Titlieze
       - CDMDEXER::SplitFormatter
       - Umedia::Formatters::SubjectFormatter
       - CDMDEXER::StripFormatter
