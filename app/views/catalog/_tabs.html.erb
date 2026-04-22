@@ -1,34 +1,43 @@
 <div class="col-lg-9 mb-5 mb-lg-0">
-  <%# <div class="p-3" id="item-meta"> %>
   <div class="" id="item-meta">
   <%= tabs do |c| %>
     <% c.tab 'Details', link_class: 'active' do %>
       <%= render partial: "item_details" %>
     <% end %>
+
     <% if @document[:attachment_format] == "iiif" && @document[:attachment].end_with?(".jp2") %>
       <% c.tab 'Attachment', link_class: 'ml-0 uv-attachment' do %>
         <%= render partial: 'viewers/uv_image', locals: { document: @document } %>
-      <% end %>
-    <% elsif @document[:attachment].end_with?(".pdf") && @document[:viewer_type] == "kaltura_audio_playlist" %>
+      <% end %>  
+    <% end %>
+    <% if @document[:attachment].end_with?(".pdf") && @document[:viewer_type] == "kaltura_audio_playlist" %>
       <% c.tab 'PDF Transcript', link_class: 'ml-0' do %>
         <%= render partial: 'pdf_viewer', locals: { document: @document } %>
       <% end %>
-    <% elsif @document[:transcription_tesi].present? %>
+    <% end %>
+    <% if @document[:transcription_tesi].present? %>
       <% c.tab 'Transcript', link_class: 'ml-0' do %>
-        <%# <% if transcript_selector %>
         <% if ['image', 'pdf'].include?(@document[:viewer_type]) %>
           <div class="p-3">
             <h3><%= @document[:title] %></h3>
             <p><%= @document[:transcription_tesi] %></p>
           </div>
         <% else %>
-          <%= render template: "transcript/index" %>
+          <% if secondary_transcription_tab %>
+            <%= render template: "transcript/index" %>
+          <% else %>
+            <%= render partial: "tab_text_primary" %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
     <% if translation_tab %>
       <% c.tab 'Translation', link_class: 'ml-0' do %>
-        <%= render partial: "translation_tab" %>
+        <%= render partial: "tab_translation" %>
+      <% end %>
+    <% elsif singular_translation_tab %>
+      <% c.tab 'Translation', link_class: 'ml-0' do %>
+        <%= render partial: "tab_text_primary" %>
       <% end %>
     <% end %>
   <% end %>

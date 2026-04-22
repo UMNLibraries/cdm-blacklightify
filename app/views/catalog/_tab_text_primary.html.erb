@@ -1,0 +1,10 @@
+<%# partial for items which have transcript/translation fields in the parent solr doc only (no children) %>
+
+<div class="p-3">
+  <h3><%= @document[:title] %></h3>
+  <%= @document[:translation] %>
+
+  <% if @document[:viewer_type] == "kaltura_audio_playlist" || @document[:viewer_type] == "kaltura_video" %>
+    <%= @document[:transcription] %>
+  <% end %>
+</div>

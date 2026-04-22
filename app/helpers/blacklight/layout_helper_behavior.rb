@@ -48,12 +48,6 @@ module Blacklight
       'container-fluid'
     end
 
-    def transcript_selector
-      # determines where to get transcript data from (if [:transcription_tesi].present?)
-      # [2026-04-01] currently this has been replaced with an array inclusion method in the erb template and may be unnecessary . . .
-      @document[:viewer_type] == 'image'
-    end
-
     def tools_iiif_manifest_link
       arr = ['Sound', 'Moving Image']
       @document[:types].present? ? arr.include?(@document[:types][0]) : ""
@@ -66,9 +60,18 @@ module Blacklight
     def translation_tab
       doc = Umedia::FullTranscript.new.child_response("#{@document[:id]}")
 
-      if doc['numFound'] > 0
+      if doc['numFound'] > 0 || doc.has_key?('translation') 
         doc['docs'][0].has_key?('translation')
       end
+    end
+
+    def singular_translation_tab
+      @document[:translation].present?
+    end
+
+    def secondary_transcription_tab
+      doc = Umedia::FullTranscript.new.child_response("#{@document[:id]}")
+      doc['numFound'] > 0
     end
     
   end

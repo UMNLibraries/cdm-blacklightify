@@ -49,13 +49,12 @@ namespace :umedia do
       # p16022coll397 => Department of African and African American Studies Records
       # p16022coll215 => Portraying Memories - Portraits & Conversations Survivors of the Shoah
       # p16022coll129 => Armenian American Collection
+      # p16022coll402 => Sherlock Holmes Collections
+      # p16022coll264 => Digitizing Immigrant Letters
 
       example_sets = %w[
         p16022coll262 p16022coll208 p16022coll171 p16022coll282 p16022coll613 p16022coll348 p16022coll501 p16022coll215 p16022coll129
       ]
-      # example_sets = %w[
-      #   p16022coll262 p16022coll208 p16022coll171 p16022coll282
-      # ]
 
       run_etl!(example_sets)
     end
