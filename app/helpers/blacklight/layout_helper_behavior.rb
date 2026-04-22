@@ -60,7 +60,7 @@ module Blacklight
     def translation_tab
       doc = Umedia::FullTranscript.new.child_response("#{@document[:id]}")
 
-      if doc['numFound'] > 0 || doc.has_key?('translation') 
+      if doc['numFound'] > 0
         doc['docs'][0].has_key?('translation')
       end
     end
@@ -73,6 +73,5 @@ module Blacklight
       doc = Umedia::FullTranscript.new.child_response("#{@document[:id]}")
       doc['numFound'] > 0
     end
-    
   end
 end
