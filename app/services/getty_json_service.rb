@@ -5,12 +5,12 @@ class GettyJsonService
 
   def aat_data
     @res ||= Net::HTTP.get_response(URI( 'https://vocab.getty.edu/aat/' + @id + '.json' )).body
-    JSON.parse(@res)
-  end  
+    JSON.parse(@res) rescue {}
+  end
 
   # get the format id, use that key for caching
   def att_def_id
-    aat_data.dig('id').match('aat\/(.*)')&.captures[0] 
+    aat_data.dig('id').match('aat\/(.*)')&.captures[0] rescue nil
   end
 
   def att_definition
