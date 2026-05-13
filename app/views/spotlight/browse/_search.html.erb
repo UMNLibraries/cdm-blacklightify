@@ -1,0 +1,14 @@
+<% group ||= @group %>
+<li>
+<%= cache [@exhibit, group || '', search, I18n.locale] do %>
+  <%= link_to group.present? ? spotlight.exhibit_browse_group_path(@exhibit, group, search) : spotlight.exhibit_browse_path(@exhibit, search) do %>
+    <p class="browse-category-title">
+      <span class="title"><%= search.title %></span>
+      <% if search.subtitle.present? %>
+        <span class="category-subtitle"><%= search.subtitle %></span>
+      <% end %>
+      <small class="item-count"><%= t :'spotlight.browse.search.item_count', count: search.count %></small>
+    </p>
+  <% end %>
+<% end %>
+</li>

@@ -9,6 +9,7 @@
 # SpotlightExhibit.destroy_all
 # SpotlightBlacklightConfiguration.destroy_all
 require 'csv'
+require 'json'
 
 # # 01 EXHIBITS
 # CSV.foreach('db/seeds/seed_spotlight_exhibits.csv', headers: true) do |row|
@@ -25,7 +26,7 @@ require 'csv'
 #   Spotlight::FeaturedImage.insert(row.to_h)
 # end
 
-# 04 update FILTERS created during exhibit creation
+# # 04 update FILTERS created during exhibit creation
 # CSV.foreach('db/seeds/seed_spotlight_filters.csv', headers: true) do |row|
 #   filter = Spotlight::Filter.find_or_initialize_by(exhibit_id: row['exhibit_id'])
 #   filter.update(
@@ -34,15 +35,17 @@ require 'csv'
 #   )
 # end
 
-# 05 SEARCHES (exhibit must be present to create a search)
-# csv_text = File.read('db/seeds/seed_spotlight_searches.csv')
-# csv = CSV.parse(csv_text, headers: true, liberal_parsing: true)
-# csv.each do |row|
+# # 05 SEARCHES (exhibit must be present to create a search). refactor this at some point . . .
+# CSV.foreach('db/seeds/seed_spotlight_searches.csv', headers: true, liberal_parsing: true) do |row|
 #   Spotlight::Search.create!(
 #     title: row['title'],
 #     slug: row['slug'],
 #     query_params: JSON.parse(row['query_params']),
-#     exhibit_id: row['exhibit_id']
+#     weight: row['weight'],
+#     published: row['published'],
+#     exhibit_id: row['exhibit_id'],
+#     default_index_view_type: row['default_index_view_type'],
+#     search_box: row['search_box'],
 #   )
 # end
 
@@ -57,3 +60,10 @@ require 'csv'
 #     exhibit_id: 24
 #   }
 # ])
+
+CSV.foreach('db/seeds/seed_spotlight_pages.csv', headers: true) do |row|
+  filter = Spotlight::Page.find_or_initialize_by(exhibit_id: row['exhibit_id'])
+  filter.update(
+    content: row['content'],
+  )
+end
