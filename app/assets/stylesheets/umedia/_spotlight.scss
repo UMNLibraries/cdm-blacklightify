@@ -46,4 +46,18 @@
       }
     }
   }
+  // browse collections page, consider refactoring . . .
+  #content {
+    a {
+      color: #7a0019;
+      text-decoration: underline;
+    }
+    a:hover {
+      background-color: #7a0019 !important;
+      text-decoration: none;
+    }
+    .active {
+      background-color: #d5d6d2;
+    }
+  }
 }
