@@ -47,6 +47,7 @@ group :publicdev, :production do
   # For puma with systemd integration
   gem 'sd_notify', '>= 0.1.0'
   gem 'listen', '~> 3.3'
+  gem 'mysql2'
 end
 
 group :development do
