@@ -7,6 +7,9 @@
 }
 
 #spotlight {
+  .btn-primary {
+    color: #fafafa !important;;
+  }
   // exhibit cards on main page
   .page-sidebar {
     margin-bottom: 0;
@@ -54,6 +57,7 @@
     }
     a:hover {
       background-color: #7a0019 !important;
+      color: #fafafa;
       text-decoration: none;
     }
     .active {
