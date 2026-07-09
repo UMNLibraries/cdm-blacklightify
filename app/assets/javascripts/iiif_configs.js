@@ -1,4 +1,4 @@
-// configuration for complex objects
+// uv configuration for complex objects
 function iiifManifestConfig(doc) {
   const docId = doc;
 
@@ -33,29 +33,26 @@ function iiifManifestConfig(doc) {
   });
 }
 
-// configuration for single images
+// uv configuration for single images
 function iiifImageConfig(doc) {
   const docId = doc;
-  
-  var uv = UV.init(
-    "uv",
-    {
-      manifest: `https://cdm16022.contentdm.oclc.org/iiif/2/${docId}/manifest.json`,
-      config: "/uv/config.json",
-    },
-  );
-
-  // the attachment tab with viewer. taken out of the _show.html partial. minimizes error message, but still not ideal solution
-  const manifest = uv.options.data.iiifManifestId;
   const btn = document.querySelector(".uv-attachment");
 
-  btn.addEventListener("click", () => {
+  function uvImageConfig() {
     var uv = UV.init(
       "uv",
       {
-        manifest: manifest,
+        manifest: `https://cdm16022.contentdm.oclc.org/iiif/2/${docId}/manifest.json`,
         config: "/uv/config.json",
       },
     );
-  });
+  }
+
+  if (btn) {
+    btn.addEventListener("click", () => {
+      uvImageConfig()
+    });
+  }
+
+  uvImageConfig()
 }
