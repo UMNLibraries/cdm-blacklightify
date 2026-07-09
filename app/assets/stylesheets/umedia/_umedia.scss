@@ -87,6 +87,18 @@ body {
   display: none;
 }
 
+// serp views
+.documents-gallery {
+  #dl-link {
+    display: none !important;
+  }
+}
+.documents-masonry {
+  #dl-link {
+    display: none !important;
+  }
+}
+
 // faceted list
 .facet-extended-list {
   a {
