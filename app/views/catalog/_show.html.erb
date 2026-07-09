@@ -35,42 +35,5 @@
 </div>
 
 <script>
-  const manifest = uv.options.data.iiifManifestId;
-  const btn = document.querySelector(".uv-attachment");
-
-  btn.addEventListener("click", () => {
-    var uv = UV.init(
-      "uv",
-      {
-        manifest: manifest,
-        config: "/uv/config.json",
-      },
-    );
-  });
-</script>
-
-<script>
-  $('[data-toggle="tooltip"]').tooltip({ placement: 'top' });
-
-  // escape bootstrap tooltip and popover with ESC key
-  $.fn.listenEscKeyToCloseOverlays = function () {
-    return this.each(function () {
-      if (("undefined" !== typeof $.fn.tooltip) || ("undefined" !== typeof $.fn.popover)) {
-        document.addEventListener('keydown', function(e) {
-          if ('Escape' === e.key) {
-            const $openTooltips = $('.tooltip');
-            const $openPopovers = $('.popover');
-
-            if ($openPopovers.length || $openTooltips.length) {
-              e.stopPropagation();
-              $openTooltips.tooltip('hide');
-              $openPopovers.popover('hide');
-            }
-          }
-        }, true);
-      }
-    });
-  };
-
-  $(document).listenEscKeyToCloseOverlays();
+  toggleTooltip() 
 </script>

@@ -12,11 +12,5 @@
 <div id="uv" class="uv uvImage" style="<%= params[:fullscreen]? 'width: 99.25vw; height: 100vh;' : 'height: 65vh;' %>"></div>
 
 <script>
-  var uv = UV.init(
-    "uv",
-    {
-      manifest: "https://cdm16022.contentdm.oclc.org/iiif/2/<%= document.id %>/manifest.json",
-      config: "/uv/config.json",
-    },
-  );
+  iiifImageConfig("<%= document.id %>");
 </script>

@@ -1,3 +1,4 @@
+// makes the ajax call to the transcript partial and appends the result to the transcript_content div
 function callTranscript() {
   let transcriptPath = "/" + location.href.split('/').slice(-2).join('/') + "/transcript";
 
