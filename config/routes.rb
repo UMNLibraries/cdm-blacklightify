@@ -60,7 +60,7 @@ Rails.application.routes.draw do
       get :autocomplete
       
       get 'av/:manifest', action: 'av_manifest'
-      get 'text/:manifest', action: 'text_manifesttest'
+      get 'text/:manifest', action: 'text_manifest'
     end
   end
 

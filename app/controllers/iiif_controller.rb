@@ -44,8 +44,8 @@ class IiifController < ApplicationController
     render json: response
   end
 
-  def text_manifesttest
-    response = IiifTextManifestService.new(params[:id]).text_manifest
+  def text_manifest
+    response = IiifTextManifestService.new(params[:id]).call
     render json: response
   end
 end
