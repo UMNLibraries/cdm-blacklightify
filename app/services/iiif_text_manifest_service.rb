@@ -245,7 +245,7 @@ class IiifTextManifestService
               "format": "application/pdf",
             }
           ],
-          "thumbnail": "https://dkp5i0hinw9br.cloudfront.net/9a6fea9f410145f09d66e87e08dcef64e993ac49.png"
+          "thumbnail": "/images/thumbnails/cf-thumb-pdf.png"
         }
       ]
     }]
