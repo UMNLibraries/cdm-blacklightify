@@ -22,14 +22,6 @@ class CatalogIiifSearchController < ApplicationController
     # Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
       qt: 'search',
-      rows: 10,
-      fl: '*',
-      hl: true,
-      'hl.method': 'original',
-      'hl.fl': 'collection_* format_* subject title ',
-      'hl.preserveMulti': false,
-      'hl.simple.pre': '<span style=\'background-color: #ffde7a\'>',
-      'hl.simple.post': '</span>'
     }
 
     config.document_solr_path = 'select'
