@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :exportable
-    concerns :iiif_search
+    get :iiif_search, controller: 'catalog_iiif_search'
 
     member do
       get 'transcript' => 'transcript#index'

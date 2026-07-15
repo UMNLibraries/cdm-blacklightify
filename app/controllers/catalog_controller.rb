@@ -4,6 +4,8 @@
 class CatalogController < ApplicationController
   include Blacklight::Catalog
   include BlacklightRangeLimit::ControllerOverride
+  # CatalogController-scope behavior and configuration for BlacklightIiifSearch
+  include BlacklightIiifSearch::Controller
 
   include Umedia::Thumbnail
   include Umedia::LocalizableFields
@@ -44,18 +46,14 @@ class CatalogController < ApplicationController
     contributing_organization_name_s
   ]
 
-  # CatalogController-scope behavior and configuration for BlacklightIiifSearch
-  include BlacklightIiifSearch::Controller
-
   configure_blacklight do |config|
-
     # configuration for Blacklight IIIF Content Search
     config.iiif_search = {
       full_text_field: 'transcription_tesi',
       object_relation_field: 'parent_id',
       supported_params: %w[q page],
       autocomplete_handler: 'iiif_suggest',
-      suggester_name: 'iiifSuggester'
+      suggester_name: 'iiifSuggester',
     }
 
     config.show.oembed_field = :oembed_url_ssm
@@ -70,6 +68,7 @@ class CatalogController < ApplicationController
     config.show.partials.insert(1, :openseadragon)
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
+      fq: 'record_type:primary',
       qt: 'search',
       rows: 10,
       fl: '*',
