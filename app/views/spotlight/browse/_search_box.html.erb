@@ -1,4 +1,5 @@
 <div class="search-box-container">
+<p>text</p>
   <%= form_tag exhibit_browse_path(current_exhibit, search), method: :get, class: 'browse-search-form search-query-form form-horizontal', role: 'search', 'aria-labelledby' => 'browse-search-form' do %>
     <%= render Blacklight::HiddenSearchStateComponent.new(params: search_state.params_for_search.except(:q, :search_field, :exhibit_id, :qt, :page)) %>
     <div class="form-group row">

@@ -64,19 +64,25 @@ nav[aria-label="Libraries"] {
 		}
 	}
 	#main-search {
+    position: relative;
+		width: 80%;
 		* {
 			border-radius: 0 !important;
 		}
-		position: relative;
-		width: 80%;
-		.container-fluid {
-			padding: 0;
-		}
+    h3 {
+      font-weight: bold;
+			font-size: 1.6rem;
+			line-height: 1.6rem;
+    }
 		form {
-			background-color: #ffffffcc;
-			margin: 1rem;
-			margin: 0 auto;
-			padding: .5rem 0;
+      background: rgba(221, 215, 196, 0.65);
+      max-width: -webkit-max-content;
+      max-width: max-content;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      margin: 2rem auto 5rem auto;
+      padding: 1rem 1rem .5rem;
+      border: 1px solid transparent;
 			#search_field {
 				background-color: #ffde7a;
         border: none;
@@ -104,9 +110,9 @@ nav[aria-label="Libraries"] {
 					outline-offset: 2px;
 				}
 			}
-      #search-field {
-        background-color: #ffde7a;
-      }
+      // #search-field {
+      //   background-color: #ffde7a;
+      // }
 		}
 		form>div>#q {
 			// border-color: #333;
@@ -132,50 +138,38 @@ nav[aria-label="Libraries"] {
 	background-size: cover;
 	#main-nav {
 		background-color: #f0efee;
-		// position: absolute;
-		// width: 100%;
-		// display: flex;
-		// align-items: center;
 	}
+
 	#main-search {
 		// position: absolute;
-
     // 2025-11-20: update this . . . positioning not requied b/c getting rid of position absolute? everytbing should just auto center .  .
-		top: 35%;
-		width: 80%;
-		left: 10%;
-
+		// top: 35%;
+		// width: 80%;
+		// left: 10%;
 		form {
-			// padding: 1rem 1rem;
-      backdrop-filter: blur(3px); 
-      padding: 1.5rem 1rem;
+      // backdrop-filter: blur(3px); 
+      // padding: 1.5rem 1rem;
 		}
 	}
+
 	#main-image-attribute {
-		// position: absolute;
-		background-color: #ffde7a;
-		bottom: 0;
-    color: #333;
-		padding: .8rem;
-		// width: 100%;
-    a {
-      color: #7a0019;
+    display: block;
+    background: rgba(221, 215, 196, 0.8098);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+    border-top-left-radius: 0;
+    border-top-left-radius: var(--b-rad);
+    border-top-right-radius: 0;
+    border-top-right-radius: var(--b-rad);
+    border: 1px solid transparent;
+    border-bottom: 0;
+    padding: 1rem;
+    p {
+      margin-bottom: 0;
     }
-		p {
-			margin-bottom: 0;
-			a {
-				color: #7a0019;
-				text-decoration: underline;
-				border-bottom: 3px solid transparent;
-			}
-			a:hover,
-			a:focus {
-				background-color: #ffde7a;
-				color: #333;
-				outline: none;
-				text-decoration: none;
-			}
-		}
 	}
 }
 
