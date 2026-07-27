@@ -12,11 +12,23 @@ body {
 	padding: 0;
 	margin: 0;
 	overflow-x: hidden; 
-  border-top: 6px solid #fc3;
 }
 
 * {
   border-radius: 0 !important;
+
+  a {
+    color: #900021;
+    // note: set this somewhere else, it is adding a border-bottom to nav link which we don't want
+    // border-bottom: 1px solid #900021;
+    transition: all 400ms ease-in-out;
+  }
+  a:hover,
+  a:focus {
+    color: #900021;
+    background-color: #d5d6d2;
+    text-decoration: none;
+  }
 }
 
 .constraints-container {

@@ -1,62 +1,11 @@
 nav[aria-label="University"] {
-	background-color: #fafafa;
-	a {
-		display: flex;
-		align-items: center;
-		height: 4rem;
-		padding: 1.25rem;
-		color: #333;
-		&:hover,
-		&:focus {
-			background-color: #7a0019;
-			color: #fafafa;
-			text-decoration: underline;
-			#lock {
-				fill: #fafafa;
-			}
-		}
-	}
-	svg {
-		height: 100%;
-	}
-	#umn-logo {
-		padding: .5rem;
-		min-width: calc(170px + 1rem);
-		max-width: calc(220px + 1rem);
-		&:hover,
-		&:focus {
-			fill: #fafafa;
-			svg .maroon-fill {
-				fill: #ffcc33
-			}
-		}
-	}
-	.maroon-fill {
-		fill: #7a0019;
-	}
-	#one-stop {
-		margin-left: auto;
-	}
-	#lock {
-		fill: #333;
-		padding: .25rem;
-	}
-	#give {
-		padding: 0 1.25rem;
-		border: 6px solid #fafafa;
-		box-shadow: 0px 0px 0px 2px #333 inset;
-		&>a:hover,
-		&>a:focus {
-			background-color: #7a0019;
-			color: #fafafa;
-			border: 6px solid #7a0019;
-			box-shadow: 0px 0px 0px 2px #fafafa inset;
-		}
-	}
+	background-color: #5b0013;
+  height: 4rem;
 }
 
 nav[aria-label="Libraries"] {
 	background-color: #fafafa;
+  padding-left: .5rem;
 	#logo {
 		padding: 0 0.5rem;
 		min-width: 170px;
@@ -84,7 +33,7 @@ nav[aria-label="Libraries"] {
 		fill: #333;
 	}
 	svg .maroon-fill {
-		fill: #ffcc33;
+		fill: #900021;
 	}
 }
 

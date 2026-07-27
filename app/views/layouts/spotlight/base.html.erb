@@ -39,10 +39,9 @@
       <%= render partial: 'shared/about' if current_page?(root_path) %>
       <%= render partial: 'shared/content_notice' if current_page?(root_path) %>
     </header>
-
     <%= render 'shared/spotlight_header' if !current_page?(root_path) %> 
     <%= render partial: 'shared/masthead' %>
-
+    
     <%# <%= content_for?(:header_content) ? yield(:header_content) : "" %>
     <main id="main-container" class="p-lg-5" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
       <%# <%= content_for(:container_header) %>
@@ -51,6 +50,7 @@
         <%= content_for?(:content) ? yield(:content) : yield %>
       </div>
     </main>
+    
 
     <%= render partial: 'shared/footer' %>
     <%= render partial: 'shared/modal' %>
