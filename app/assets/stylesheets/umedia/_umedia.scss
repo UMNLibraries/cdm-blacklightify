@@ -18,17 +18,17 @@ body {
   border-radius: 0 !important;
 
   a {
-    color: #900021;
+    color: #7a0019;
     // note: set this somewhere else, it is adding a border-bottom to nav link which we don't want
     // border-bottom: 1px solid #900021;
     transition: all 400ms ease-in-out;
   }
-  a:hover,
-  a:focus {
-    color: #900021;
-    background-color: #d5d6d2;
-    text-decoration: none;
-  }
+  // a:hover,
+  // a:focus {
+  //   color: #900021;
+  //   background-color: #d5d6d2;
+  //   text-decoration: none;
+  // }
 }
 
 .constraints-container {
@@ -60,20 +60,6 @@ body {
 	.empty-page-block {
 		padding: 1.5rem
 	}
-}
-
-#blacklight-modal {
-	// a {
-	// 	color: #0053b0;
-	// 	text-decoration: underline;
-	// } 
-	// a:hover,
-	// a:focus {
-	// 	background-color: #0053b0;
-	// 	color: #fafafa;
-	// 	outline: none;
-	// 	text-decoration: none;
-	// }
 }
 
 .btn-primary {

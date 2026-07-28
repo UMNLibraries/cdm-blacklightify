@@ -6,6 +6,17 @@ footer {
   margin-left: auto;
   margin-right: auto;
 
+  a {
+    color: #7a0019;
+    border-bottom: 1px solid #7a0019;
+    transition: all 400ms ease-in-out;
+  }
+  a:hover,
+  a:focus {
+    color: #900021;
+    background-color: #d5d6d2;
+    text-decoration: none;
+  }
   #content {
     font-family: Tahoma, Verdana, sans-serif;
     padding-bottom: 2rem;
@@ -18,7 +29,6 @@ footer {
       border: none;
     }
   }
-
 	#give {
     width: 100%;
     color: white;

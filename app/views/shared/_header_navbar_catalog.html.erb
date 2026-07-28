@@ -1,5 +1,6 @@
+<%# nav & search form for /catalog path. does not render for item page %>
 <%= render partial: 'shared/header_logos' %>
-<%# nav & search bar for /catalog path. does not render for item page %>
+
 <% if action_name != 'show' %>
   <nav aria-label="Main" class="d-flex flex-column container-fluid umn-nav">
     <div class="row mb-auto" id="main-nav">
@@ -11,7 +12,7 @@
       <a class="col-md-auto col-3 text-center" href="/">About us</a>
     </div>
 
-    <div id="main-search" class="catalog-main-nav">
+    <div class="main-search" id="catalog-nav-search">
       <%- unless params[:controller] == 'transcript' %> 
         <%= content_tag :div, role: 'navigation', aria: { label: t('blacklight.search.header') } do %>
           <div class="<%= container_classes %>" aria-label="Search UMedia resources">

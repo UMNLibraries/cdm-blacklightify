@@ -84,7 +84,7 @@ nav[aria-label="Libraries"] {
 			line-height: 1.6rem;
 		}
 	}
-	#main-search {
+	.main-search {
     position: relative;
 		width: 80%;
 		* {
@@ -102,7 +102,7 @@ nav[aria-label="Libraries"] {
       -webkit-backdrop-filter: blur(4px);
       backdrop-filter: blur(4px);
       margin: 2rem auto 5rem auto;
-      padding: 1rem 1rem .5rem;
+      padding: 1rem 1rem 1rem;
       border: 1px solid transparent;
 			#search_field {
 				background-color: #ffde7a;
@@ -141,6 +141,24 @@ nav[aria-label="Libraries"] {
 			outline-offset: 2px;
 		}
 	}
+  // search form for /catalog path
+  div:has(> .search-query-form) {
+    padding: 0;
+  }
+  #catalog-nav-search {
+    padding: 0;
+    h3, p {
+      display: none;
+    }
+    form {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 0 1rem 0;
+      margin: 0;
+      background-color: white;
+    }
+  }
 }
 
 // secondary nav id for root path nav
@@ -172,6 +190,15 @@ nav[aria-label="Libraries"] {
     padding: 1rem;
     p {
       margin-bottom: 0;
+    }
+    &:hover,
+    &:focus {
+      background-color: #7a0019;
+      border-bottom: 3px solid #ffcc33;
+      a {
+        color: #f9f7f6 !important;
+        text-decoration: underline;
+      }
     }
 	}
 }
@@ -241,7 +268,7 @@ nav[aria-label="Libraries"] {
 // temporary? accommodates facet toggler fixed breakpoint
 @media (max-width: 992px) {
 	.umn-nav {
-		#main-search {
+		.main-search {
 			width: 100%;
 		}
 	}

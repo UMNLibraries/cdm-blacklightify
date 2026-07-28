@@ -1,3 +1,4 @@
+<%# nav & search form on homepage, with logos and search bar %>
 <%= render partial: 'shared/header_logos' %>
 
 <nav aria-label="Main" class="d-flex flex-column container-fluid umn-nav" id="umn-main-nav">
@@ -10,7 +11,7 @@
     <a class="col-md-auto col-3 text-center" href="/">About us</a>
   </div>
 
-  <div class="mt-auto mb-auto" id="main-search">
+  <div class="mt-auto mb-auto main-search">
     <%- unless params[:controller] == 'transcript' %> 
       <%= content_tag :div, role: 'navigation', aria: { label: t('blacklight.search.header') } do %>
         <div class="<%= container_classes %>" aria-label="Search UMedia resources">
