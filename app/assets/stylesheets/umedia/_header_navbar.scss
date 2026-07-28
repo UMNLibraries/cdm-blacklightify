@@ -1,13 +1,34 @@
 nav[aria-label="University"] {
 	background-color: #5b0013;
-  height: 4rem;
+  display: flex;
+  align-items: center;
+  height: 3.6rem;
+  #umn-logo {
+    // width: clamp(calc(170px + 1rem), 220px, calc(220px + 1rem));
+    min-width: 170px;
+		max-width: 220px;
+		min-width: calc(170px + 1rem);
+		max-width: calc(220px + 1rem);
+    padding: 1rem;
+    svg {
+			width: 100%;
+		}
+    .white-fill {
+      fill: #f9f7f6;
+    }
+    &:hover {
+      background-color: #ffde7a;
+      .white-fill {
+        fill: #333;
+      }
+    }
+  }
 }
 
 nav[aria-label="Libraries"] {
 	background-color: #fafafa;
-  padding-left: .5rem;
 	#logo {
-		padding: 0 0.5rem;
+		padding: 0 1rem;
 		min-width: 170px;
 		max-width: 220px;
 		min-width: calc(170px + 1rem);
@@ -101,8 +122,6 @@ nav[aria-label="Libraries"] {
 				border: 1px solid transparent;
 				border-color: transparent;
         color: #333;
-				// padding-right: 1rem;
-				// padding-top: .5rem;
 				&:hover,
 				&:focus {
 					box-shadow: none;
@@ -110,12 +129,8 @@ nav[aria-label="Libraries"] {
 					outline-offset: 2px;
 				}
 			}
-      // #search-field {
-      //   background-color: #ffde7a;
-      // }
 		}
 		form>div>#q {
-			// border-color: #333;
 			border-color: rgba(0, 0, 0, .16);
 			height: 3.125rem;
 		}
@@ -131,25 +146,13 @@ nav[aria-label="Libraries"] {
 // secondary nav id for root path nav
 #umn-main-nav {
 	background-image: url("https://cdm16022.contentdm.oclc.org/digital/iiif/p16022coll106/1026/full/1920,/0/default.jpg"); // placholder image
-	min-height: 20rem;
+	min-height: 25rem;
 	position: relative;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	#main-nav {
 		background-color: #f0efee;
-	}
-
-	#main-search {
-		// position: absolute;
-    // 2025-11-20: update this . . . positioning not requied b/c getting rid of position absolute? everytbing should just auto center .  .
-		// top: 35%;
-		// width: 80%;
-		// left: 10%;
-		form {
-      // backdrop-filter: blur(3px); 
-      // padding: 1.5rem 1rem;
-		}
 	}
 
 	#main-image-attribute {
