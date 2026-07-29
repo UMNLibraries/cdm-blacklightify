@@ -9,7 +9,7 @@
     <% end %>
     
     <div class="card-body">
-      <%= content_tag :h4, class: 'card-title h3 text-center', aria: { describedby: "exhibit-description-#{exhibit.to_param}" } do %>
+      <%= content_tag :h3, class: 'card-title', aria: { describedby: "exhibit-description-#{exhibit.to_param}" } do %>
         <%= link_to exhibit, class: 'stretched-link' do %>
           <span><%= exhibit.title %></span>
         <% end %>

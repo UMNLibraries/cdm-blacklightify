@@ -6,6 +6,10 @@
   }
 }
 
+.masthead {
+  border-bottom: 0;
+}
+
 #spotlight {
   .btn-primary {
     color: #fafafa !important;;
@@ -16,7 +20,6 @@
   }
   .tab-content {
     background-color: white;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
     .row {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(18rem,1fr));
@@ -33,10 +36,16 @@
   }
   #published, #unpublished {
     .card {
-      .card-img {
-        object-fit: cover;
-        --div-width: 450px;
-        height: calc(var(--div-width) * 5 / 12);
+      .card-body {
+        padding: 1rem 0;
+        h3{
+          font-weight: 600;
+          line-height: 1.35;
+        }
+        p {
+          font-size: 1.125em;
+        line-height: 1.5;
+        }
       }
       a {
         color: #7a0019;
@@ -60,8 +69,5 @@
       color: #fafafa;
       text-decoration: none;
     }
-    // .active {
-    //   background-color: #d5d6d2;
-    // }
   }
 }
