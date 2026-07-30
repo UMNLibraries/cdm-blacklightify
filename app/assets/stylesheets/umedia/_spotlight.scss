@@ -1,5 +1,5 @@
 .breadcrumb {
-  background-color: white;
+  background-color: #f9f7f6;
   margin-bottom: 0;
   a {
     color: #7a0019;
@@ -10,16 +10,21 @@
   border-bottom: 0;
 }
 
+
 #spotlight {
+  
+  .tab-content .row {
+    padding: 1rem 0 !important;
+  }
   .btn-primary {
-    color: #fafafa !important;;
+    color: #f9f7f6 !important;;
   }
   // exhibit cards on main page
   .page-sidebar {
     margin-bottom: 0;
   }
   .tab-content {
-    background-color: white;
+    background-color: #f9f7f6;
     .row {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(18rem,1fr));
@@ -38,36 +43,58 @@
     .card {
       .card-body {
         padding: 1rem 0;
-        h3{
+        background-color: #f9f7f6;
+        h3 {
           font-weight: 600;
           line-height: 1.35;
+          text-decoration: none !important;
+        }
+        h3:hover {
+          color: black;
+          background-color: #f9f7f6;
+          text-decoration: none;
         }
         p {
           font-size: 1.125em;
-        line-height: 1.5;
+          line-height: 1.5;
+        }
+        span {
+          // display: inline-block;
+          // white-space: balance;
+            white-space: normal;
         }
       }
-      a {
-        color: #7a0019;
-        text-decoration: underline;
-      }
       a:hover {
-        color: #fafafa;
-        background-color: #7a0019;
+        color: #333333;
         text-decoration: none;
       }
+      // folwell link emphasis; however there are some wrapping issues
+      // .arrow {
+      //   margin-left: 1rem;
+      //   vertical-align: middle;
+      //   border: solid #777677;
+      //   border-width: 0 3px 3px 0;
+      //   display: inline-block;
+      //   padding: 4px;
+      // }
+      // .right {
+      //   transform: rotate(-45deg);
+      //   -webkit-transform: rotate(-45deg);
+      // }
     }
   }
+  
   // browse collections page, consider refactoring . . .
-  #content {
-    a {
-      color: #7a0019;
-      text-decoration: underline;
-    }
-    a:hover {
-      background-color: #7a0019 !important;
-      color: #fafafa;
-      text-decoration: none;
-    }
-  }
+  // #content {
+  //   a {
+  //     color: #7a0019;
+  //     text-decoration: none;
+  //   }
+  //   a:hover {
+  //     background-color: #7a0019 !important;
+  //     color: #fafafa;
+  //     text-decoration: none;
+  //   }
+  // }
+
 }

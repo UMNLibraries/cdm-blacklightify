@@ -43,15 +43,36 @@
     <%= render partial: 'shared/masthead' %>
     
     <%# <%= content_for?(:header_content) ? yield(:header_content) : "" %>
-    <main id="main-container" class="p-lg-5" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
+    <main id="" class="" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
       <%# <%= content_for(:container_header) %>
       <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
-      <div class="row" id="spotlight">
-        <%= content_for?(:content) ? yield(:content) : yield %>
+      <div class="container">
+        <div class="col-12">
+          <%= render partial: 'shared/spotlight_search_bar' if should_render_spotlight_search_bar? %>
+        </div>
+        <% if current_page?(root_path) %>
+            <div class="row">
+              <h2>Featured Contributors</h2>
+            </div>
+        <% end %>
+        <div class="row" id="spotlight">
+          <%= content_for?(:content) ? yield(:content) : yield %>
+        </div>
       </div>
+      
+      <% if current_page?(root_path) %>
+        <div class="container">
+          <div class="row">
+            <h2>Special Projects</h2>
+          </div>
+        </div>
+        <div class="container-fluid px-0" id="special-projects-image">
+          <img src="https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll413:1042/164,180,2264,1125/1200,/0/default.jpg" class="img-fluid w-100" alt="Full width image">
+        </div>
+      <% end %>
+      
     </main>
     
-
     <%= render partial: 'shared/footer' %>
     <%= render partial: 'shared/modal' %>
   </body>

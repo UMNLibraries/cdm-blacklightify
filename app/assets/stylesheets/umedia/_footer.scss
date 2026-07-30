@@ -1,6 +1,6 @@
 footer {
   flex-shrink: 0;
-  background-color: #f0efee;
+  background-color: #f9f7f6;
   padding-top: 1rem;
   max-width: 1200px;
   margin-left: auto;
@@ -25,7 +25,7 @@ footer {
       padding: 0;
     }
     .card {
-      background-color: #f0efee;
+      background-color: #f9f7f6;
       border: none;
     }
   }
@@ -39,13 +39,17 @@ footer {
 
 }
 
+footer:first-of-type {
+  border-top: 4px solid #fc3;
+}
+
 // footer for copyright
 #copyright {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   div {
-    background-color: white;
+    background-color: #f9f7f6;
     display: flex;
     justify-content: center;
     align-items: center;
