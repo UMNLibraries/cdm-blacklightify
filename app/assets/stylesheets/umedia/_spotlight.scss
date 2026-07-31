@@ -10,9 +10,7 @@
   border-bottom: 0;
 }
 
-
 #spotlight {
-  
   .tab-content .row {
     padding: 1rem 0 !important;
   }
@@ -41,6 +39,12 @@
   }
   #published, #unpublished {
     .card {
+      img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
       .card-body {
         padding: 1rem 0;
         background-color: #f9f7f6;
@@ -59,9 +63,7 @@
           line-height: 1.5;
         }
         span {
-          // display: inline-block;
-          // white-space: balance;
-            white-space: normal;
+          white-space: normal;
         }
       }
       a:hover {
@@ -96,5 +98,74 @@
   //     text-decoration: none;
   //   }
   // }
+}
 
+#spotlight-100 {
+	background-image: url("https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll413:1042/164,180,2264,1125/1200,/0/default.jpg"); // placholder image
+	min-height: 35rem;
+	position: relative;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+	#main-nav {
+		background-color: #f0efee;
+	}
+
+	#spotlight-100-attribute {
+    display: block;
+    background: rgba(221, 215, 196, 0.8098);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+    border-top-left-radius: 0;
+    border-top-left-radius: var(--b-rad);
+    border-top-right-radius: 0;
+    border-top-right-radius: var(--b-rad);
+    border: 1px solid transparent;
+    border-bottom: 0;
+    padding: 1rem;
+    p {
+      margin-bottom: 0;
+    }
+    &:hover,
+    &:focus {
+      background-color: #7a0019;
+      border-bottom: 3px solid #ffcc33;
+      a {
+        color: #f9f7f6 !important;
+        text-decoration: underline;
+      }
+    }
+	}
+}
+
+.folwell-border-top {
+  border-top: 4px solid #fc3;
+      padding-top: 1rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gold-bar {
+  height: 1rem;
+  width: 7rem;
+  margin: -1.6rem auto 0;
+  background: #ffde7a;
+}
+
+.callout-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  text-align: center;
+  background-color: #f0efee;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
