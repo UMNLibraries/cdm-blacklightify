@@ -9,12 +9,12 @@
     <% end %>
     
     <div class="card-body">
-      <%= content_tag :h4, class: 'card-title h3 text-center', aria: { describedby: "exhibit-description-#{exhibit.to_param}" } do %>
-        <%= link_to exhibit, class: 'stretched-link' do %>
-          <span><%= exhibit.title %></span>
+      <%= content_tag :h3, class: 'card-title', aria: { describedby: "exhibit-description-#{exhibit.to_param}" } do %>
+        <%= link_to exhibit do %>
+          <span class="title-alt" data-text="title"><%= exhibit.title %><i class="arrow right"></i></span>
         <% end %>
       <% end %>
-      <%= content_tag :div, id: "exhibit-description-#{exhibit.to_param}", class: 'butt-class' do %>
+      <%= content_tag :div, id: "exhibit-description-#{exhibit.to_param}" do %>
         <% if exhibit.description %>
           <p class="description">
             <%= exhibit.description %>

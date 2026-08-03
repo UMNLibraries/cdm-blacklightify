@@ -1,68 +1,16 @@
-#section-about {
-  background-color: #f9f7f6;
-  #about-primary {
-    padding: 0;
-    .card-action-button {
-      bottom: 1rem;
-      left: 1rem;      
-      background-color: #7a0019;
-      border: none;
-      padding: 1rem;
-      text-decoration: underline;
-    }
-    .card-action-button:hover,
-    .card-action-button:focus {
-      box-shadow: none;
-      background-color: #5b0013;
-      outline: 3px solid #0053b0;
-      outline-offset: 2px;
-      text-decoration: none;
-    }
-    .card {
-      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
-    }
-    #about-stats {
-      padding: 0;
-      p {
-        padding: 0;
-        margin: 0;
-      }
-    }
-  }
-  #about-image {
-    padding-right: 0;
-    padding-left: 2rem;
-    img {
-			max-height: 30rem;
-      width: 100%;
-      height: 100%;
-      object-fit: none;
-    }
-    #about-image-attribute {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      background-color: #fafafa;
-      color: #333;
-      padding: .8rem;
-      text-align: left;
-      p {
-        margin-bottom: 0;
-        a {
-          color: #7a0019;
-          text-decoration: underline;
-        }
-        a:hover,
-        a:focus {
-          background-color: #7a0019;
-          color: #fafafa;
-          outline: none;
-          text-decoration: none;
-        }
-      }
-    }
-    .card {
-      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
-    }
-  }
+#about {
+  
+}
+
+.infographic-item__graphic {
+  background: #fc3;
+  display: block;
+  height: 0.4em;
+  margin: 0 auto 0.5em;
+  width: 2em;
+}
+
+.infographic-item__number {
+  font-size: 2.5em;
+  margin-bottom: 0;
 }
