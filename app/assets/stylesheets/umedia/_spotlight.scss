@@ -101,8 +101,8 @@
 }
 
 #spotlight-100 {
-	background-image: url("https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll413:1042/164,180,2264,1125/1200,/0/default.jpg"); // placholder image
-	min-height: 35rem;
+	background-image: url("https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll251:504/929,1069,4585,2661/1200,/0/default.jpg"); // placholder image
+	min-height: 30rem;
 	position: relative;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -145,27 +145,32 @@
 
 .folwell-border-top {
   border-top: 4px solid #fc3;
-      padding-top: 1rem;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+  padding-top: 1rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gold-bar {
   height: 1rem;
-  width: 7rem;
-  margin: -1.6rem auto 0;
-  background: #ffde7a;
+  width: 9rem;
+  margin: -2.5rem auto 0;
+  background: #fc3;
 }
 
 .callout-text {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 25%;
+  width: 350px;
   transform: translate(-50%, -50%);
   color: black;
-  text-align: center;
+  text-align: left;
   background-color: #f0efee;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 0.5rem;
+  a:hover, a:focus {
+    color: #7a0019;
+    text-decoration: underline;
+  }
 }
