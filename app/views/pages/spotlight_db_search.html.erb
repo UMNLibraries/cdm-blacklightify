@@ -1,0 +1,42 @@
+<div class="container py-4">
+  <h1>Spotlight DB Search</h1>
+
+  <%# Direct SQL-backed Spotlight search form (title/slug), not Solr. %>
+  <%= form_with url: spotlight_db_search_path, method: :get, local: true do %>
+    <div class="form-group mb-3">
+      <label for="q">Search Spotlight category title/slug</label>
+      <input
+        type="text"
+        id="q"
+        name="q"
+        value="<%= h(@query) %>"
+        class="form-control"
+        placeholder="Try: Armenian"
+      >
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  <% end %>
+
+  <% if @query.present? %>
+    <%# Render compact query feedback and result count. %>
+    <p class="mt-3 mb-2">
+      Found <strong><%= @results.size %></strong> result(s) for <strong><%= h(@query) %></strong>.
+    </p>
+
+    <% if @results.any? %>
+      <ul>
+        <% @results.each do |result| %>
+          <li>
+            <strong><%= result.title %></strong>
+            <% if result.slug.present? %>
+              (<%= result.slug %>)
+            <% end %>
+            - Exhibit: <%= result.exhibit&.title || 'N/A' %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No Spotlight DB matches found.</p>
+    <% end %>
+  <% end %>
+</div>

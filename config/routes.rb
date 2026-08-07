@@ -67,6 +67,8 @@ Rails.application.routes.draw do
   # static pages
   get '/about', to: 'pages#about'
   get '/contact', to: 'pages#contact'
+  # DB-backed Spotlight category lookup endpoint (separate from Solr search routes).
+  get '/db-search/spotlight', to: 'pages#spotlight_db_search', as: :spotlight_db_search
 
   # subject_fast field render_async
   get :subject, :controller => :subject

@@ -49,6 +49,25 @@
       <% if current_page?(root_path) %>
         <%= render partial: 'shared/main_page_spotlight_sections' %>
       <% else %>
+
+        <div class="container">
+          <div class="row" id="spotlight" style="background-color: #e9c46a;">
+            <div>
+              test section
+              <%# Echo the incoming query for quick verification while testing. %>
+              <% if params[:q].present? %>
+                <div>Query: <%= h(params[:q]) %></div>
+              <% end %>
+              <%# If q includes set_spec:*, show the matched Spotlight long_description context. %>
+              <% if spotlight_search_long_description.present? %>
+                <div>Long description: <%= h(spotlight_search_long_description) %></div>
+              <% end %>
+            </div>
+            
+          </div>
+        </div>
+
+        
         <div class="container">
           <div class="row" id="spotlight">
             <%= content_for?(:content) ? yield(:content) : yield %>
