@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   if respond_to?(:helper_method)
     # Expose these to layouts/partials that need query-aware Spotlight metadata.
-    helper_method :current_locale, :set_spec_query_token, :spotlight_search_long_description
+    helper_method :current_locale, :set_spec_query_token, :spotlight_search_title, :spotlight_search_long_description
   end
 
   layout :determine_layout if respond_to? :layout
@@ -28,23 +28,33 @@ class ApplicationController < ActionController::Base
       query[/\bset_spec:[^\s]+\b/]
     end
 
+    def spotlight_search_title
+      spotlight_search_context&.[](:title)
+    end
+
     def spotlight_search_long_description
-      return @spotlight_search_long_description if defined?(@spotlight_search_long_description)
+      spotlight_search_context&.[](:long_description)
+    end
+
+    def spotlight_search_context
+      return @spotlight_search_context if defined?(@spotlight_search_context)
 
       token = set_spec_query_token
-      return @spotlight_search_long_description = nil if token.blank?
+      return @spotlight_search_context = nil if token.blank?
 
       # Keep lookup exhibit-scoped when the request is inside an exhibit.
       scope = Spotlight::Search
       scope = scope.where(exhibit_id: current_exhibit.id) if current_exhibit
 
       # query_params stores the saved browse query YAML/text (including set_spec:*).
-      # We return one non-empty long description as display context for the page.
-      @spotlight_search_long_description = scope
+      # We return one match with a non-empty long description as display context for the page.
+      row = scope
         .where('query_params LIKE ?', "%#{token}%")
         .where.not(long_description: [nil, ''])
         .order(updated_at: :desc)
         .limit(1)
-        .pick(:long_description)
+        .pick(:title, :long_description)
+
+      @spotlight_search_context = row ? { title: row[0], long_description: row[1] } : nil
     end
 end
