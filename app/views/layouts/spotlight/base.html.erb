@@ -51,6 +51,19 @@
       <% else %>
         <div class="container">
           <div class="row" id="spotlight">
+            <div>
+              <%# If q includes set_spec:*, show the matched Spotlight long_description context. %>
+              <% if spotlight_search_long_description.present? %>
+                <% if spotlight_search_title.present? %>
+                  <h3><%= h(spotlight_search_title) %></h3>
+                <% end %>
+                <p><%= h(spotlight_search_long_description) %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row" id="spotlight">
             <%= content_for?(:content) ? yield(:content) : yield %>
           </div>
         </div>
