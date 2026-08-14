@@ -14,13 +14,12 @@ class GettyJsonService
   end
 
   def att_definition
-    Rails.cache.fetch(att_def_id) do
+    Rails.cache.fetch(att_def_id, expires_in: 30.days) do
       aat_data.dig('subject_of', 0, 'content')
     end 
   end
 
   def att_name
-    # aat_data.dig('identified_by', 0, 'alternative', 0, 'content')
     aat_data.dig('_label')
   end
 end

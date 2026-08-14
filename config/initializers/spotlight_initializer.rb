@@ -34,8 +34,9 @@ Spotlight::Engine.config.default_autocomplete_params = { qf: 'id^1000 title_tesi
 # Spotlight::Engine.config.solr_fields.string_suffix = '_ssim'.freeze
 # Spotlight::Engine.config.solr_fields.text_suffix = '_tesim'.freeze
 # Spotlight::Engine.config.resource_global_id_field = :"#{config.solr_fields.prefix}spotlight_resource_id#{config.solr_fields.string_suffix}"
-# Spotlight::Engine.config.full_image_field = :full_image_url_ssm
+# Spotlight::Engine.config.full_image_field = :iiif_url_ssi
 Spotlight::Engine.config.thumbnail_field = :object_ssi
+Spotlight::Engine.config.iiif_manifest_field = :iiif_manifest_url_ssi
 
 # ==> Uploaded item configuration
 # Spotlight::Engine.config.upload_fields = [

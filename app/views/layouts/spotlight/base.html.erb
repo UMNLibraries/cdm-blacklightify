@@ -42,16 +42,34 @@
 
     <%= render 'shared/spotlight_header' if !current_page?(root_path) %> 
     <%= render partial: 'shared/masthead' %>
-
-    <%# <%= content_for?(:header_content) ? yield(:header_content) : "" %>
-    <main id="main-container" class="p-lg-5" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
-      <%# <%= content_for(:container_header) %>
+    
+    <main role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
       <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
-      <div class="row" id="spotlight">
-        <%= content_for?(:content) ? yield(:content) : yield %>
-      </div>
-    </main>
 
+      <% if current_page?(root_path) %>
+        <%= render partial: 'shared/main_page_spotlight_sections' %>
+      <% else %>
+        <div class="container">
+          <div class="row" id="spotlight">
+            <div>
+              <%# If q includes set_spec:*, show the matched Spotlight long_description context. %>
+              <% if spotlight_search_long_description.present? %>
+                <% if spotlight_search_title.present? %>
+                  <h3><%= h(spotlight_search_title) %></h3>
+                <% end %>
+                <p><%= h(spotlight_search_long_description) %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row" id="spotlight">
+            <%= content_for?(:content) ? yield(:content) : yield %>
+          </div>
+        </div>
+      <% end %>
+    </main>
+    
     <%= render partial: 'shared/footer' %>
     <%= render partial: 'shared/modal' %>
   </body>

@@ -1,16 +1,16 @@
+<%# nav & search form for /catalog path. does not render for item page %>
 <%= render partial: 'shared/header_logos' %>
-<%# nav & search bar for /catalog path. does not render for item page %>
+
 <% if action_name != 'show' %>
   <nav aria-label="Main" class="d-flex flex-column container-fluid umn-nav">
-    <div class="row" id="main-nav">
+    <div class="row mb-auto" id="main-nav">
       <a class="col-md-auto col-12 text-center" href="/" id="umedia">UMedia</a>
-      <a class="col-md-auto col-3 text-center" href="/">Collections</a>
-      <a class="col-md-auto col-3 text-center" href="/">Subjects</a>
-      <a class="col-md-auto col-3 text-center" href="/">Formats</a>
-      <a class="col-md-auto col-3 text-center" href="/">Help</a>
+      <a class="col-md-auto col-12 text-center" href="/">About</a>
+      <a class="col-md-auto col-12 text-center" href="/">How to use</a>
+      <a class="col-md-auto col-3 text-center" href="/">Give us feedback</a>
     </div>
 
-    <div id="main-search" class="catalog-main-nav">
+    <div class="main-search" id="catalog-nav-search">
       <%- unless params[:controller] == 'transcript' %> 
         <%= content_tag :div, role: 'navigation', aria: { label: t('blacklight.search.header') } do %>
           <div class="<%= container_classes %>" aria-label="Search UMedia resources">

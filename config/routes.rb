@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :exportable
-    concerns :iiif_search
+    get :iiif_search, controller: 'catalog_iiif_search'
 
     member do
       get 'transcript' => 'transcript#index'
@@ -60,13 +60,15 @@ Rails.application.routes.draw do
       get :autocomplete
       
       get 'av/:manifest', action: 'av_manifest'
-      get 'text/:manifest', action: 'text_manifesttest'
+      get 'text/:manifest', action: 'text_manifest'
     end
   end
 
   # static pages
   get '/about', to: 'pages#about'
   get '/contact', to: 'pages#contact'
+  # DB-backed Spotlight category lookup endpoint (separate from Solr search routes).
+  get '/db-search/spotlight', to: 'pages#spotlight_db_search', as: :spotlight_db_search
 
   # subject_fast field render_async
   get :subject, :controller => :subject

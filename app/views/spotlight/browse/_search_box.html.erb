@@ -1,0 +1,42 @@
+<div class="search-box-container">
+<p>text</p>
+  <%= form_tag exhibit_browse_path(current_exhibit, search), method: :get, class: 'browse-search-form search-query-form form-horizontal', role: 'search', 'aria-labelledby' => 'browse-search-form' do %>
+    <%= render Blacklight::HiddenSearchStateComponent.new(params: search_state.params_for_search.except(:q, :search_field, :exhibit_id, :qt, :page)) %>
+    <div class="form-group row">
+      <label id="browse-search-form" class="col-sm-4 col-form-label h6" for="browse_q"><%= t(:'.label') %></label>
+      <div class="col-sm-6">
+        <div class="input-group">
+          <%= text_field_tag :q, params[:q], placeholder: t(:'.placeholder'), class: "form-control", id: "browse_q" %>
+            <span class="input-group-btn input-group-append">
+              <button class="btn btn-reset btn-sm" type="reset">
+                <span class="sr-only"><%= t(:'.reset') %></span>
+                <%= blacklight_icon('highlight_off') %>
+              </button>
+              <button type="submit" class="btn btn-primary search-btn" id="browse-search">
+                <span class="submit-search-text"><%= t(:'.submit') %></span>
+                <%= blacklight_icon('search', aria_hidden: true) %>
+              </button>
+            </span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% if params[:q].present? %>
+    <div class="browse-search-expand">
+      <% if @response.size > 0 %>
+        <p><%= t(:'.success.result_number_html', search_size: @response.size, parent_search_count: parent_search_count) %></p>
+        <p><%= t(:'.success.expand_html',
+                  expand_search_url: search_exhibit_catalog_path(current_exhibit, q: params[:q]),
+                  browse_query: params[:q]) %>
+        </p>
+      <% else %>
+        <p><%= t(:'.zero_results.result_number') %></p>
+        <p><%= t(:'.zero_results.expand_html',
+                  clear_search_url: exhibit_browse_path(current_exhibit, search),
+                  expand_search_url: search_exhibit_catalog_path(current_exhibit, q: params[:q]),
+                  browse_query: params[:q])%>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

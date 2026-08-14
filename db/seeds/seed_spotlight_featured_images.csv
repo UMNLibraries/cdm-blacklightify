@@ -1,0 +1,19 @@
+id,type,display,image,source,iiif_region,created_at,updated_at
+130,Spotlight::ExhibitThumbnail,TRUE,asc-cbia.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+131,Spotlight::ExhibitThumbnail,TRUE,asc-clrc.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+132,Spotlight::ExhibitThumbnail,TRUE,asc-givens.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+133,Spotlight::ExhibitThumbnail,TRUE,veau-dor.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+134,Spotlight::ExhibitThumbnail,TRUE,asc-ihrca.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+135,Spotlight::ExhibitThumbnail,TRUE,asc-jfb.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+136,Spotlight::ExhibitThumbnail,TRUE,asc-ymca.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+137,Spotlight::ExhibitThumbnail,TRUE,asc-naa.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+138,Spotlight::ExhibitThumbnail,TRUE,asc-paa.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+139,Spotlight::ExhibitThumbnail,TRUE,asc-sherlock.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+140,Spotlight::ExhibitThumbnail,TRUE,swha.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+141,Spotlight::ExhibitThumbnail,TRUE,asc-rare.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+142,Spotlight::ExhibitThumbnail,TRUE,asc-tretter.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+143,Spotlight::ExhibitThumbnail,TRUE,asc-uarchives.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+144,Spotlight::ExhibitThumbnail,TRUE,asc-umja.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+145,Spotlight::ExhibitThumbnail,TRUE,asc-lit.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+146,Spotlight::ExhibitThumbnail,TRUE,fleur.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
+147,Spotlight::ExhibitThumbnail,TRUE,asc-wang.jpg,remote,"200,2,299,299",2026-05-07 1:46:08,2026-05-07 1:46:08
