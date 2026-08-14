@@ -28,12 +28,22 @@ namespace :test do
 end
 
 namespace :umedia do
+  desc 'show set specs'
+  task set_specs: :environment do
+    colls = []
+    specs = []
+    cdm_umedia_set_specs.each { |s| colls << Umedia::OaiSet.new(set: s).to_collection }
+    colls.each do |coll|
+      IndexCollectionWorker.perform_async(collection: coll)
+    end
+  end
+
   namespace :index do
     desc 'Index required test fixtures into Solr'
     task seed: :environment do
       docs = Dir['test/fixtures/files/solr_documents/*.json'].map { |f| JSON.parse File.read(f) }.flatten
-      Blacklight.default_index.connection.add docs
-      Blacklight.default_index.connection.commit
+      solr.add docs
+      solr.commit
     end
 
     desc 'Harvest a sample set of collections into Solr for development purposes'
@@ -76,7 +86,7 @@ namespace :umedia do
 
     desc 'Commit pending Solr transactions'
     task commit: :environment do
-      Blacklight.default_index.connection.commit
+      solr.commit
     end
 
     desc 'Backup'
@@ -145,4 +155,15 @@ namespace :umedia do
       )
     end
   end
+
+  def cdm_umedia_set_specs
+    fss = CDMDEXER::FilteredSetSpecs.new(
+      oai_base_url: ENV.fetch('OAI_ENDPOINT', nil),
+      callback: CDMDEXER::RegexFilterCallback.new(pattern: /^ul_([a-zA-Z0-9])*\s-\s/)
+    ).filtered_sets
+  end
+
+  def solr
+    Blacklight.default_index.connection
+  end 
 end
