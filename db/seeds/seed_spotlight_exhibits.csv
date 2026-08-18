@@ -16,12 +16,31 @@ id,title,subtitle,slug,description,published,masthead_id,thumbnail_id,site_id
 26,Upper Midwest Literary Archives,,umla,"The resources in the Upper Midwest Literary Archives are integral to the study of literary history, independent publishing, and writers of the Upper Midwest.",true,,145,1
 27,Andersen Horticultural Library,,ahl,"Located at the Minnesota Landscape Arboretum in Chanhassen, the AHL is the largest horticultural library in the Upper Midwest, focusing on plants, gardening, botanical art, landscape and floral design, garden history, and the natural history of Minnesota.",true,,146,1
 28,Wangensteen Library of Biology and Medicine,,wlbm,"Located in Phillips-Wangensteen Building on the East Bank campus, the Wangensteen Library for historical medical research houses 80,000 rare books, journals, and manuscripts in diverse medical and biological subjects spanning from approximately 1430 to 1930.",true,,147,1
-29,Exploring Minnesota's Natural History,,mnh,Special collection,true,,,1
-30,Revealing Bound Maps,,rbm,Special collection,true,,,1
-31,Minnesota's Radio History,,mrh,Special collection,true,,,1
-32,African American Archival Materials,,aaam,Special collection,true,,,1
-33,"First Flights, Images on the History of Hot Air Ballooning",,ffhab,Special collection,true,,,1
-34,Atlantic World,,aw,Special collection,true,,,1
-35,The Green Revolution,,gr,Special collection,true,,,1
-36,Seoul National University,,snu,Special collection,true,,,1
-37,Minnesota Human Rights Archive,,mhra,Special collection,true,,,1
+29,Donald Clay Johnson,,dcj,,true,,,1
+30,Department of American Indian Studies,,dais,,true,,,1
+31,Ames Library of South Asia,,alsa,,true,,,1
+32,Bell Museum,,bm,,true,,,1
+33,Business Library,,bl,,true,,,1
+34,Center for Holocaust and Genocide Studies,,chgs,,true,,,1
+35,East Asian Library,,eal,,true,,,1
+36,Institute for Advanced Study,,ias,,true,,,1
+37,Institute for Mathematics and its Applications,,ima,,true,,,1
+38,Minnesota Agricultural Experiment Station,,maes,,true,,,1
+39,Magrath Library,,ml,,true,,,1
+40,John R. Borchert Map Library,,jrbml,,true,,,1
+41,University of Minnesota Extension,,ume,,true,,,1
+42,Minnesota Institute for Sustainable Agriculture (MISA),,misa,,true,,,1
+43,Music Library,,mslb,,true,,,1
+44,School of Public Health,,sph,,true,,,1
+45,University of Minnesota Crookston,,umc,,true,,,1
+46,"Archives and Special Collections, Kathryn A. Martin Library, University of Minnesota Duluth",,kaml,,true,,,1
+47,Wilson Library,,wl,,true,,,1
+48,Exploring Minnesota's Natural History,,mnh,Special collection,true,,,1
+49,Revealing Bound Maps,,rbm,Special collection,true,,,1
+50,Minnesota's Radio History,,mrh,Special collection,true,,,1
+51,African American Archival Materials,,aaam,Special collection,true,,,1
+52,"First Flights, Images on the History of Hot Air Ballooning",,ffhab,Special collection,true,,,1
+53,Atlantic World,,aw,Special collection,true,,,1
+54,The Green Revolution,,gr,Special collection,true,,,1
+55,Seoul National University,,snu,Special collection,true,,,1
+56,Minnesota Human Rights Archive,,mhra,Special collection,true,,,1

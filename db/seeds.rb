@@ -50,10 +50,10 @@ CSV.foreach('db/seeds/seed_spotlight_searches.csv', headers: true, liberal_parsi
   )
 end
 
-# # 06 PAGES
-# CSV.foreach('db/seeds/seed_spotlight_pages.csv', headers: true) do |row|
-#   filter = Spotlight::Page.find_or_initialize_by(exhibit_id: row['exhibit_id'])
-#   filter.update(
-#     content: row['content'],
-#   )
-# end
+# 06 PAGES
+CSV.foreach('db/seeds/seed_spotlight_pages.csv', headers: true) do |row|
+  filter = Spotlight::Page.find_or_initialize_by(exhibit_id: row['exhibit_id'])
+  filter.update(
+    content: row['content']
+  )
+end
