@@ -41,6 +41,7 @@ CSV.foreach('db/seeds/seed_spotlight_searches.csv', headers: true, liberal_parsi
   Spotlight::Search.create!(
     title: row['title'],
     slug: row['slug'],
+    long_description: row['long_description'],
     query_params: JSON.parse(row['query_params']),
     weight: row['weight'],
     published: row['published'],
@@ -54,6 +55,7 @@ end
 CSV.foreach('db/seeds/seed_spotlight_pages.csv', headers: true) do |row|
   filter = Spotlight::Page.find_or_initialize_by(exhibit_id: row['exhibit_id'])
   filter.update(
-    content: row['content']
+    content: row['content'],
+    display_sidebar: row['display_sidebar']
   )
 end
