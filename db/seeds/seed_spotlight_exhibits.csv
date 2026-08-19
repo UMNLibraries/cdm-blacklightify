@@ -1,46 +1,46 @@
-id,title,subtitle,slug,description,published,masthead_id,thumbnail_id,site_id
-11,Charles Babbage Institute Archives,,cbia,"As both archives and research center, CBI promotes the study and understanding of the history of information technology and its impact on society.",true,,130,1
-12,Children's Literature Research Collections,,clrc,"The Children's Literature Research Collections holds books, comics, story papers, dime novels, and other materials related to the creation of children’s literature, including original manuscripts and artwork.",true,,131,1
-13,Givens Collection of African American Literature,,gcaal,"The Givens Collection facilitates access to African American history and culture through its rare book and archival collections, and through Umbra Search.",true,,132,1
-15,Immigration History Research Center Archives,,ihrca,"The Immigration History Research Center Archives documents im/migration to the United States from 1850 to the present, with materials created largely by immigrants and social service providers.",true,,134,1
-16,James Ford Bell Library,,jfbl,"The James Ford Bell Library documents the history and impact of trade and cultural exchange around the globe prior to c. 1825 C.E.  More than 21 languages and dialects are represented in rare books, manuscripts and archival collections, printed documents, and maps.",true,,135,1
-17,Kautz Family YMCA Archives,,kfymcaa,"The YMCA Archives documents one of the nation’s largest and oldest nonprofits and its programs to support social welfare, spiritual and mental development, and physical education.",true,,136,1
-18,Northwest Architectural Archives,,naa,"The Northwest Architectural Archives is the repository for the records of architects, engineers, contractors, landscape architects, interior designers, and local professional societies from the Midwest region.",true,,137,1
-19,Performing Arts Archives,,paa,"Preserving Minnesota’s cultural legacy in music, theater, and dance, the Archives holds scripts, prompt books, costume and set designs, photos, and AV recordings from organizations, actors, designers, and directors.",true,,138,1
-20,Sherlock Holmes Collections,,shc,The Sherlock Holmes Collections constitute the largest gathering of material documenting the transformation of Holmes from a Victorian literary creation of Sir Arthur Conan Doyle to a 21st century pop culture icon.,true,,139,1
-21,Social Welfare History Archives,,swha,"The Archives documents the history of social service programs, policies, and organizations; the evolution of the social work profession; and social reform movements.",true,,140,1
-22,Special Collections and Rare Books,,scrb,"From medieval manuscripts to modern fine press, Rare Books focuses on European history. Special Collections features notable archives and cultural collections, including materials on photomechanics, Austrian and Greek studies, and ballooning.",true,,141,1
-23,Tretter Collection,,tc,"The Tretter Collection in Gay, Lesbian, Bisexual and Transgender Studies includes published materials, organizational records, and personal papers providing insights into the GLBT experience, and is the home of the Tretter Transgender Oral History Project.",true,,142,1
-24,University Archives,,ua,"University Archives is the institutional home for historical documents, departmental collections, data, photographs, publications, and websites of the University, including faculty papers and research and administrative records.",true,,143,1
-25,Upper Midwest Jewish Archives,,umja,"UMJA has materials illustrating the American Jewish experience from a Midwestern perspective, chronicling the activities of supporting ethnic/religious communities and advocacy organizations.",true,,144,1
-26,Upper Midwest Literary Archives,,umla,"The resources in the Upper Midwest Literary Archives are integral to the study of literary history, independent publishing, and writers of the Upper Midwest.",true,,145,1
-27,Andersen Horticultural Library,,ahl,"Located at the Minnesota Landscape Arboretum in Chanhassen, the AHL is the largest horticultural library in the Upper Midwest, focusing on plants, gardening, botanical art, landscape and floral design, garden history, and the natural history of Minnesota.",true,,146,1
-28,Wangensteen Library of Biology and Medicine,,wlbm,"Located in Phillips-Wangensteen Building on the East Bank campus, the Wangensteen Library for historical medical research houses 80,000 rare books, journals, and manuscripts in diverse medical and biological subjects spanning from approximately 1430 to 1930.",true,,147,1
-29,Donald Clay Johnson,,dcj,,true,,,1
-30,Department of American Indian Studies,,dais,,true,,,1
-31,Ames Library of South Asia,,alsa,,true,,,1
-32,Bell Museum,,bm,,true,,,1
-33,Business Library,,bl,,true,,,1
-34,Center for Holocaust and Genocide Studies,,chgs,,true,,,1
-35,East Asian Library,,eal,,true,,,1
-36,Institute for Advanced Study,,ias,,true,,,1
-37,Institute for Mathematics and its Applications,,ima,,true,,,1
-38,Minnesota Agricultural Experiment Station,,maes,,true,,,1
-39,Magrath Library,,ml,,true,,,1
-40,John R. Borchert Map Library,,jrbml,,true,,,1
-41,University of Minnesota Extension,,ume,,true,,,1
-42,Minnesota Institute for Sustainable Agriculture (MISA),,misa,,true,,,1
-43,Music Library,,mslb,,true,,,1
-44,School of Public Health,,sph,,true,,,1
-45,University of Minnesota Crookston,,umc,,true,,,1
-46,"Archives and Special Collections, Kathryn A. Martin Library, University of Minnesota Duluth",,kaml,,true,,,1
-47,Wilson Library,,wl,,true,,,1
-48,Exploring Minnesota's Natural History,,mnh,Special collection,true,,,1
-49,Revealing Bound Maps,,rbm,Special collection,true,,,1
-50,Minnesota's Radio History,,mrh,Special collection,true,,,1
-51,African American Archival Materials,,aaam,Special collection,true,,,1
-52,"First Flights, Images on the History of Hot Air Ballooning",,ffhab,Special collection,true,,,1
-53,Atlantic World,,aw,Special collection,true,,,1
-54,The Green Revolution,,gr,Special collection,true,,,1
-55,Seoul National University,,snu,Special collection,true,,,1
-56,Minnesota Human Rights Archive,,mhra,Special collection,true,,,1
+id,title,subtitle,slug,description,published,masthead_id,thumbnail_id,weight,site_id
+11,Charles Babbage Institute Archives,,cbia,"As both archives and research center, CBI promotes the study and understanding of the history of information technology and its impact on society.",true,,130,5,1
+12,Children's Literature Research Collections,,clrc,"The Children's Literature Research Collections holds books, comics, story papers, dime novels, and other materials related to the creation of children’s literature, including original manuscripts and artwork.",true,,131,6,1
+13,Givens Collection of African American Literature,,gcaal,"The Givens Collection facilitates access to African American history and culture through its rare book and archival collections, and through Umbra Search.",true,,132,10,1
+15,Immigration History Research Center Archives,,ihrca,"The Immigration History Research Center Archives documents im/migration to the United States from 1850 to the present, with materials created largely by immigrants and social service providers.",true,,134,11,1
+16,James Ford Bell Library,,jfbl,"The James Ford Bell Library documents the history and impact of trade and cultural exchange around the globe prior to c. 1825 C.E.  More than 21 languages and dialects are represented in rare books, manuscripts and archival collections, printed documents, and maps.",true,,135,14,1
+17,Kautz Family YMCA Archives,,kfymcaa,"The YMCA Archives documents one of the nation’s largest and oldest nonprofits and its programs to support social welfare, spiritual and mental development, and physical education.",true,,136,17,1
+18,Northwest Architectural Archives,,naa,"The Northwest Architectural Archives is the repository for the records of architects, engineers, contractors, landscape architects, interior designers, and local professional societies from the Midwest region.",true,,137,22,1
+19,Performing Arts Archives,,paa,"Preserving Minnesota’s cultural legacy in music, theater, and dance, the Archives holds scripts, prompt books, costume and set designs, photos, and AV recordings from organizations, actors, designers, and directors.",true,,138,23,1
+20,Sherlock Holmes Collection,,shc,The Sherlock Holmes Collections constitute the largest gathering of material documenting the transformation of Holmes from a Victorian literary creation of Sir Arthur Conan Doyle to a 21st century pop culture icon.,true,,139,25,1
+21,Social Welfare History Archives,,swha,"The Archives documents the history of social service programs, policies, and organizations; the evolution of the social work profession; and social reform movements.",true,,140,26,1
+22,Special Collections and Rare Books,,scrb,"From medieval manuscripts to modern fine press, Rare Books focuses on European history. Special Collections features notable archives and cultural collections, including materials on photomechanics, Austrian and Greek studies, and ballooning.",true,,141,27,1
+23,Jean-Nickolaus Tretter Collection in GLBT Studies,,tc,"The Tretter Collection in Gay, Lesbian, Bisexual and Transgender Studies includes published materials, organizational records, and personal papers providing insights into the GLBT experience, and is the home of the Tretter Transgender Oral History Project.",true,,142,15,1
+24,University Archives,,ua,"University Archives is the institutional home for historical documents, departmental collections, data, photographs, publications, and websites of the University, including faculty papers and research and administrative records.",true,,143,28,1
+25,Upper Midwest Jewish Archives,,umja,"UMJA has materials illustrating the American Jewish experience from a Midwestern perspective, chronicling the activities of supporting ethnic/religious communities and advocacy organizations.",true,,144,32,1
+26,Upper Midwest Literary Archives,,umla,"The resources in the Upper Midwest Literary Archives are integral to the study of literary history, independent publishing, and writers of the Upper Midwest.",true,,145,33,1
+27,Andersen Horticultural Library,,ahl,"Located at the Minnesota Landscape Arboretum in Chanhassen, the AHL is the largest horticultural library in the Upper Midwest, focusing on plants, gardening, botanical art, landscape and floral design, garden history, and the natural history of Minnesota.",true,,146,1,1
+28,Wangensteen Historical Library of Biology and Medicine,,wlbm,"Located in Phillips-Wangensteen Building on the East Bank campus, the Wangensteen Library for historical medical research houses 80,000 rare books, journals, and manuscripts in diverse medical and biological subjects spanning from approximately 1430 to 1930.",true,,147,34,1
+29,Donald Clay Johnson,,dcj,,true,,,8,1
+30,Department of American Indian Studies,,dais,,true,,,7,1
+31,Ames Library of South Asia,,alsa,"The Ames Library collects materials on and from the countries of South Asia, principally in the areas of the arts, humanities and social sciences. Geographic coverage includes Afghanistan, Bangladesh, Bhutan, India, Nepal, Pakistan, Sri Lanka, and more.",true,,,0,1
+32,Bell Museum,,bm,,true,,,2,1
+33,Business Library,,bl,,true,,,3,1
+34,Center for Holocaust and Genocide Studies,,chgs,,true,,,4,1
+35,East Asian Library,,eal,,true,,,9,1
+36,Institute for Advanced Study,,ias,,true,,,12,1
+37,Institute for Mathematics and its Applications,,ima,,true,,,13,1
+38,Minnesota Agricultural Experiment Station,,maes,,true,,,19,1
+39,Magrath Library,,ml,,true,,,18,1
+40,John R. Borchert Map Library,,jrbml,"The John R. Borchert Map Library contains maps, plat maps, atlases, aerial photography, gazetteers, and more, including digital resources like geospatial data, databases, and tools.",true,,,16,1
+41,University of Minnesota Extension,,ume,,true,,,31,1
+42,Minnesota Institute for Sustainable Agriculture (MISA),,misa,,true,,,20,1
+43,Music Library,,ml,,true,,,21,1
+44,School of Public Health,,sph,,true,,,24,1
+45,University of Minnesota Crookston,,umc,,true,,,29,1
+46,"University of Minnesota Duluth, Archives and Special Collections",,kaml,,true,,,30,1
+47,Wilson Library,,wl,,true,,,35,1
+48,Exploring Minnesota's Natural History,,mnh,Special collection,true,,,38,1
+49,Revealing Bound Maps,,rbm,Special collection,true,,,42,1
+50,Minnesota's Radio History,,mrh,Special collection,true,,,41,1
+51,African American Archival Materials,,aaam,Special collection,true,,,36,1
+52,"First Flights, Images on the History of Hot Air Ballooning",,ffhab,Special collection,true,,,39,1
+53,Atlantic World,,aw,Special collection,true,,,37,1
+54,The Green Revolution,,gr,Special collection,true,,,44,1
+55,Seoul National University,,snu,Special collection,true,,,43,1
+56,Minnesota Human Rights Archive,,mhra,Special collection,true,,,40,1
