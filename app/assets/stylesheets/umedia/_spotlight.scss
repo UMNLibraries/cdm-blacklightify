@@ -11,6 +11,14 @@
 }
 
 #spotlight {
+  padding-top: 1rem;
+  // hiding this nav for now, but may want to use it later
+  .nav {
+    display: none;
+  }
+  // .nav-pills .nav-link.active {
+  //   background-color: #7a0019;
+  // }
   .tab-content .row {
     padding: 1rem 0 !important;
   }
@@ -37,14 +45,15 @@
       padding: 0;
     }
   }
+  // # redundant, but needed for exhibit cards on main page, review and refactor
+  .card-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
   #published, #unpublished {
     .card {
-      img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 4 / 3;
-        object-fit: cover;
-      }
       .card-body {
         padding: 1rem 0;
         background-color: #f9f7f6;
@@ -70,34 +79,37 @@
         color: #333333;
         text-decoration: none;
       }
-      // folwell link emphasis; however there are some wrapping issues
-      // .arrow {
-      //   margin-left: 1rem;
-      //   vertical-align: middle;
-      //   border: solid #777677;
-      //   border-width: 0 3px 3px 0;
-      //   display: inline-block;
-      //   padding: 4px;
-      // }
-      // .right {
-      //   transform: rotate(-45deg);
-      //   -webkit-transform: rotate(-45deg);
-      // }
     }
   }
-  
-  // browse collections page, consider refactoring . . .
-  // #content {
-  //   a {
-  //     color: #7a0019;
-  //     text-decoration: none;
-  //   }
-  //   a:hover {
-  //     background-color: #7a0019 !important;
-  //     color: #fafafa;
-  //     text-decoration: none;
-  //   }
-  // }
+}
+
+// double check and refactor this
+#spotlight-view-more {
+  color: #7a0019;
+  font-size: 1.125em !important;
+  line-height: 1.5 !important;
+  font-weight: 600 !important;
+  a {
+    color: #7a0019;
+    // border-bottom: 1px solid #7a0019;
+    transition: all 400ms ease-in-out;
+  }
+  a:hover,
+  a:focus {
+    color: #900021 !important;
+    background-color: #d5d6d2 !important;
+    text-decoration: none;
+  }
+}
+
+// refactor 
+.card-title {
+  a:hover,
+  a:focus {
+    color: #900021 !important;
+    background-color: #d5d6d2 !important;
+    text-decoration: none;
+  }
 }
 
 #spotlight-100 {
