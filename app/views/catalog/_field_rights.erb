@@ -2,8 +2,7 @@
 <%= link_to field_value, field_value, target: "_blank", rel: "noopener" %>
 <%
   key, _match, _after = field_value.partition('/?')
-  key = key.sub(/^https?:/, '')
-  key = key.chomp('/') if key.ends_with?('/')
+  key.sub!(/^https?:/, '').chomp('/')
 %>
 <%# "key = #{key}" %>
 <p>
