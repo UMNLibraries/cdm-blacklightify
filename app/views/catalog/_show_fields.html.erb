@@ -10,14 +10,19 @@
     </div>
   <% end %>
 </dt>
-
+<% Rails.logger.debug "DBG: document: #{ document }" %>
 <% rendered = Array.wrap(field_presenter.render).reject { |value| value.blank? }.map { |rendered| field_presenter.field_config[:raw] ? raw(rendered) : rendered } %>
   <% if rendered.length == 1 %>
+    <% Rails.logger.debug "DBG: Rendered length is 1 for field: #{field_name}" %>
+    <% Rails.logger.debug "DBG: Rendered content: #{document[field_name]}" %>
     <dd class="show-page-label blacklight-<%= field_name.parameterize %>">
       <% if field_name == "subject_fast_ssim" %>
         <%= render partial: 'field_subject_fast', locals: { field_name: field_name } %>
       <% elsif field_name == "format_name" %>
         <%= render partial: 'field_format_name', locals: { field_name: field_name } %>
+      <% elsif field_name.end_with?("rights_statement_uri") %>
+        <% Rails.logger.debug "DBG: Rendering rights_statement_uri field_name = #{field_name}, locale = #{current_locale}" %>
+        <%= render partial: 'field_rights', locals: { field_name: field_name, field_value: document[field_name], current_locale: current_locale } %>
       <% else %>
         <%= safe_join(Array.wrap(rendered)) %>
       <% end %>

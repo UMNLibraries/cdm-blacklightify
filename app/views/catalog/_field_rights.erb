@@ -1,0 +1,13 @@
+<%# add a rights statement based on the field value %>
+<%= link_to field_value, field_value, target: "_blank", rel: "noopener" %>
+<%
+  key, _match, _after = field_value.partition('/?')
+  key = key.sub(/^https?:/, '')
+  key = key.chomp('/') if key.ends_with?('/')
+%>
+<%# "key = #{key}" %>
+<p>
+  <br/>
+  <%= I18n.translate(:rights, locale: current_locale)[key.to_sym] %>
+</p>
+<%# end of rights field %>
