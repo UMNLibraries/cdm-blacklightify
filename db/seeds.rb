@@ -11,6 +11,7 @@ require 'json'
 
 Spotlight::Exhibit.destroy_all
 Spotlight::BlacklightConfiguration.destroy_all
+Spotlight::Search.destroy_all
 
 # 01 EXHIBITS
 CSV.foreach('db/seeds/seed_spotlight_exhibits.csv', headers: true) do |row|
@@ -38,9 +39,10 @@ end
 
 # 05 SEARCHES (exhibit must be present to create a search). refactor this at some point . . .
 CSV.foreach('db/seeds/seed_spotlight_searches.csv', headers: true, liberal_parsing: true) do |row|
-  Spotlight::Search.create!(
+  Spotlight::Search.find_or_create_by(
     title: row['title'],
     slug: row['slug'],
+    long_description: row['long_description'],
     query_params: JSON.parse(row['query_params']),
     weight: row['weight'],
     published: row['published'],
@@ -50,10 +52,28 @@ CSV.foreach('db/seeds/seed_spotlight_searches.csv', headers: true, liberal_parsi
   )
 end
 
-# # 06 PAGES
-# CSV.foreach('db/seeds/seed_spotlight_pages.csv', headers: true) do |row|
-#   filter = Spotlight::Page.find_or_initialize_by(exhibit_id: row['exhibit_id'])
-#   filter.update(
-#     content: row['content'],
-#   )
-# end
+# 06 PAGES
+CSV.foreach('db/seeds/seed_spotlight_pages.csv', headers: true) do |row|
+  filter = Spotlight::Page.find_or_initialize_by(exhibit_id: row['exhibit_id'])
+  filter.update(
+    content: row['content'],
+    display_sidebar: row['display_sidebar']
+  )
+end
+
+#07 TAGS & TAGGINGS
+CSV.foreach('db/seeds/seed_tags.csv', headers: true, liberal_parsing: true) do |row|
+  ActsAsTaggableOn::Tag.find_or_create_by(
+    id: row['id'],
+    name: row['name']
+  )
+end
+
+CSV.foreach('db/seeds/seed_taggings.csv', headers: true, liberal_parsing: true) do |row|
+  ActsAsTaggableOn::Tagging.find_or_create_by(
+    tag_id: row['tag_id'],
+    taggable_id: row['taggable_id'],
+    taggable_type: row['taggable_type'],
+    context: row['context']
+  )
+end

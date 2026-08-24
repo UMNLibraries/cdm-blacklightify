@@ -1,0 +1,4 @@
+<% tag_name = local_assigns.fetch(:tag_name, 'Featured Contributors') %>
+<% exhibits = Spotlight::Exhibit.tagged_with(tag_name) %>
+
+<%= render partial: 'spotlight/exhibits/featured_exhibits', locals: { exhibits: exhibits } %>
