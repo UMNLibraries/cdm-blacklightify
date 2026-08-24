@@ -34,7 +34,7 @@ namespace :umedia do
     specs = []
     cdm_umedia_set_specs.each { |s| colls << Umedia::OaiSet.new(set: s).to_collection }
     colls.each do |coll|
-      IndexCollectionWorker.perform_async(collection: coll)
+      Umedia::IndexCollectionWorker.perform_async(coll.to_json)
     end
   end
 

@@ -13,7 +13,10 @@ development:
   <<: *default
   database: db/development.sqlite3
   # Maybe prevent db locking while Sidekiq is running
-  timeout: 30000
+  timeout: 5000
+  # Write-ahead logging
+  journal_mode: wal
+  synchronous: normal
 
 publicdev:
   <<: *default
