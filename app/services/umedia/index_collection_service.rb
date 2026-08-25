@@ -19,6 +19,7 @@ module Umedia
       exhibit.title = collection.name
       exhibit.description = collection.description
       exhibit.slug ||= collection.set_spec.parameterize
+      exhibit.set_spec = collection.set_spec
       exhibit.save!
     end
 
