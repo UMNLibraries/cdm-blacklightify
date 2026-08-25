@@ -1,0 +1,18 @@
+# kaltura.yml
+
+default: &default
+  url: https://cdnapisec.kaltura.com
+  partner_id: 1369852
+  uiconf_id: 54071352
+  
+development:
+  <<: *default
+
+publicdev:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
