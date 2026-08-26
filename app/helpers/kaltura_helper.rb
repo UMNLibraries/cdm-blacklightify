@@ -1,14 +1,20 @@
 # frozen_string_literal: true
 
+require 'uri'
+
 ##
 # KalturaHelper
 module KalturaHelper
-  def kaltura_video_url
-    "#{kaltura_base_url}/p/#{kaltura_partner_id}/embedPlaykitJs/uiconf_id/#{kaltura_uiconf_id}"
+  def kaltura_video_url(entry_id)
+    kaltura_embed_url(entry_id: entry_id)
   end
 
-  def kaltura_audio_url
-    kaltura_video_url
+  def kaltura_audio_url(entry_id)
+    kaltura_embed_url(entry_id: entry_id)
+  end
+
+  def kaltura_audio_playlist_url(playlist_id)
+    kaltura_embed_url(playlist_id: playlist_id)
   end
 
   private
@@ -18,14 +24,22 @@ module KalturaHelper
   end
 
   def kaltura_base_url
-    ENV.fetch('KALTURA_URL', kaltura_settings[:url]).to_s
+    kaltura_settings[:url].to_s
   end
 
   def kaltura_partner_id
-    ENV.fetch('KALTURA_PARTNER_ID', kaltura_settings[:partner_id]).to_s
+    kaltura_settings[:partner_id].to_s
   end
 
   def kaltura_uiconf_id
-    ENV.fetch('KALTURA_UICONF_ID', kaltura_settings[:uiconf_id]).to_s
+    kaltura_settings[:uiconf_id].to_s
+  end
+
+  def kaltura_embed_url(entry_id: nil, playlist_id: nil)
+    query = { iframeembed: true }
+    query[:entry_id] = entry_id if entry_id.present?
+    query[:playlist_id] = playlist_id if playlist_id.present?
+
+    "#{kaltura_base_url}/p/#{kaltura_partner_id}/embedPlaykitJs/uiconf_id/#{kaltura_uiconf_id}?#{URI.encode_www_form(query)}"
   end
 end
