@@ -18,6 +18,8 @@
         <%= render partial: 'field_subject_fast', locals: { field_name: field_name } %>
       <% elsif field_name == "format_name" %>
         <%= render partial: 'field_format_name', locals: { field_name: field_name } %>
+      <% elsif field_name.end_with?("rights_statement_uri") %>
+        <%= render partial: 'field_rights', locals: { field_name: field_name, field_value: document[field_name], current_locale: current_locale } %>
       <% else %>
         <%= safe_join(Array.wrap(rendered)) %>
       <% end %>
