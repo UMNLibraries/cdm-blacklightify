@@ -3,9 +3,10 @@
 module Umedia
   # BorealisVideo
   class BorealisVideo < BorealisAsset
+    include KalturaHelper
     def src(entry_id = nil)
       entry_id ||= (playlist_id || video_id)
-      "https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/#{entry_id.strip}/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4"
+      kaltura_video_playmanifest_url(entry_id)
     end
 
     def thumbnail_url
