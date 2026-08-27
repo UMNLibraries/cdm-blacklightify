@@ -12,8 +12,9 @@
 
 #spotlight {
   padding-top: 1rem;
+  padding-bottom: 1.25rem;
   // hiding this nav for now, but may want to use it later
-  .nav {
+  #published .nav {
     display: none;
   }
   // .nav-pills .nav-link.active {
@@ -77,6 +78,21 @@
       }
       a:hover {
         color: #333333;
+        text-decoration: none;
+      }
+    }
+  }
+  #content {
+    .st__content-block {
+      p:last-of-type {
+        font-size: 1.125em !important;
+        line-height: 1.5 !important;
+        font-weight: 600 !important;
+      }
+      a:hover,
+      a:focus {
+        color: #900021 !important;
+        background-color: #d5d6d2 !important;
         text-decoration: none;
       }
     }

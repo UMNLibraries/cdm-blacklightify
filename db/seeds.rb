@@ -24,6 +24,8 @@ CSV.foreach('db/seeds/seed_spotlight_blacklight_configurations.csv', headers: tr
 end
 
 # 03 thumbnail FEATURED IMAGES
+# TESTING iiif
+# Spotlight::FeaturedImage.destroy_all
 CSV.foreach('db/seeds/seed_spotlight_featured_images.csv', headers: true, liberal_parsing: true) do |row|
   Spotlight::FeaturedImage.insert(row.to_h)
 end
