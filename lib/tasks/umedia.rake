@@ -32,7 +32,7 @@ namespace :umedia do
   task set_specs: :environment do
     colls = []
     specs = []
-    cdm_umedia_set_specs.each { |s| colls << Umedia::OaiSet.new(set: s).to_collection }
+    cdm_umedia_all_sets.each { |s| colls << Umedia::OaiSet.new(set: s).to_collection }
     colls.each do |coll|
       Umedia::IndexCollectionWorker.perform_async(coll.to_json)
     end
@@ -44,6 +44,22 @@ namespace :umedia do
       docs = Dir['test/fixtures/files/solr_documents/*.json'].map { |f| JSON.parse File.read(f) }.flatten
       solr.add docs
       solr.commit
+    end
+
+    desc 'Index collection metadata by setSpec'
+    task :collection_metadata, [:set_spec] => :environment do |_t, args|
+      colls = []
+      specs = []
+      if args[:set_spec]
+        specs = cdm_umedia_all_sets.select {|s| s['setSpec'] == args[:set_spec]}
+      else
+        specs = cdm_umedia_all_sets
+      end
+      specs.each { |s| colls << Umedia::OaiSet.new(set: s).to_collection }
+      colls.each do |coll|
+        puts coll.to_json
+        Umedia::IndexCollectionWorker.perform_async(coll.to_json)
+      end
     end
 
     desc 'Harvest a sample set of collections into Solr for development purposes'
@@ -74,11 +90,7 @@ namespace :umedia do
       if args[:set_spec]
         set_specs = [args[:set_spec]]
       else
-        set_specs = CDMDEXER::FilteredSetSpecs.new(
-          oai_base_url: ENV.fetch('OAI_ENDPOINT', nil),
-          # Libraries (non-MDL) collections prefixed ul_abbrevname - Full Set Name
-          callback: CDMDEXER::RegexFilterCallback.new(pattern: /^ul_([a-zA-Z0-9])*\s-\s/)
-        ).set_specs
+        set_specs = cdm_umedia_all_set_specs.set_specs
       end
       run_etl!(set_specs)
     end
@@ -155,8 +167,8 @@ namespace :umedia do
     end
   end
 
-  def cdm_umedia_set_specs
-    fss = CDMDEXER::FilteredSetSpecs.new(
+  def cdm_umedia_all_sets
+    CDMDEXER::FilteredSetSpecs.new(
       oai_base_url: ENV.fetch('OAI_ENDPOINT', nil),
       callback: CDMDEXER::RegexFilterCallback.new(pattern: /^ul_([a-zA-Z0-9])*\s-\s/)
     ).filtered_sets
