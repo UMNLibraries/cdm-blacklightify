@@ -21,7 +21,7 @@ module Umedia
     private
 
     def description
-      set.fetch('setDescription', {}).fetch('dc', {}).fetch('description', {})
+      set.fetch('setDescription', {}).fetch('dc', {}).fetch('description', nil)
     end
   end
 end

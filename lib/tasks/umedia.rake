@@ -57,7 +57,6 @@ namespace :umedia do
       end
       specs.each { |s| colls << Umedia::OaiSet.new(set: s).to_collection }
       colls.each do |coll|
-        puts coll.to_json
         Umedia::IndexCollectionWorker.perform_async(coll.to_json)
       end
     end
