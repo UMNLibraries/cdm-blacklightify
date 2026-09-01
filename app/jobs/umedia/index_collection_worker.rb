@@ -9,7 +9,7 @@ module Umedia
     # Sidekiq job to process a Umedia::Collection object
     def perform(collection_json)
 
-      puts "IndexCollectionWorker: Starting indexing for collection: #{collection_json.inspect}"
+      logger.info "IndexCollectionWorker: Indexing collection: #{collection_json.inspect}"
       # Call the IndexCollectionsService to index the collection
       service = IndexCollectionService.new(Umedia::Collection.from_json(collection_json))
       service.index_all
