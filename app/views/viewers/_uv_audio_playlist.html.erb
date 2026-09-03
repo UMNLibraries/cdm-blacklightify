@@ -9,7 +9,7 @@
 <div class="embed-responsive <%= fullscreen? ? 'embed-responsive-4by3' : 'embed-responsive-16by9'%>">
   <iframe 
     id="kaltura_player" 
-    src="https://cdnapisec.kaltura.com/p/1369852/embedPlaykitJs/uiconf_id/54071352?iframeembed=true&playlist_id=<%= borealis_doc.document._source["kaltura_audio_playlist"] %>"
+    src="<%= kaltura_audio_playlist_url(borealis_doc.document._source['kaltura_audio_playlist']) %>"
   >
   </iframe>
 </div>
