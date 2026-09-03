@@ -13,11 +13,16 @@ development:
   <<: *default
   database: db/development.sqlite3
   # Maybe prevent db locking while Sidekiq is running
-  timeout: 20000
+  timeout: 5000
+  # Write-ahead logging
+  journal_mode: wal
+  synchronous: normal
 
 publicdev:
   <<: *default
-  database: db/pub/development.sqlite3
+  #database: db/pub/development.sqlite3
+  # Maybe prevent db locking while Sidekiq is running
+  #timeout: 20000
   adapter: mysql2
   database: "<%= ENV.fetch('MYSQL_DATABASE_NAME', 'umedia_development') %>"
   username: "<%= ENV.fetch('MYSQL_DATABASE_USER', '') %>"

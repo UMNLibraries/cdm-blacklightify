@@ -48,11 +48,6 @@ module Blacklight
       'container-fluid'
     end
 
-    def transcript_selector
-      # determines where to get transcript data from (if [:transcription_tesi].present?)
-      @document[:viewer_type] == 'image'
-    end
-
     def tools_iiif_manifest_link
       arr = ['Sound', 'Moving Image']
       @document[:types].present? ? arr.include?(@document[:types][0]) : ""
@@ -60,6 +55,23 @@ module Blacklight
 
     def fullscreen?
       params[:fullscreen] == 'true'
+    end
+
+    def translation_tab
+      doc = Umedia::FullTranscript.new.child_response("#{@document[:id]}")
+
+      if doc['numFound'] > 0
+        doc['docs'][0].has_key?('translation')
+      end
+    end
+
+    def singular_translation_tab
+      @document[:translation].present?
+    end
+
+    def secondary_transcription_tab
+      doc = Umedia::FullTranscript.new.child_response("#{@document[:id]}")
+      doc['numFound'] > 0
     end
   end
 end

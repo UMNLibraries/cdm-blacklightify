@@ -4,13 +4,13 @@ class IiifTextManifestService
     @document = SolrDocument.find(id)
   end
 
-  def text_manifest
+  def call
     manifest
   end
 
   private
 
-  def iiif_manifest
+  def cdm_manifest
     url = 'https://cdm16022.contentdm.oclc.org/iiif/2/' + @id + '/manifest.json'
     res = Net::HTTP.get_response(URI(url))
     parsed_response = res.body
@@ -25,15 +25,13 @@ class IiifTextManifestService
       'label' => @document[:title],
       'metadata' => metadata.compact,
       'attribution' => attribution,
-      # add mediaSequences (may be a deprecated) for .pdf support
-      # 'mediaSequences' => is_pdf,
       'sequences' => is_pdf,
       'structures' => [{
         '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/range/r0',
         '@type' => 'sc:Range',
         'label' => @document[:title],
-        'ranges' => iiif_manifest['structures'][0]['ranges'],
-        'canvases' => iiif_manifest['structures'][0]['canvases'],
+        'ranges' => cdm_manifest['structures'][0]['ranges'],
+        'canvases' => cdm_manifest['structures'][0]['canvases'],
       }],
       'service' => searcher,
       # needs to be outside structures to work appropriately . . .
@@ -203,7 +201,7 @@ class IiifTextManifestService
   end
 
   def rendering_download_path_image_dimensions
-    width, height = iiif_manifest['sequences'][0]['canvases'][0]['width'], iiif_manifest['sequences'][0]['canvases'][0]['height']
+    width, height = cdm_manifest['sequences'][0]['canvases'][0]['width'], cdm_manifest['sequences'][0]['canvases'][0]['height']
   end
 
   def rendering_download_path
@@ -233,7 +231,6 @@ class IiifTextManifestService
   # pdf support . . .
   def mediaSequences
     [{
-      # MediaSequence may be deprecated . . .
       "@type": "ixif:MediaSequence",
       "label": "Contents",
       "elements": [
@@ -270,11 +267,11 @@ class IiifTextManifestService
   end
 
   def canvases
-    iiif_manifest['sequences'][0]['canvases']
+    cdm_manifest['sequences'][0]['canvases']
   end
   
   def structures
-    iiif_manifest['structures']
+    cdm_manifest['structures']
   end
 
   def searcher
@@ -287,7 +284,6 @@ class IiifTextManifestService
   end
 
   def query_constructor
-    # "http://localhost:3000/catalog/#{@document[:id]}/iiif_search  parent_id:#{@document[:id]}"
-    "http://localhost:3000/catalog/#{@document[:id]}/iiif_search"
+    "#{ENV['RAILS_BASE_URL']}/catalog/#{@document[:id]}/iiif_search"
   end
 end

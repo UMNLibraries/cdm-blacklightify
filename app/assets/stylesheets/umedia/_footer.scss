@@ -1,13 +1,21 @@
 footer {
   flex-shrink: 0;
-  background-color: #f0efee;
-  border-top: 1px solid #d5d6d2;
+  background-color: #f9f7f6;
   padding-top: 1rem;
-  .card {
-      background-color: #f0efee;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+
+  a {
+    color: #7a0019;
+    border-bottom: 1px solid #7a0019;
+    transition: all 400ms ease-in-out;
   }
-  .hr {
-      background-color: #fafafa;
+  a:hover,
+  a:focus {
+    color: #900021;
+    background-color: #d5d6d2;
+    text-decoration: none;
   }
   #content {
     font-family: Tahoma, Verdana, sans-serif;
@@ -16,72 +24,37 @@ footer {
       list-style-type: none;
       padding: 0;
     }
-    li {
-      padding: .8rem;
+    .card {
+      background-color: #f9f7f6;
+      border: none;
     }
-    a {
-      display: block;
-      color: #333;
-      text-decoration: underline;
+  }
+	#give {
+    width: 100%;
+    color: white;
+    a:hover {
+      background-color: #5b0013;
     }
-    #contact {
-      ul {
-        list-style-type: none;
-      }
-      li {
-        display: inline-block;
-      }
-      li:not(:first-child):hover,
-      li:not(:first-child):focus-within {
-        background-color: #d5d6d2;
-        text-decoration: none;
-        a{
-          text-decoration: none;
-        }
-      }
-    }
-    #related-services {
-      background-color: white;
-      li:hover,
-      li:focus-within {
-        background-color: #d5d6d2;
-        text-decoration: none;
-        a{
-          text-decoration: none;
-        }
-      }
-    }
-    #copyright {
-      a {
-        display: inline-block;
-        text-decoration: underline;
-      }
-      a:hover,
-      a:focus {
-        background-color: #ffde7a;
-        color: #333;
-        text-decoration: none;
-      }
-    }
+	}
 
-    .card-body-as-link {
-      background-color: white;
-    }
-    .card-body-as-link:hover, // check for redundancy
-    .card-body-as-link:focus-within {
-      outline: 3px solid #ffde7a;
-      outline-offset: 4px;
-      a {
-        background-color: #ffde7a;
-        color: #333;
-        text-decoration: none;
-      }
-    }
-    hr {
-      background-color: #fafafa;
-      margin-top: 3rem;
-      margin-bottom: 2rem;
-    }
+}
+
+footer:first-of-type {
+  border-top: 4px solid #fc3;
+}
+
+// footer for copyright
+#copyright {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  div {
+    background-color: #f9f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 1rem;
   }
 }
 

@@ -198,7 +198,7 @@ module Umedia
     # IiifManifestUrlFormatter
     class IiifManifestUrlFormatter
       def self.format(doc)
-        collection, id = doc['id'].split('/')
+        collection, id = doc['id'].split(':')
         "https://cdm16022.contentdm.oclc.org/iiif/2/#{collection}:#{id}/manifest.json"
       end
     end
