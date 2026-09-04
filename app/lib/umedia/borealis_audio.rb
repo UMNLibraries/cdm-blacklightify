@@ -3,8 +3,9 @@
 module Umedia
   # BorealisAudio
   class BorealisAudio < BorealisAsset
+    include KalturaHelper
     def src(entry_id = audio_id)
-      "https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/#{entry_id.strip}/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4"
+      kaltura_audio_playmanifest_url(entry_id)
     end
 
     def thumbnail_url

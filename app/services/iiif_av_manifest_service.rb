@@ -1,4 +1,6 @@
 class IiifAvManifestService
+  include KalturaHelper
+
   def initialize(id)
     @id = id
     @document = SolrDocument.find(id)
@@ -138,10 +140,8 @@ class IiifAvManifestService
 
   def type_selector
     @document[:kaltura_audio] ? 
-      # audio
-      'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/' + @document[:kaltura_audio] + '/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4' : 
-      # video
-      'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/' + @document[:kaltura_video] + '/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4'
+      kaltura_audio_playmanifest_url(@document[:kaltura_audio]) : 
+      kaltura_video_playmanifest_url(@document[:kaltura_video])
   end
 
   def canvases
@@ -160,7 +160,7 @@ class IiifAvManifestService
             'type' => 'Annotation',
             'motivation' => 'painting',
             'body' => {
-              'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/' + asset.strip + '/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
+              'id' => @document[:kaltura_audio] ? kaltura_audio_playmanifest_url(asset) : kaltura_video_playmanifest_url(asset),
               'type' => 'video',
               'format' => 'video/mp4',
               'duration' => duration_to_float

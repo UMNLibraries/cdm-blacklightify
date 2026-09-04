@@ -245,7 +245,7 @@ class IiifTextManifestService
               "format": "application/pdf",
             }
           ],
-          "thumbnail": "/images/thumbnails/cf-thumb-pdf.png"
+          "thumbnail": "#{ENV.fetch('RAILS_BASEURL', 'https://umedia.lib.umn.edu')}/static/umedia-icon-pdf.png"
         }
       ]
     }]

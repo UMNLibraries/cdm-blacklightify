@@ -2,6 +2,7 @@
 
 # ApplicationHelper
 module ApplicationHelper
+  include KalturaHelper
   include SpotlightHelper
 
   def thumbnail(*args)
