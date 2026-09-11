@@ -15,9 +15,19 @@
   <% if rendered.length == 1 %>
     <dd class="show-page-label blacklight-<%= field_name.parameterize %>">
       <% if field_name == "subject_fast_ssim" %>
-        <%= render partial: 'field_subject_fast', locals: { field_name: field_name } %>
+        <%# Render FAST subject terms with definitions as faceted search links %>
+        <%= render partial: 'field_subject_fast', locals: { field_name: field_name, subject_name: document[field_name] } %>
       <% elsif field_name == "format_name" %>
-        <%= render partial: 'field_format_name', locals: { field_name: field_name } %>
+        <%# Render format names with Getty AAT definitions as faceted search links %>
+        <%
+          # Extract AAT IDs from document[:format][0] (format: "aat/300123456;aat/300123457;...")
+          format_ids = (document[:format] && document[:format][0]) ? document[:format][0].split(';').map { |x| x.match('aat\/(.*)')&.captures[0] } : []
+          # Zip format names with their corresponding AAT IDs
+          zipped_arr = document[field_name].zip(format_ids)
+        %>
+          zipped_arr = document[field_name].zip(format_ids)
+        %>
+        <%= render partial: 'field_format_name', locals: { field_name: field_name, zipped_arr: zipped_arr } %>
       <% elsif field_name.end_with?("rights_statement_uri") %>
         <%= render partial: 'field_rights', locals: { field_name: field_name, field_value: document[field_name], current_locale: current_locale } %>
       <% else %>
