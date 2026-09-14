@@ -16,7 +16,8 @@ module Umedia
         thumbnail = document.cdm_thumbnail
       end
 
-      view_context.render_thumbnail(thumbnail)
+      alt_text = document[:title_s].presence || "Item thumbnail"
+      view_context.render_thumbnail(thumbnail, alt_text: alt_text)
     end
   end
 end
