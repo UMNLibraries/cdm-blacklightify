@@ -211,7 +211,7 @@ embed {
   }
 }
 // subject fast delimiter
-.blacklight-subject_fast_ssim {
+.show-page-label.blacklight-subject_fast_ssim {
   // defaults to display: inline
   span::after {
     content: "; ";
