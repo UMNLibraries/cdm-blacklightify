@@ -35,6 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
     return; // Don't attach listener if not on a catalog item page
   }
 
+  // Load transcript content on page load
+  callTranscript();
+
   const tabContainer = document.querySelector('.nav-tabs');
   
   tabContainer.addEventListener('click', (event) => {
@@ -53,6 +56,9 @@ document.addEventListener("turbolinks:load", () => {
   if (!spotlightMatch) {
     return; // Don't attach listener if not on a Spotlight catalog item page
   }
+
+  // Load transcript content on page load
+  callTranscript();
 
   const tabContainer = document.querySelector('.nav-tabs');
   
