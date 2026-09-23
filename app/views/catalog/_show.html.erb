@@ -17,7 +17,7 @@
 <div id="item-content">
   <!-- presentation mode link -->
   <div class="d-flex justify-content-center mb-3 mt-2" id="fullscreen-link">
-    <%= link_to "Link to fullscreen", solr_document_path(:fullscreen=>true) %>
+    <%= link_to "Link to fullscreen", context_aware_solr_document_path(document, fullscreen: true) %>
   </div>
   <!-- content notice-->
   <div class="my-4" id="content-notice">
