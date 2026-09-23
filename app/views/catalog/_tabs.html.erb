@@ -24,7 +24,7 @@
           </div>
         <% else %>
           <% if secondary_transcription_tab %>
-            <%= render template: "transcript/index" %>
+            <div id="transcript_content"></div>
           <% else %>
             <%= render partial: "tab_text_primary" %>
           <% end %>

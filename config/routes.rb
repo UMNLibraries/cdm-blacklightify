@@ -9,6 +9,11 @@ Rails.application.routes.draw do
 
   root to: 'spotlight/exhibits#index'
 
+  # Spotlight transcript requests - redirect to main catalog transcript endpoint
+  get '/spotlight/:exhibit_id/catalog/:id/transcript', 
+      constraints: { id: /[^\/]+/ }, 
+      to: redirect('/catalog/%{id}/transcript')
+
   mount Spotlight::Engine, at: 'spotlight'
   mount Blacklight::Engine => '/'
   #  root to: "catalog#index" # replaced by spotlight root path

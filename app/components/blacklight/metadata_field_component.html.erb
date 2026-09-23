@@ -7,7 +7,81 @@
     <% if label != "FAST Subject Headings:" %>
       <%= @field.render %>
     <% elsif label == "FAST Subject Headings:"%>
-      <%= render partial: 'metadata_field_component_sf', locals: { field: @field } %>
+      <%#
+        DIRECT RENDERING: FAST Subject Headings in Index/Search Results
+        
+        PURPOSE:
+        Render subject_fast_ssim field values in search results/index pages
+        with direct template rendering instead of render_async gem.
+        
+        WHY DIRECT RENDERING:
+        render_async gem requires jQuery available on window object, which causes
+        failures in both /catalog and /spotlight contexts. Results in empty async
+        divs with no content. Solution: fetch term definitions directly in template
+        using OclcSubjectFastService and render as hyperlinked facets.
+        
+        FIELD STRUCTURE:
+        - @field.document: Solr document hash containing field values
+        - @field.field_name: String "subject_fast_ssim" (Solr field name)
+        - @field.field_value: Array of FAST URIs for display
+        
+        RENDERING LOGIC:
+        1. Extract subject_fast URLS from Solr document
+        2. For each URL, fetch term definition using OclcSubjectFastService
+        3. Render as clickable facet link with context-aware base path
+        4. Use current_exhibit to generate appropriate /catalog or /spotlight path
+        
+        DEPENDENCIES:
+        - OclcSubjectFastService: Validates FAST URIs and fetches definitions
+        - current_exhibit: Helper to detect Spotlight context
+        
+        DIFFERENCES FROM SHOW PAGE (_field_subject_fast.erb):
+        - Index context: Uses field_value array directly (already extracted by Blacklight)
+        - Show context: Receives subject_name parameter passed from template
+        - Both: Use same context-aware facet URL pattern
+        - Both: Use same OclcSubjectFastService for term fetching
+      %>
+      <%#
+        DIRECT RENDERING: FAST Subject Headings in Index/Search Results
+        
+        PURPOSE:
+        Render subject_fast_ssim field values in search results/index pages
+        with direct template rendering instead of render_async gem.
+        
+        WHY DIRECT RENDERING:
+        render_async gem requires jQuery available on window object, which causes
+        failures in both /catalog and /spotlight contexts. Results in empty async
+        divs with no content. Solution: fetch term definitions directly in template
+        using OclcSubjectFastService and render as hyperlinked facets.
+        
+        FIELD STRUCTURE:
+        - @field.document: Solr document hash containing field values
+        - @field.field_name: String "subject_fast_ssim" (Solr field name)
+        - @field.values: Array of FAST URIs for display
+        
+        RENDERING LOGIC:
+        1. Extract subject_fast URLS from Solr document
+        2. For each URL, fetch term definition using OclcSubjectFastService
+        3. Render as clickable facet link with context-aware base path
+        4. Use view_context.current_exhibit to generate appropriate /catalog or /spotlight path
+        
+        DEPENDENCIES:
+        - OclcSubjectFastService: Validates FAST URIs and fetches definitions
+        - view_context.current_exhibit: Helper to detect Spotlight context (accessed through component's view context)
+        
+        DIFFERENCES FROM SHOW PAGE (_field_subject_fast.erb):
+        - Index context: Uses field.values array directly (already extracted by Blacklight)
+        - Show context: Receives subject_name parameter passed from template
+        - Both: Use same context-aware facet URL pattern
+        - Both: Use same OclcSubjectFastService for term fetching
+      %>
+      <% (@field.values || []).each do |url| %>
+        <% service = OclcSubjectFastService.new(url) %>
+        <% term_data = service.uri_check ? service.fast_data : url %>
+        <% exhibit = @view_context.respond_to?(:current_exhibit) ? @view_context.current_exhibit : nil %>
+        <% facet_base = exhibit ? "/spotlight/#{exhibit.slug}/catalog" : '/catalog' %>
+        <span itemprop=""><%= link_to term_data, "#{facet_base}?f%5Bsubject_fast_ssim%5D%5B%5D=#{url}", class: "show-page-label" %></span>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

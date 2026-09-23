@@ -1,3 +1,15 @@
+<%#
+  FIELD PARTIAL: subject_fast_ssim
+  Renders FAST (Library of Congress) subject terms with definitions as faceted search links.
+  Uses direct template rendering (no render_async) to avoid jQuery dependency.
+  Context-aware: Links go to /catalog or /spotlight/:exhibit/catalog based on current context.
+%>
 <% subject_name.each do |url| %>
-  <%= render_async subject_path url:url %>
+  <%# Fetch FAST term definition and generate context-aware facet URL %>
+  <% service = OclcSubjectFastService.new(url) %>
+  <% term_data = service.uri_check ? service.fast_data : url %>
+  <%# Generate facet URL based on context (Spotlight vs catalog) %>
+  <% facet_base = current_exhibit ? "/spotlight/#{current_exhibit.slug}/catalog" : '/catalog' %>
+  <%# Render as faceted search link %>
+  <span itemprop=""><a href="<%= facet_base %>?f%5Bsubject_fast_ssim%5D%5B%5D=<%= url %>" class="show-page-label"><%= term_data %></a></span>
 <% end %>

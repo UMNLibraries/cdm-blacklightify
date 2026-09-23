@@ -9,7 +9,7 @@ module Spotlight
     include Spotlight::Config
 
     included do
-      helper_method :current_site, :current_exhibit, :current_masthead, :exhibit_masthead?, :resource_masthead?
+      helper_method :current_site, :current_exhibit, :current_masthead, :exhibit_masthead?, :resource_masthead?, :url_for
       before_action :set_exhibit_locale_scope, :set_locale
     end
 
@@ -73,6 +73,22 @@ module Spotlight
       else
         main_app.search_catalog_url(*args, **kwargs)
       end
+    end
+
+    def url_for(options = {})
+      # Handle transcript requests in Spotlight context
+      if options.is_a?(Hash) && options[:controller] == 'spotlight/transcript' && options[:id].present?
+        return main_app.transcript_solr_document_url(id: options[:id])
+      end
+      super
+    rescue ActionController::UrlGenerationError => e
+      # If URL generation fails for spotlight/transcript, redirect to main app
+      if e.message.include?('spotlight/transcript')
+        options = options.is_a?(Hash) ? options : {}
+        id = options[:id]
+        return main_app.transcript_solr_document_url(id: id) if id.present?
+      end
+      raise
     end
 
     def search_facet_path(*args, **kwargs)
