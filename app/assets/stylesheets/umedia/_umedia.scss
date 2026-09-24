@@ -136,3 +136,13 @@ body {
 	src: font-url("bootstrap-icons/font/fonts/bootstrap-icons.woff2") format("woff2"),
 		font-url("bootstrap-icons/font/fonts/bootstrap-icons.woff") format("woff");
 }
+
+#sortAndPerPage .search-widgets {
+  button {
+    color: #212529;
+  }
+}
+
+#appliedParams span.filter-value,span.remove-icon {
+  color: #212529;
+}
