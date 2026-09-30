@@ -7,10 +7,20 @@ class OclcSubjectFastService
   end
 
   def fast_data
+    # Check Rails cache first
+    cache_key = "oclc_subject_fast:#{@id}"
+    cached_result = Rails.cache.read(cache_key)
+    return cached_result if cached_result.present?
+
     begin
       url = @id + '.rdf.xml'
       doc = Nokogiri::XML(URI.open(url))
       term = doc.xpath("//skos:prefLabel").collect(&:text)[0]
+      
+      # Cache the result for 24 hours
+      Rails.cache.write(cache_key, term, expires_in: 24.hours)
+      
+      term
     # if uri returns 404 (may not be necessary)
     rescue OpenURI::HTTPError => e
       if e.message.include?('404')

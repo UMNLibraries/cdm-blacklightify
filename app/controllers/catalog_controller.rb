@@ -124,7 +124,8 @@ class CatalogController < ApplicationController
     config.add_facet_field 'format_name', label: 'Format', limit: 4, collapse: false
     # Subject / subject
     config.add_facet_field 'subject_ssim', label: 'Subject', limit: 4, collapse: false
-    config.add_facet_field 'subject_fast_ssim', label: 'FAST Subject Headings', limit: 4, collapse: false
+    config.add_facet_field 'subject_fast_ssim', label: 'FAST Subject Headings', limit: 4, collapse: false,
+                                                  item_presenter: Blacklight::SubjectFastFacetItemPresenter
 
     # Created / date_created
     config.add_facet_field 'date_created', label: 'Date created', limit: 4, collapse: false

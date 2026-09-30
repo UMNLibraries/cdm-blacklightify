@@ -1,0 +1,54 @@
+<%#
+  Custom facet limit partial for subject_fast_ssim field.
+  Renders the facet list with FAST subject labels instead of URIs.
+  
+  Local variables:
+  - facet_field: String - the facet field name (e.g., "subject_fast_ssim")
+  - facet_field_presenter: Object - Blacklight facet presenter with configuration and values
+%>
+
+<div id="facet-<%= facet_field.parameterize %>" class="card facet-limit-active">
+  <h3 class="card-header facet-subject_fast_ssim-header">
+    <button class="btn btn-link" type="button" data-toggle="collapse" 
+            data-target="#facet-<%= facet_field.parameterize %>-values"
+            aria-expanded="true" aria-controls="facet-<%= facet_field.parameterize %>-values">
+      <%= facet_field_presenter.label %>
+    </button>
+  </h3>
+
+  <div id="facet-<%= facet_field.parameterize %>-values" class="collapse show">
+    <ul class="facet-values list-unstyled">
+      <% facet_field_presenter.values.each do |facet_item| %>
+        <li>
+          <%# Get label from OCLC FAST service instead of displaying URI %>
+          <%
+            uri = facet_item.value
+            label = begin
+              OclcSubjectFastService.new(uri).fast_data
+            rescue => e
+              Rails.logger.warn("OclcSubjectFastService error for #{uri}: #{e.message}")
+              uri
+            end
+          %>
+          
+          <span class="facet-label">
+            <%= link_to_unless(facet_item_in_params?(facet_field, uri),
+                               label,
+                               add_facet_params_and_redirect(facet_field, uri),
+                               aria_label: "#{facet_field}: #{label}") %>
+          </span>
+
+          <% if facet_item_in_params?(facet_field, uri) %>
+            <span class="selected">
+              <%= link_to "[remove]", remove_facet_params_and_redirect(facet_field, uri),
+                          class: "remove",
+                          aria_label: "Remove #{label} filter" %>
+            </span>
+          <% end %>
+
+          <span class="facet-count">(<%= facet_item.hits %>)</span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
