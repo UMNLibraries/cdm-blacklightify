@@ -717,6 +717,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  acts-as-taggable-on (~> 9.0)
   addressable (~> 2.8)
   blacklight (~> 7.0)
   blacklight-gallery (~> 3.0)
@@ -728,6 +729,7 @@ DEPENDENCIES
   bootstrap (~> 4.0)
   bundler-audit
   byebug
+  cancancan (~> 3.0)
   capistrano
   capistrano-bundler
   capistrano-rails

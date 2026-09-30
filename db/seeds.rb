@@ -11,6 +11,7 @@ require 'json'
 
 Spotlight::Exhibit.destroy_all
 Spotlight::BlacklightConfiguration.destroy_all
+Spotlight::FeaturedImage.destroy_all
 Spotlight::Search.destroy_all
 
 # 01 EXHIBITS
@@ -24,15 +25,14 @@ CSV.foreach('db/seeds/seed_spotlight_blacklight_configurations.csv', headers: tr
 end
 
 # 03 thumbnail FEATURED IMAGES
-# TESTING iiif
-# Spotlight::FeaturedImage.destroy_all
+Spotlight::FeaturedImage.destroy_all
 CSV.foreach('db/seeds/seed_spotlight_featured_images.csv', headers: true, liberal_parsing: true) do |row|
   Spotlight::FeaturedImage.insert(row.to_h)
 end
 
 # 04 update FILTERS created during exhibit creation
 CSV.foreach('db/seeds/seed_spotlight_filters.csv', headers: true) do |row|
-  filter = Spotlight::Filter.find_or_initialize_by(exhibit_id: row['exhibit_id'])
+  filter = Spotlight::Filter.find_or_create_by(exhibit_id: row['exhibit_id'])
   filter.update(
     field: row['field'],
     value: row['value']
@@ -56,7 +56,7 @@ end
 
 # 06 PAGES
 CSV.foreach('db/seeds/seed_spotlight_pages.csv', headers: true) do |row|
-  filter = Spotlight::Page.find_or_initialize_by(exhibit_id: row['exhibit_id'])
+  filter = Spotlight::Page.find_or_create_by(exhibit_id: row['exhibit_id'])
   filter.update(
     content: row['content'],
     display_sidebar: row['display_sidebar']

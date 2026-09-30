@@ -1,10 +1,30 @@
-<%# tooltip for getty format definition %>
+<%#
+  FIELD PARTIAL: format_name
+  Renders format names with Getty AAT (Art & Architecture Thesaurus) definitions as faceted search links.
+  Uses direct template rendering (no render_async) to avoid jQuery dependency.
+  Context-aware: Links go to /catalog or /spotlight/:exhibit/catalog based on current context.
+%>
 <% zipped_arr.each do |format_arr| %>
-  <%= render_async getty_path format_arr:format_arr, field_name:field_name %>
+  <%# Render format name as faceted link with Getty definition tooltip %>
+  <% facet_base = current_exhibit ? "/spotlight/#{current_exhibit.slug}/catalog" : '/catalog' %>
+  <span itemprop="format_name">
+    <%# Render as faceted search link %>
+    <a href="<%= facet_base %>?f%5Bformat_name%5D%5B%5D=<%= ERB::Util.url_encode(format_arr[0]) %>" class="show-page-label">
+      <%= format_arr[0] %>
+    </a>
+  </span>
+  <%# Getty AAT definition tooltip %>
   <div
     data-toggle="tooltip"
     title="<%= GettyJsonService.new(format_arr[1]).att_definition %>"
   >
+  <%#
+    TOOLTIP HELPER ICON:
+    - Render question mark icon to indicate tooltip availability
+    - Styled with Bootstrap classes: rounded-circle, tool-tip
+    - tabindex="0" for keyboard accessibility
+    - role="tooltip" for screen reader compatibility
+  %>
   <span tabindex="0" class="tool-tip rounded-circle" role="tooltip">?</span>
   </div>
 <% end %>

@@ -1,5 +1,41 @@
-<% RenderAsync.configure do |config| config.jquery = true end %>
+<%#
+  LEGACY FIELD PARTIAL: metadata_field_component_sf
+  STATUS: FULLY DEPRECATED - NO LONGER USED
 
+  HISTORICAL CONTEXT:
+  This partial was the original implementation for rendering subject_fast fields
+  within the Blacklight::MetadataFieldComponent view structure (used for index/search results).
+
+  ORIGINAL APPROACH:
+  - Used render_async gem to asynchronously load subject term definitions
+  - Configured with RenderAsync.configure do |config| config.jquery = true end
+  - Relied on jQuery (window.jQuery) being available for AJAX requests
+  - Called subject_path helper with URL parameter for async endpoint
+
+  WHY NO LONGER USED:
+  - jQuery was not properly exposed on window object
+  - render_async JavaScript failed silently when jQuery unavailable
+  - Result: Empty async placeholder divs in rendered HTML (no content loaded)
+  - Deprecated in favor of direct rendering
+
+  REPLACEMENT APPROACHES:
+  1. Index/Search Results: Direct rendering in Blacklight::MetadataFieldComponent
+     File: app/components/blacklight/metadata_field_component.html.erb
+     Uses: OclcSubjectFastService for direct term fetching
+     
+  2. Show Page: Direct rendering in ERB partial
+     File: app/views/catalog/_field_subject_fast.erb
+     Uses: OclcSubjectFastService for direct term fetching
+
+  CURRENT STATUS:
+  - Both show page (_field_subject_fast.erb) and index context (metadata_field_component.html.erb)
+    now use direct rendering with OclcSubjectFastService
+  - No async rendering needed anymore
+  - This file kept for historical reference only
+
+  TO DELETE:
+  This file can be safely deleted once the migration to direct rendering is confirmed stable.
+%>
 <% field.document[:subject_fast].each do |url| %>
   <%= render_async subject_path url:url %>
 <% end %>

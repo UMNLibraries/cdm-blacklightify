@@ -26,51 +26,55 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="<%= render_body_class %>">
-    <header>
-      <div id="skip-link">
-        <% if should_render_spotlight_search_bar? %>
-          <%= link_to t('blacklight.skip_links.search_field'), '#search_field', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
-        <% end %>
-        <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
-        <%= content_for(:skip_links) %>
-      </div>
-      <%# renders on main page only %>
-      <%= render partial: 'shared/header_navbar' if current_page?(root_path) %>
-      <%= render partial: 'shared/about' if current_page?(root_path) %>
-      <%= render partial: 'shared/content_notice' if current_page?(root_path) %>
-    </header>
+    <% if params[:fullscreen] == "true" %>
+      <%= render 'catalog/fullscreen' %>
+    <% else %>
+      <header>
+        <div id="skip-link">
+          <% if should_render_spotlight_search_bar? %>
+            <%= link_to t('blacklight.skip_links.search_field'), '#search_field', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
+          <% end %>
+          <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
+          <%= content_for(:skip_links) %>
+        </div>
+        <%# renders on main page only %>
+        <%= render partial: 'shared/header_navbar' if current_page?(root_path) %>
+        <%= render partial: 'shared/about' if current_page?(root_path) %>
+        <%= render partial: 'shared/content_notice' if current_page?(root_path) %>
+      </header>
 
-    <%= render 'shared/spotlight_header' if !current_page?(root_path) %> 
-    <%= render partial: 'shared/masthead' %>
-    
-    <main role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
-      <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
+      <%= render 'shared/spotlight_header' if !current_page?(root_path) %> 
+      <%= render partial: 'shared/masthead' %>
+      
+      <main role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
+        <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
 
-      <% if current_page?(root_path) %>
-        <%= render partial: 'shared/main_page_spotlight_sections' %>
-      <% else %>
-        <div class="container">
-          <div class="row" id="spotlight">
-            <div>
-              <%# If q includes set_spec:*, show the matched Spotlight long_description context. %>
-              <% if spotlight_search_long_description.present? %>
-                <% if spotlight_search_title.present? %>
-                  <h3><%= h(spotlight_search_title) %></h3>
+        <% if current_page?(root_path) %>
+          <%= render partial: 'shared/main_page_spotlight_sections' %>
+        <% else %>
+          <div class="container">
+            <div class="row" id="spotlight">
+              <div>
+                <%# If q includes set_spec:*, show the matched Spotlight long_description context. %>
+                <% if spotlight_search_long_description.present? %>
+                  <% if spotlight_search_title.present? %>
+                    <h3><%= h(spotlight_search_title) %></h3>
+                  <% end %>
+                  <p><%= h(spotlight_search_long_description) %></p>
                 <% end %>
-                <p><%= h(spotlight_search_long_description) %></p>
-              <% end %>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="container">
-          <div class="row" id="spotlight">
-            <%= content_for?(:content) ? yield(:content) : yield %>
+          <div class="container">
+            <div class="row" id="spotlight">
+              <%= content_for?(:content) ? yield(:content) : yield %>
+            </div>
           </div>
-        </div>
-      <% end %>
-    </main>
-    
-    <%= render partial: 'shared/footer' %>
-    <%= render partial: 'shared/modal' %>
+        <% end %>
+      </main>
+      
+      <%= render partial: 'shared/footer' %>
+      <%= render partial: 'shared/modal' %>
+    <% end %>
   </body>
 <% end %>

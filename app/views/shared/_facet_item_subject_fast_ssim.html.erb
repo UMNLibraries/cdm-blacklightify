@@ -1,0 +1,29 @@
+<%#
+  Custom facet item partial for subject_fast_ssim field.
+  Displays the FAST subject term label instead of the URI.
+  
+  Local variables:
+  - facet_field: String - the facet field name (e.g., "subject_fast_ssim")
+  - facet_item: Object - the facet item with 'value' (URI) and 'hits' properties
+  - facet_config: Object - Blacklight facet configuration
+%>
+
+<%
+  uri = facet_item.value
+  label = begin
+    OclcSubjectFastService.new(uri).fast_data
+  rescue => e
+    # Fallback to URI if service fails
+    Rails.logger.warn("OclcSubjectFastService error for #{uri}: #{e.message}")
+    uri
+  end
+%>
+
+<span class="facet-label">
+  <%= link_to_unless(facet_in_params?(facet_field, facet_item.value),
+                     label,
+                     add_facet_params(facet_field, facet_item.value),
+                     aria_label: "#{facet_field}: #{label}") %>
+</span>
+
+<span class="facet-count">(<%= facet_item.hits %>)</span>
