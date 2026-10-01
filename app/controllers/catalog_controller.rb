@@ -98,7 +98,7 @@ class CatalogController < ApplicationController
     config.add_search_field('subject') do |field|
       field.query_parameters = { 'spellcheck.dictionary': 'subject' }
       field.query_local_parameters = {
-        qf: 'subject_ssm'
+        qf: 'subject_ssim'
       },
       field.solr_parameters = {
         fq: 'record_type:primary'
@@ -165,7 +165,7 @@ class CatalogController < ApplicationController
     # Description
     config.add_index_field 'description', label: 'Description', highlight: true
     # Subject / subject
-    config.add_index_field 'subject_ssm', label: 'Subjects', link_to_facet: true, highlight: true,
+    config.add_index_field 'subject_ssim', label: 'Subjects', link_to_facet: true, highlight: true,
                                       separator_options: { two_words_connector: '; ', words_connector: '; ', last_word_connector: '; ' }
     config.add_index_field 'subject_fast_ssim', label: 'FAST Subject Headings', link_to_facet: true, highlight: true,
                                       separator_options: { two_words_connector: '; ', words_connector: '; ', last_word_connector: '; ' }
