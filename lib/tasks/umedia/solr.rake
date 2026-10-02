@@ -7,23 +7,30 @@ namespace :umedia do
     desc 'Dump all Solr docs to JSON file (optional env EXPORT_FILENAME=path/to/file.json.gz)'
     task export_data: :environment do
       require 'open-uri'
-      require 'jq'
+      require 'open3'
       require 'zlib'
 
       # Rubocop does not like URI.open & kin but it's safe in a task like this
       # rubocop:disable Security/Open
       # Accepts 1 argument specifying the filename to write
-      exportfile = (ENV.fetch('EXPORT_FILENAME') || Rails.root.join('umedia-solr-dump.json.gz').to_s).chomp
+      exportfile = (ENV.fetch('EXPORT_FILENAME', nil) || Rails.root.join('umedia-solr-dump.json.gz').to_s).chomp
 
-      # Use a raw HTTP call into JQ instead of SolrDocument because it is WAY faster
+      # Use a raw HTTP call into jq via command line instead of SolrDocument because it is WAY faster
       jsondata = URI.open("#{ENV.fetch('SOLR_URL')}/select?q=*:*&fl=*&rows=99999999&wt=json").read
 
-      # Parse the JSON and write the results (without solr response metadata or doc versioning)
-      # back to an export file
-      exportdocs = JQ(jsondata).search('del(.response.docs[]["_version_", "score", "timestamp"]) | .response.docs[]')
+      # Apply jq filter via command line and write the results (without solr response metadata or doc versioning)
+      # to an export file
+      jq_filter = '[del(.response.docs[]["_version_", "score", "timestamp"]) | .response.docs[]]'
       puts "Writing JSON file: #{exportfile}..."
       Zlib::GzipWriter.open(exportfile) do |gz|
-        gz.write exportdocs.to_json
+        Open3.popen3("jq '#{jq_filter}'") do |stdin, stdout, stderr, wait_thr|
+          stdin.write(jsondata)
+          stdin.close
+          gz.write(stdout.read)
+          if wait_thr.value.exitstatus != 0
+            raise "jq failed with status #{wait_thr.value.exitstatus}: #{stderr.read}"
+          end
+        end
       end
       puts 'Done.'
       # rubocop:enable Security/Open
