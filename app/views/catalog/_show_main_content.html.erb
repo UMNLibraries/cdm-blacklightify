@@ -3,7 +3,7 @@
 <% @presenter = document_presenter(@document) %>
 <%# @page_title = t('blacklight.search.show.title', document_title: Deprecation.silence(Blacklight::BlacklightHelperBehavior) { document_show_html_title }, application_name: application_name).html_safe %>
 <% @page_title = t('blacklight.search.show.title', document_title: @presenter.html_title(current_locale), application_name: application_name).html_safe %>
-<% content_for(:head) { render_link_rel_alternates } %>
+<% content_for(:head) { Blacklight::LinkAlternatePresenter.new(self, @document, {}).render.html_safe } %>
 
 <%= render (blacklight_config.view_config(:show).document_component || Blacklight::DocumentComponent).new(presenter: @presenter, component: :div, title_component: :h1, show: true) do |component| %>
   <% component.footer do %>

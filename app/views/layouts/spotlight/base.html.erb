@@ -25,7 +25,7 @@
 
     <%= csrf_meta_tags %>
   </head>
-  <body class="<%= render_body_class %>">
+  <body class="<%= extra_body_classes.join(' ') rescue '' %>">
     <% if params[:fullscreen] == "true" %>
       <%= render 'catalog/fullscreen' %>
     <% else %>

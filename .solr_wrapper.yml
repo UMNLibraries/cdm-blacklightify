@@ -3,6 +3,8 @@ validate: false
 instance_dir: tmp/solr
 download_dir: tmp/solr
 managed: false
+solr_cloud:
+-  enabled: false
 collection:
   dir: solr/conf/
   name: blacklight-core

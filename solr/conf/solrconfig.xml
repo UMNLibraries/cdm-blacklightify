@@ -4,208 +4,156 @@
      from this file.  Please refer to http://wiki.apache.org/solr/SolrConfigXml,
      as well as the default solrconfig file included with Solr -->
 
-  <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
+  <luceneMatchVersion>9.0.0</luceneMatchVersion>
 
-  <luceneMatchVersion>6.1.0</luceneMatchVersion>
-
-  <directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
-
-  <!-- do not permit managed schemas -->
-  <schemaFactory class="ClassicIndexSchemaFactory"/>
+  <directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.StandardDirectoryFactory}" />
 
   <updateHandler class="solr.DirectUpdateHandler2">
     <updateLog>
       <str name="dir">${solr.core0.data.dir:}</str>
     </updateLog>
-    <autoSoftCommit>
-      <maxDocs>10000</maxDocs>
-      <!-- 1min commit interval -->
-      <maxTime>${solr.autoCommit.maxTime:60000}</maxTime>
-    </autoSoftCommit>
   </updateHandler>
 
-  <!-- solr lib dirs -->
-  <!-- Used by ICUTokenizerFactory in Spotlight text_en_ng fields -->
   <lib dir="${solr.install.dir:../../../..}/modules/analysis-extras/lib" />
-  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" />
-  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
 
   <dataDir>${solr.data.dir:}</dataDir>
 
-  <requestHandler name="search" class="solr.SearchHandler" default="true">
-    <!-- default values for query parameters can be specified, these
-         will be overridden by parameters in the request
-      -->
-    <lst name="defaults">
-      <str name="defType">edismax</str>
-      <str name="echoParams">explicit</str>
-      <int name="rows">10</int>
-      <str name="q.alt">*:*</str>
-      <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
+  <requestHandler name="/select" class="solr.SearchHandler">
+     <lst name="defaults">
+       <str name="defType">edismax</str>
+       <str name="echoParams">explicit</str>
+       <str name="q.alt">*:*</str>
+       <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
+       <int name="qs">1</int>
+       <int name="ps">2</int>
+       <float name="tie">0.01</float>
+       <!-- this qf and pf are used by default, if not otherwise specified by
+            client. The default blacklight_config will use these for the
+            "keywords" search. See the author_qf/author_pf, title_qf, etc
+            below, which the default blacklight_config will specify for
+            those searches. You may also be interested in:
+            http://wiki.apache.org/solr/LocalParams
+       -->
+        <str name="qf">
+          id
+          title_tesi
+          title_t
+          description_ts
+          creator_tesim
+          contributor_ssim
+          subject_ssim
+          subject_fast_ssim
+        </str>
+        <str name="pf">
+          title_tesi^10
+        </str>
 
-      <!-- this qf and pf are used by default, if not otherwise specified by
-          client. The default blacklight_config will use these for the
-          "keywords" search. See the author_qf/author_pf, title_qf, etc
-          below, which the default blacklight_config will specify for
-          those searches. You may also be interested in:
-          http://wiki.apache.org/solr/LocalParams
-      -->
-      <str name="qf">
-        id
-        title^2.4
-        title_search^2.4
-        title_alternative^.5
-        contributor^1.1
-        creator^1.5
-        description
-        publisher
-        subject^2
-        subject_fast^2
-        notes
-        caption
-        date_created
-        historical_era
-        document_type
-        format
-        format_name
-        city
-        state
-        country
-        region
-        continent
-        language
-        contributing_organization
-        contributing_organization_name
-        transcription
-        translation
-        kaltura_audio
-        kaltura_audio_playlist
-        kaltura_video
-        kaltura_video_playlist
-        kaltura_combo_playlist
-        set_spec
-        collection_name
-        parent_collection
-        parent_collection_name
-        local_identifier
-        barcode
-        system_identifier
-        dls_identifier
-        persistent_url
-        local_rights
-        rights_statement_uri
-        fiscal_sponsor
-      </str>
-      <str name="pf">
-        title^2.4
-        title_search^2.4
-        title_alternative^.5
-        contributor^1.1
-        creator^1.5
-        description
-        publisher
-        subject^2
-        subject_fast^2
-        notes
-        caption
-        contributing_organization_name
-        transcription
-        translation
-        collection_name
-        fiscal_sponsor
-      </str>
+       <str name="author_qf">
+          creator_tesim
+       </str>
+       <str name="author_pf">
+       </str>
+       <str name="title_qf">
+          title_tesi
+          title_t
+       </str>
+       <str name="title_pf">
+       </str>
+       <str name="subject_qf">
+          subject_ssim
+       </str>
+       <str name="subject_pf">
+       </str>
 
-      <str name="title_qf">
-        title^2
-      </str>
+       <str name="fl">
+         *,
+         score
+       </str>
 
-      <str name="creator_qf">
-        creator^2
-      </str>
+       <str name="facet">true</str>
+       <str name="facet.mincount">1</str>
+       <str name="facet.limit">10</str>
+       <str name="facet.field">subject_ssim</str>
 
-      <str name="subject_qf">
-        subject^2
-        subject_fast^2.1
-      </str>
+       <str name="spellcheck">true</str>
+       <str name="spellcheck.dictionary">default</str>
+       <str name="spellcheck.onlyMorePopular">true</str>
+       <str name="spellcheck.extendedResults">true</str>
+       <str name="spellcheck.collate">false</str>
+       <str name="spellcheck.count">5</str>
 
-      <str name="facet">true</str>
-      <str name="facet.mincount">1</str>
-    </lst>
-
+     </lst>
     <arr name="last-components">
       <str>spellcheck</str>
     </arr>
   </requestHandler>
 
-  <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
-  <requestHandler name="document" class="solr.SearchHandler" >
-    <lst name="defaults">
-      <str name="echoParams">all</str>
-      <str name="fl">*</str>
-      <str name="rows">1</str>
-      <str name="q">{!term f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
-    </lst>
-  </requestHandler>
+  <requestHandler name="/advanced" class="solr.SearchHandler">
+    <!-- a lucene request handler for using the JSON Query DSL,
+         specifically for advanced search.
+         Using a separate requestHandler is a workaround to
+         https://issues.apache.org/jira/browse/SOLR-16916, although
+         it could be desirable for other reasons as well.
+      -->
+     <lst name="defaults">
+       <str name="defType">lucene</str>
+       <str name="echoParams">explicit</str>
+        <str name="df">title_t</str>
+        <str name="qf">
+          id
+          title_tesi
+          title_t
+          description_ts
+          creator_tesim
+          contributor_ssim
+          subject_ssim
+          subject_fast_ssim
+        </str>
+        <str name="pf">
+          title_tesi^10
+        </str>
 
-  <requestHandler name="children" class="solr.SearchHandler" >
-    <lst name="defaults">
-      <str name="echoParams">all</str>
-      <str name="fl">*</str>
-      <str name="q">{!term f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
-    </lst>
-  </requestHandler>
+       <str name="author_qf">
+          creator_tesim
+       </str>
+       <str name="author_pf">
+       </str>
+       <str name="title_qf">
+          title_tesi
+          title_t
+       </str>
+       <str name="title_pf">
+       </str>
+       <str name="subject_qf">
+          subject_ssim
+       </str>
+       <str name="subject_pf">
+       </str>
 
-  <requestHandler name="child_search" class="solr.SearchHandler" default="true">
-    <lst name="defaults">
-      <str name="defType">edismax</str>
-      <str name="echoParams">explicit</str>
-      <int name="rows">10</int>
-      <str name="q.alt">*:*</str>
-      <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
+       <str name="fl">
+         *,
+         score
+       </str>
 
-      <str name="qf">
-        id
-        title^2.4
-        dls_identifier
-        transcription
-      </str>
-      <str name="pf">
-        id
-        title^2.4
-        transcription
-      </str>
+       <str name="facet">true</str>
+       <str name="facet.mincount">1</str>
+       <str name="facet.limit">10</str>
+       <str name="facet.field">subject_ssim</str>
 
-      <str name="facet">false</str>
-    </lst>
+       <str name="spellcheck">true</str>
+       <str name="spellcheck.dictionary">default</str>
+       <str name="spellcheck.onlyMorePopular">true</str>
+       <str name="spellcheck.extendedResults">true</str>
+       <str name="spellcheck.collate">false</str>
+       <str name="spellcheck.count">5</str>
 
+     </lst>
     <arr name="last-components">
       <str>spellcheck</str>
     </arr>
   </requestHandler>
 
-  <requestHandler name="collections" class="solr.SearchHandler" default="false">
-    <lst name="defaults">
-      <str name="defType">edismax</str>
-      <str name="echoParams">explicit</str>
-      <int name="rows">25</int>
-      <str name="q.alt">*:*</str>
-
-      <str name="qf">
-        collection_name_s^2.4
-        collection_name_tesi^2.4
-        collection_description_tesi
-        contributing_organization_name_tesi^4
-        set_spec
-      </str>
-      <str name="pf">
-        collection_name_tesi^2.4
-        collection_description_tesi
-        contributing_organization_name_tesi^4
-      </str>
-    </lst>
-  </requestHandler>
-
-  <requestHandler name="permissions" class="solr.SearchHandler" >
+  <requestHandler name="permissions" class="solr.SearchHandler">
     <lst name="defaults">
       <str name="facet">off</str>
       <str name="echoParams">all</str>
@@ -270,6 +218,7 @@
     </lst>
   </searchComponent>
 
+  <!-- Disabled due to Java SecurityManager access denied errors writing to /tmp
   <searchComponent name="suggest" class="solr.SuggestComponent">
     <lst name="suggester">
       <str name="name">mySuggester</str>
@@ -280,7 +229,7 @@
     </lst>
   </searchComponent>
 
-  <requestHandler name="suggest" class="solr.SearchHandler" startup="lazy">
+  <requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
     <lst name="defaults">
       <str name="suggest">true</str>
       <str name="suggest.count">5</str>
@@ -290,57 +239,13 @@
       <str>suggest</str>
     </arr>
   </requestHandler>
+  -->
 
   <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />
 
-  <requestDispatcher handleSelect="true" >
-    <requestParsers enableRemoteStreaming="true" multipartUploadLimitInKB="2048" />
+  <requestDispatcher>
+    <requestParsers multipartUploadLimitInKB="2048" />
   </requestDispatcher>
 
   <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
-
-   <requestHandler name="/mlt" class="solr.MoreLikeThisHandler">
-     <lst name="defaults">
-        <str name="qf">
-           title
-           subject
-           subject_fast
-           creator
-           format_name
-        </str>
-        <!--The fields to use for similarity-->
-       <str name="mlt.fl">title,subject,subject_fast,creator</str>
-       <int name="mlt.mintf">1</int>
-       <int name="mlt.mindf">1</int>
-     </lst>
-   </requestHandler>
-  <!-- BEGIN Blacklight IIIF Search autocomplete config -->
-  <!-- solr-tokenizing_suggester is necessary to return single terms from the suggester -->
-  <lib dir="${solr.install.dir:../../../..}/contrib" regex="tokenizing-suggest-v1.0.1.jar" />
-
-  <searchComponent name="iiif_suggest" class="solr.SuggestComponent">
-    <lst name="suggester">
-      <str name="name">iiifSuggester</str>
-      <!-- <str name="lookupImpl">edu.stanford.dlss.search.suggest.analyzing.TokenizingLookupFactory</str> -->
-      <str name="dictionaryImpl">DocumentDictionaryFactory</str>
-      <str name="suggestAnalyzerFieldType">textSuggest</str>
-      <str name="suggestTokenizingAnalyzerFieldType">textSuggestTokenizer</str>
-      <str name="contextField">is_page_of_ssi</str>
-      <str name="buildOnCommit">true</str>
-      <str name="field">iiif_suggest</str>
-    </lst>
-  </searchComponent>
-
-  <requestHandler name="/iiif_suggest" class="solr.SearchHandler" startup="lazy">
-    <lst name="defaults">
-      <str name="suggest">true</str>
-      <str name="suggest.count">5</str>
-      <str name="suggest.dictionary">iiifSuggester</str>
-    </lst>
-    <arr name="components">
-      <str>iiif_suggest</str>
-    </arr>
-  </requestHandler>
-  <!-- END Blacklight IIIF Search autocomplete config -->
-
 </config>

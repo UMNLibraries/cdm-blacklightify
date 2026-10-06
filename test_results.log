@@ -1,0 +1,60 @@
+/Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/activesupport-6.1.7.10/lib/active_support/dependencies.rb:299: warning: mutex_m was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.4.0.
+You can add mutex_m to your Gemfile or gemspec to silence this warning.
+Also please contact the author of activesupport-6.1.7.10 to request adding mutex_m into its gemspec.
+DEPRECATION WARNING: Initialization autoloaded the constants KalturaHelper, Blacklight::UrlHelperBehavior, Blacklight::LayoutHelperBehavior, Blacklight::IconHelperBehavior, Blacklight::BlacklightHelperBehavior, BlacklightHelper, Spotlight::NavbarHelper, Spotlight::MastheadHelper, Spotlight::MainAppHelpers, SpotlightHelper, ApplicationHelper, CountHelper, DownloadHelper, GettyFormatHelper, OclcFastFormatHelper, ThumbnailHelper, Umedia::LocalizableHelper, Blacklight::Oembed::OembedHelper, Blacklight::GalleryHelper, Blacklight::OpenseadragonHelper, RangeLimitHelper, DeviseHelper, Blacklight::ConfigurationHelperBehavior, Blacklight::ComponentHelperBehavior, Blacklight::DocumentHelperBehavior, Blacklight::FacetsHelperBehavior, Blacklight::RenderPartialsHelperBehavior, Blacklight::CatalogHelperBehavior, CatalogHelper, PreviewHelper, Openseadragon::OpenseadragonHelper, Blacklight::Controller, Spotlight::Config, Spotlight::Controller, Umedia::Localizable, ApplicationController, Blacklight::Configurable, Blacklight::SearchContext, Blacklight::Searchable, Blacklight::Catalog, Blacklight::SearchService, BlacklightIiifSearch::Controller, Umedia::Thumbnail, Umedia::LocalizableFields, Umedia::Catalog, Umedia::Catalog::JsonBehaviors, Blacklight::SkipLinkComponent, Blacklight::SkipLinkItemComponent, Blacklight::HeaderComponent, Spotlight::AccessControlsEnforcementSearchBuilder, Spotlight::BrowseCategorySearchBuilder, Spotlight::SearchBuilder, SearchBuilder, Blacklight::Document::SchemaOrg, Blacklight::Document::SemanticFields, Blacklight::Document::CacheKey, Blacklight::Document::Export, Blacklight::Document::Attributes, Blacklight::Document, Blacklight::Document::ActiveModelShim, Blacklight::Types, Blacklight::Document::Extensions, Blacklight::Gallery::OpenseadragonSolrDocument, Spotlight::SolrDocument::Finder, Spotlight::SolrDocument, Spotlight::SolrDocument::UploadedResource, Spotlight::SolrDocument::AtomicUpdates, Blacklight::Document::DublinCore, SolrDocument, Blacklight::DocumentFactory, Blacklight::FacetPaginator, Blacklight::DocumentComponent, Blacklight::Search, Blacklight::Search::SidebarComponent, Blacklight::System, Blacklight::System::DropdownButtonComponent, Blacklight::System::DropdownComponent, Blacklight::ConstraintsComponent, Blacklight::SearchHeaderComponent, Blacklight::Document::PageHeaderComponent, Blacklight::Document::SidebarComponent, Blacklight::ThumbnailPresenter, Blacklight::DocumentPresenter, Blacklight::IndexPresenter, Blacklight::ShowPresenter, Blacklight::Gallery::DocumentComponent, Blacklight::Gallery::SlideshowComponent, Umedia::ShowPresenter, Blacklight::FacetFieldPresenter, Blacklight::FacetItemPresenter, Blacklight::FacetFieldListComponent, Blacklight::FacetFieldCheckboxesComponent, Blacklight::FacetItemComponent, Blacklight::SubjectFastFacetItemPresenter, Blacklight::FieldPresenter, Blacklight::MetadataFieldComponent, Umedia::LocalizedMetadataFieldComponent, Blacklight::ActionBuilder, CatalogController, Spotlight::Concerns, Spotlight::Concerns::ApplicationController, Spotlight::CrudLinkHelpers, Spotlight::TitleHelper, Spotlight::MetaHelper, Spotlight::CropHelper, Spotlight::LanguagesHelper, Spotlight::ApplicationHelper, Spotlight::ExhibitAnalytics, Spotlight::ExhibitDefaults, Spotlight::ExhibitDocuments, Spotlight::Translatables, Spotlight::Exhibit, Spotlight::Base, Spotlight::SearchHelper, Spotlight::Catalog, Spotlight::Concerns::CatalogSearchContext, Spotlight::CatalogController, and Spotlight::CustomTranslationExtension.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload KalturaHelper, for example,
+the expected changes won't be reflected in that stale Module object.
+
+These autoloaded constants have been unloaded.
+
+In order to autoload safely at boot time, please wrap your code in a reloader
+callback this way:
+
+    Rails.application.reloader.to_prepare do
+      # Autoload classes and modules needed at boot time here.
+    end
+
+That block runs when the application boots, and every time there is a reload.
+For historical reasons, it may run twice, so it has to be idempotent.
+
+Check the "Autoloading and Reloading Constants" guide to learn more about how
+Rails autoloads and reloads.
+ (called from <top (required)> at /Users/tantz001/projects/rails/cdm-blacklightify/config/environment.rb:7)
+/Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/railties-6.1.7.10/lib/rails/test_unit/line_filtering.rb:7:in `run': wrong number of arguments (given 3, expected 1..2) (ArgumentError)
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/minitest-6.0.6/lib/minitest.rb:473:in `block (2 levels) in run_suite'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/minitest-6.0.6/lib/minitest.rb:469:in `each'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/minitest-6.0.6/lib/minitest.rb:469:in `block in run_suite'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/minitest-6.0.6/lib/minitest.rb:511:in `on_signal'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/minitest-6.0.6/lib/minitest.rb:498:in `with_info_handler'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/minitest-6.0.6/lib/minitest.rb:468:in `run_suite'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/minitest-6.0.6/lib/minitest.rb:361:in `block in run_all_suites'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/minitest-6.0.6/lib/minitest.rb:361:in `map'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/minitest-6.0.6/lib/minitest.rb:361:in `run_all_suites'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/minitest-6.0.6/lib/minitest.rb:316:in `run'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/minitest-6.0.6/lib/minitest.rb:84:in `block in autorun'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/activesupport-6.1.7.10/lib/active_support/fork_tracker.rb:8:in `fork'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/activesupport-6.1.7.10/lib/active_support/fork_tracker.rb:8:in `fork'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/activesupport-6.1.7.10/lib/active_support/fork_tracker.rb:27:in `fork'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/activesupport-6.1.7.10/lib/active_support/fork_tracker.rb:8:in `fork'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/activesupport-6.1.7.10/lib/active_support/fork_tracker.rb:27:in `fork'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/spring-4.7.0/lib/spring/application.rb:221:in `serve'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/spring-4.7.0/lib/spring/application.rb:184:in `block in run'
+	from <internal:kernel>:187:in `loop'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/spring-4.7.0/lib/spring/application.rb:178:in `run'
+	from /Users/tantz001/projects/rails/cdm-blacklightify/vendor/bundle/ruby/3.3.0/gems/spring-4.7.0/lib/spring/application/boot.rb:25:in `<top (required)>'
+	from <internal:/Users/tantz001/.rbenv/versions/3.3.7/lib/ruby/3.3.0/rubygems/core_ext/kernel_require.rb>:136:in `require'
+	from <internal:/Users/tantz001/.rbenv/versions/3.3.7/lib/ruby/3.3.0/rubygems/core_ext/kernel_require.rb>:136:in `require'
+	from -e:1:in `<main>'
+Run options: --seed 4622
+
+# Running:
+
+Running via Spring preloader in process 1875
+Coverage report generated for Minitest to coverage/index.html
+Line coverage: 0 / 2388 (0.00%)
+Stopped processing SimpleCov as a previous error not related to SimpleCov has been detected

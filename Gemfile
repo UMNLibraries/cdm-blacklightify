@@ -3,10 +3,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '~> 3.0'
+ruby '~> 3.3.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
+gem 'rails', '~> 6.1.7'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
@@ -56,10 +56,10 @@ group :development do
   gem 'spring'
 end
 
-gem 'blacklight', ' ~> 7.0'
-gem 'blacklight-spotlight', github: 'projectblacklight/spotlight', branch: 'v3.5.0.2'
+gem 'blacklight', '~> 8.0'
+gem 'blacklight-spotlight', '~> 3.5'  # Keep v3 for Rails 6.1 compatibility
 # https://github.com/projectblacklight/blacklight_range_limit#configuration
-gem 'blacklight_range_limit', '~> 7.0'
+gem 'blacklight_range_limit', '~> 8.0'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
@@ -67,7 +67,7 @@ group :development, :test, :publicdev do
   gem 'solr_wrapper', '~> 4.0'
 end
 
-gem 'blacklight-gallery', '~> 3.0'
+gem 'blacklight-gallery', '~> 4.0'
 gem 'blacklight-oembed', '~> 1.0'
 gem 'bootstrap', '~> 4.0'
 gem 'coffee-rails', '~> 4.2'
@@ -90,7 +90,7 @@ group :test, :publicdev do
   gem 'capybara'
   gem 'capybara-screenshot'
   gem 'm', '~> 1.5.0'
-  gem 'minitest'
+  gem 'minitest', '< 6'
   gem 'minitest-ci', '~> 3.4.0'
   gem 'minitest-reporters'
   gem 'rubocop', '~> 1.25', require: false
@@ -105,7 +105,7 @@ end
 # ContentDM Harvesting/Indexing
 gem 'config'
 gem 'contentdm_api', github: 'UMNLibraries/contentdm_api'
-gem 'cdmdexer', github: 'UMNLibraries/cdmdexer', branch: 'develop'
+gem 'cdmdexer', github: 'UMNLibraries/cdmdexer', branch: 'main'
 # We cannot move to Sidekiq 7 as long as the ETLWorker and TransformWorker
 # pass complex objects (including multiple FieldMapping classes) to Sidekiq worker perform() methods
 gem 'sidekiq', '~> 6.0'
@@ -134,7 +134,7 @@ gem 'rails-controller-testing'
 
 gem 'capistrano'
 gem 'capistrano-rails'
-gem 'capistrano-template', git: 'https://github.com/UMNLibraries/capistrano-template-ruby3'
+# gem 'capistrano-template', git: 'https://github.com/UMNLibraries/capistrano-template-ruby3', branch: 'main'
 gem 'capistrano-bundler'
 #gem 'capistrano-maintenance'
 gem 'capistrano-yarn'
@@ -143,3 +143,9 @@ gem 'rails-bootstrap-tabs', '~> 0.3.2'
 gem 'render_async'
 
 gem 'blacklight_iiif_search'
+
+# gem 'rsolr', '>= 1.0', '< 3'
+
+# JSON 3.0+ incompatible with Rails 6.1 (dropped quirks_mode support)
+gem 'json', '< 3'
+gem 'mutex_m'

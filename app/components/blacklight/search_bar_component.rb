@@ -2,8 +2,6 @@
 
 module Blacklight
   class SearchBarComponent < Blacklight::Component
-    include Blacklight::ContentAreasShim
-
     renders_one :append
     renders_one :prepend
     renders_one :search_button
@@ -74,10 +72,14 @@ module Blacklight
       helpers.blacklight_config
     end
 
-    def render_hash_as_hidden_fields(*args)
-      Deprecation.silence(Blacklight::HashAsHiddenFieldsHelperBehavior) do
-        helpers.render_hash_as_hidden_fields(*args)
-      end
+    def render_hash_as_hidden_fields(hash)
+      hash.map do |key, value|
+        if value.is_a?(Array)
+          value.map { |v| tag(:input, type: 'hidden', name: "#{key}[]", value: v) }.join
+        else
+          tag(:input, type: 'hidden', name: key, value: value)
+        end
+      end.join.html_safe
     end
 
     def scoped_t(key, **args)

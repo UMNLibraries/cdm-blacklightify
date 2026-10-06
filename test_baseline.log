@@ -1,0 +1,166 @@
+DEPRECATION WARNING: Initializing a Blacklight::Configuration::ViewConfig implicitly (by calling gallery) is deprecated. Call it as gallery! or pass initialize arguments. (called from block in <class:CatalogController> at /Users/tantz001/projects/rails/cdm-blacklightify/app/controllers/catalog_controller.rb:63)
+DEPRECATION WARNING: Initializing a Blacklight::Configuration::ViewConfig implicitly (by calling masonry) is deprecated. Call it as masonry! or pass initialize arguments. (called from block in <class:CatalogController> at /Users/tantz001/projects/rails/cdm-blacklightify/app/controllers/catalog_controller.rb:65)
+DEPRECATION WARNING: Initializing a Blacklight::Configuration::ViewConfig implicitly (by calling slideshow) is deprecated. Call it as slideshow! or pass initialize arguments. (called from block in <class:CatalogController> at /Users/tantz001/projects/rails/cdm-blacklightify/app/controllers/catalog_controller.rb:66)
+DEPRECATION WARNING: Initialization autoloaded the constants KalturaHelper, Blacklight::UrlHelperBehavior, Blacklight::HashAsHiddenFieldsHelperBehavior, Blacklight::LayoutHelperBehavior, Blacklight::IconHelperBehavior, Blacklight::BlacklightHelperBehavior, BlacklightHelper, Spotlight::NavbarHelper, Spotlight::MastheadHelper, Spotlight::MainAppHelpers, SpotlightHelper, ApplicationHelper, CountHelper, DownloadHelper, GettyFormatHelper, OclcFastFormatHelper, ThumbnailHelper, Umedia::LocalizableHelper, Blacklight::Oembed::OembedHelper, Blacklight::GalleryHelper, Blacklight::OpenseadragonHelper, RangeLimitHelper, DeviseHelper, Blacklight::ConfigurationHelperBehavior, Blacklight::ComponentHelperBehavior, Blacklight::Facet, Blacklight::FacetsHelperBehavior, Blacklight::RenderConstraintsHelperBehavior, Blacklight::RenderPartialsHelperBehavior, Blacklight::SearchHistoryConstraintsHelperBehavior, Blacklight::SuggestHelperBehavior, Blacklight::CatalogHelperBehavior, CatalogHelper, PreviewHelper, Openseadragon::OpenseadragonHelper, Blacklight::Controller, Blacklight::SearchFields, Blacklight::SearchService, Spotlight::Config, Spotlight::Controller, Umedia::Localizable, ApplicationController, Blacklight::Configurable, Blacklight::SearchContext, Blacklight::Base, Blacklight::Searchable, Blacklight::Catalog, BlacklightIiifSearch::Controller, Umedia::Thumbnail, Umedia::LocalizableFields, Umedia::Catalog, Umedia::Catalog::JsonBehaviors, Blacklight::ThumbnailPresenter, Blacklight::DocumentPresenter, Blacklight::IndexPresenter, Blacklight::ShowPresenter, Blacklight::ContentAreasShim, Blacklight::DocumentComponent, Blacklight::Gallery::DocumentComponent, Blacklight::Gallery::SlideshowComponent, Umedia::ShowPresenter, Blacklight::FacetFieldPresenter, Blacklight::FacetItemPresenter, Blacklight::SubjectFastFacetItemPresenter, Blacklight::FieldPresenter, Blacklight::MetadataFieldComponent, Umedia::LocalizedMetadataFieldComponent, Blacklight::ActionBuilder, CatalogController, Spotlight::Concerns, Spotlight::Concerns::ApplicationController, Spotlight::CrudLinkHelpers, Spotlight::TitleHelper, Spotlight::MetaHelper, Spotlight::CropHelper, Spotlight::LanguagesHelper, Spotlight::ApplicationHelper, Spotlight::ExhibitAnalytics, Spotlight::ExhibitDefaults, Spotlight::ExhibitDocuments, Spotlight::Translatables, Spotlight::Exhibit, Spotlight::Base, Spotlight::SearchHelper, Spotlight::Catalog, Spotlight::Concerns::CatalogSearchContext, and Spotlight::CatalogController.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload KalturaHelper, for example,
+the expected changes won't be reflected in that stale Module object.
+
+These autoloaded constants have been unloaded.
+
+In order to autoload safely at boot time, please wrap your code in a reloader
+callback this way:
+
+    Rails.application.reloader.to_prepare do
+      # Autoload classes and modules needed at boot time here.
+    end
+
+That block runs when the application boots, and every time there is a reload.
+For historical reasons, it may run twice, so it has to be idempotent.
+
+Check the "Autoloading and Reloading Constants" guide to learn more about how
+Rails autoloads and reloads.
+ (called from <main> at /Users/tantz001/projects/rails/cdm-blacklightify/config/environment.rb:7)
+Running via Spring preloader in process 89915
+Running via Spring preloader in process 89918
+Run options: --seed 24678
+
+# Running:
+
+.......SFE.........EEEE...EDEPRECATION WARNING: Initializing a Blacklight::Configuration::ViewConfig implicitly (by calling gallery) is deprecated. Call it as gallery! or pass initialize arguments. (called from block in <class:CatalogController> at /Users/tantz001/projects/rails/cdm-blacklightify/app/controllers/catalog_controller.rb:63)
+DEPRECATION WARNING: Initializing a Blacklight::Configuration::ViewConfig implicitly (by calling masonry) is deprecated. Call it as masonry! or pass initialize arguments. (called from block in <class:CatalogController> at /Users/tantz001/projects/rails/cdm-blacklightify/app/controllers/catalog_controller.rb:65)
+DEPRECATION WARNING: Initializing a Blacklight::Configuration::ViewConfig implicitly (by calling slideshow) is deprecated. Call it as slideshow! or pass initialize arguments. (called from block in <class:CatalogController> at /Users/tantz001/projects/rails/cdm-blacklightify/app/controllers/catalog_controller.rb:66)
+F...EEEEEE..E.F.....EEEE..
+
+Finished in 19.604419s, 2.7035 runs/s, 2.4994 assertions/s.
+
+  1) Failure:
+IiifControllerTest#test_should_get_iiif#show/manifest.json [test/controllers/iiif_controller_test.rb:4]:
+Expected response to be a <2XX: success>, but was a <500: Internal Server Error>
+Response body: {"status":"internal_server_error"}
+
+  2) Error:
+ItemPageGettyAttTest#test_format_field_is_array_of_two_formats,_each_with_a_tooltip:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/integration/item_page_getty_att_test.rb:6:in `block in <class:ItemPageGettyAttTest>'
+
+  3) Error:
+RobotsControllerTest#test_should_return_a_robots_file:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/controllers/robots_controller_test.rb:8:in `block in <class:RobotsControllerTest>'
+
+  4) Error:
+CatalogControllerTest#test_should_map_item/:id_to_catalog#show:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/controllers/catalog_controller_test.rb:15:in `block in <class:CatalogControllerTest>'
+
+  5) Error:
+CatalogControllerTest#test_should_get_catalog#show/raw:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/controllers/catalog_controller_test.rb:10:in `block in <class:CatalogControllerTest>'
+
+  6) Error:
+CatalogControllerTest#test_should_get_index:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/controllers/catalog_controller_test.rb:5:in `block in <class:CatalogControllerTest>'
+
+  7) Error:
+UvConfigTest#test_universal_viewer_configure_options:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/integration/uv_config_test.rb:5:in `block in <class:UvConfigTest>'
+
+  8) Failure:
+SolrDocumentTest#test_cdm_thumbnail_link [test/models/solr_document_test.rb:21]:
+--- expected
++++ actual
+@@ -1 +1 @@
+-"https://cdm16022.contentdm.oclc.org/digital/api/singleitem/collection/p16022coll262/id/173/thumbnail"
++"https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/p16022coll262/id/173"
+
+
+  9) Error:
+ItemPageAttachmentTest#test_transcript_display,_compound:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/integration/item_page_attachment_test.rb:11:in `block in <class:ItemPageAttachmentTest>'
+
+ 10) Error:
+ItemPageAttachmentTest#test_attachment_tab_display_a/v_item_with_pdf_attachment:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/integration/item_page_attachment_test.rb:60:in `block in <class:ItemPageAttachmentTest>'
+
+ 11) Error:
+ItemPageAttachmentTest#test_attachment_tab_display_a/v_item_with_image_attachment:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/integration/item_page_attachment_test.rb:51:in `block in <class:ItemPageAttachmentTest>'
+
+ 12) Error:
+ItemPageAttachmentTest#test_test_transcript#index:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/integration/item_page_attachment_test.rb:5:in `block in <class:ItemPageAttachmentTest>'
+
+ 13) Error:
+ItemPageAttachmentTest#test_transcript_display,_child_of_parent:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/integration/item_page_attachment_test.rb:23:in `block in <class:ItemPageAttachmentTest>'
+
+ 14) Error:
+ItemPageAttachmentTest#test_transcript_tab_!display_(transcript_tab_helper):
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/integration/item_page_attachment_test.rb:43:in `block in <class:ItemPageAttachmentTest>'
+
+ 15) Error:
+ItemPageSectionHeadingTest#test_section_headings_display:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/integration/item_page_section_heading_test.rb:5:in `block in <class:ItemPageSectionHeadingTest>'
+
+ 16) Failure:
+SettingsTest#test_UMedia_Solr_field_mappings_are_present [test/models/settings_test.rb:15]:
+Expected ["location", "id", "object", "set_spec", "collection_name", "collection_description", "super_collection_names", "super_collection_set_specs", "super_collection_descriptions", "title", "title_search", "title_sort", "title_alternative", "contributor", "creator", "creator_sort", "description", "date_created", "date_created_sort", "historical_era", "publisher", "publishing_agency", "caption", "notes", "types", "format", "format_name", "dimensions", "subject", "subject_fast", "language", "alternate_languages", "city", "state", "country", "region", "continent", "geonames", "projection", "scale", "coordinates", "parent_collection", "parent_collection_name", "contributing_organization", "contributing_organization_name", "contact_information", "fiscal_sponsor", "local_identifier", "barcode", "system_identifier", "dls_identifier", "archival_collection", "archival_box", "archival_folder", "archival_folder_sequence", "persistent_url", "local_rights", "standardized_rights", "rights_statement_uri", "expected_public_domain_year", "additional_rights_information", "transcription", "translation", "kaltura_audio", "kaltura_audio_playlist", "kaltura_video", "kaltura_video_playlist", "kaltura_combo_playlist", "page_count", "record_type", "parent_id", "first_viewer_type", "viewer_type", "child_index", "attachment", "attachment_format", "document_type", "date_added", "date_added_sort", "date_modified", "es_title", "es_description", "es_notes", "es_types", "es_format", "es_format_name", "es_dimensions", "es_subject", "es_country", "es_continent", "es_language", "es_local_rights", "es_rights_statement_uri", "fi_title", "fi_title_alternative", "fi_description", "fi_notes", "fi_types", "fi_format", "fi_format_name", "fi_dimensions", "fi_subject", "fi_country", "fi_continent", "fi_language", "fi_local_rights", "fi_rights_statement_uri", "iiif_manifest_url"] to include "object_ssi".
+
+ 17) Error:
+UvFullscreen#test_back_to_item_page:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/integration/uv_fullscreen_test.rb:22:in `block in <class:UvFullscreen>'
+
+ 18) Error:
+UvFullscreen#test_test_link_to_solr_path:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/integration/uv_fullscreen_test.rb:10:in `block in <class:UvFullscreen>'
+
+ 19) Error:
+UvFullscreen#test_test_?fullscreen=true:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/integration/uv_fullscreen_test.rb:5:in `block in <class:UvFullscreen>'
+
+ 20) Error:
+UvFullscreen#test_fullscreen_width_&_height_100vh:
+NoMethodError: undefined method `current_exhibit=' for class I18n::Backend::ActiveRecord::Translation
+    app/controllers/concerns/spotlight/controller.rb:17:in `set_exhibit_locale_scope'
+    test/integration/uv_fullscreen_test.rb:16:in `block in <class:UvFullscreen>'
+
+53 runs, 49 assertions, 3 failures, 17 errors, 1 skips
+
+You have skipped tests. Run with --verbose for details.
+
+[Minitest::CI] Generating test report in JUnit XML format...
+Coverage report generated for Minitest to /Users/tantz001/projects/rails/cdm-blacklightify/coverage. 565 / 4217 LOC (13.4%) covered.

@@ -8,8 +8,8 @@
     <!-- Internet Explorer use the highest version available -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title><%= render_page_title %></title>
-    <%= opensearch_description_tag application_name, opensearch_catalog_url(format: 'xml') %>
+    <title><%= @page_title || application_name %></title>
+    <%= opensearch_description_tag application_name, main_app.opensearch_catalog_url(format: 'xml') %>
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= content_for(:head) %>
@@ -21,7 +21,7 @@
 
     <%= csrf_meta_tags %>
   </head>
-  <body class="<%= render_body_class %>">
+  <body class="<%= extra_body_classes.join(' ') rescue '' %>">
     <% if params[:fullscreen] == "true" %>
       <%= render 'fullscreen' %>
     <% else %>

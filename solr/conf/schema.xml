@@ -142,6 +142,7 @@
 
   <field name="title" type="text_en" indexed="true" stored="true" termVectors="true" />
   <field name="title_sort" type="text_gen_sort" indexed="true" stored="true" multiValued="false" />
+  <field name="title_sort_ssortsi" type="alphaSort" indexed="true" stored="true" multiValued="false" />
   <field name="title_alternative" type="text_en" indexed="true" stored="true" />
   <field name="title_search" type="text_en_ascii" indexed="true" stored="true" />
   <copyField source="title" dest="title_tesi" />
@@ -461,6 +462,11 @@
   <dynamicField name="*_ssim" type="string" stored="true" indexed="true" multiValued="true"/>
 
   <dynamicField name="*_ssort" type="alphaSort" stored="false" indexed="true" multiValued="false"/>
+  <dynamicField name="*_sortsi" type="alphaSort" stored="true" indexed="true" multiValued="false"/>
+  <dynamicField name="*_te_split" type="text_en_splitting_tight" stored="true" indexed="true" multiValued="false"/>
+  <dynamicField name="*_ssimv" type="string" stored="true" indexed="true" multiValued="true"/>
+  <dynamicField name="*_dr" type="rdate" indexed="true" stored="true" multiValued="false"/>
+  <dynamicField name="*_split" type="text_en_splitting_tight" stored="true" indexed="true" multiValued="false"/>
 
 
   <!-- integer (_i...) -->

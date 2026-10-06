@@ -60,10 +60,10 @@ class CatalogController < ApplicationController
     config.show.partials.insert(1, :oembed)
     config.raw_endpoint.enabled = true
 
-    config.view.gallery.document_component = Blacklight::Gallery::DocumentComponent
+    config.view.gallery!.document_component = Blacklight::Gallery::DocumentComponent
     # config.view.gallery.classes = 'row-cols-2 row-cols-md-3'
-    config.view.masonry.document_component = Blacklight::Gallery::DocumentComponent
-    config.view.slideshow.document_component = Blacklight::Gallery::SlideshowComponent
+    config.view.masonry!.document_component = Blacklight::Gallery::DocumentComponent
+    config.view.slideshow!.document_component = Blacklight::Gallery::SlideshowComponent
     config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
     config.show.partials.insert(1, :openseadragon)
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
