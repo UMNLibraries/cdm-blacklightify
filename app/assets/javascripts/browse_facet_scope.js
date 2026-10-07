@@ -192,16 +192,17 @@ class BrowseFacetScope {
     } else {
       // We're on either:
       // 1. The browse collections list page (/spotlight/exhibit/browse)
-      // 2. The exhibit home page (/spotlight/exhibit)
-      // Both should show the exhibit title
+      // 2. The catalog search results page (/spotlight/exhibit/catalog)
+      // 3. The exhibit home page (/spotlight/exhibit)
+      // All should show the exhibit title
       
       // Try multiple selectors to find the exhibit title
       const navbarBrand = document.querySelector('.navbar-brand')
-      const exhibitTitle = navbarBrand?.textContent?.trim()
+      let exhibitTitle = navbarBrand?.textContent?.trim()
       
       if (exhibitTitle) {
         newTitle = `Search ${exhibitTitle}`
-        console.log('[BrowseFacetScope] Updated title for exhibit or browse list:', newTitle)
+        console.log('[BrowseFacetScope] Updated title from navbar-brand:', newTitle)
       } else {
         // Fallback: try to get from page title, but extract just the exhibit name
         const pageTitle = document.title.split(' - ')[0].trim()
@@ -210,7 +211,7 @@ class BrowseFacetScope {
         
         if (cleanTitle && cleanTitle !== 'UMedia' && cleanTitle !== 'Browse') {
           newTitle = `Search ${cleanTitle}`
-          console.log('[BrowseFacetScope] Updated title (from page title):', newTitle)
+          console.log('[BrowseFacetScope] Updated title (from page title fallback):', newTitle)
         }
       }
     }
@@ -221,16 +222,23 @@ class BrowseFacetScope {
 
   cleanPageTitle() {
     // On catalog pages, remove facet details from the browser page title
-    // Change "Format: Speeches - University Archives" to just "University Archives"
+    // Keep exhibit name + "- UMedia Search Results" format
     if (this.isCatalogPage) {
       const currentTitle = document.title
-      // Extract just the exhibit name from the title
-      // Look for pattern like "Format: X - ExhibitName - Rest"
-      const match = currentTitle.match(/^([^-]*)\s*-\s*([^-]*)\s*-\s*(.*?)(?:\s*-\s*UMedia.*)?$/)
-      if (match && match[2]) {
-        const exhibitName = match[2].trim()
-        const rest = match[3].trim()
-        document.title = `${exhibitName} - ${rest}`.replace(/\s*-\s*-\s*/, ' - ').trim()
+      // Try to get exhibit name from navbar first
+      const navbarBrand = document.querySelector('.navbar-brand')
+      let exhibitName = navbarBrand?.textContent?.trim()
+      
+      // If navbar brand is empty, extract from document.title using regex
+      if (!exhibitName) {
+        const match = currentTitle.match(/(?:.*\s*-\s*)([^-]+)\s*-\s*UMedia Search Results$/)
+        if (match && match[1]) {
+          exhibitName = match[1].trim()
+        }
+      }
+      
+      if (exhibitName) {
+        document.title = `${exhibitName} - UMedia Search Results`
         console.log('[BrowseFacetScope] Cleaned page title to:', document.title)
       }
     }
