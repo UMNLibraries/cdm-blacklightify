@@ -105,6 +105,17 @@ class CatalogController < ApplicationController
       }
     end
 
+    # Set Spec search field - for searching within a specific collection
+    # Only visible when user is browsing a collection (controlled via JavaScript)
+    config.add_search_field('set_spec', label: 'Collection') do |field|
+      field.query_local_parameters = {
+        qf: 'set_spec'
+      }
+      field.solr_parameters = {
+        fq: 'record_type:primary'
+      }
+    end
+
     # Show Presenter Class ("registers" the show_presenter file/class)
     config.show.document_presenter_class = Umedia::ShowPresenter
 
