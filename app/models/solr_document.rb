@@ -31,9 +31,15 @@ class SolrDocument
       rows: 5
     }
 
-    mlt_response['response']['docs'].map do |doc|
-      SolrDocument.new(doc)
+    docs = mlt_response['response']['docs']
+    return [] if docs.blank?
+    
+    docs.map do |doc|
+      SolrDocument.new(doc, response_metadata: { index_type: 'SolrDocument' })
     end
+  rescue StandardError => e
+    Rails.logger.error("MLT error for document #{id}: #{e.message}")
+    []
   end
 
   def cdm_thumbnail

@@ -2,6 +2,13 @@
 function iiifManifestConfig(doc) {
   const docId = doc;
 
+  // Ensure UV is loaded
+  if (typeof UV === 'undefined') {
+    console.warn('UV not loaded yet, retrying...');
+    setTimeout(() => iiifManifestConfig(doc), 100);
+    return;
+  }
+
   var uv = UV.init(
     "uv",
     {
@@ -37,6 +44,13 @@ function iiifManifestConfig(doc) {
 function iiifImageConfig(doc) {
   const docId = doc;
   const btn = document.querySelector(".uv-attachment");
+
+  // Ensure UV is loaded
+  if (typeof UV === 'undefined') {
+    console.warn('UV not loaded yet, retrying...');
+    setTimeout(() => iiifImageConfig(doc), 100);
+    return;
+  }
 
   function uvImageConfig() {
     var uv = UV.init(

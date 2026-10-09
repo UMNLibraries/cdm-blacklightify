@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   # For compatibility catalog show pages aliased as /item/:id
   # (must be after the raw .json route so this does not supercede it)
-  get '/item/:id', to: 'catalog#show'
+  get '/item/:id', to: 'catalog#show', constraints: { id: /[^\/]+/ }
 
   # Finally allow Blacklight to do its normal stuff
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   devise_for :users
   concern :exportable, Blacklight::Routes::Exportable.new
 
-  resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
+  resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog', constraints: { id: /[^\/]+/ } do
     concerns :exportable
     get :iiif_search, controller: 'catalog_iiif_search'
 

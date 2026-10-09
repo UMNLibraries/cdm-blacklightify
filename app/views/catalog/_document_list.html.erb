@@ -2,7 +2,10 @@
 <div id="documents" class="documents-<%= document_index_view_type %>">
   <% documents.each_with_index do |document, index| %>
     <div class="document">
-      <h3><%= link_to_document(document, document_presenter(document).heading, counter: index + (@response&.start || 0)) %></h3>
+      <% # Build URL manually to avoid document object being stringified %>
+      <% doc_id = document.respond_to?(:id) ? document.id : document %>
+      <% doc_url = current_exhibit ? spotlight.exhibit_solr_document_path(current_exhibit, doc_id) : solr_document_path(doc_id) %>
+      <h3><%= link_to document_presenter(document).heading, doc_url %></h3>
       <%= render_document_partial(document, :index) %>
     </div>
   <% end %>

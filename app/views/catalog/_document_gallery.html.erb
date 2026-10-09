@@ -9,7 +9,9 @@
           <% end %>
           <div class="card-body">
             <h5 class="card-title">
-              <%= link_to truncate(document['title'], length: 50), url_for({action: 'show', id: document.id}), class: 'document-link' %>
+              <% doc_id = document.respond_to?(:id) ? document.id : document %>
+              <% doc_url = current_exhibit ? spotlight.exhibit_solr_document_path(current_exhibit, doc_id) : solr_document_path(doc_id) %>
+              <%= link_to truncate(document['title'], length: 50), doc_url, class: 'document-link' %>
             </h5>
           </div>
         </div>
@@ -17,4 +19,3 @@
     <% end %>
   </div>
 </div>
-
