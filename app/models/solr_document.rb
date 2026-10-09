@@ -77,4 +77,15 @@ class SolrDocument
 
     cat.search_results.first.total > 1
   end
+
+  # Required for Rails routing to convert document objects to their IDs
+  def to_param
+    id
+  end
+
+  # When DocumentComponent receives a SolrDocument via with_collection,
+  # it tries to call .document on it. Return self to support this.
+  def document
+    self
+  end
 end

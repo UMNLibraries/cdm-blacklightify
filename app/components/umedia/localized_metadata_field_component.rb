@@ -6,7 +6,7 @@ module Umedia
   class LocalizedMetadataFieldComponent < Blacklight::MetadataFieldComponent
     # Override label() to handle literal labels (e.g., "Format") vs i18n keys (e.g., "item.fields.label").
     # Falls back to default Blacklight config when label is missing. Prevents translation errors in Spotlight.
-    def label(locale:)
+    def label(locale: nil)
       label_key = @field.label
 
       # If label lacks a dot, it's a literal label (not an i18n key), so return as-is.
@@ -28,11 +28,11 @@ module Umedia
       I18n.translate(label_key, locale: (locale || I18n.default_locale))
     end
 
-    def title_attribute(locale:)
+    def title_attribute(locale: nil)
       I18n.translate(@field.field_tooltips, locale: (locale || I18n.default_locale))
     end
 
-    def tooltip_icon(locale:)
+    def tooltip_icon(locale: nil)
       title_attribute(locale: (locale || I18n.default_locale)).include? "Translation missing:"
     end
   end

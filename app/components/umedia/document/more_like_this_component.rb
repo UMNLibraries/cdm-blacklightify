@@ -14,6 +14,9 @@ module Umedia
 
       def render?
         @document.more_like_this.present?
+      rescue RSolr::Error::Http
+        # MLT endpoint not configured in Solr, skip rendering
+        false
       end
 
       def link_to_document(*args)

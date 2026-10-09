@@ -1,8 +1,20 @@
 <% view_config = local_assigns[:view_config] || blacklight_config&.view_config(document_index_view_type) %>
 <div class="container">
   <div id="documents" class="<%= (Array(view_config.classes || 'row-cols-2 row-cols-md-3') + ["row documents-#{view_config.key}"]).join(' ') %>">
-    <% presenters = documents.map { |doc| Blacklight::DocumentPresenter.new(doc, self, blacklight_config) } %>
-    <%= render view_config.document_component.with_collection(presenters, counter_offset: @response&.start || 0) %>
+    <% documents.each do |document| %>
+      <div class="col document">
+        <div class="card">
+          <% if document.has_key?('object') %>
+            <img class="card-img-top img-thumbnail" src="<%= document['object'] %>" alt="<%= document['title'] || 'Document' %>">
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to truncate(document['title'], length: 50), url_for({action: 'show', id: document.id}), class: 'document-link' %>
+            </h5>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
