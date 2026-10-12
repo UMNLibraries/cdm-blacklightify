@@ -129,6 +129,8 @@ class CatalogController < ApplicationController
 
     # add facet field to allow Blacklight to pass the intended search parameters to Solr. field matches config.iiif_search object_relation_field above
     config.add_facet_field 'parent_id', include_in_request: false
+    # Set spec facet field for collection filtering in Spotlight
+    config.add_facet_field 'set_spec', include_in_request: false
 
     # SERP / RESULTS PAGE
     # Format / format_name
@@ -245,5 +247,22 @@ class CatalogController < ApplicationController
   # Allow the language parameter in controller actions
   def permit_language
     params.permit(:language)
+  end
+
+  def collection_name_from_set_spec
+    set_spec = params[:set_spec]
+    
+    if set_spec.blank?
+      render json: { error: 'set_spec parameter is required' }, status: :bad_request
+      return
+    end
+
+    collection_name = CollectionNameResolver.new(set_spec).resolve
+    
+    if collection_name.present?
+      render json: { collection_name_s: collection_name }
+    else
+      render json: { error: 'Collection not found' }, status: :not_found
+    end
   end
 end

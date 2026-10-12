@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   root to: 'spotlight/exhibits#index'
 
   mount Spotlight::Engine, at: 'spotlight'
+  
+  # Endpoint to get collection_name_s from set_spec (must be before Blacklight mount)
+  get '/catalog/collection_name_from_set_spec', controller: 'catalog', action: 'collection_name_from_set_spec'
+  
   mount Blacklight::Engine => '/'
   #  root to: "catalog#index" # replaced by spotlight root path
   concern :searchable, Blacklight::Routes::Searchable.new

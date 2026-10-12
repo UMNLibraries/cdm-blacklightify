@@ -21,10 +21,12 @@ function callTranscript() {
 document.addEventListener("DOMContentLoaded", () => {
   const tabContainer = document.querySelector('.nav-tabs');
   
-  tabContainer.addEventListener('click', (event) => {
-    const clickedTab = event.target.closest('.tab');
-    if (!clickedTab) return;
+  if (tabContainer) {
+    tabContainer.addEventListener('click', (event) => {
+      const clickedTab = event.target.closest('.tab');
+      if (!clickedTab) return;
 
-    callTranscript();
-  });
+      callTranscript();
+    });
+  }
 });
