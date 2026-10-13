@@ -46,7 +46,7 @@
       <%= render 'shared/spotlight_header' if !current_page?(root_path) %> 
       <%= render partial: 'shared/masthead' %>
       
-      <main role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
+      <main id="main-container" class="container" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
         <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
         <%= content_for(:container_header) %>
 
