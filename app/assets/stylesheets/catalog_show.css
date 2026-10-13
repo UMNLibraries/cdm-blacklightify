@@ -1,0 +1,32 @@
+/* Navigation buttons styling for catalog show page */
+
+.constraints-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.25rem;
+  margin: 1rem 0;
+}
+
+.btn-back-to-search {
+  background-color: #f0efee !important;
+  color: #6c75d !important;
+  border: 1px solid black !important;
+  padding: 0.375rem 0.75rem !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.btn-back-to-search:hover {
+  background-color: #f0efee !important;
+  color: #6c75d !important;
+  border: 1px solid #5b0013 !important;
+  outline: 0.2rem solid #5b0013 !important;
+  outline-offset: 0.1rem !important;
+}
+
+.btn-back-to-search:focus {
+  background-color: #f0efee !important;
+  color: #6c75d !important;
+  border: 1px solid black !important;
+  box-shadow: 0 0 0 0.2rem rgba(108, 117, 221, 0.25) !important;
+  outline: none !important;
+}

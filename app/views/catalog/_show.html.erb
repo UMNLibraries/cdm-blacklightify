@@ -1,19 +1,29 @@
-<!-- Viewer -->
-<div data-viewer-type="<%=document._source['viewer_type_ssi']&.downcase || 'default'%>">
-  <% case document._source['viewer_type_ssi']&.downcase %>
-    <% when 'image' %>
-      <%= render partial: 'viewers/uv_image', locals: { document: document } %>
-    <% when 'kaltura_audio' %>
-      <%= render partial: 'viewers/uv_audio', locals: { document: document } %>
-    <% when 'kaltura_video' %>
-      <%= render partial: 'viewers/uv_video', locals: { document: document } %>
-    <% when 'kaltura_audio_playlist' %>
-      <%= render partial: 'viewers/uv_audio_playlist', locals: { document: document } %>
-    <% else %>
-      <!-- Default to IIIF manifest viewer when viewer_type is missing or unknown -->
-      <%= render partial: 'viewers/uv_iiif_manifest', locals: { document: document } %>
-  <% end %>
+<!-- Navigation buttons: Back to search, Start over -->
+<div class="constraints-container">
+  <%= link_to "Start over", search_action_path({}), class: "btn btn-primary" %>
+  <%= link_to "Back to search", search_action_path(search_session), class: "btn btn-back-to-search" %>
 </div>
+
+<!-- Viewer (only rendered if manifest is available) -->
+<% if cdm_manifest_available?(document.id) %>
+  <% begin %>
+    <% case document._source['viewer_type_ssi']&.downcase %>
+      <% when 'image' %>
+        <%= render partial: 'viewers/uv_image', locals: { document: document } %>
+      <% when 'kaltura_audio' %>
+        <%= render partial: 'viewers/uv_audio', locals: { document: document } %>
+      <% when 'kaltura_video' %>
+        <%= render partial: 'viewers/uv_video', locals: { document: document } %>
+      <% when 'kaltura_audio_playlist' %>
+        <%= render partial: 'viewers/uv_audio_playlist', locals: { document: document } %>
+      <% else %>
+        <!-- Default to IIIF manifest viewer when viewer_type is missing or unknown -->
+        <%= render partial: 'viewers/uv_iiif_manifest', locals: { document: document } %>
+    <% end %>
+  <% rescue => e %>
+    <!-- Silently skip viewer if it fails -->
+  <% end %>
+<% end %>
 
 <!-- presentation mode link -->
 <div class="d-flex justify-content-center mb-3 mt-2" id="fullscreen-link">
