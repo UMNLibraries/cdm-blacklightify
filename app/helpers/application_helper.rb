@@ -54,4 +54,28 @@ module ApplicationHelper
       solr_document_path(doc_id, **options)
     end
   end
+
+  ##
+  # Check if a CDM IIIF manifest is accessible
+  def cdm_manifest_available?(doc_id)
+    manifest_url = "https://cdm16022.contentdm.oclc.org/iiif/2/#{doc_id}/manifest.json"
+    begin
+      response = Net::HTTP.get_response(URI(manifest_url))
+      response.is_a?(Net::HTTPSuccess)
+    rescue StandardError
+      false
+    end
+  end
+
+  ##
+  # Check if a local IIIF manifest is accessible
+  def local_manifest_available?(doc_id)
+    manifest_url = "/iiif/#{doc_id}/text/manifest.json"
+    begin
+      response = Net::HTTP.get_response(URI("http://localhost:3000#{manifest_url}"))
+      response.is_a?(Net::HTTPSuccess)
+    rescue StandardError
+      false
+    end
+  end
 end
