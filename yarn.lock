@@ -1687,8 +1687,8 @@
     "@sinonjs/commons" "^3.0.0"
 
 "@tootallnate/once@2":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@tootallnate/once/-/once-2.0.0.tgz"
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-2.0.1.tgz#35adc6222e3662fa2222ce123b961476a746b9ea"
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
