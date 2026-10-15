@@ -74,7 +74,12 @@ class CatalogController < ApplicationController
       fl: '*',
       hl: true,
       'hl.method': 'original',
-      'hl.fl': 'collection_* format_* subject title ',
+      'hl.fl': ['collection_*', 'format_*', 'subject', 'title', 'transcription'],
+      'hl.requireFieldMatch': true,
+      'hl.fragsize': 120,
+      'hl.snippets': 3,
+      'f.transcription.hl.fragsize': 120,
+      'f.transcription.hl.snippets': 3,
       'hl.preserveMulti': false,
       'hl.simple.pre': '<span style=\'background-color: #ffde7a\'>',
       'hl.simple.post': '</span>'
@@ -167,6 +172,9 @@ class CatalogController < ApplicationController
     config.add_facet_field 'region_ssim', label: 'Region', collapse: true
     config.add_facet_field 'continent_ssim', label: 'Continent', collapse: true
 
+    # tranascription field
+    config.add_facet_field 'transcription', label: 'Transcription', limit: 4, collapse: true, show: false
+
     # SEARCH RESULTS FIELDS
     config.add_index_field 'title', label: 'Title', highlight: true
     # Collection / collection_name
@@ -184,6 +192,19 @@ class CatalogController < ApplicationController
                                       separator_options: { two_words_connector: '; ', words_connector: '; ', last_word_connector: '; ' }
     # Thumbnails - A helper method that looks for attached image from solr_document_sidecar
     config.index.thumbnail_method = :thumbnail
+
+    # Show Solr highlight snippets for search hits; avoid rendering full transcript blocks on SERP fallback.
+    config.add_index_field 'transcription',
+                           label: 'Transcription',
+                           limit: 4,
+                           collapse: true,
+                           highlight: true,
+                           values: lambda { |_field, document, view_context|
+                             # Only show transcription when Solr returned highlight fragments.
+                             # If no query is present, or query matched only metadata fields,
+                             # do not show transcription in results.
+                             next nil
+                           }
 
     # ITEM PAGE VIEW FIELDS
     # Build out all item level show fields
