@@ -1,6 +1,8 @@
 class IiifAvManifestService
   include KalturaHelper
 
+  PRESENTATION_CONTEXT = 'http://iiif.io/api/presentation/3/context.json'.freeze
+
   def initialize(id)
     @id = id
     @document = SolrDocument.find(id)
@@ -14,18 +16,16 @@ class IiifAvManifestService
 
   def manifest
     {
-      'context' => 'http://iiif.io/api/presentation/2/context.json',
-      '@id' => @document[:object], 
-      '@type' => 'sc:Manifest',
-      'label' => @document[:title], 
+      '@context' => PRESENTATION_CONTEXT,
+      'id' => manifest_id,
+      'type' => 'Manifest',
+      'label' => language_map(@document[:title]),
       'metadata' => metadata.compact,
-      'attribution' => attribution,
-      'sequences' => [{
-        '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/sequence/s0',
-        '@type' => 'sc:Sequence',
-        'canvases' => canvases
-      }]
-    }
+      'requiredStatement' => required_statement,
+      'items' => canvases
+    }.tap do |hsh|
+      hsh['rights'] = @document[:rights_statement_uri] if @document[:rights_statement_uri].present?
+    end
   end
 
   def metadata
@@ -116,14 +116,20 @@ class IiifAvManifestService
     }]
 
     meta.map do |field|
-      field[:value].blank? ? nil : field
-   end
+      next if field[:value].blank?
+
+      {
+        'label' => language_map(field[:label]),
+        'value' => language_map(field[:value])
+      }
+    end
   end
 
-  def attribution
-    [ 
-      '', @document[:local_rights] ? @document[:local_rights] : rights_statement
-    ]
+  def required_statement
+    {
+      'label' => language_map('Attribution'),
+      'value' => language_map(@document[:local_rights].presence || rights_statement)
+    }
   end
 
   def rights_statement
@@ -131,43 +137,60 @@ class IiifAvManifestService
   end
 
   def duration_to_float
-    @document[:dimensions] ? Time.parse(@document[:dimensions]).seconds_since_midnight : ''
+    @document[:dimensions] ? Time.parse(@document[:dimensions]).seconds_since_midnight : nil
   end
 
   def field_selector
     @document[:kaltura_audio] ? @document[:kaltura_audio] : @document[:kaltura_video]
   end
 
-  def type_selector
-    @document[:kaltura_audio] ? 
-      kaltura_audio_playmanifest_url(@document[:kaltura_audio]) : 
-      kaltura_video_playmanifest_url(@document[:kaltura_video])
+  def manifest_id
+    "https://cdm16022.contentdm.oclc.org/iiif/#{@id}/av/manifest.json"
+  end
+
+  def media_type
+    @document[:kaltura_audio] ? 'Sound' : 'Video'
+  end
+
+  def media_format
+    @document[:kaltura_audio] ? 'audio/mp4' : 'video/mp4'
+  end
+
+  def language_map(value)
+    values = Array.wrap(value).flatten.compact.map(&:to_s).map(&:strip).reject(&:blank?)
+    return nil if values.empty?
+
+    { 'en' => values }
   end
 
   def canvases
-    arr = field_selector.split(';')
+    arr = field_selector.to_s.split(';').map(&:strip).reject(&:blank?)
 
     arr.map.with_index do |asset, index|
+      canvas_id = "https://cdm16022.contentdm.oclc.org/iiif/#{@id}/canvas/c#{index}"
+      annotation_id = "https://cdm16022.contentdm.oclc.org/iiif/#{@id}/annotation/a#{index}"
       {
-        '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + "/canvas/c#{index}",
-        '@type' => 'sc:Canvas' ,
-        'label' => @document[:title],
+        'id' => canvas_id,
+        'type' => 'Canvas',
+        'label' => language_map(@document[:title]),
+        'duration' => duration_to_float,
         'items' => [{
-          'id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + "/page/p#{index}",
+          'id' => "https://cdm16022.contentdm.oclc.org/iiif/#{@id}/page/p#{index}",
           'type' => 'AnnotationPage',
           'items' => [{
-            'id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + "/annotation/a#{index}",
+            'id' => annotation_id,
             'type' => 'Annotation',
             'motivation' => 'painting',
             'body' => {
               'id' => @document[:kaltura_audio] ? kaltura_audio_playmanifest_url(asset) : kaltura_video_playmanifest_url(asset),
-              'type' => 'video',
-              'format' => 'video/mp4',
+              'type' => media_type,
+              'format' => media_format,
               'duration' => duration_to_float
-            }
+            }.compact,
+            'target' => canvas_id
           }]
         }]
-      }
+      }.compact
     end
   end
 end
