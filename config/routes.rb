@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   root to: 'spotlight/exhibits#index'
 
+  # CORS proxy for IIIF manifests (development)
+  get '/manifests/cdm/:id', to: 'manifests#cdm', constraints: { id: /[^\/]+/ }
+
   # Spotlight transcript requests - redirect to main catalog transcript endpoint
   get '/spotlight/:exhibit_id/catalog/:id/transcript', 
       constraints: { id: /[^\/]+/ }, 

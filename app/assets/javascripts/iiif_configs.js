@@ -65,7 +65,10 @@ function iiifImageConfig(doc) {
   }
 
   function uvImageConfig() {
-    const manifestUrl = `https://cdm16022.contentdm.oclc.org/iiif/2/${docId}/manifest.json`;
+    // Use CORS proxy in development/localhost, direct URL in production
+    const manifestUrl = window.location.hostname === 'localhost' 
+      ? `/manifests/cdm/${docId}` 
+      : `https://cdm16022.contentdm.oclc.org/iiif/2/${docId}/manifest.json`;
     
     // Test manifest availability before initializing UV
     fetch(manifestUrl, { method: 'HEAD' })
