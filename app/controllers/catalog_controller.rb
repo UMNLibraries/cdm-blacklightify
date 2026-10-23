@@ -74,7 +74,12 @@ class CatalogController < ApplicationController
       fl: '*',
       hl: true,
       'hl.method': 'original',
-      'hl.fl': 'collection_* format_* subject title ',
+      'hl.fl': ['collection_*', 'format_*', 'subject', 'title', 'transcription'],
+      'hl.requireFieldMatch': true,
+      'hl.fragsize': 120,
+      'hl.snippets': 3,
+      'f.transcription.hl.fragsize': 120,
+      'f.transcription.hl.snippets': 3,
       'hl.preserveMulti': false,
       'hl.simple.pre': '<span style=\'background-color: #ffde7a\'>',
       'hl.simple.post': '</span>'
@@ -98,8 +103,19 @@ class CatalogController < ApplicationController
     config.add_search_field('subject') do |field|
       field.query_parameters = { 'spellcheck.dictionary': 'subject' }
       field.query_local_parameters = {
-        qf: 'subject_ssm'
+        qf: 'subject_ssim'
       },
+      field.solr_parameters = {
+        fq: 'record_type:primary'
+      }
+    end
+
+    # Set Spec search field - for searching within a specific collection
+    # Only visible when user is browsing a collection (controlled via JavaScript)
+    config.add_search_field('set_spec', label: 'Collection') do |field|
+      field.query_local_parameters = {
+        qf: 'set_spec'
+      }
       field.solr_parameters = {
         fq: 'record_type:primary'
       }
@@ -118,6 +134,8 @@ class CatalogController < ApplicationController
 
     # add facet field to allow Blacklight to pass the intended search parameters to Solr. field matches config.iiif_search object_relation_field above
     config.add_facet_field 'parent_id', include_in_request: false
+    # Set spec facet field for collection filtering in Spotlight
+    config.add_facet_field 'set_spec', include_in_request: false
 
     # SERP / RESULTS PAGE
     # Format / format_name
@@ -154,6 +172,9 @@ class CatalogController < ApplicationController
     config.add_facet_field 'region_ssim', label: 'Region', collapse: true
     config.add_facet_field 'continent_ssim', label: 'Continent', collapse: true
 
+    # tranascription field
+    config.add_facet_field 'transcription', label: 'Transcription', limit: 4, collapse: true, show: false
+
     # SEARCH RESULTS FIELDS
     config.add_index_field 'title', label: 'Title', highlight: true
     # Collection / collection_name
@@ -165,12 +186,25 @@ class CatalogController < ApplicationController
     # Description
     config.add_index_field 'description', label: 'Description', highlight: true
     # Subject / subject
-    config.add_index_field 'subject_ssm', label: 'Subjects', link_to_facet: true, highlight: true,
+    config.add_index_field 'subject_ssim', label: 'Subjects', link_to_facet: true, highlight: true,
                                       separator_options: { two_words_connector: '; ', words_connector: '; ', last_word_connector: '; ' }
     config.add_index_field 'subject_fast_ssim', label: 'FAST Subject Headings', link_to_facet: true, highlight: true,
                                       separator_options: { two_words_connector: '; ', words_connector: '; ', last_word_connector: '; ' }
     # Thumbnails - A helper method that looks for attached image from solr_document_sidecar
     config.index.thumbnail_method = :thumbnail
+
+    # Show Solr highlight snippets for search hits; avoid rendering full transcript blocks on SERP fallback.
+    config.add_index_field 'transcription',
+                           label: 'Transcription',
+                           limit: 4,
+                           collapse: true,
+                           highlight: true,
+                           values: lambda { |_field, document, view_context|
+                             # Only show transcription when Solr returned highlight fragments.
+                             # If no query is present, or query matched only metadata fields,
+                             # do not show transcription in results.
+                             next nil
+                           }
 
     # ITEM PAGE VIEW FIELDS
     # Build out all item level show fields
@@ -234,5 +268,22 @@ class CatalogController < ApplicationController
   # Allow the language parameter in controller actions
   def permit_language
     params.permit(:language)
+  end
+
+  def collection_name_from_set_spec
+    set_spec = params[:set_spec]
+    
+    if set_spec.blank?
+      render json: { error: 'set_spec parameter is required' }, status: :bad_request
+      return
+    end
+
+    collection_name = CollectionNameResolver.new(set_spec).resolve
+    
+    if collection_name.present?
+      render json: { collection_name_s: collection_name }
+    else
+      render json: { error: 'Collection not found' }, status: :not_found
+    end
   end
 end

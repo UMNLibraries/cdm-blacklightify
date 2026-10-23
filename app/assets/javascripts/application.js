@@ -18,3 +18,6 @@
 // this:
 //= require 'blacklight_range_limit'
 
+// Browse facet scope preservation - appends collection ID to facet URLs
+//= require 'browse_facet_scope'
+

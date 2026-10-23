@@ -116,7 +116,7 @@ namespace :deploy do
   task :universal_viewer do
     on roles(:app) do
       within release_path do
-        execute './prep_uv.sh'
+        execute './bin/prep_uv.sh'
       end
     end
   end

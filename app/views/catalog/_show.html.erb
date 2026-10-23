@@ -25,21 +25,21 @@
   <% end %>
 <% end %>
 
-<!-- presentation mode link -->
-<div class="d-flex justify-content-center mb-3 mt-2" id="fullscreen-link">
-  <%= link_to "Link to fullscreen", context_aware_solr_document_path(document, fullscreen: true) %>
-</div>
-
-<!-- content notice-->
-<div class="my-4" id="content-notice">
-  <a href=""><b>Contact us about this resource</b></a>. 
-</div>
-
 <!-- More Like This Component -->
 <%= render(Umedia::Document::MoreLikeThisComponent.new(document: document)) %>
 
 <div id="item-content" class="row">
   <div class="col-lg-9">
+    <!-- presentation mode link -->
+    <div class="d-flex justify-content-center mb-3 mt-2" id="fullscreen-link">
+      <%= link_to "Link to fullscreen", context_aware_solr_document_path(document, fullscreen: true) %>
+    </div>
+
+    <!-- content notice-->
+    <div class="my-4" id="content-notice">
+      <a href=""><b>Contact us about this resource</b></a>. 
+    </div>
+
     <!-- Metadata Fields -->
     <% doc_presenter = document_presenter(document) %>
     <div>

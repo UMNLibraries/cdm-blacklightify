@@ -14,20 +14,19 @@ class OclcSubjectFastService
 
     begin
       url = @id + '.rdf.xml'
-      doc = Nokogiri::XML(URI.open(url))
+      doc = Nokogiri::XML(URI.open(url, open_timeout: 3, read_timeout: 3))
       term = doc.xpath("//skos:prefLabel").collect(&:text)[0]
+      term = @id if term.blank?
       
       # Cache the result for 24 hours
       Rails.cache.write(cache_key, term, expires_in: 24.hours)
       
       term
-    # if uri returns 404 (may not be necessary)
-    rescue OpenURI::HTTPError => e
-      if e.message.include?('404')
-        e.message
-      else
-        raise e
-      end
+    rescue OpenURI::HTTPError, SocketError, Timeout::Error, Errno::ECONNREFUSED, Errno::ECONNRESET => e
+      Rails.logger.warn("[OclcSubjectFastService] FAST lookup failed for #{@id}: #{e.class} #{e.message}")
+      # Fail gracefully to avoid breaking result rendering when FAST endpoint is unavailable.
+      Rails.cache.write(cache_key, @id, expires_in: 1.hour)
+      @id
     end
   end
 

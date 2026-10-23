@@ -135,7 +135,7 @@ dl {
   -webkit-box-orient: vertical;
 }
 // serp description, subject text truncation. does not affect item page
-.document-metadata .blacklight-description, .blacklight-subject_ssm {
+.document-metadata .blacklight-description, .blacklight-subject_ssm,.blacklight-subject_ssim .blacklight-subject_fast_ssim {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;

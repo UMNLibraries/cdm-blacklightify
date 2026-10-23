@@ -13,6 +13,7 @@ Spotlight::Exhibit.destroy_all
 Spotlight::BlacklightConfiguration.destroy_all
 Spotlight::FeaturedImage.destroy_all
 Spotlight::Search.destroy_all
+ActsAsTaggableOn::Tagging.delete_all
 
 # 01 EXHIBITS
 CSV.foreach('db/seeds/seed_spotlight_exhibits.csv', headers: true) do |row|
@@ -72,7 +73,10 @@ CSV.foreach('db/seeds/seed_tags.csv', headers: true, liberal_parsing: true) do |
 end
 
 CSV.foreach('db/seeds/seed_taggings.csv', headers: true, liberal_parsing: true) do |row|
-  ActsAsTaggableOn::Tagging.find_or_create_by(
+  next if row['id'].blank?
+  
+  ActsAsTaggableOn::Tagging.create(
+    id: row['id'].to_i,
     tag_id: row['tag_id'],
     taggable_id: row['taggable_id'],
     taggable_type: row['taggable_type'],
