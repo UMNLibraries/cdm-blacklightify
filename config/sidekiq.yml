@@ -1,3 +1,4 @@
+:url: redis://127.0.0.1:63799/0
 :concurrency:  5
 :max_retries: 25
 
