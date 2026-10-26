@@ -4,10 +4,12 @@
   <%= link_to "Back to search", search_action_path(search_session), class: "btn btn-back-to-search" %>
 </div>
 
-<!-- Viewer (only rendered if manifest is available) -->
-<% if cdm_manifest_available?(document.id) %>
+<!-- Viewer (render if manifest available OR if it's a Kaltura media item) -->
+<% viewer_type = document._source['viewer_type_ssi']&.downcase %>
+<% is_kaltura_media = ['kaltura_audio', 'kaltura_video', 'kaltura_audio_playlist'].include?(viewer_type) %>
+<% if cdm_manifest_available?(document.id) || is_kaltura_media %>
   <% begin %>
-    <% case document._source['viewer_type_ssi']&.downcase %>
+    <% case viewer_type %>
       <% when 'image' %>
         <%= render partial: 'viewers/uv_image', locals: { document: document } %>
       <% when 'kaltura_audio' %>
