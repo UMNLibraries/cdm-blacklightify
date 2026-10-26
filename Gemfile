@@ -131,6 +131,7 @@ gem 'rinku'
 gem 'kaltura-client', '17.5.0'
 
 gem 'rails-controller-testing'
+gem 'concurrent-ruby', '1.3.4'
 
 gem 'capistrano'
 gem 'capistrano-rails'
