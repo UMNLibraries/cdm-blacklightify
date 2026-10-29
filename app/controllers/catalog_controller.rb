@@ -146,7 +146,7 @@ class CatalogController < ApplicationController
                                                   item_presenter: Blacklight::SubjectFastFacetItemPresenter
 
     # Created / date_created
-    config.add_facet_field 'date_created', label: 'Date created', limit: 4, collapse: false
+    config.add_facet_field 'date_created_ssim', label: 'Date created', limit: 4, collapse: false
     # Collection / collection_name
     config.add_facet_field 'collection_name_s', label: 'Collections', limit: 4, collapse: true
     # Language / language
