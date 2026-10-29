@@ -80,6 +80,18 @@ module Spotlight
       if options.is_a?(Hash) && options[:controller] == 'transcript' && options[:id].present?
         return "/catalog/#{options[:id]}/transcript"
       end
+      
+      # Extract document ID if :id contains a SolrDocument or presenter object
+      if options.is_a?(Hash) && options[:id].present?
+        if options[:id].is_a?(SolrDocument)
+          options = options.dup
+          options[:id] = options[:id].id
+        elsif options[:id].respond_to?(:id) && !options[:id].is_a?(String) && !options[:id].is_a?(Integer)
+          options = options.dup
+          options[:id] = options[:id].id
+        end
+      end
+      
       super
     end
 
