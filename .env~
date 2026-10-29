@@ -28,14 +28,17 @@ CDM_ENDPOINT=https://server16022.contentdm.oclc.org/dmwebservices/index.php
 IIIF_URL=https://cdm16022.contentdm.oclc.org/iiif/2/
 
 # Kaltura
-KALTURA_PARTNER_ID=<kaltura partner id>
-KALTURA_SESSION=<rake kaltura:generate_token>
+KALTURA_URL=https://cdnapisec.kaltura.com
+KALTURA_PARTNER_ID=1369852
+KALTURA_SUB_PARTNER_ID=136985200
+# KALTURA_SESSION=djJ8MTM2OTg1MnyXPaTi10RL2_pp__PrLgBCQxQvG4KxC-XIqziYWJMY0pIz8\
+AOyXmouEOFz_gNY-swwgGpv1Q0ridQhBVphx8LeI9d1jtkWF8T5_sGbl6GrHw==
 # Kaltura player uiconfid parameters
-KALTURA_PLAYER_UICONF_ID_SINGLE=<normal player uiconfid>
-KALTURA_PLAYER_UICONF_ID_COMPOUND=<playlist player uiconfid>
+# KALTURA_PLAYER_UICONF_ID_SINGLE=38708801
+KALTURA_PLAYER_UICONF_ID_SINGLE=54071352
+KALTURA_PLAYER_UICONF_ID_COMPOUND=38719361
 
-# MySQL database details (production, live servers)
-MYSQL_DATABASE_HOST=localhost
+MYSQL_DATABASE_NAME=""
 MYSQL_DATABASE_USER=""
 MYSQL_DATABASE_PASS=""
-MYSQL_DATABASE_NAME="umedia_development"
+MYSQL_DATABASE_HOST=""

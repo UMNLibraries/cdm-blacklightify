@@ -42,7 +42,7 @@ module ApplicationHelper
   # If in Spotlight, returns /spotlight/:exhibit_id/catalog/:id
   # Otherwise returns /catalog/:id
   def context_aware_solr_document_path(document = nil, **options)
-    doc_id = document.is_a?(SolrDocument) ? document.id : document
+    doc_id = extract_document_id(document)
     
     if params[:exhibit_id].present?
       # In Spotlight context, build the path directly
@@ -101,5 +101,23 @@ module ApplicationHelper
     end
 
     transformed_params
+  end
+
+  private
+
+  # Extract document ID from various object types
+  # Handles: SolrDocument, presenter objects, strings, and scalar IDs
+  def extract_document_id(document)
+    case document
+    when SolrDocument
+      document.id
+    when String, Integer
+      document
+    when nil
+      nil
+    else
+      # Handle presenter objects or other objects with .id method
+      document.respond_to?(:id) ? document.id : document.to_s
+    end
   end
 end

@@ -135,7 +135,7 @@ gem 'concurrent-ruby', '1.3.4'
 
 gem 'capistrano'
 gem 'capistrano-rails'
-# gem 'capistrano-template', git: 'https://github.com/UMNLibraries/capistrano-template-ruby3', branch: 'main'
+gem 'capistrano-template', git: 'https://github.com/UMNLibraries/capistrano-template-ruby3', branch: 'main'
 gem 'capistrano-bundler'
 #gem 'capistrano-maintenance'
 gem 'capistrano-yarn'
