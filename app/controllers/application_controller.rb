@@ -14,6 +14,23 @@ class ApplicationController < ActionController::Base
   end
 
   layout :determine_layout if respond_to? :layout
+
+  # Override url_for to extract document IDs from SolrDocument or presenter objects
+  # This prevents routing errors when Spotlight or other code passes full objects
+  # as :id parameters instead of scalar document IDs
+  def url_for(options = {})
+    if options.is_a?(Hash) && options[:id].present?
+      if options[:id].is_a?(SolrDocument)
+        options = options.dup
+        options[:id] = options[:id].id
+      elsif options[:id].respond_to?(:id) && !options[:id].is_a?(String) && !options[:id].is_a?(Integer)
+        options = options.dup
+        options[:id] = options[:id].id
+      end
+    end
+    
+    super(options)
+  end
     # Permit language= param to be passed and check against defined I18n locales
     # Enables switching locale per page view with ease, for metadata records
     # that support alternate languages
