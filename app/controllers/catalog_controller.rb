@@ -145,8 +145,18 @@ class CatalogController < ApplicationController
     config.add_facet_field 'subject_fast_ssim', label: 'FAST Subject Headings', limit: 4, collapse: false,
                                                   item_presenter: Blacklight::SubjectFastFacetItemPresenter
 
-    # Created / date_created
-    config.add_facet_field 'date_created_ssim', label: 'Date created', limit: 4, collapse: false
+    # Created / date_created (baseline range facet configuration)
+    config.add_facet_field 'date_created_ssim',
+                           label: 'Date created',
+                           collapse: false,
+                           range: true,
+                           range_config: {
+                             num_segments: 8,
+                             assumed_boundaries: [1800, Time.now.year + 2],
+                             textual_facets: true,
+                             chart_js: true,
+                             show_missing_link: false
+                           }
     # Collection / collection_name
     config.add_facet_field 'collection_name_s', label: 'Collections', limit: 4, collapse: true
     # Language / language
