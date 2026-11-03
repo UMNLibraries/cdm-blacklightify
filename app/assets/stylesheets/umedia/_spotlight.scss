@@ -11,8 +11,8 @@
 }
 
 #spotlight {
-  padding-top: 1rem;
-  padding-bottom: 1.25rem;
+  // padding-top: 1rem;
+  // padding-bottom: 1.25rem;
   // hiding this nav for now, but may want to use it later
   #published .nav {
     display: none;
@@ -44,6 +44,11 @@
     grid-gap: 0;
     .col-md-3 {
       padding: 0;
+    }
+  }
+  .browse-landing {
+    .img-responsive {
+      opacity: 0.4;
     }
   }
   // # redundant, but needed for exhibit cards on main page, review and refactor

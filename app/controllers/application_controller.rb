@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   if respond_to?(:helper_method)
     # Expose these to layouts/partials that need query-aware Spotlight metadata.
-    helper_method :current_locale, :set_spec_query_token, :spotlight_search_title, :spotlight_search_long_description
+    helper_method :current_locale, :set_spec_query_token, :spotlight_search_title, :spotlight_search_long_description, :collection_name_from_set_spec
   end
 
   layout :determine_layout if respond_to? :layout
@@ -56,5 +56,30 @@ class ApplicationController < ActionController::Base
         .pick(:title, :long_description)
 
       @spotlight_search_context = row ? { title: row[0], long_description: row[1] } : nil
+    end
+
+    def collection_name_from_set_spec(set_spec)
+      return nil if set_spec.blank?
+
+      require 'net/http'
+      require 'json'
+
+      solr_url = ENV.fetch('SOLR_URL', 'http://localhost:8983/solr/blacklight-core')
+      uri = URI("#{solr_url}/select")
+      uri.query = URI.encode_www_form(
+        q: "set_spec:#{set_spec}",
+        fl: 'collection_name_s',
+        rows: 1,
+        wt: 'json'
+      )
+
+      begin
+        response = Net::HTTP.get(uri)
+        data = JSON.parse(response)
+        data.dig('response', 'docs', 0, 'collection_name_s')
+      rescue StandardError => e
+        Rails.logger.error("Error querying Solr for collection_name_s: #{e.message}")
+        nil
+      end
     end
 end

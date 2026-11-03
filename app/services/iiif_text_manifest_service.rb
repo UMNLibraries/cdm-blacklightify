@@ -1,4 +1,6 @@
 class IiifTextManifestService
+  PRESENTATION_CONTEXT = 'http://iiif.io/api/presentation/3/context.json'.freeze
+
   def initialize(id)
     @id = id
     @document = SolrDocument.find(id)
@@ -19,24 +21,20 @@ class IiifTextManifestService
 
   def manifest
     {
-      'context' => 'http://iiif.io/api/presentation/2/context.json',
-      '@id' => @document[:object],
-      '@type' => 'sc:Manifest',
-      'label' => @document[:title],
+      '@context' => PRESENTATION_CONTEXT,
+      'id' => manifest_id,
+      'type' => 'Manifest',
+      'label' => language_map(@document[:title]),
       'metadata' => metadata.compact,
-      'attribution' => attribution,
-      'sequences' => is_pdf,
-      'structures' => [{
-        '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/range/r0',
-        '@type' => 'sc:Range',
-        'label' => @document[:title],
-        'ranges' => cdm_manifest['structures'][0]['ranges'],
-        'canvases' => cdm_manifest['structures'][0]['canvases'],
-      }],
-      'service' => searcher,
-      # needs to be outside structures to work appropriately . . .
-      'viewingHint' => 'paged'
-    }
+      'requiredStatement' => required_statement,
+      'items' => items,
+      'behavior' => ['paged'],
+      'service' => searcher
+    }.tap do |hsh|
+      hsh['rights'] = @document[:rights_statement_uri] if @document[:rights_statement_uri].present?
+      hsh['rendering'] = rendering_property if rendering_property.any?
+      hsh['structures'] = structures if structures.any?
+    end
   end
 
   def metadata
@@ -186,14 +184,20 @@ class IiifTextManifestService
     }]
 
     meta.map do |field|
-      field[:value].blank? ? nil : field
-   end
+      next if field[:value].blank?
+
+      {
+        'label' => language_map(field[:label]),
+        'value' => language_map(field[:value])
+      }
+    end
   end
 
-  def attribution
-    [ 
-      '', @document[:local_rights] ? @document[:local_rights] : rights_statement
-    ]
+  def required_statement
+    {
+      'label' => language_map('Attribution'),
+      'value' => language_map(@document[:local_rights].presence || rights_statement)
+    }
   end
 
   def rights_statement
@@ -201,7 +205,7 @@ class IiifTextManifestService
   end
 
   def rendering_download_path_image_dimensions
-    width, height = cdm_manifest['sequences'][0]['canvases'][0]['width'], cdm_manifest['sequences'][0]['canvases'][0]['height']
+    [v2_canvases.first&.fetch('width', nil), v2_canvases.first&.fetch('height', nil)]
   end
 
   def rendering_download_path
@@ -222,68 +226,155 @@ class IiifTextManifestService
 
   def rendering_property
     [{
-        '@id' => rendering_download_path,
-        'label' => rendering_label,
-        'format' => rendering_format_type
-      }]
-  end
-
-  # pdf support . . .
-  def mediaSequences
-    [{
-      "@type": "ixif:MediaSequence",
-      "label": "Contents",
-      "elements": [
-        {
-          "@id": "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{@id.split(':')[0]}/id/#{@id.split(':')[1]}",
-          "format": "application/pdf",
-          "@type": "foaf:Document",
-          "label" => @document[:title],
-          "rendering": [
-            {
-              "@id": "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{@id.split(':')[0]}/id/#{@id.split(':')[1]}",
-              "format": "application/pdf",
-            }
-          ],
-          "thumbnail": "#{ENV.fetch('RAILS_BASEURL', 'https://umedia.lib.umn.edu')}/static/umedia-icon-pdf.png"
-        }
-      ]
+      'id' => rendering_download_path,
+      'type' => rendering_format_type == 'application/pdf' ? 'Text' : 'Image',
+      'label' => language_map(rendering_label),
+      'format' => rendering_format_type
     }]
   end
 
-  def sequences
-    [{
-      '@id' => 'https://cdm16022.contentdm.oclc.org/iiif/' + @id + '/sequence/s0',
-      '@type' => 'sc:Sequence',
-      'label' => @document[:title],
-      'rendering' => rendering_property,
-      'canvases' => canvases
-    }]
+  def manifest_id
+    "https://cdm16022.contentdm.oclc.org/iiif/#{@id}/text/manifest.json"
   end
 
-  def is_pdf
-    # determine if pdf ("viewer_type": "pdf") . . .
-    @document[:first_viewer_type] == "pdf" ? mediaSequences : sequences
+  def language_map(value)
+    values = Array.wrap(value).flatten.compact.map(&:to_s).map(&:strip).reject(&:blank?)
+    return nil if values.empty?
+
+    { 'en' => values }
   end
 
-  def canvases
-    cdm_manifest['sequences'][0]['canvases']
-  end
-  
-  def structures
-    cdm_manifest['structures']
+  def pdf?
+    @document[:first_viewer_type] == 'pdf'
   end
 
-  def searcher
+  def items
+    pdf? ? [pdf_canvas] : canvases
+  end
+
+  def pdf_canvas
+    canvas_id = "https://cdm16022.contentdm.oclc.org/iiif/#{@id}/canvas/c0"
     {
-      '@content' => "http://iiif.io/api/search/0/context.json",
-      '@id' => query_constructor,
-      'profile' => "http://iiif.io/api/search/0/search",
-      'label' => "Search within this item"
+      'id' => canvas_id,
+      'type' => 'Canvas',
+      'label' => language_map(@document[:title]),
+      'items' => [{
+        'id' => "https://cdm16022.contentdm.oclc.org/iiif/#{@id}/page/p0",
+        'type' => 'AnnotationPage',
+        'items' => [{
+          'id' => "https://cdm16022.contentdm.oclc.org/iiif/#{@id}/annotation/a0",
+          'type' => 'Annotation',
+          'motivation' => 'painting',
+          'target' => canvas_id,
+          'body' => {
+            'id' => "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{@id.split(':')[0]}/id/#{@id.split(':')[1]}",
+            'type' => 'Text',
+            'format' => 'application/pdf'
+          }
+        }]
+      }],
+      'thumbnail' => [{
+        'id' => "#{ENV.fetch('RAILS_BASEURL', 'https://umedia.lib.umn.edu')}/static/umedia-icon-pdf.png",
+        'type' => 'Image',
+        'format' => 'image/png'
+      }]
     }
   end
 
+  def v2_canvases
+    cdm_manifest.dig('sequences', 0, 'canvases') || []
+  end
+
+  def canvases
+    v2_canvases.map.with_index do |canvas, index|
+      canvas_id = canvas['@id'] || "https://cdm16022.contentdm.oclc.org/iiif/#{@id}/canvas/c#{index}"
+      annotation = canvas.dig('images', 0) || {}
+      resource = annotation['resource'] || {}
+      service = resource['service'] || {}
+      width = canvas['width'] || resource['width']
+      height = canvas['height'] || resource['height']
+      annotation_body = {
+        'id' => resource['@id'] || resource['id'],
+        'type' => 'Image',
+        'format' => resource['format'] || 'image/jpeg',
+        'width' => resource['width'],
+        'height' => resource['height']
+      }.compact
+
+      if service.present?
+        annotation_body['service'] = [{
+          'id' => service['@id'] || service['id'],
+          'type' => 'ImageService2',
+          'profile' => service['profile']
+        }.compact]
+      end
+
+      {
+        'id' => canvas_id,
+        'type' => 'Canvas',
+        'label' => language_map(canvas['label'] || @document[:title]),
+        'height' => height,
+        'width' => width,
+        'items' => [{
+          'id' => "https://cdm16022.contentdm.oclc.org/iiif/#{@id}/page/p#{index}",
+          'type' => 'AnnotationPage',
+          'items' => [{
+            'id' => "https://cdm16022.contentdm.oclc.org/iiif/#{@id}/annotation/a#{index}",
+            'type' => 'Annotation',
+            'motivation' => 'painting',
+            'target' => canvas_id,
+            'body' => annotation_body
+          }]
+        }],
+        'thumbnail' => [{
+          'id' => resource['@id'] || resource['id'],
+          'type' => 'Image',
+          'format' => resource['format'] || 'image/jpeg'
+        }].compact
+      }.compact
+    end
+  end
+
+  def structures
+    canvas_references = structures_source.flat_map do |structure|
+      Array.wrap(structure['canvases'])
+    end.compact
+
+    return [] if canvas_references.empty?
+
+    [{
+      'id' => "https://cdm16022.contentdm.oclc.org/iiif/#{@id}/range/r0",
+      'type' => 'Range',
+      'label' => language_map(@document[:title]),
+      'items' => canvas_references.map do |canvas_id|
+        {
+          'id' => canvas_id,
+          'type' => 'Canvas'
+        }
+      end
+    }]
+  end
+
+  def structures_source
+    cdm_manifest['structures'] || []
+  end
+
+  def searcher
+    [{
+      'id' => query_constructor,
+      'type' => 'SearchService1',
+      'profile' => 'http://iiif.io/api/search/1/search',
+      'label' => language_map('Search within this item'),
+      'service' => [{
+        'id' => "#{query_constructor}/autocomplete",
+        'type' => 'AutoCompleteService1',
+        'profile' => 'http://iiif.io/api/search/1/autocomplete',
+        'label' => language_map('Autocomplete terms')
+      }]
+    }]
+  end
+
   def query_constructor
-    "#{ENV['RAILS_BASE_URL']}/catalog/#{@document[:id]}/iiif_search"
+    "#{ENV.fetch('RAILS_BASE_URL', 'http://localhost:3000')}/iiif/#{@document[:id]}/search"
   end
 end
