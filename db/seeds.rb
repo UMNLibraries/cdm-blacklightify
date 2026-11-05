@@ -50,6 +50,7 @@ CSV.foreach('db/seeds/seed_spotlight_searches.csv', headers: true, liberal_parsi
     weight: row['weight'],
     published: row['published'],
     exhibit_id: row['exhibit_id'],
+    thumbnail_id: row['thumbnail_id'],
     default_index_view_type: row['default_index_view_type'],
     search_box: row['search_box'],
   )
