@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   root to: 'spotlight/exhibits#index'
 
   mount Spotlight::Engine, at: 'spotlight'
+  # blacklight_range_limit support for Spotlight catalog routes
+  # Spotlight's engine catalog routes do not include these endpoints by default.
+  get '/spotlight/:exhibit_id/catalog/range_limit', to: 'spotlight/catalog#range_limit'
+  get '/spotlight/:exhibit_id/catalog/range_limit_panel/:id', to: 'spotlight/catalog#range_limit_panel'
   
   # Endpoint to get collection_name_s from set_spec (must be before Blacklight mount)
   get '/catalog/collection_name_from_set_spec', controller: 'catalog', action: 'collection_name_from_set_spec'
