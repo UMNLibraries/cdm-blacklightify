@@ -105,7 +105,7 @@ end
 # ContentDM Harvesting/Indexing
 gem 'config'
 gem 'contentdm_api', github: 'UMNLibraries/contentdm_api'
-gem 'cdmdexer', github: 'UMNLibraries/cdmdexer', branch: 'develop'
+#gem 'cdmdexer', github: 'UMNLibraries/cdmdexer', branch: 'develop'
 # We cannot move to Sidekiq 7 as long as the ETLWorker and TransformWorker
 # pass complex objects (including multiple FieldMapping classes) to Sidekiq worker perform() methods
 gem 'sidekiq', '~> 6.0'

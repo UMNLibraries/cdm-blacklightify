@@ -23,3 +23,9 @@ set :linked_files, [".env.#{fetch(:rails_env, 'production')}"]
 #set :umedia_db_database, 'umedia_development'
 #set :umedia_db_user, ->{`#{fetch(:lastpass_cmd)} --username #{fetch(:lastpass_root)}/dev/umedia_postgresql`.chomp }
 #set :umedia_db_pass, ->{`#{fetch(:lastpass_cmd)} --password #{fetch(:lastpass_root)}/dev/umedia_postgresql`.chomp }
+
+set :ssh_options, {
+  forward_agent: true,
+  auth_methods: %w(publickey password),
+  encryption: %w[aes256-ctr aes128-ctr] # Fixes the encryption client error
+}
