@@ -11,7 +11,7 @@ unless ARGV.include?('deploy:rollback')
 end
 
 # Ruby is installed by ansible
-set :ruby_version, '3.0.3'
+set :ruby_version, '3.3.7'
 set :deploy_user, 'uldeploy'
 set :app_user, 'ulapps'
 
