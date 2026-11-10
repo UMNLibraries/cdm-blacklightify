@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2026_08_10_193803) do
-
+ActiveRecord::Schema[7.2].define(version: 2026_11_04_192753) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.integer "record_id", null: false
     t.integer "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -30,7 +29,7 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -46,8 +45,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.string "document_id"
     t.string "document_type"
     t.binary "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["document_id"], name: "index_bookmarks_on_document_id"
     t.index ["document_type", "document_id"], name: "index_bookmarks_on_document_type_and_document_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
@@ -58,7 +57,7 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
     t.string "scope"
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
@@ -68,8 +67,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.binary "query_params"
     t.integer "user_id"
     t.string "user_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["user_id"], name: "index_searches_on_user_id"
   end
 
@@ -78,8 +77,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.string "document_type"
     t.string "image"
     t.integer "version", limit: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["document_type", "document_id"], name: "sidecars_solr_document"
   end
 
@@ -88,8 +87,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.string "file"
     t.string "uid"
     t.integer "exhibit_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
   end
 
   create_table "spotlight_blacklight_configurations", force: :cascade do |t|
@@ -105,15 +104,15 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.text "per_page"
     t.text "document_index_view_types"
     t.string "thumbnail_size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
   end
 
   create_table "spotlight_bulk_updates", force: :cascade do |t|
     t.string "file", null: false
     t.integer "exhibit_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["exhibit_id"], name: "index_spotlight_bulk_updates_on_exhibit_id"
   end
 
@@ -121,11 +120,11 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.integer "exhibit_id"
     t.string "email", default: "", null: false
     t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
+    t.datetime "confirmed_at", precision: nil
+    t.datetime "confirmation_sent_at", precision: nil
     t.string "unconfirmed_email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["confirmation_token"], name: "index_spotlight_contact_emails_on_confirmation_token", unique: true
     t.index ["email", "exhibit_id"], name: "index_spotlight_contact_emails_on_email_and_exhibit_id", unique: true
   end
@@ -140,8 +139,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.boolean "show_in_sidebar"
     t.integer "weight", default: 50
     t.integer "exhibit_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.text "contact_info"
     t.string "avatar"
     t.integer "avatar_crop_x"
@@ -158,8 +157,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.string "slug"
     t.string "field"
     t.text "configuration"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "field_type"
     t.boolean "readonly_field", default: false
     t.boolean "is_multiple", default: false
@@ -170,8 +169,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.string "field"
     t.text "configuration"
     t.integer "exhibit_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["exhibit_id"], name: "index_spotlight_custom_search_fields_on_exhibit_id"
   end
 
@@ -182,8 +181,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.string "type"
     t.string "collation_key"
     t.text "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["exhibit_id"], name: "index_spotlight_events_on_exhibit_id"
     t.index ["resource_type", "resource_id"], name: "index_spotlight_events_on_resource_type_and_resource_id"
   end
@@ -193,11 +192,11 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.string "subtitle"
     t.string "slug"
     t.text "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "layout"
     t.boolean "published", default: false
-    t.datetime "published_at"
+    t.datetime "published_at", precision: nil
     t.string "featured_image"
     t.integer "masthead_id"
     t.integer "thumbnail_id"
@@ -205,6 +204,7 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.integer "site_id"
     t.string "theme"
     t.string "set_spec"
+    t.boolean "discovery_enabled", default: true
     t.index ["masthead_id"], name: "index_spotlight_exhibits_on_masthead_id"
     t.index ["site_id"], name: "index_spotlight_exhibits_on_site_id"
     t.index ["slug"], name: "index_spotlight_exhibits_on_slug", unique: true
@@ -221,8 +221,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.integer "image_crop_y"
     t.integer "image_crop_w"
     t.integer "image_crop_h"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "iiif_region"
     t.string "iiif_manifest_url"
     t.string "iiif_canvas_id"
@@ -234,8 +234,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.string "field"
     t.string "value"
     t.integer "exhibit_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["exhibit_id"], name: "index_spotlight_filters_on_exhibit_id"
   end
 
@@ -245,8 +245,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.integer "exhibit_id"
     t.integer "weight", default: 50
     t.boolean "published"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["exhibit_id"], name: "index_spotlight_groups_on_exhibit_id"
   end
 
@@ -271,8 +271,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.integer "user_id"
     t.text "log"
     t.text "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["job_id"], name: "index_spotlight_job_trackers_on_job_id"
     t.index ["on_type", "on_id"], name: "index_spotlight_job_trackers_on_on_type_and_on_id"
     t.index ["resource_type", "resource_id"], name: "index_spotlight_job_trackers_on_resource_type_and_resource_id"
@@ -284,8 +284,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.boolean "public"
     t.string "text"
     t.integer "exhibit_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["exhibit_id"], name: "index_spotlight_languages_on_exhibit_id"
   end
 
@@ -294,8 +294,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.integer "on_id"
     t.string "by_type"
     t.integer "by_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["on_id", "on_type"], name: "index_spotlight_locks_on_on_id_and_on_type", unique: true
   end
 
@@ -304,8 +304,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.integer "weight", default: 20
     t.string "nav_type"
     t.integer "exhibit_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.boolean "display", default: true
     t.index ["exhibit_id"], name: "index_spotlight_main_navigations_on_exhibit_id"
   end
@@ -321,8 +321,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.integer "exhibit_id"
     t.integer "created_by_id"
     t.integer "last_edited_by_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "parent_page_id"
     t.boolean "display_sidebar"
     t.boolean "display_title"
@@ -341,13 +341,13 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
   create_table "spotlight_reindexing_log_entries", force: :cascade do |t|
     t.integer "items_reindexed_count"
     t.integer "items_reindexed_estimate"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.datetime "start_time", precision: nil
+    t.datetime "end_time", precision: nil
     t.integer "job_status"
     t.integer "exhibit_id"
     t.integer "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
   end
 
   create_table "spotlight_resources", force: :cascade do |t|
@@ -355,9 +355,9 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.string "type"
     t.string "url"
     t.text "data"
-    t.datetime "indexed_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "indexed_at", precision: nil
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.binary "metadata"
     t.integer "index_status"
     t.integer "upload_id"
@@ -383,8 +383,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.integer "weight"
     t.boolean "published"
     t.integer "exhibit_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "featured_item_id"
     t.integer "masthead_id"
     t.integer "thumbnail_id"
@@ -407,8 +407,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.integer "exhibit_id"
     t.boolean "public", default: true
     t.text "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "document_id"
     t.string "document_type"
     t.integer "resource_id"
@@ -428,7 +428,7 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.string "tagger_type"
     t.integer "tagger_id"
     t.string "context", limit: 128
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.index ["context"], name: "index_taggings_on_context"
     t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
@@ -453,8 +453,8 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.text "interpolations"
     t.boolean "is_proc", default: false
     t.integer "exhibit_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["exhibit_id", "key", "locale"], name: "index_translations_on_exhibit_id_and_key_and_locale", unique: true
     t.index ["exhibit_id"], name: "index_translations_on_exhibit_id"
   end
@@ -463,15 +463,15 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "guest", default: false
     t.string "invitation_token"
-    t.datetime "invitation_created_at"
-    t.datetime "invitation_sent_at"
-    t.datetime "invitation_accepted_at"
+    t.datetime "invitation_created_at", precision: nil
+    t.datetime "invitation_sent_at", precision: nil
+    t.datetime "invitation_accepted_at", precision: nil
     t.integer "invitation_limit"
     t.string "invited_by_type"
     t.integer "invited_by_id"
@@ -490,7 +490,7 @@ ActiveRecord::Schema.define(version: 2026_08_10_193803) do
     t.string "event", null: false
     t.string "whodunnit"
     t.text "object", limit: 1073741823
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 

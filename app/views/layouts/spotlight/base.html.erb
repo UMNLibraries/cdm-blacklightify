@@ -18,14 +18,14 @@
     <%= content_for(:head) %>
     <%= javascript_include_tag "application" %>
 
-    <%= description %>
-    <%= twitter_card %>
-    <%= opengraph %>
+    <%# description %>
+    <%# twitter_card %>
+    <%# opengraph %>
     <%= javascript_tag '$.fx.off = true;' if Rails.env.test? %> 
 
     <%= csrf_meta_tags %>
   </head>
-  <body class="<%= render_body_class %>">
+  <body class="">
     <% if params[:fullscreen] == "true" %>
       <%= render 'catalog/fullscreen' %>
     <% else %>

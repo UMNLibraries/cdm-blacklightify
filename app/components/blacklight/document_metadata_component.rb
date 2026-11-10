@@ -16,11 +16,10 @@ module Blacklight
 
     def before_render
       return unless fields
-
       @fields.each do |field|
-        field(component: field_component(field), field: field, show: @show)
-      end
+        with_field(component: field_component(field), field: field, show: @show)
     end
+end
 
     def render?
       fields.present?

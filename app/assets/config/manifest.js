@@ -4,6 +4,4 @@
 //= link application.js
 //= link_directory ../javascripts .js
 
-//= link openseadragon-assets
-
 //= link application.css

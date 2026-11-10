@@ -1,8 +1,27 @@
 /*
-*= require bootstrap-tagsinput
+*= require_self
 */
-@import 'spotlight/variables_bootstrap';
 @import 'bootstrap';
 @import 'sir-trevor/main';
-@import 'leaflet';
 @import 'spotlight/spotlight';
+
+// Fallback for visually-hidden if not defined by Bootstrap
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.float-end {
+  float: right;
+}
+
+.float-start {
+  float: left;
+}

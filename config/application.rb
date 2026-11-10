@@ -13,7 +13,7 @@ module Umedia
   class Application < Rails::Application
     config.action_mailer.default_url_options = { host: 'localhost:3000', from: 'noreply@example.com' }
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.1
+    config.load_defaults 7.0
     config.active_record.yaml_column_permitted_classes = [ActiveSupport::HashWithIndifferentAccess, Symbol, Struct]
 
     # Configuration for the application, engines, and railties goes here.

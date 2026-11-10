@@ -47,6 +47,7 @@ class CatalogController < ApplicationController
   ]
 
   configure_blacklight do |config|
+    config.bootstrap_version = 5
     # configuration for Blacklight IIIF Content Search
     config.iiif_search = {
       full_text_field: 'transcription_tesi',

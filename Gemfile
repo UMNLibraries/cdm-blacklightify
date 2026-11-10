@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '~> 3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
+gem 'rails', '~> 7.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
@@ -14,7 +14,9 @@ gem 'puma', '~> 5.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.0'
+# gem 'webpacker', '~> 5.0'  # deprecated in Rails 7, consider migrating to importmap or esbuild in future
+gem 'importmap-rails'
+gem 'stimulus-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -56,10 +58,11 @@ group :development do
   gem 'spring'
 end
 
-gem 'blacklight', ' ~> 7.0'
-gem 'blacklight-spotlight', github: 'projectblacklight/spotlight', branch: 'v3.5.0.2'
+gem 'blacklight', ' ~> 8.0'
+gem 'blacklight-spotlight', '6.0.0.rc2'
 # https://github.com/projectblacklight/blacklight_range_limit#configuration
-gem 'blacklight_range_limit', '~> 7.0'
+gem 'blacklight_range_limit', '~> 8.0'
+# This will require testing - the histogram may not work out of the box with Bootstrap 5
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
@@ -67,18 +70,18 @@ group :development, :test, :publicdev do
   gem 'solr_wrapper', '~> 4.0'
 end
 
-gem 'blacklight-gallery', '~> 3.0'
+gem 'blacklight-gallery', '~> 5.1'
 gem 'blacklight-oembed', '~> 1.0'
-gem 'bootstrap', '~> 4.0'
+gem 'bootstrap', '~> 5.3'
 gem 'coffee-rails', '~> 4.2'
-gem 'devise'
+gem 'devise', '~> 5.0'
 gem 'devise-guests', '~> 0.8'
 gem 'devise_invitable'
 gem 'cancancan', '~> 3.0'
-gem 'acts-as-taggable-on', '~> 9.0'
+gem 'acts-as-taggable-on', '~> 13.0'
 gem 'friendly_id'
 gem 'jquery-rails'
-gem 'openseadragon', '>= 0.2.0'
+gem 'openseadragon', '~> 1.0'
 gem 'rsolr', '>= 1.0', '< 3'
 gem 'sitemap_generator'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
@@ -105,7 +108,7 @@ end
 # ContentDM Harvesting/Indexing
 gem 'config'
 gem 'contentdm_api', github: 'UMNLibraries/contentdm_api'
-#gem 'cdmdexer', github: 'UMNLibraries/cdmdexer', branch: 'develop'
+gem 'cdmdexer', github: 'UMNLibraries/cdmdexer', branch: 'rails7'
 # We cannot move to Sidekiq 7 as long as the ETLWorker and TransformWorker
 # pass complex objects (including multiple FieldMapping classes) to Sidekiq worker perform() methods
 gem 'sidekiq', '~> 6.0'
@@ -142,4 +145,4 @@ gem 'capistrano-yarn'
 gem 'rails-bootstrap-tabs', '~> 0.3.2'
 gem 'render_async'
 
-gem 'blacklight_iiif_search'
+gem 'blacklight_iiif_search', '~> 3.1.0'

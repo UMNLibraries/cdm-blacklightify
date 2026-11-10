@@ -2,7 +2,7 @@
 
 module Blacklight
   class SearchBarComponent < Blacklight::Component
-    include Blacklight::ContentAreasShim
+    # include Blacklight::ContentAreasShim
 
     renders_one :append
     renders_one :prepend
@@ -74,10 +74,14 @@ module Blacklight
       helpers.blacklight_config
     end
 
-    def render_hash_as_hidden_fields(*args)
-      Deprecation.silence(Blacklight::HashAsHiddenFieldsHelperBehavior) do
-        helpers.render_hash_as_hidden_fields(*args)
-      end
+  # def render_hash_as_hidden_fields(*args)
+  #   Deprecation.silence(Blacklight::HashAsHiddenFieldsHelperBehavior) do
+  #     helpers.render_hash_as_hidden_fields(*args)
+  #   end
+  # end
+
+    def render_hash_as_hidden_fields(hash)
+      safe_join(hash.map { |key, value| hidden_field_tag(key, value) })
     end
 
     def scoped_t(key, **args)

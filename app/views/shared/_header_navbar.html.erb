@@ -13,7 +13,13 @@
     <%- unless params[:controller] == 'transcript' %> 
       <%= content_tag :div, role: 'navigation', aria: { label: t('blacklight.search.header') } do %>
         <div class="<%= container_classes %>" aria-label="Search UMedia resources">
-          <%= render_search_bar  %>
+          <%# render_search_bar  %>
+	  <%# render "blacklight/search_form" %>
+     <!-- <form class="search-form" action="/catalog" method="get">
+            <input type="text" name="q" placeholder="Search..." class="form-control">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form> -->
+	  <%= render Blacklight::SearchBarComponent.new(url: search_action_url, params: search_state&.params_for_search&.except(:qt) || {}) %>
         </div>
       <% end %>
     <%- end %>

@@ -21,5 +21,11 @@ module Spotlight
   end
 end
 
-# Monkeypatch Spotlight::CatalogController to use our URL override
-Spotlight::CatalogController.prepend(Spotlight::TranscriptUrlOverride)
+# Monkeypatch Spotlight::CatalogController to use our URL override, and defer
+# until the app is fully initialized to guarantee Spotlight::CatalogController
+# actually exists...
+Rails.application.config.after_initialize do
+  if defined?(Spotlight::CatalogController)
+    Spotlight::CatalogController.prepend(Spotlight::TranscriptUrlOverride)
+  end
+end
