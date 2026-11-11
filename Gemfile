@@ -10,7 +10,7 @@ gem 'rails', '~> 7.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
-gem 'puma', '~> 5.1'
+gem 'puma', '~> 6.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -18,7 +18,7 @@ gem 'sass-rails', '>= 6'
 gem 'importmap-rails'
 gem 'stimulus-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+gem 'turbo-rails', '~> 2.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -111,6 +111,7 @@ gem 'contentdm_api', github: 'UMNLibraries/contentdm_api'
 gem 'cdmdexer', github: 'UMNLibraries/cdmdexer', branch: 'rails7'
 # We cannot move to Sidekiq 7 as long as the ETLWorker and TransformWorker
 # pass complex objects (including multiple FieldMapping classes) to Sidekiq worker perform() methods
+gem 'rack', '~> 2.2'
 gem 'sidekiq', '~> 6.0'
 gem 'dotenv-rails'
 
@@ -146,3 +147,4 @@ gem 'rails-bootstrap-tabs', '~> 0.3.2'
 gem 'render_async'
 
 gem 'blacklight_iiif_search', '~> 3.1.0'
+gem 'json', '~> 2.7'

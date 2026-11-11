@@ -14,6 +14,7 @@ class GettyJsonService
   end
 
   def att_definition
+    return nil if att_def_id.blank?
     Rails.cache.fetch(att_def_id, expires_in: 30.days) do
       aat_data.dig('subject_of', 0, 'content')
     end 
